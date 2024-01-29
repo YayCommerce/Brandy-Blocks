@@ -1,0 +1,18 @@
+{
+  "name": "brandy-blocks",
+  "version": "1.0.0",
+  "description": "Create gutenberg blocks",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.18.0",
+    "react-sortablejs": "^6.1.4",
+    "sortablejs": "^1.15.1"
+  }
+}
