@@ -1,0 +1,24 @@
+.brandy-collapse-menu__header {
+
+	.item-block-visible-icon.icon-visible {
+		visibility: hidden;
+		opacity: 0;
+		transition-property: visibility, opacity;
+		transition-duration: .2s;
+		transition-timing-function: ease-in-out;
+	}
+
+	&:hover {
+		.item-block-visible-icon.icon-visible {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	.item-block-visible-icon {
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+}

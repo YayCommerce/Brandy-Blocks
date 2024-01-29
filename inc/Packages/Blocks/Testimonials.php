@@ -17,7 +17,7 @@ class Testimonials extends AbstractBlock {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'brandy-testimonials-js', BRANDY_TEMPLATE_URL . '/inc/Packages/dist/js/testimonials.js', array( 'jquery' ), BRANDY_VERSION, true );
+		wp_enqueue_script( 'brandy-testimonials-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/testimonials.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
 	}
 
 }

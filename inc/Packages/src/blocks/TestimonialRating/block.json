@@ -1,0 +1,11 @@
+{
+  "apiVersion": 3,
+  "title": "Testimonial Rating",
+  "name": "brandy/testimonial-rating",
+  "category": "brandy-blocks",
+  "parent": ["brandy/single-testimonial"],
+  "icon": "testimonial",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

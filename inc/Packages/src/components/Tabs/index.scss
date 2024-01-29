@@ -1,0 +1,26 @@
+.brandy-tab-panel {
+	.components-tab-panel__tabs {
+		border-bottom: 1px solid #f0f2f4;
+		background: #fff;
+	}
+
+	.components-tab-panel__tabs-item {
+		flex: 1;
+		padding: 10px;
+		border-bottom: 2px solid transparent;
+
+		&.active-tab {
+			border-bottom-color: #347BB5;
+
+			svg {
+				*[fill] {
+					fill: #347BB5;
+				}
+
+				*[stroke] {
+					stroke: #347BB5;
+				}
+			}
+		}
+	}
+}

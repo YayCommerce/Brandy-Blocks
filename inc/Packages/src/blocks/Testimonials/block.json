@@ -1,0 +1,226 @@
+{
+  "apiVersion": 3,
+  "title": "Testimonials",
+  "name": "brandy/testimonials",
+  "category": "brandy-blocks",
+  "icon": "testimonial",
+  "attributes": {
+    "number_testimonials": {
+      "type": "number",
+      "attribute": "data-length",
+      "default": 3
+    },
+    "change_detecter": {
+      "string": "string",
+      "default": 0
+    },
+    "carousel": {
+      "type": "object",
+      "default": {
+        "autoplay": true,
+        "infinite_loop": true,
+        "transition_speed": 500
+      }
+    },
+    "item_spacing": {
+      "type": "number",
+      "default": 50
+    },
+    "label": {
+      "type": "object",
+      "default": {
+        "border_radius": 50,
+        "type": "badge",
+        "color": "var(--palette_3)",
+        "background_color": "#F0F3F9",
+        "padding": {
+          "top": 10,
+          "left": 20,
+          "right": 20,
+          "bottom": 10,
+          "constrain": false
+        },
+        "typography": {
+          "font_family": "primary",
+          "font_size": 16,
+          "bold": false,
+          "italic": false,
+          "decoration": "auto",
+          "text_transform": "none",
+          "text_align": "center",
+          "font_weight": 400,
+          "line_height": 40,
+          "letter_spacing": 0
+        }
+      }
+    },
+    "content_alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "title": {
+      "type": "object",
+      "default": {
+        "color": "var(--palette_3)",
+        "padding": {
+          "top": 0,
+          "left": 0,
+          "right": 0,
+          "bottom": 0,
+          "constrain": false
+        },
+        "typography": {
+          "font_family": "primary",
+          "font_size": 40,
+          "bold": false,
+          "italic": false,
+          "decoration": "auto",
+          "text_transform": "none",
+          "text_align": "center",
+          "font_weight": 600,
+          "line_height": 40,
+          "letter_spacing": 0
+        }
+      }
+    },
+    "avatar": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "size": 80,
+        "border_radius": {
+          "top": 50,
+          "left": 50,
+          "right": 50,
+          "bottom": 50,
+          "constrain": true
+        },
+        "fitting": "cover"
+      }
+    },
+    "name": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "color": "var(--palette_3)",
+        "typography": {
+          "font_family": "primary",
+          "font_size": 16,
+          "bold": false,
+          "italic": false,
+          "decoration": "auto",
+          "text_transform": "none",
+          "text_align": "center",
+          "font_weight": 400,
+          "line_height": 40,
+          "letter_spacing": 0
+        },
+        "padding": {
+          "top": 7,
+          "left": 0,
+          "right": 0,
+          "bottom": 0,
+          "constrain": false
+        }
+      }
+    },
+    "subname": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "color": "#7F8287",
+        "typography": {
+          "font_family": "primary",
+          "font_size": 14,
+          "bold": false,
+          "italic": false,
+          "decoration": "auto",
+          "text_transform": "none",
+          "text_align": "center",
+          "font_weight": 300,
+          "line_height": 40,
+          "letter_spacing": 0
+        },
+        "padding": {
+          "top": 0,
+          "left": 0,
+          "right": 0,
+          "bottom": 0,
+          "constrain": false
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "color": "var(--palette_3)",
+        "typography": {
+          "font_family": "primary",
+          "font_size": 16,
+          "bold": false,
+          "italic": false,
+          "decoration": "auto",
+          "text_transform": "none",
+          "text_align": "center",
+          "font_weight": 400,
+          "line_height": 40,
+          "letter_spacing": 0
+        },
+        "padding": {
+          "top": 30,
+          "left": 0,
+          "right": 0,
+          "bottom": 30,
+          "constrain": false
+        }
+      }
+    },
+    "star": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "size": 16,
+        "active_color": "#f8b84e",
+        "default_color": "#bebfc2",
+        "spacing": 5,
+        "padding": {
+          "top": 0,
+          "left": 0,
+          "right": 0,
+          "bottom": 0,
+          "constrain": false
+        }
+      }
+    },
+    "arrow": {
+      "type": "object",
+      "default": {
+        "size": 30,
+        "icon_color": "#808890",
+        "background_color": "#EFF2F4"
+      }
+    },
+    "dots": {
+      "type": "object",
+      "default": {
+        "size": 15,
+        "active_color": "#122940",
+        "default_color": "#D3DCE5",
+        "spacing": 15
+      }
+    },
+    "layout": {
+      "type": "array",
+      "default": ["avatar", "name", "subname", "content", "rating"]
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "selectors": {
+    "color": {
+      "text": "h2.testimonials__heading"
+    }
+  }
+}

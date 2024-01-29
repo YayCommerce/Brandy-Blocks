@@ -8,7 +8,7 @@ abstract class AbstractBlock {
 
 	protected function __construct() {
 		register_block_type(
-			BRANDY_TEMPLATE_DIR . '/inc/Packages/build/blocks/' . $this->name,
+			BRANDY_BLOCKS_PLUGIN_PATH . '/inc/Packages/build/blocks/' . $this->name,
 			$this->get_block_attributes()
 		);
 		$this->init_hooks();

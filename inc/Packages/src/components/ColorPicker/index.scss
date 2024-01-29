@@ -1,0 +1,47 @@
+.brandy-editor {
+	.color-picker {
+		border-radius: 5px;
+		border: 1px solid #E3E8EE;
+		background: #FFF;
+		display: flex;
+		align-items: center;
+		width: 120px;
+
+		&__head,
+		&__tail {
+			padding: 7px;
+		}
+
+		&__head {
+			display: flex;
+			border-right: 1px solid #E3E8EE;
+		}
+
+		&__tail {
+			text-transform: uppercase;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.color-indicator {
+			width: 20px;
+			height: 20px;
+			border-radius: 5px;
+			border: 2px solid #F1F4F8;
+			background: #fff;
+			cursor: pointer;
+
+			span:empty {
+				display: none;
+			}
+		}
+
+	}
+
+}
+
+.brandy-color-modal {
+	padding: 16px;
+	width: 260px;
+}

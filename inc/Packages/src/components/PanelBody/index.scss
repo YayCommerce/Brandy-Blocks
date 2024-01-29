@@ -1,0 +1,23 @@
+.brandy-editor-panel-body {
+
+	&.is-opened {
+		.components-panel__body-title {
+			border-bottom: 1px solid #F0F2F4;
+			margin-bottom: 20px;
+
+			button {
+				color: #347BB5;
+			}
+
+			svg {
+				color: #347BB5
+			}
+		}
+	}
+
+	.components-panel__body-title {
+		background: #fff;
+
+
+	}
+}

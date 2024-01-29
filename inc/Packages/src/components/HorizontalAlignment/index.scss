@@ -1,0 +1,11 @@
+.brandy-btn-group-icons {
+	>button {
+		&.selected {
+			svg {
+				*[fill] {
+					fill: #2271B1;
+				}
+			}
+		}
+	}
+}

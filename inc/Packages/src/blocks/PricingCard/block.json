@@ -1,0 +1,53 @@
+{
+  "apiVersion": 3,
+  "title": "Pricing card",
+  "name": "brandy/pricing-card",
+  "category": "brandy-blocks",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "pricing": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "button": {
+      "type": "string",
+      "default": ""
+    },
+    "position": {
+      "type": "number",
+      "default": 1
+    },
+    "features": {
+      "type": "array",
+      "default": []
+    },
+    "icon_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "context": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "providesContext": {
+    "brandy/pricing-card/features": "features",
+    "brandy/pricing-card/icon_enabled": "icon_enabled"
+  },
+  "usesContext": [
+    "brandy/pricing/highlight_price",
+    "brandy/pricing/card_layout"
+  ],
+  "parent": ["brandy/pricing"],
+  "icon": "testimonial",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

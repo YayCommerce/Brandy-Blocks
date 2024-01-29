@@ -1,0 +1,106 @@
+.brandy-editor {
+	.typography-indicator {
+		cursor: pointer;
+		display: inline-block;
+
+		span:empty {
+			display: none;
+		}
+	}
+}
+
+.brandy-typography-modal {
+	width: 285px;
+	padding: 25px 20px;
+	background: #fff;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.10);
+	border-radius: 5px;
+	overflow: hidden;
+
+	.components-base-control__label {
+		color: #5A6D80;
+		font-weight: 500;
+		font-size: 12px;
+	}
+
+	select {
+		margin-bottom: 0;
+
+		&:focus,
+		&:focus-visible {
+			box-shadow: none;
+			outline: none;
+		}
+	}
+
+	.brandy-typography-group {
+		padding: 15px 0;
+		border-bottom: 1px solid #F0F2F4;
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:last-child {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+	}
+
+	.brandy-typography__selector {
+		display: grid;
+		grid-template-columns: 30% 35% 35%;
+		gap: 8px;
+
+		select {
+			color: #000729;
+			background-color: rgba(240, 242, 244, 0.50);
+			border-radius: 3px;
+			border: none;
+			outline: none;
+
+			&:hover {
+				color: inherit;
+			}
+
+			&:focus {
+				outline: none;
+				border: none;
+				box-shadow: none;
+			}
+		}
+	}
+
+	.brandy-typography__selection-list {
+		display: flex;
+		background: rgba(240, 242, 244, 0.50);
+		padding: 4px;
+		justify-content: space-between;
+		align-items: center;
+		border-radius: 3px;
+
+		.brandy-typography__selection-item {
+			cursor: pointer;
+			border-radius: 3px;
+
+			display: inline-flex;
+			padding: 5px;
+			align-content: center;
+			justify-content: center;
+
+			transition: background .1s ease-in-out;
+
+			&:hover {
+				background: #e1e5e8;
+			}
+
+			&.item-active {
+				background: #C6D4E1;
+
+				svg *[fill] {
+					fill: #000729;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+.brandy-editor-slider {
+
+	.components-range-control__wrapper {
+
+		&>:nth-child(2) {
+			background-color: #E3E8EE;
+		}
+
+		.components-range-control__track {
+			background-color: #347BB5;
+		}
+	}
+
+	.components-input-control {
+		.components-input-control__backdrop {
+			border-color: #E3E8EE !important;
+			border-radius: 3px !important;
+			padding: 9px 12px !important;
+		}
+	}
+}

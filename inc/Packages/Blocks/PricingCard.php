@@ -1,9 +1,9 @@
 <?php
 
-namespace Brandy\Packages\Blocks;
+namespace BrandyBlocks\Packages\Blocks;
 
-use Brandy\Packages\Abstracts\AbstractBlock;
-use Brandy\Traits\SingletonTrait;
+use BrandyBlocks\Packages\Abstracts\AbstractBlock;
+use BrandyBlocks\Traits\SingletonTrait;
 
 class PricingCard extends AbstractBlock {
 

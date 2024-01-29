@@ -1,0 +1,12 @@
+.brandy-editor.pricing-settings {
+	.pricing-group {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		&>div .components-base-control__label {
+			text-transform: capitalize;
+			margin-bottom: 5px;
+		}
+	}
+}

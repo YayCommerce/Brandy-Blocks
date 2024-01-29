@@ -1,0 +1,53 @@
+.brandy-collapse-menu {
+	border-bottom: 1px solid #F0F2F4;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&__header {
+		padding: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-weight: 500;
+		cursor: pointer;
+		background: #FFF;
+		color: #5A6D80;
+		font-size: 14px;
+		font-weight: 500;
+		color: #000729;
+
+		.collapse-title {
+			flex: 1;
+			margin-right: 5px;
+		}
+	}
+
+	&.collapse-open {
+		&>.brandy-collapse-menu__header {
+			color: #347BB5;
+			font-weight: 500;
+
+			&>.collapse-arrow {
+				transform: rotate(180deg);
+			}
+
+			svg {
+				*[fill] {
+					fill: #347BB5;
+				}
+
+				*[stroke] {
+					stroke: #000729;
+				}
+			}
+		}
+
+	}
+
+	&__content {
+		padding: 10px;
+		background: #F7F7F9;
+	}
+}

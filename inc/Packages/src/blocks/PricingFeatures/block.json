@@ -1,0 +1,12 @@
+{
+  "apiVersion": 3,
+  "title": "Pricing Features",
+  "name": "brandy/pricing-features",
+  "category": "brandy-blocks",
+  "parent": ["brandy/pricing-card"],
+  "usesContext": ["brandy/pricing-card/features"],
+  "icon": "testimonial",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

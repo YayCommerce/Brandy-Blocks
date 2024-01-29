@@ -1,0 +1,61 @@
+.brandy-pricing-wrapper {
+	padding-bottom: 30px;
+
+	.brandy-pricing {
+
+		&__subtitle {
+			width: fit-content;
+			margin: auto;
+			padding: var(--subtitle-padding);
+			color: var(--subtitle-color);
+			text-align: center;
+			font-size: var(--subtitle-font-size);
+			font-weight: var(--subtitle-font-weight, var(--subtitle-bold));
+			font-style: var(--subtitle-font-styles);
+			text-transform: var(--subtitle-text-transform, auto);
+		}
+
+		&__title {
+			margin: auto;
+			width: fit-content;
+			padding: var(--title-padding);
+			color: var(--title-color);
+			text-align: center;
+			font-size: var(--title-font-size);
+			font-weight: var(--title-font-weight, var(--title-bold));
+			font-style: var(--title-font-styles);
+			text-transform: var(--title-text-transform, auto);
+		}
+
+		&__description {
+			width: fit-content;
+			margin: auto;
+			padding: var(--description-padding);
+			color: var(--description-color);
+			text-align: center;
+			font-size: var(--description-font-size);
+			font-weight: var(--description-font-weight, var(--description-bold));
+			font-style: var(--description-font-styles);
+			text-transform: var(--description-text-transform, auto);
+		}
+
+		&__list {
+
+			&>div {
+				display: flex;
+				justify-content: center !important;
+				align-items: flex-end !important;
+				gap: var(--card-spacing);
+				width: 100%;
+
+				&>div {
+					width: 30%;
+				}
+			}
+		}
+	}
+
+	.wp-block-missing {
+		display: none;
+	}
+}

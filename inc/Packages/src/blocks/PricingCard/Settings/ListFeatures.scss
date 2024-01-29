@@ -1,0 +1,76 @@
+.brandy-editor {
+	.pricing-settings-card-wrapper {
+		padding: 20px 10px;
+		background: #ffffff;
+	}
+
+	.pricing-settings-card__list-item {
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		&__card {
+			background: #ffffff;
+			border: 1px solid #F0F2F4;
+			border-radius: 5px;
+			padding: 10px 14px;
+
+			&:hover,
+			&.active {
+				.card-head {
+					.card-close {
+						visibility: visible;
+						opacity: 1;
+					}
+				}
+			}
+
+			.card-head {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+				cursor: pointer;
+
+				.card-icon {
+					display: inline-flex;
+					align-items: center;
+				}
+
+				.card-text {
+					color: #5A6D80;
+				}
+
+				.card-close {
+					padding: 5px;
+					margin-left: auto;
+					cursor: pointer;
+					visibility: hidden;
+					opacity: 0;
+					transition-property: visibility, opacity;
+					transition-duration: .2s;
+					transition-timing-function: ease-in-out;
+				}
+
+			}
+
+			.card-bottom {
+				padding-top: 10px;
+				margin-top: 10px;
+				border-top: 1px solid #F0F2F4;
+
+				&>div {
+					margin-bottom: 10px;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+
+		}
+	}
+}

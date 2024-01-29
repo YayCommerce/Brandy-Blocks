@@ -1,0 +1,181 @@
+@mixin card-styles {
+	padding: var(--card-padding);
+	border-radius: 10px;
+	border: 3px solid var(--card-border-color-normal);
+	background: var(--card-background-normal);
+	box-shadow: var(--card-shadow);
+	cursor: pointer;
+
+	transition-property: box-shadow, border-color, background;
+	transition-duration: .2s;
+	transition-timing-function: ease-in-out;
+
+	&:hover {
+		background: var(--card-background-hover);
+		border-color: var(--card-border-color-hover);
+
+	}
+
+	&[is-highlighted="true"] {
+		.brandy-pricing-card__highlight {
+			display: block;
+		}
+	}
+
+	.brandy-pricing-feature-list {
+		display: var(--card-features-display);
+		flex-direction: column;
+		gap: var(--card-features-item-spacing);
+
+		.block-editor-block-list__layout {
+			display: var(--card-features-display);
+			flex-direction: column;
+			gap: var(--card-features-item-spacing);
+		}
+	}
+
+	&__highlight {
+		display: none;
+		width: fit-content;
+		color: var(--card-highlight-title-color);
+		background: var(--card-highlight-background-color);
+		padding: 5px;
+		border-radius: 3px;
+		margin: 10px 0;
+		line-height: 24px;
+	}
+
+	&__title {
+		display: var(--card-title-display);
+		margin: auto;
+		padding: var(--card-title-padding);
+		color: var(--card-title-color);
+		text-align: center;
+		font-size: var(--card-title-font-size);
+		font-weight: var(--card-title-font-weight, var(--card-title-bold));
+		text-align: var(--card-title-text-align, left);
+		font-style: var(--card-title-font-styles);
+		text-transform: var(--card-title-text-transform, auto);
+	}
+
+	&__pricing {
+		display: var(--card-pricing-display);
+		flex-direction: var(--card-pricing-flex-direction);
+		align-items: var(--card-pricing-flex-align-items);
+		margin: auto;
+		text-align: center;
+		padding: var(--card-pricing-padding);
+		color: var(--card-pricing-price-color);
+		font-size: var(--card-pricing-price-font-size);
+		font-weight: var(--card-pricing-price-font-weight, var(--card-pricing-price-bold));
+		text-align: var(--card-pricing-price-text-align, left);
+		font-style: var(--card-pricing-price-font-styles);
+		text-transform: var(--card-pricing-price-text-transform, auto);
+
+		sub,
+		sup {
+			color: var(--card-pricing-period-color);
+			font-size: var(--card-pricing-period-font-size);
+			font-weight: var(--card-pricing-period-font-weight, var(--card-pricing-period-bold));
+			text-align: var(--card-pricing-period-text-align, left);
+			font-style: var(--card-pricing-period-font-styles);
+			text-transform: var(--card-pricing-period-text-transform, auto);
+			vertical-align: var(--card-pricing-period-position);
+		}
+	}
+
+	&__description {
+		display: var(--card-description-display);
+		margin: auto;
+		padding: var(--card-description-padding);
+		color: var(--card-description-color);
+		text-align: center;
+		font-size: var(--card-description-font-size);
+		font-weight: var(--card-description-font-weight, var(--card-description-bold));
+		text-align: var(--card-description-text-align, left);
+		font-style: var(--card-description-font-styles);
+		text-transform: var(--card-description-text-transform, auto);
+	}
+
+	&__button {
+		width: 100%;
+
+		--card-button-color: var(--card-button-color-normal);
+		--card-button-background-color: var(--card-button-background-color-normal);
+		--card-button-border-color: var(--card-button-border-color-normal);
+
+		&:hover {
+			--card-button-color: var(--card-button-color-hover);
+			--card-button-background-color: var(--card-button-background-color-hover);
+			--card-button-border-color: var(--card-button-border-color-hover);
+		}
+
+		.wp-element-button {
+			width: var(--card-button-width);
+			display: var(--card-button-display);
+			margin: auto;
+			margin: var(--card-button-padding);
+			padding: 5px 10px;
+			color: var(--card-button-color);
+			border: 2px solid transparent;
+			border-color: var(--card-button-border-color) !important;
+			background-color: var(--card-button-background-color) !important;
+			border-radius: var(--card-button-border-radius) !important;
+			line-height: 3 !important;
+			text-align: center;
+			font-size: var(--card-button-font-size);
+			font-weight: var(--card-button-font-weight, var(--card-button-bold));
+			font-style: var(--card-button-font-styles);
+			text-transform: var(--card-button-text-transform, auto);
+
+			transition-property: color, background-color, border;
+			transition-duration: .2s;
+			transition-timing-function: ease-in-out;
+		}
+	}
+}
+
+.brandy-pricing-card,
+.editor-styles-wrapper .brandy-pricing-card {
+	@include card-styles();
+}
+
+.brandy-pricing-wrapper[card-horizontal-alignment="center"] {
+	.brandy-pricing-card {
+
+		&__title,
+		&__pricing,
+		&__description {
+			text-align: center !important;
+		}
+
+		&__highlight,
+		&__button .wp-element-button {
+			margin: 10px auto;
+		}
+
+		.brandy-pricing-feature {
+			justify-content: center;
+		}
+	}
+}
+
+.brandy-pricing-wrapper[card-horizontal-alignment="right"] {
+	.brandy-pricing-card {
+
+		&__title,
+		&__pricing,
+		&__description {
+			text-align: right !important;
+		}
+
+		&__highlight,
+		&__button .wp-element-button {
+			margin-left: auto;
+		}
+
+		.brandy-pricing-feature {
+			justify-content: flex-end;
+		}
+	}
+}

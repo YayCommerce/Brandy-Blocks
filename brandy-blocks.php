@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Brandy Blocks - Extra blocks for Brandy theme
  * Plugin URI: https://yaycommerce.com/
- * Description:
+ * Description: Brandy blocks.
  * Version: 0.1
  * Author: YayCommerce
  * Author URI: https://yaycommerce.com/
@@ -36,16 +36,16 @@ if ( ! defined( 'BRANDY_BLOCKS_VERSION' ) ) {
 	define( 'BRANDY_BLOCKS_VERSION', '0.1' );
 }
 
-require_once BRANDY_BLOCKS_PLUGIN_PATH . '/vendor/autoload.php';
+require_once BRANDY_BLOCKS_PLUGIN_PATH . 'vendor/autoload.php';
 
 
-add_action( 'plugins_loaded', '\\BRANDY_BLOCKS\\load_plugin' );
+add_action( 'init', '\\BrandyBlocks\\load_plugin' );
 
-if ( ! function_exists( 'BRANDY_BLOCKS\\load_plugin' ) ) {
+if ( ! function_exists( 'BrandyBlocks\\load_plugin' ) ) {
 	/**
 	 * Initialize plugin instance
 	 */
 	function load_plugin() { //phpcs:ignore
-		
+		Initialize::get_instance();
 	}
 }

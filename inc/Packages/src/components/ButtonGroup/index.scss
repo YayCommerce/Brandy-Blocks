@@ -1,0 +1,27 @@
+.brandy-editor-btn-group {
+	display: flex;
+	width: 100%;
+	border-radius: 3px;
+	border: 1px solid #F0F2F4;
+	background: #FFF;
+
+	&>button {
+		flex: 1;
+		justify-content: center;
+		align-items: center;
+		outline: none !important;
+		box-shadow: none !important;
+		border: 1px solid rgba(209, 234, 255, 0.70) !important;
+
+		&.selected {
+			background: rgba(209, 234, 255, 0.70);
+		}
+
+		&:focus,
+		&:focus-visible,
+		&:focus-within {
+			box-shadow: none;
+			outline: none;
+		}
+	}
+}

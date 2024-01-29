@@ -1,0 +1,55 @@
+.brandy-editor-spacing {
+	display: flex;
+	gap: 5px;
+	color: #5a6d80;
+
+	&__item {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		input[type="number"] {
+			padding: 5px;
+			margin-bottom: 5px;
+			border-radius: 5px;
+			text-align: center;
+			outline: none;
+			border: 1px solid #E3E8EE;
+			transition: none;
+
+			&:focus {
+				outline: none;
+				border-color: rgba(209, 234, 255, 0.7);
+			}
+		}
+
+		input[type="number"]::-webkit-outer-spin-button,
+		input[type="number"]::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
+
+		span {
+			text-transform: uppercase;
+			font-size: 11px;
+		}
+	}
+
+	.brandy-editor-spacing__constrain {
+		padding: 10px 5px 0px 5px;
+		height: fit-content;
+		cursor: pointer;
+
+		&.constrain-active {
+			svg *[stroke] {
+				stroke: #347BB5
+			}
+		}
+
+	}
+}
