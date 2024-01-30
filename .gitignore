@@ -1,4 +1,10 @@
+.vscode
+
 inc/Packages/node_modules
 inc/Packages/build
-
 vendor
+release
+composer.lock
+
+tools/vendor
+tools/composer.lock

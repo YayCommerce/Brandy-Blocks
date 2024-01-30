@@ -9,10 +9,8 @@ class PackagesLoader {
 	use SingletonTrait;
 
 	protected function __construct() {
+		$this->register_blocks();
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		// add_action( 'wp_enqueue_scripts', function() {
-			$this->register_blocks();
-		// } );
 		add_filter(
 			'block_categories_all',
 			function( $test ) {
