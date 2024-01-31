@@ -59,35 +59,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       number_testimonials:
         attributes.number_testimonials ??
         metadata.attributes.number_testimonials.default,
-      label: {
-        border_radius:
-          attributes.label?.border_radius ??
-          metadata.attributes.label.default.border_radius,
-        type: attributes.label?.type ?? metadata.attributes.label.default.type,
-        padding:
-          attributes.label?.padding ??
-          metadata.attributes.label.default.padding,
-        typography:
-          attributes.label?.typography ??
-          metadata.attributes.label.default.typography,
-        color:
-          attributes.label?.color ?? metadata.attributes.label.default.color,
-        background_color:
-          attributes.label?.background_color ??
-          metadata.attributes.label.default.background_color,
-      },
       content_alignment:
         attributes.content_alignment ?? metadata.attributes.content_alignment,
-      title: {
-        padding:
-          attributes.title?.padding ??
-          metadata.attributes.title.default.padding,
-        typography:
-          attributes.title?.typography ??
-          metadata.attributes.title.default.typography,
-        color:
-          attributes.title?.color ?? metadata.attributes.title.default.color,
-      },
       avatar: {
         visible:
           attributes.avatar?.visible ??
@@ -272,7 +245,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
           /**
            * label
            */
-          label-type={dataAttributes.label.type}
           content-alignment={dataAttributes.content_alignment}
           /**
            * styles
@@ -301,18 +273,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             "--carousel-arrow-icon-color": dataAttributes.arrow.icon_color,
             "--carousel-arrow-background-color":
               dataAttributes.arrow.background_color,
-
-            /** label */
-            "--label-border-radius": dataAttributes.label.border_radius + "px",
-            "--label-padding": `${dataAttributes.label.padding.top}px ${dataAttributes.label.padding.right}px ${dataAttributes.label.padding.bottom}px ${dataAttributes.label.padding.left}px`,
-            "--label-color": dataAttributes.label.color,
-            "--label-background-color": dataAttributes.label.background_color,
-            ...getTypographyVariables("label", dataAttributes.label.typography),
-
-            /** title */
-            "--title-padding": `${dataAttributes.title.padding.top}px ${dataAttributes.title.padding.right}px ${dataAttributes.title.padding.bottom}px ${dataAttributes.title.padding.left}px`,
-            "--title-color": dataAttributes.title.color,
-            ...getTypographyVariables("title", dataAttributes.title.typography),
 
             /** avatar */
             "--avatar-border-radius": `${dataAttributes.avatar.border_radius.top}px ${dataAttributes.avatar.border_radius.right}px ${dataAttributes.avatar.border_radius.bottom}px ${dataAttributes.avatar.border_radius.left}px`,

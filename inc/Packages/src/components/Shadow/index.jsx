@@ -32,7 +32,7 @@ export default function Shadow({ selected, onChange, ...rest }) {
         y: 0,
         blur: 0,
         spread: 0,
-        color: "#000000",
+        color: "#ffffff",
       });
     }
     if (v == "shadow_1") {

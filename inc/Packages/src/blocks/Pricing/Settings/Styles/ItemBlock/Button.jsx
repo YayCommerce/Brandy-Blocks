@@ -183,7 +183,7 @@ export default function Button() {
       </div>
       <div>
         <Label
-          title={__("Padding", "brandy")}
+          title={__("Margin", "brandy")}
           style={{ display: "block", marginBottom: 10 }}
         />
         <Spacing

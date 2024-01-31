@@ -140,7 +140,7 @@ export default function Pricing() {
       </div>
       <div>
         <Label
-          title={__("Padding", "brandy")}
+          title={__("Margin", "brandy")}
           style={{ display: "block", marginBottom: 10 }}
         />
         <Spacing

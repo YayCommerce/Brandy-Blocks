@@ -10,12 +10,13 @@
 		align-items: center;
 
 		input[type="number"] {
+			font-size: 13px;
 			padding: 5px;
 			margin-bottom: 5px;
 			border-radius: 5px;
 			text-align: center;
 			outline: none;
-			border: 1px solid #E3E8EE;
+			border: 1px solid #e3e8ee;
 			transition: none;
 
 			&:focus {
@@ -30,7 +31,7 @@
 			margin: 0;
 		}
 
-		input[type=number] {
+		input[type="number"] {
 			-moz-appearance: textfield;
 		}
 
@@ -47,9 +48,8 @@
 
 		&.constrain-active {
 			svg *[stroke] {
-				stroke: #347BB5
+				stroke: #347bb5;
 			}
 		}
-
 	}
 }

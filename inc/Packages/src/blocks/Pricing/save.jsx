@@ -14,30 +14,6 @@ export default function Save({ attributes }) {
         card-horizontal-alignment={attributes.general.horizontal_alignment}
         style={{
           /**
-           * Subtitle
-           */
-          "--subtitle-padding": getPaddingValue(attributes.subtitle.padding),
-          "--subtitle-color": attributes.subtitle.color,
-          ...getTypographyVariables("subtitle", attributes.subtitle.typography),
-          /**
-           * title
-           */
-          "--title-padding": getPaddingValue(attributes.title.padding),
-          "--title-color": attributes.title.color,
-          ...getTypographyVariables("title", attributes.title.typography),
-          /**
-           * description
-           */
-          "--description-padding": getPaddingValue(
-            attributes.description.padding
-          ),
-          "--description-color": attributes.description.color,
-          ...getTypographyVariables(
-            "description",
-            attributes.description.typography
-          ),
-
-          /**
            * Card title
            */
           "--card-title-padding": getPaddingValue(

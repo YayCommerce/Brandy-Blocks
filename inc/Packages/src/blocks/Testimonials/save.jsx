@@ -26,7 +26,6 @@ export default function Save({ attributes }) {
         /**
          * label
          */
-        label-type={attributes.label.type}
         content-alignment={attributes.content_alignment}
         /**
          * Styles
@@ -54,18 +53,6 @@ export default function Save({ attributes }) {
           "--carousel-arrow-icon-color": attributes.arrow.icon_color,
           "--carousel-arrow-background-color":
             attributes.arrow.background_color,
-
-          /** label */
-          "--label-border-radius": attributes.label.border_radius + "px",
-          "--label-padding": `${attributes.label.padding.top}px ${attributes.label.padding.right}px ${attributes.label.padding.bottom}px ${attributes.label.padding.left}px`,
-          "--label-color": attributes.label.color,
-          "--label-background-color": attributes.label.background_color,
-          ...getTypographyVariables("label", attributes.label.typography),
-
-          /** title */
-          "--title-padding": `${attributes.title.padding.top}px ${attributes.title.padding.right}px ${attributes.title.padding.bottom}px ${attributes.title.padding.left}px`,
-          "--title-color": attributes.title.color,
-          ...getTypographyVariables("title", attributes.title.typography),
 
           /** avatar */
           "--avatar-border-radius": `${attributes.avatar.border_radius.top}px ${attributes.avatar.border_radius.right}px ${attributes.avatar.border_radius.bottom}px ${attributes.avatar.border_radius.left}px`,

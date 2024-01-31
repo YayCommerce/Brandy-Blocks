@@ -4,13 +4,13 @@
 	overflow: hidden;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.08);
 	margin: 10px 0;
-
+	border: none !important;
 
 	&.collapse-open {
-		&>.brandy-collapse-menu__header {
+		& > .brandy-collapse-menu__header {
 			color: #000729;
 			font-weight: 600;
-			border-bottom: 1px solid #F0F2F4;
+			border-bottom: 1px solid #f0f2f4;
 
 			svg {
 				*[fill] {
@@ -27,7 +27,7 @@
 	.brandy-collapse-menu__header {
 		text-transform: uppercase;
 		font-weight: 400;
-		color: #5A6D80;
+		color: #5a6d80;
 		font-size: 12px;
 	}
 
@@ -35,9 +35,9 @@
 		background: #fff;
 		padding: 20px 14px;
 
-		&>div {
+		& > div {
 			padding: 20px 0;
-			border-bottom: 1px solid #F0F2F4;
+			border-bottom: 1px solid #f0f2f4;
 
 			&:first-child {
 				padding-top: 0;

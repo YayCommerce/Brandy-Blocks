@@ -27,62 +27,9 @@
       "type": "number",
       "default": 50
     },
-    "label": {
-      "type": "object",
-      "default": {
-        "border_radius": 50,
-        "type": "badge",
-        "color": "var(--palette_3)",
-        "background_color": "#F0F3F9",
-        "padding": {
-          "top": 10,
-          "left": 20,
-          "right": 20,
-          "bottom": 10,
-          "constrain": false
-        },
-        "typography": {
-          "font_family": "primary",
-          "font_size": 16,
-          "bold": false,
-          "italic": false,
-          "decoration": "auto",
-          "text_transform": "none",
-          "text_align": "center",
-          "font_weight": 400,
-          "line_height": 40,
-          "letter_spacing": 0
-        }
-      }
-    },
     "content_alignment": {
       "type": "string",
       "default": "center"
-    },
-    "title": {
-      "type": "object",
-      "default": {
-        "color": "var(--palette_3)",
-        "padding": {
-          "top": 0,
-          "left": 0,
-          "right": 0,
-          "bottom": 0,
-          "constrain": false
-        },
-        "typography": {
-          "font_family": "primary",
-          "font_size": 40,
-          "bold": false,
-          "italic": false,
-          "decoration": "auto",
-          "text_transform": "none",
-          "text_align": "center",
-          "font_weight": 600,
-          "line_height": 40,
-          "letter_spacing": 0
-        }
-      }
     },
     "avatar": {
       "type": "object",
