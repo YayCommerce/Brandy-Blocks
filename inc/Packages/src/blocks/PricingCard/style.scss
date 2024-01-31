@@ -7,13 +7,12 @@
 	cursor: pointer;
 
 	transition-property: box-shadow, border-color, background;
-	transition-duration: .2s;
+	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
 
 	&:hover {
 		background: var(--card-background-hover);
 		border-color: var(--card-border-color-hover);
-
 	}
 
 	&[is-highlighted="true"] {
@@ -129,7 +128,7 @@
 			text-transform: var(--card-button-text-transform, auto);
 
 			transition-property: color, background-color, border;
-			transition-duration: .2s;
+			transition-duration: 0.2s;
 			transition-timing-function: ease-in-out;
 		}
 	}
@@ -142,7 +141,6 @@
 
 .brandy-pricing-wrapper[card-horizontal-alignment="center"] {
 	.brandy-pricing-card {
-
 		&__title,
 		&__pricing,
 		&__description {
@@ -162,7 +160,6 @@
 
 .brandy-pricing-wrapper[card-horizontal-alignment="right"] {
 	.brandy-pricing-card {
-
 		&__title,
 		&__pricing,
 		&__description {

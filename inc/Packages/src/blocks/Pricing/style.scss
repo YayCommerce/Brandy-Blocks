@@ -2,7 +2,6 @@
 	padding-bottom: 30px;
 
 	.brandy-pricing {
-
 		&__subtitle {
 			width: fit-content;
 			margin: auto;
@@ -40,16 +39,18 @@
 		}
 
 		&__list {
-
-			&>div {
+			& > div {
 				display: flex;
 				justify-content: center !important;
 				align-items: flex-end !important;
+				flex-wrap: wrap !important;
 				gap: var(--card-spacing);
 				width: 100%;
 
-				&>div {
-					width: 30%;
+				& > div {
+					min-width: 300px;
+					flex: 1;
+					max-width: fit-content;
 				}
 			}
 		}

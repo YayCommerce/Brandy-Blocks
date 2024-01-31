@@ -3,6 +3,7 @@
   "title": "Pricing",
   "name": "brandy/pricing",
   "category": "brandy-blocks",
+  "description": "Display a three-column pricing table with a highlighted plan.",
   "attributes": {
     "subtitle": {
       "type": "object",
@@ -344,12 +345,20 @@
     },
     "layout": {
       "type": "array",
-      "default": ["subtitle", "title", "description"]
+      "default": [
+        "subtitle",
+        "title",
+        "description"
+      ]
     }
   },
   "providesContext": {
     "brandy/pricing/highlight_price": "highlight_price",
     "brandy/pricing/card_layout": "card_layout"
+  },
+  "example": {
+    "viewportWidth": 2000,
+    "attributes": {}
   },
   "icon": "money-alt",
   "editorScript": "file:./index.js",

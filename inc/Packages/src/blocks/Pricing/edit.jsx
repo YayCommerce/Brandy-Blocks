@@ -1,4 +1,5 @@
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
+import { useResizeObserver } from "@wordpress/compose";
 import {
   createContext,
   useMemo,
@@ -18,31 +19,31 @@ import { useSelect } from "@wordpress/data";
 export const PricingContext = createContext({});
 
 const TEMPLATE = [
-  [
-    "core/paragraph",
-    {
-      placeholder: __("Pricing subtitle", "brandy"),
-      content: "Limited Time Offer",
-      className: "brandy-pricing__subtitle",
-    },
-  ],
-  [
-    "core/heading",
-    {
-      placeholder: __("Pricing title", "brandy"),
-      content: "Get started for Free today",
-      className: "brandy-pricing__title",
-    },
-  ],
-  [
-    "core/paragraph",
-    {
-      placeholder: __("Pricing description", "brandy"),
-      content:
-        "Pay as you want. Change or cancel your plan anytime. Start using our services for 100% free.",
-      className: "brandy-pricing__description",
-    },
-  ],
+  // [
+  //   "core/paragraph",
+  //   {
+  //     placeholder: __("Pricing subtitle", "brandy"),
+  //     content: "Limited Time Offer",
+  //     className: "brandy-pricing__subtitle",
+  //   },
+  // ],
+  // [
+  //   "core/heading",
+  //   {
+  //     placeholder: __("Pricing title", "brandy"),
+  //     content: "Get started for Free today",
+  //     className: "brandy-pricing__title",
+  //   },
+  // ],
+  // [
+  //   "core/paragraph",
+  //   {
+  //     placeholder: __("Pricing description", "brandy"),
+  //     content:
+  //       "Pay as you want. Change or cancel your plan anytime. Start using our services for 100% free.",
+  //     className: "brandy-pricing__description",
+  //   },
+  // ],
   [
     "core/columns",
     {
@@ -169,6 +170,8 @@ const TEMPLATE = [
 
 export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps();
+  const a = useResizeObserver();
+  console.log(a)
 
   const dataAttributes = useMemo(
     () => ({
@@ -221,87 +224,87 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
   const [template, setTemplate] = useState(_template);
 
-  useEffect(() => {
-    function SortLayout(e) {
-      const newLayout = e.detail?.layout ?? [
-        "subtitle",
-        "title",
-        "description",
-      ];
-      const newTemplate = newLayout.map((l) => {
-        if (l === "title") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing__title"
-          );
-        }
-        if (l === "subtitle") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing__subtitle"
-          );
-        }
-        if (l === "description") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing__description"
-          );
-        }
-        return [];
-      });
-      innerBlocks[0] = newTemplate[0];
-      innerBlocks[1] = newTemplate[1];
-      innerBlocks[2] = newTemplate[2];
+  // useEffect(() => {
+  //   function SortLayout(e) {
+  //     const newLayout = e.detail?.layout ?? [
+  //       "subtitle",
+  //       "title",
+  //       "description",
+  //     ];
+  //     const newTemplate = newLayout.map((l) => {
+  //       if (l === "title") {
+  //         return innerBlocks.find(
+  //           (t) => t.attributes.className === "brandy-pricing__title"
+  //         );
+  //       }
+  //       if (l === "subtitle") {
+  //         return innerBlocks.find(
+  //           (t) => t.attributes.className === "brandy-pricing__subtitle"
+  //         );
+  //       }
+  //       if (l === "description") {
+  //         return innerBlocks.find(
+  //           (t) => t.attributes.className === "brandy-pricing__description"
+  //         );
+  //       }
+  //       return [];
+  //     });
+  //     innerBlocks[0] = newTemplate[0];
+  //     innerBlocks[1] = newTemplate[1];
+  //     innerBlocks[2] = newTemplate[2];
 
-      const newTemplate1 = newLayout.map((l) => {
-        if (l === "title") {
-          return template.find(
-            (t) => t[1].className === "brandy-pricing__title"
-          );
-        }
-        if (l === "subtitle") {
-          return template.find(
-            (t) => t[1].className === "brandy-pricing__subtitle"
-          );
-        }
-        if (l === "description") {
-          return template.find(
-            (t) => t[1].className === "brandy-pricing__description"
-          );
-        }
-        return [];
-      });
+  //     const newTemplate1 = newLayout.map((l) => {
+  //       if (l === "title") {
+  //         return template.find(
+  //           (t) => t[1].className === "brandy-pricing__title"
+  //         );
+  //       }
+  //       if (l === "subtitle") {
+  //         return template.find(
+  //           (t) => t[1].className === "brandy-pricing__subtitle"
+  //         );
+  //       }
+  //       if (l === "description") {
+  //         return template.find(
+  //           (t) => t[1].className === "brandy-pricing__description"
+  //         );
+  //       }
+  //       return [];
+  //     });
 
-      setTemplate([...newTemplate1, template[3]]);
+  //     setTemplate([...newTemplate1, template[3]]);
 
-      const newEvent = new CustomEvent("reloadPricingBlockTemplate");
-      window.dispatchEvent(newEvent);
-    }
+  //     const newEvent = new CustomEvent("reloadPricingBlockTemplate");
+  //     window.dispatchEvent(newEvent);
+  //   }
 
-    window.addEventListener("newPricingLayoutNotification", SortLayout);
+  //   window.addEventListener("newPricingLayoutNotification", SortLayout);
 
-    return () => {
-      window.removeEventListener("newPricingLayoutNotification", SortLayout);
-    };
-  }, [innerBlocks]);
+  //   return () => {
+  //     window.removeEventListener("newPricingLayoutNotification", SortLayout);
+  //   };
+  // }, [innerBlocks]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const newTemplate = [...template];
-      while (newTemplate.lastItem.length == 0) {
-        newTemplate.pop();
-      }
-      setTemplate(newTemplate);
-    }, 1);
-  }, [template.length]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     const newTemplate = [...template];
+  //     while (newTemplate.lastItem.length == 0) {
+  //       newTemplate.pop();
+  //     }
+  //     setTemplate(newTemplate);
+  //   }, 1);
+  // }, [template.length]);
 
-  function reloadTemplate() {
-    setTemplate((t) => [...t, []]);
-  }
+  // function reloadTemplate() {
+  //   setTemplate((t) => [...t, []]);
+  // }
 
-  useEffect(() => {
-    window.addEventListener("reloadPricingBlockTemplate", reloadTemplate);
-    return () => {
-      window.removeEventListener("reloadPricingBlockTemplate", reloadTemplate);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("reloadPricingBlockTemplate", reloadTemplate);
+  //   return () => {
+  //     window.removeEventListener("reloadPricingBlockTemplate", reloadTemplate);
+  //   };
+  // }, []);
 
   const contextValue = useMemo(
     () => ({

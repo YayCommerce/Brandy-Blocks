@@ -4,6 +4,7 @@
   "name": "brandy/testimonials",
   "category": "brandy-blocks",
   "icon": "testimonial",
+  "description": "Display a responsive testimonial slider.",
   "attributes": {
     "number_testimonials": {
       "type": "number",
@@ -212,8 +213,18 @@
     },
     "layout": {
       "type": "array",
-      "default": ["avatar", "name", "subname", "content", "rating"]
+      "default": [
+        "avatar",
+        "name",
+        "subname",
+        "content",
+        "rating"
+      ]
     }
+  },
+  "example": {
+    "viewportWidth": 2000,
+    "attributes": {}
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
