@@ -1,142 +1,33 @@
-import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
-import { useSelect } from "@wordpress/data";
-import { useEffect, useMemo, createContext } from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
+import { createContext, useEffect, useMemo } from "@wordpress/element";
 import Settings from "./Settings";
+import { getTypographyVariables, getPaddingValue } from "../../utils/helpers";
 
 export const PricingCardContext = createContext({});
 
-export default function Edit({ attributes, setAttributes, clientId, context }) {
+export default function Edit({ attributes, setAttributes, context }) {
   const blockProps = useBlockProps();
-  const dataAttributes = useMemo(() => attributes, [attributes]);
 
   useEffect(() => {
     setAttributes({
       context,
     });
-  }, [context["brandy/pricing/highlight_price"]]);
-
-  const DEFAULT_TEMPLATE = [
-    [
-      "core/paragraph",
-      {
-        placeholder: __("Highlight text", "brandy"),
-        content: "MOST POPULAR PLAN",
-        className: "brandy-pricing-card__highlight",
-      },
-    ],
-    [
-      "core/paragraph",
-      {
-        placeholder: __("Card title", "brandy"),
-        content: dataAttributes.title,
-        className: "brandy-pricing-card__title",
-      },
-    ],
-    [
-      "core/paragraph",
-      {
-        placeholder: __("Card pricing", "brandy"),
-        content: dataAttributes.pricing,
-        className: "brandy-pricing-card__pricing",
-      },
-    ],
-    [
-      "core/paragraph",
-      {
-        placeholder: __("Card description", "brandy"),
-        content: dataAttributes.description,
-        className: "brandy-pricing-card__description",
-      },
-    ],
-    ["brandy/pricing-features"],
-    [
-      "core/button",
-      {
-        placeholder: __("Card button", "brandy"),
-        text: dataAttributes.button,
-        className: "brandy-pricing-card__button",
-        url: "google.com",
-      },
-    ],
-  ];
-
-  const innerBlocks = useSelect(
-    (select) => {
-      const { getBlocks } = select("core/block-editor");
-      return getBlocks(clientId);
-    },
-    [clientId]
-  );
-
-  const _template =
-    innerBlocks.length < 1
-      ? DEFAULT_TEMPLATE
-      : innerBlocks.map((block) => [block.name, block.attributes]);
-
-  useEffect(() => {
-    function SortLayout(e) {
-      const newLayout = e.detail?.card_layout;
-      const newTemplate = newLayout.map((l) => {
-        if (l === "highlight") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing-card__highlight"
-          );
-        }
-        if (l === "title") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing-card__title"
-          );
-        }
-        if (l === "pricing") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing-card__pricing"
-          );
-        }
-        if (l === "description") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing-card__description"
-          );
-        }
-        if (l === "list_features") {
-          return innerBlocks.find((t) => t.name === "brandy/pricing-features");
-        }
-        if (l === "button") {
-          return innerBlocks.find(
-            (t) => t.attributes.className === "brandy-pricing-card__button"
-          );
-        }
-        return [];
-      });
-
-      innerBlocks[0] = newTemplate[0];
-      innerBlocks[1] = newTemplate[1];
-      innerBlocks[2] = newTemplate[2];
-      innerBlocks[3] = newTemplate[3];
-      innerBlocks[4] = newTemplate[4];
-      innerBlocks[5] = newTemplate[5];
-
-      const newEvent = new CustomEvent("reloadPricingBlockTemplate");
-      window.dispatchEvent(newEvent);
-    }
-
-    window.addEventListener("newLayoutNotification", SortLayout);
-
-    return () => {
-      window.removeEventListener("newLayoutNotification", SortLayout);
-    };
-  }, [innerBlocks]);
+  }, [
+    context["brandy/pricing/highlight_settings"],
+    context["brandy/pricing/card_layout"],
+    context["brandy/pricing/card_highlight_badge"],
+  ]);
 
   const isHighlighted =
-    context["brandy/pricing/highlight_price"].selected ==
-    dataAttributes.position;
+    context["brandy/pricing/highlight_settings"].selected ==
+    attributes.position;
 
   const contextValue = useMemo(
     () => ({
-      attributes: dataAttributes,
+      attributes,
       setAttributes,
     }),
-    [dataAttributes, setAttributes]
+    [attributes, setAttributes]
   );
 
   return (
@@ -152,54 +43,65 @@ export default function Edit({ attributes, setAttributes, clientId, context }) {
                   /**
                    * Badge
                    */
-                  "--card-highlight-title-color":
-                    context["brandy/pricing/highlight_price"].badge.title_color,
-                  "--card-highlight-background-color":
-                    context["brandy/pricing/highlight_price"].badge
+                  "--card-highlight-badge-title-color":
+                    context["brandy/pricing/card_highlight_badge"].title_color,
+                  "--card-highlight-badge-background-color":
+                    context["brandy/pricing/card_highlight_badge"]
                       .background_color,
+                  ...getTypographyVariables(
+                    "card-highlight-badge",
+                    context["brandy/pricing/card_highlight_badge"].typography
+                  ),
+                  "--card-highlight-badge-padding": getPaddingValue(
+                    context["brandy/pricing/card_highlight_badge"].padding
+                  ),
+                  "--card-highlight-badge-margin": getPaddingValue(
+                    context["brandy/pricing/card_highlight_badge"].margin
+                  ),
                   /**
                    * Card title
                    */
                   "--card-title-color":
-                    context["brandy/pricing/highlight_price"].card.title_color,
+                    context["brandy/pricing/highlight_settings"].card
+                      .title_color,
 
                   /**
                    * Card pricing
                    */
                   "--card-pricing-price-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .pricing_price_color,
                   "--card-pricing-period-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .pricing_period_color,
 
                   /**
                    * Card description
                    */
                   "--card-pricing-description-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .description_color,
 
                   /**
                    * Card features
                    */
                   "--pricing-feature-checked-title-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .checked_feature_title_color,
                   "--pricing-feature-checked-icon-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .checked_feature_icon_color,
                   "--pricing-feature-checked-icon-background-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .checked_feature_icon_background_color,
                   "--pricing-feature-unchecked-title-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .unchecked_feature_title_color,
                   "--pricing-feature-unchecked-icon-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .unchecked_feature_icon_color,
                   "--pricing-feature-unchecked-icon-background-color":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .unchecked_feature_icon_background_color,
 
                   /**
@@ -207,19 +109,19 @@ export default function Edit({ attributes, setAttributes, clientId, context }) {
                    */
 
                   "--card-button-color-normal":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .button_text_color.normal,
                   "--card-button-color-hover":
-                    context["brandy/pricing/highlight_price"].card
+                    context["brandy/pricing/highlight_settings"].card
                       .button_text_color.hover,
-                  ...(context["brandy/pricing/highlight_price"].card
+                  ...(context["brandy/pricing/highlight_settings"].card
                     .button_type === "fill"
                     ? {
                         "--card-button-background-color-normal":
-                          context["brandy/pricing/highlight_price"].card
+                          context["brandy/pricing/highlight_settings"].card
                             .button_background_color.normal,
                         "--card-button-background-color-hover":
-                          context["brandy/pricing/highlight_price"].card
+                          context["brandy/pricing/highlight_settings"].card
                             .button_background_color.hover,
                         "--card-button-border-color-normal": "transparent",
                         "--card-button-border-color-hover": "transparent",
@@ -228,36 +130,176 @@ export default function Edit({ attributes, setAttributes, clientId, context }) {
                         "--card-button-background-color-normal": "transparent",
                         "--card-button-background-color-hover": "transparent",
                         "--card-button-border-color-normal":
-                          context["brandy/pricing/highlight_price"].card
+                          context["brandy/pricing/highlight_settings"].card
                             .button_background_color.normal,
                         "--card-button-border-color-hover":
-                          context["brandy/pricing/highlight_price"].card
+                          context["brandy/pricing/highlight_settings"].card
                             .button_background_color.hover,
                       }),
 
                   /**
                    * Card General
                    */
-                  "--card-background":
-                    context["brandy/pricing/highlight_price"].card
-                      .background_color,
+                  "--card-background-normal":
+                    context["brandy/pricing/highlight_settings"].card
+                      .background_color.normal,
+                  "--card-background-hover":
+                    context["brandy/pricing/highlight_settings"].card
+                      .background_color.hover,
                   "--card-border-color-normal":
-                    context["brandy/pricing/highlight_price"].card.border_color
-                      .normal,
+                    context["brandy/pricing/highlight_settings"].card
+                      .border_color.normal,
                   "--card-border-color-hover":
-                    context["brandy/pricing/highlight_price"].card.border_color
-                      .hover,
+                    context["brandy/pricing/highlight_settings"].card
+                      .border_color.hover,
                 }
               : {}
           }
         >
-          <InnerBlocks
-            template={_template}
-            templateLock="all"
-            allowedBlocks={["brandy/pricing-features"]}
-          />
+          {context["brandy/pricing/card_layout"].map((item, index) => (
+            <>
+              {item === "highlight_badge" && (
+                <RichText
+                  value={attributes.highlight_badge}
+                  onChange={(v) => {
+                    setAttributes({ highlight_badge: v });
+                  }}
+                  tagName="h4"
+                  className="brandy-pricing-card__highlight-badge"
+                />
+              )}
+              {item === "title" && (
+                <RichText
+                  value={attributes.title}
+                  onChange={(v) => {
+                    setAttributes({ title: v });
+                  }}
+                  tagName="h3"
+                  className="brandy-pricing-card__title"
+                />
+              )}
+              {item === "pricing" && (
+                <RichText
+                  value={attributes.pricing}
+                  onChange={(v) => {
+                    setAttributes({ pricing: v });
+                  }}
+                  tagName="p"
+                  className="brandy-pricing-card__pricing"
+                />
+              )}
+              {item === "description" && (
+                <RichText
+                  value={attributes.description}
+                  onChange={(v) => {
+                    setAttributes({ description: v });
+                  }}
+                  tagName="p"
+                  className="brandy-pricing-card__description"
+                />
+              )}
+              {item === "list_features" && (
+                <div className="brandy-pricing-card__features-list">
+                  {attributes.features.map((feature, ind) => (
+                    <Feature
+                      text={feature.text}
+                      status={feature.status}
+                      onChangeText={(v) => {
+                        const newFeatures = attributes.features.map(
+                          (f, fInd) => (fInd === ind ? { ...f, text: v } : f)
+                        );
+                        setAttributes({
+                          features: newFeatures,
+                        });
+                      }}
+                      isIconEnabled={attributes.icon_enabled ?? true}
+                    />
+                  ))}
+                </div>
+              )}
+              {item === "button" && (
+                <RichText
+                  value={attributes.button}
+                  onChange={(v) => {
+                    setAttributes({ button: v });
+                  }}
+                  tagName="div"
+                  className="brandy-pricing-card__button"
+                />
+              )}
+            </>
+          ))}
         </div>
       </PricingCardContext.Provider>
+    </div>
+  );
+}
+
+function Feature({ text, status, isIconEnabled = true, onChangeText }) {
+  return (
+    <div
+      className={`brandy-pricing-feature ${
+        status === "checked" ? "checked-feature" : "unchecked-feature"
+      }`}
+    >
+      {isIconEnabled && (
+        <div>
+          {status == "checked" ? (
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 20.5C15.5228 20.5 20 16.0228 20 10.5C20 4.97715 15.5228 0.5 10 0.5C4.47715 0.5 0 4.97715 0 10.5C0 16.0228 4.47715 20.5 10 20.5Z"
+                fill="#3858E9"
+              />
+              <path
+                d="M6 11L8.5 13.5L13.5 8.5"
+                stroke="#3858E9"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18Z"
+                fill="#D1D9E0"
+              />
+              <path
+                d="M12 6L6 12"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M6 6L12 12"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          )}
+        </div>
+      )}
+      <RichText
+        value={text}
+        onChange={onChangeText}
+        tagName="span"
+        className="brandy-pricing-feature__text"
+      />
     </div>
   );
 }

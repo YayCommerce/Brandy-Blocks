@@ -59,8 +59,8 @@ export default function Description() {
       <div>
         <Label title={__("Margin", "brandy")} />
         <Spacing
-          value={attributes.card_description.padding}
-          onChange={handleChangeValue("padding")}
+          value={attributes.card_description.margin}
+          onChange={handleChangeValue("margin")}
         />
       </div>
     </Card>

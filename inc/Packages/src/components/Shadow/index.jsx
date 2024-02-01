@@ -6,20 +6,20 @@ const options = [
     value: "none",
   },
   {
-    label: "Shadow 1",
-    value: "shadow_1",
+    label: "Small",
+    value: "small",
   },
   {
-    label: "Shadow 2",
-    value: "shadow_2",
+    label: "Regular",
+    value: "regular",
   },
   {
-    label: "Shadow 3",
-    value: "shadow_3",
+    label: "Medium",
+    value: "medium",
   },
   {
-    label: "Shadow 4",
-    value: "shadow_4",
+    label: "Large",
+    value: "large",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function Shadow({ selected, onChange, ...rest }) {
         color: "#ffffff",
       });
     }
-    if (v == "shadow_1") {
+    if (v == "small") {
       onChange({
         type: v,
         x: 0,
@@ -45,7 +45,7 @@ export default function Shadow({ selected, onChange, ...rest }) {
         color: "rgba(0, 0, 0, 0.06)",
       });
     }
-    if (v == "shadow_2") {
+    if (v == "regular") {
       onChange({
         type: v,
         x: 0,
@@ -55,7 +55,7 @@ export default function Shadow({ selected, onChange, ...rest }) {
         color: "rgba(0, 0, 0, 0.05)",
       });
     }
-    if (v == "shadow_3") {
+    if (v == "medium") {
       onChange({
         type: v,
         x: 0,
@@ -65,7 +65,7 @@ export default function Shadow({ selected, onChange, ...rest }) {
         color: "rgba(0, 0, 0, 0.10)",
       });
     }
-    if (v == "shadow_4") {
+    if (v == "large") {
       onChange({
         type: v,
         x: 0,

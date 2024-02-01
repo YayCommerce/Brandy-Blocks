@@ -1,4 +1,13 @@
-@mixin card-styles {
+@mixin typography($prefix) {
+	font-size: var(#{$prefix}-font-size);
+	font-weight: var(#{$prefix}-font-weight, var(#{$prefix}-bold));
+	font-style: var(#{$prefix}-font-styles);
+	text-align: var(#{$prefix}-text-align, left);
+	text-transform: var(#{$prefix}-text-transform, auto);
+}
+
+.brandy-pricing-card,
+.editor-styles-wrapper .brandy-pricing-card {
 	padding: var(--card-padding);
 	border-radius: 10px;
 	border: 3px solid var(--card-border-color-normal);
@@ -16,45 +25,34 @@
 	}
 
 	&[is-highlighted="true"] {
-		.brandy-pricing-card__highlight {
+		.brandy-pricing-card__highlight-badge {
 			display: block;
 		}
 	}
 
-	.brandy-pricing-feature-list {
+	&__features-list {
 		display: var(--card-features-display);
 		flex-direction: column;
 		gap: var(--card-features-item-spacing);
-
-		.block-editor-block-list__layout {
-			display: var(--card-features-display);
-			flex-direction: column;
-			gap: var(--card-features-item-spacing);
-		}
 	}
 
-	&__highlight {
+	&__highlight-badge {
 		display: none;
 		width: fit-content;
-		color: var(--card-highlight-title-color);
-		background: var(--card-highlight-background-color);
-		padding: 5px;
-		border-radius: 3px;
-		margin: 10px 0;
-		line-height: 24px;
+		color: var(--card-highlight-badge-title-color);
+		background: var(--card-highlight-badge-background-color);
+		@include typography(--card-highlight-badge);
+		padding: var(--card-highlight-badge-padding);
+		border-radius: 5px;
+		margin: var(--card-highlight-badge-margin);
 	}
 
 	&__title {
 		display: var(--card-title-display);
 		margin: auto;
-		padding: var(--card-title-padding);
+		padding: var(--card-title-margin);
 		color: var(--card-title-color);
-		text-align: center;
-		font-size: var(--card-title-font-size);
-		font-weight: var(--card-title-font-weight, var(--card-title-bold));
-		text-align: var(--card-title-text-align, left);
-		font-style: var(--card-title-font-styles);
-		text-transform: var(--card-title-text-transform, auto);
+		@include typography(--card-title);
 	}
 
 	&__pricing {
@@ -62,43 +60,27 @@
 		flex-direction: var(--card-pricing-flex-direction);
 		align-items: var(--card-pricing-flex-align-items);
 		margin: auto;
-		text-align: center;
-		padding: var(--card-pricing-padding);
+		padding: var(--card-pricing-margin);
 		color: var(--card-pricing-price-color);
-		font-size: var(--card-pricing-price-font-size);
-		font-weight: var(--card-pricing-price-font-weight, var(--card-pricing-price-bold));
-		text-align: var(--card-pricing-price-text-align, left);
-		font-style: var(--card-pricing-price-font-styles);
-		text-transform: var(--card-pricing-price-text-transform, auto);
+		@include typography(--card-pricing-price);
 
 		sub,
 		sup {
 			color: var(--card-pricing-period-color);
-			font-size: var(--card-pricing-period-font-size);
-			font-weight: var(--card-pricing-period-font-weight, var(--card-pricing-period-bold));
-			text-align: var(--card-pricing-period-text-align, left);
-			font-style: var(--card-pricing-period-font-styles);
-			text-transform: var(--card-pricing-period-text-transform, auto);
 			vertical-align: var(--card-pricing-period-position);
+			@include typography(--card-pricing-period);
 		}
 	}
 
 	&__description {
 		display: var(--card-description-display);
 		margin: auto;
-		padding: var(--card-description-padding);
+		padding: var(--card-description-margin);
 		color: var(--card-description-color);
-		text-align: center;
-		font-size: var(--card-description-font-size);
-		font-weight: var(--card-description-font-weight, var(--card-description-bold));
-		text-align: var(--card-description-text-align, left);
-		font-style: var(--card-description-font-styles);
-		text-transform: var(--card-description-text-transform, auto);
+		@include typography(--card-description);
 	}
 
 	&__button {
-		width: 100%;
-
 		--card-button-color: var(--card-button-color-normal);
 		--card-button-background-color: var(--card-button-background-color-normal);
 		--card-button-border-color: var(--card-button-border-color-normal);
@@ -109,34 +91,81 @@
 			--card-button-border-color: var(--card-button-border-color-hover);
 		}
 
-		.wp-element-button {
-			width: var(--card-button-width);
-			display: var(--card-button-display);
-			margin: auto;
-			margin: var(--card-button-padding);
-			padding: 5px 10px !important;
-			color: var(--card-button-color);
+		width: var(--card-button-width);
+		display: var(--card-button-display);
+		margin: var(--card-button-margin);
+
+		& > * {
+			display: block;
+			width: 100%;
+			padding: var(--card-button-padding);
+			color: var(--card-button-color) !important;
+			& * {
+				color: var(--card-button-color) !important;
+			}
 			border: 2px solid transparent;
 			border-color: var(--card-button-border-color) !important;
 			background-color: var(--card-button-background-color) !important;
 			border-radius: var(--card-button-border-radius) !important;
-			line-height: 3 !important;
+			@include typography(--card-button);
 			text-align: center;
-			font-size: var(--card-button-font-size);
-			font-weight: var(--card-button-font-weight, var(--card-button-bold));
-			font-style: var(--card-button-font-styles);
-			text-transform: var(--card-button-text-transform, auto);
 
 			transition-property: color, background-color, border;
 			transition-duration: 0.2s;
 			transition-timing-function: ease-in-out;
 		}
 	}
-}
 
-.brandy-pricing-card,
-.editor-styles-wrapper .brandy-pricing-card {
-	@include card-styles();
+	&__features-list {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		padding: var(--card-features-margin);
+
+		.brandy-pricing-feature {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+
+			& > div {
+				display: flex;
+			}
+
+			&.checked-feature {
+				color: var(--pricing-feature-checked-title-color);
+				@include typography(--pricing-feature-checked);
+
+				svg {
+					*[stroke] {
+						stroke: var(--pricing-feature-checked-icon-color);
+					}
+
+					*[fill] {
+						fill: var(--pricing-feature-checked-icon-background-color);
+					}
+				}
+			}
+
+			&.unchecked-feature {
+				color: var(--pricing-feature-unchecked-title-color);
+				@include typography(--pricing-feature-unchecked);
+
+				svg {
+					*[stroke] {
+						stroke: var(--pricing-feature-unchecked-icon-color);
+					}
+
+					*[fill] {
+						fill: var(--pricing-feature-unchecked-icon-background-color);
+					}
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+		}
+	}
 }
 
 .brandy-pricing-wrapper[card-horizontal-alignment="center"] {
@@ -147,9 +176,10 @@
 			text-align: center !important;
 		}
 
-		&__highlight,
-		&__button .wp-element-button {
-			margin: 10px auto;
+		&__highlight-badge,
+		&__button {
+			margin-left: auto;
+			margin-right: auto;
 		}
 
 		.brandy-pricing-feature {
@@ -166,8 +196,8 @@
 			text-align: right !important;
 		}
 
-		&__highlight,
-		&__button .wp-element-button {
+		&__highlight-badge,
+		&__button {
 			margin-left: auto;
 		}
 

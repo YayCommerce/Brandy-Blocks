@@ -56,8 +56,8 @@ export default function ListFeatures() {
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <ButtonGroup
           options={[
-            { label: "Yes", value: "checked" },
-            { label: "No", value: "unchecked" },
+            { label: "Checked", value: "checked" },
+            { label: "Unchecked", value: "unchecked" },
           ]}
           selected={status}
           onChange={setStatus}

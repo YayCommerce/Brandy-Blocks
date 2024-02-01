@@ -54,11 +54,11 @@ export default function Pricing() {
       });
     }
   };
-  const handleChangePadding = (v) => {
+  const handleChangeMargin = (v) => {
     setAttributes({
       card_pricing: {
         ...attributes.card_pricing,
-        padding: v,
+        margin: v,
       },
     });
   };
@@ -144,8 +144,8 @@ export default function Pricing() {
           style={{ display: "block", marginBottom: 10 }}
         />
         <Spacing
-          value={attributes.card_pricing.padding}
-          onChange={handleChangePadding}
+          value={attributes.card_pricing.margin}
+          onChange={handleChangeMargin}
         />
       </div>
     </Card>

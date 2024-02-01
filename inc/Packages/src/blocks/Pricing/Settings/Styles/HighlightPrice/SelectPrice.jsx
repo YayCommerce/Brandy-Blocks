@@ -9,8 +9,8 @@ export default function SelectPrice() {
 
   const handleChangeSelected = (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         selected: v,
       },
     });
@@ -24,11 +24,12 @@ export default function SelectPrice() {
             label: __("None", "brandy"),
             value: 0,
           },
-          { label: __("Card 1", "brandy"), value: 1 },
-          { label: __("Card 2", "brandy"), value: 2 },
-          { label: __("Card 3", "brandy"), value: 3 },
+          ...Array.from({ length: attributes.number_card }).map((_, ind) => ({
+            label: `Card ${ind + 1}`,
+            value: ind + 1,
+          })),
         ]}
-        selected={attributes.highlight_price.selected}
+        selected={attributes.highlight_settings.selected}
         onChange={handleChangeSelected}
       />
     </div>

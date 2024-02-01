@@ -28,18 +28,18 @@ export default function General() {
   const { attributes, setAttributes } = useContext(PricingContext);
   const handleChangeValue = (key) => (v) => {
     setAttributes({
-      general: {
-        ...attributes.general,
+      card_settings: {
+        ...attributes.card_settings,
         [key]: v,
       },
     });
   };
   const handleChangeBackground = (key) => (v) => {
     setAttributes({
-      general: {
-        ...attributes.general,
+      card_settings: {
+        ...attributes.card_settings,
         background: {
-          ...attributes.general.background,
+          ...attributes.card_settings.background,
           [key]: v,
         },
       },
@@ -47,10 +47,10 @@ export default function General() {
   };
   const handleChangeBorderColor = (key) => (v) => {
     setAttributes({
-      general: {
-        ...attributes.general,
+      card_settings: {
+        ...attributes.card_settings,
         border_color: {
-          ...attributes.general.border_color,
+          ...attributes.card_settings.border_color,
           [key]: v,
         },
       },
@@ -58,11 +58,25 @@ export default function General() {
   };
   const handleChangeShadowType = (v) => {
     setAttributes({
-      general: {
-        ...attributes.general,
+      card_settings: {
+        ...attributes.card_settings,
         shadow: v,
       },
     });
+  };
+  const handleChangeCardNumber = (v) => {
+    setAttributes({
+      number_card: v,
+    });
+
+    if (attributes.highlight_settings?.selected > v) {
+      setAttributes({
+        highlight_settings: {
+          ...attributes.highlight_settings,
+          selected: v,
+        },
+      });
+    }
   };
   return (
     <div
@@ -70,9 +84,18 @@ export default function General() {
       style={{ padding: "20px 10px", background: "#ffffff" }}
     >
       <SettingLine>
+        <Label title={__("Number of pricing")} />
+        <Slider
+          min={1}
+          max={4}
+          value={attributes.number_card ?? 3}
+          onChange={handleChangeCardNumber}
+        />
+      </SettingLine>
+      <SettingLine>
         <Label title={__("Card content alignment")} />
         <HorizontalAlignment
-          selected={attributes.general.horizontal_alignment}
+          selected={attributes.card_settings.horizontal_alignment}
           onChange={handleChangeValue("horizontal_alignment")}
         />
       </SettingLine>
@@ -82,14 +105,14 @@ export default function General() {
           <div>
             <SubLabel title={__("Normal", "brandy")} />
             <ColorPicker
-              color={attributes.general.background.normal}
+              color={attributes.card_settings.background.normal}
               onChange={handleChangeBackground("normal")}
             />
           </div>
           <div>
             <SubLabel title={__("Hover", "brandy")} />
             <ColorPicker
-              color={attributes.general.background.hover}
+              color={attributes.card_settings.background.hover}
               onChange={handleChangeBackground("hover")}
             />
           </div>
@@ -101,14 +124,14 @@ export default function General() {
           <div>
             <SubLabel title={__("Normal", "brandy")} />
             <ColorPicker
-              color={attributes.general.border_color.normal}
+              color={attributes.card_settings.border_color.normal}
               onChange={handleChangeBorderColor("normal")}
             />
           </div>
           <div>
             <SubLabel title={__("Hover", "brandy")} />
             <ColorPicker
-              color={attributes.general.border_color.hover}
+              color={attributes.card_settings.border_color.hover}
               onChange={handleChangeBorderColor("hover")}
             />
           </div>
@@ -117,7 +140,7 @@ export default function General() {
       <SettingLine>
         <Label title={__("Drop shadow", "brandy")} />
         <Shadow
-          selected={attributes.general.shadow.type}
+          selected={attributes.card_settings.shadow.type}
           onChange={handleChangeShadowType}
         />
       </SettingLine>
@@ -128,7 +151,7 @@ export default function General() {
         <div>
           <SubLabel title={__("Spacing", "brandy")} />
           <Slider
-            value={attributes.general.spacing}
+            value={attributes.card_settings.spacing}
             onChange={handleChangeValue("spacing")}
             min={10}
             max={100}
@@ -137,7 +160,7 @@ export default function General() {
         <div>
           <SubLabel title={__("Padding", "brandy")} />
           <Spacing
-            value={attributes.general.padding}
+            value={attributes.card_settings.padding}
             onChange={handleChangeValue("padding")}
           />
         </div>

@@ -13,7 +13,6 @@ const subLabelStyle = { marginBottom: 10, textTransform: "capitalize" };
 export default function CardItemColor() {
   return (
     <Card title={__("Card Item Color", "brandy")}>
-      <Badge />
       <CardTitle />
       <CardPricing />
       <CardDescription />
@@ -23,57 +22,14 @@ export default function CardItemColor() {
   );
 }
 
-function Badge() {
-  const { attributes, setAttributes } = useContext(PricingContext);
-  const changeBadgeValue = (key) => (v) => {
-    setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
-        badge: {
-          ...attributes.highlight_price.badge,
-          [key]: v,
-        },
-      },
-    });
-  };
-  return (
-    <div>
-      <Label title={__("Badge", "brandy")} style={labelStyle} />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          gap: 10,
-        }}
-        className="brandy-editor-group-color"
-      >
-        <div>
-          <Label title={__("Title", "brandy")} style={subLabelStyle} />
-          <ColorPicker
-            color={attributes.highlight_price.badge.title_color}
-            onChange={changeBadgeValue("title_color")}
-          />
-        </div>
-        <div>
-          <Label title={__("Background", "brandy")} style={subLabelStyle} />
-          <ColorPicker
-            color={attributes.highlight_price.badge.background_color}
-            onChange={changeBadgeValue("background_color")}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function CardTitle() {
   const { attributes, setAttributes } = useContext(PricingContext);
   const changeTitleColor = (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           title_color: v,
         },
       },
@@ -83,7 +39,7 @@ function CardTitle() {
     <div>
       <Label title={__("Card Title", "brandy")} style={labelStyle} />
       <ColorPicker
-        color={attributes.highlight_price.card.title_color}
+        color={attributes.highlight_settings.card.title_color}
         onChange={changeTitleColor}
       />
     </div>
@@ -94,10 +50,10 @@ function CardPricing() {
   const { attributes, setAttributes } = useContext(PricingContext);
   const changePricingValue = (key) => (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           [key]: v,
         },
       },
@@ -117,14 +73,14 @@ function CardPricing() {
         <div>
           <Label title={__("Price", "brandy")} style={subLabelStyle} />
           <ColorPicker
-            color={attributes.highlight_price.card.pricing_price_color}
+            color={attributes.highlight_settings.card.pricing_price_color}
             onChange={changePricingValue("pricing_price_color")}
           />
         </div>
         <div>
           <Label title={__("Period", "brandy")} style={subLabelStyle} />
           <ColorPicker
-            color={attributes.highlight_price.card.pricing_period_color}
+            color={attributes.highlight_settings.card.pricing_period_color}
             onChange={changePricingValue("pricing_period_color")}
           />
         </div>
@@ -137,10 +93,10 @@ function Button() {
   const { attributes, setAttributes } = useContext(PricingContext);
   const changeButtonType = (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           button_type: v,
         },
       },
@@ -149,12 +105,12 @@ function Button() {
   const [buttonState, setButtonState] = useState("normal");
   const changeButtonTextColor = (key) => (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           button_text_color: {
-            ...attributes.highlight_price.card.button_text_color,
+            ...attributes.highlight_settings.card.button_text_color,
             [key]: v,
           },
         },
@@ -163,12 +119,12 @@ function Button() {
   };
   const changeButtonBgColor = (key) => (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           button_background_color: {
-            ...attributes.highlight_price.card.button_background_color,
+            ...attributes.highlight_settings.card.button_background_color,
             [key]: v,
           },
         },
@@ -183,7 +139,7 @@ function Button() {
           { label: "Fill", value: "fill" },
           { label: "Outline", value: "outline" },
         ]}
-        selected={attributes.highlight_price.card.button_type}
+        selected={attributes.highlight_settings.card.button_type}
         onChange={changeButtonType}
       />
       <div style={{ marginTop: 10 }}>
@@ -201,7 +157,7 @@ function Button() {
           <Label title={__("Text color", "brandy")} style={subLabelStyle} />
           <ColorPicker
             color={
-              attributes.highlight_price.card.button_text_color[buttonState]
+              attributes.highlight_settings.card.button_text_color[buttonState]
             }
             onChange={changeButtonTextColor(buttonState)}
           />
@@ -209,7 +165,7 @@ function Button() {
         <div>
           <Label
             title={
-              attributes.highlight_price.card.button_type === "fill"
+              attributes.highlight_settings.card.button_type === "fill"
                 ? __("Background color", "brandy")
                 : __("Border color", "brandy")
             }
@@ -217,7 +173,7 @@ function Button() {
           />
           <ColorPicker
             color={
-              attributes.highlight_price.card.button_background_color[
+              attributes.highlight_settings.card.button_background_color[
                 buttonState
               ]
             }
@@ -233,10 +189,10 @@ function CardDescription() {
   const { attributes, setAttributes } = useContext(PricingContext);
   const changeValue = (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           description_color: v,
         },
       },
@@ -246,7 +202,7 @@ function CardDescription() {
     <div>
       <Label title={__("Card description", "brandy")} style={labelStyle} />
       <ColorPicker
-        color={attributes.highlight_price.card.description_color}
+        color={attributes.highlight_settings.card.description_color}
         onChange={changeValue}
       />
     </div>
@@ -258,10 +214,10 @@ function CardListFeatures() {
   const [status, setStatus] = useState("checked");
   const changeValue = (key) => (v) => {
     setAttributes({
-      highlight_price: {
-        ...attributes.highlight_price,
+      highlight_settings: {
+        ...attributes.highlight_settings,
         card: {
-          ...attributes.highlight_price.card,
+          ...attributes.highlight_settings.card,
           [key]: v,
         },
       },
@@ -291,7 +247,7 @@ function CardListFeatures() {
           <Label title={__("Icon", "brandy")} style={subLabelStyle} />
           <ColorPicker
             color={
-              attributes.highlight_price.card[`${status}_feature_icon_color`]
+              attributes.highlight_settings.card[`${status}_feature_icon_color`]
             }
             onChange={changeValue(`${status}_feature_icon_color`)}
           />
@@ -303,7 +259,7 @@ function CardListFeatures() {
           />
           <ColorPicker
             color={
-              attributes.highlight_price.card[
+              attributes.highlight_settings.card[
                 `${status}_feature_icon_background_color`
               ]
             }
@@ -315,7 +271,7 @@ function CardListFeatures() {
         <Label title={__("Title", "brandy")} style={subLabelStyle} />
         <ColorPicker
           color={
-            attributes.highlight_price.card[`${status}_feature_title_color`]
+            attributes.highlight_settings.card[`${status}_feature_title_color`]
           }
           onChange={changeValue(`${status}_feature_title_color`)}
         />

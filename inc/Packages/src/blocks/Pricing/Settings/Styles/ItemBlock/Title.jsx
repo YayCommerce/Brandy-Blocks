@@ -39,7 +39,7 @@ export default function Title() {
           alignItems: "center",
         }}
       >
-        <Label title={__("Typography", "brandy")} style={{ marginBottom: 0 }}/>
+        <Label title={__("Typography", "brandy")} style={{ marginBottom: 0 }} />
         <Typography
           value={attributes.card_title.typography}
           onChange={handleChangeValue("typography")}
@@ -57,8 +57,8 @@ export default function Title() {
       <div>
         <Label title={__("Margin", "brandy")} />
         <Spacing
-          value={attributes.card_title.padding}
-          onChange={handleChangeValue("padding")}
+          value={attributes.card_title.margin}
+          onChange={handleChangeValue("margin")}
         />
       </div>
     </Card>

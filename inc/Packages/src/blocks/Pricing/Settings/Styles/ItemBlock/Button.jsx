@@ -183,12 +183,22 @@ export default function Button() {
       </div>
       <div>
         <Label
-          title={__("Margin", "brandy")}
+          title={__("Padding", "brandy")}
           style={{ display: "block", marginBottom: 10 }}
         />
         <Spacing
           value={attributes.card_button.padding}
           onChange={handleChangeValue("padding")}
+        />
+      </div>
+      <div>
+        <Label
+          title={__("Margin", "brandy")}
+          style={{ display: "block", marginBottom: 10 }}
+        />
+        <Spacing
+          value={attributes.card_button.margin}
+          onChange={handleChangeValue("margin")}
         />
       </div>
     </Card>

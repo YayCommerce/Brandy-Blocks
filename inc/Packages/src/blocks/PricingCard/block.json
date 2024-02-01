@@ -4,6 +4,10 @@
   "name": "brandy/pricing-card",
   "category": "brandy-blocks",
   "attributes": {
+    "highlight_badge": {
+      "type": "string",
+      "default": "Most popular plan"
+    },
     "title": {
       "type": "string",
       "default": ""
@@ -37,15 +41,14 @@
       "default": {}
     }
   },
-  "providesContext": {
-    "brandy/pricing-card/features": "features",
-    "brandy/pricing-card/icon_enabled": "icon_enabled"
-  },
   "usesContext": [
-    "brandy/pricing/highlight_price",
-    "brandy/pricing/card_layout"
+    "brandy/pricing/highlight_settings",
+    "brandy/pricing/card_layout",
+    "brandy/pricing/card_highlight_badge"
   ],
-  "parent": ["brandy/pricing"],
+  "parent": [
+    "brandy/pricing"
+  ],
   "icon": "testimonial",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

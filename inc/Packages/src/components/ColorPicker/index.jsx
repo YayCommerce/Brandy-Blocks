@@ -74,7 +74,8 @@ export default function ColorPicker({ color, onChange }) {
         </div>
       </div>
       <span className="color-picker__tail">
-        {color.replace("#", "").replace("var(--", "").replace(")", "")}
+        {color?.replace("#", "").replace("var(--", "").replace(")", "") ??
+          "Initial"}
       </span>
     </div>
   );

@@ -1,155 +1,169 @@
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
-import { useResizeObserver } from "@wordpress/compose";
-import {
-  createContext,
-  useMemo,
-  useState,
-  useEffect,
-} from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
-import Settings from "./Settings";
-import metadata from "./block.json";
+import { createContext, useMemo } from "@wordpress/element";
 import {
   getPaddingValue,
   getShadowValue,
   getTypographyVariables,
 } from "../../utils/helpers";
-import { useSelect } from "@wordpress/data";
+import Settings from "./Settings";
+import metadata from "./block.json";
 
 export const PricingContext = createContext({});
 
-const TEMPLATE = [
+const TEMPLATE_DEFAULT = [
   [
-    "core/columns",
+    "brandy/pricing-card",
     {
-      className: "brandy-pricing__list",
-    },
-    [
-      [
-        "core/columns",
-        {},
-        [
-          [
-            "brandy/pricing-card",
-            {
-              title: "Pack Trial",
-              pricing: "Free <sub>/14 days</sub>",
-              description: "Start from here, no credit card required",
-              features: [
-                {
-                  text: "Single user account",
-                  status: "checked",
-                },
-                {
-                  text: "Use any 3 templates",
-                  status: "checked",
-                },
-                {
-                  text: "2 GB storage",
-                  status: "unchecked",
-                },
-                {
-                  text: "Feature benefit in 14 days",
-                  status: "unchecked",
-                },
-                {
-                  text: "3 audiences",
-                  status: "unchecked",
-                },
-                {
-                  text: "Support for first 14 days",
-                  status: "checked",
-                },
-              ],
-              button: "Start Free Trial",
-              position: 1,
-            },
-          ],
-          [
-            "brandy/pricing-card",
-            {
-              title: "Pack Standard",
-              pricing: "$29.99 <sub>/monthly</sub>",
-              description: "Enjoy our basic amenities and future features",
-              features: [
-                {
-                  text: "Unlimited user account",
-                  status: "checked",
-                },
-                {
-                  text: "Use any 100 templates",
-                  status: "checked",
-                },
-                {
-                  text: "25 GB storage",
-                  status: "unchecked",
-                },
-                {
-                  text: "Feature benefit",
-                  status: "checked",
-                },
-                {
-                  text: "10 audiences",
-                  status: "checked",
-                },
-                {
-                  text: "24/7 email and chat support",
-                  status: "checked",
-                },
-              ],
-              button: "Start Free Trial",
-              position: 2,
-            },
-          ],
-          [
-            "brandy/pricing-card",
-            {
-              title: "Pack Premium",
-              pricing: "$59.00 <sub>/monthly</sub>",
-              description: "Get benefit pro for your entire team",
-              features: [
-                {
-                  text: "Unlimited user account",
-                  status: "checked",
-                },
-                {
-                  text: "Unlimited templates",
-                  status: "checked",
-                },
-                {
-                  text: "100 GB storage",
-                  status: "unchecked",
-                },
-                {
-                  text: "Feature benefit pro",
-                  status: "checked",
-                },
-                {
-                  text: "Unlimited audiences",
-                  status: "checked",
-                },
-                {
-                  text: "Phone and priority support",
-                  status: "checked",
-                },
-              ],
-              button: "Start Free Trial",
-              position: 3,
-            },
-          ],
-        ],
+      title: "Pack Trial",
+      pricing: "Free <sub>/14 days</sub>",
+      description: "Start from here, no credit card required",
+      features: [
+        {
+          text: "Single user account",
+          status: "checked",
+        },
+        {
+          text: "Use any 3 templates",
+          status: "checked",
+        },
+        {
+          text: "2 GB storage",
+          status: "unchecked",
+        },
+        {
+          text: "Feature benefit in 14 days",
+          status: "unchecked",
+        },
+        {
+          text: "3 audiences",
+          status: "unchecked",
+        },
+        {
+          text: "Support for first 14 days",
+          status: "checked",
+        },
       ],
-    ],
+      button: "<a href='#'>Start Free Trial</a>",
+      position: 1,
+    },
+  ],
+  [
+    "brandy/pricing-card",
+    {
+      title: "Pack Standard",
+      pricing: "$29.99 <sub>/monthly</sub>",
+      description: "Enjoy our basic amenities and future features",
+      features: [
+        {
+          text: "Unlimited user account",
+          status: "checked",
+        },
+        {
+          text: "Use any 100 templates",
+          status: "checked",
+        },
+        {
+          text: "25 GB storage",
+          status: "unchecked",
+        },
+        {
+          text: "Feature benefit",
+          status: "checked",
+        },
+        {
+          text: "10 audiences",
+          status: "checked",
+        },
+        {
+          text: "24/7 email and chat support",
+          status: "checked",
+        },
+      ],
+      button: "<a href='#'>Start Free Trial</a>",
+      position: 2,
+    },
+  ],
+  [
+    "brandy/pricing-card",
+    {
+      title: "Pack Premium",
+      pricing: "$59.00 <sub>/monthly</sub>",
+      description: "Get benefit pro for your entire team",
+      features: [
+        {
+          text: "Unlimited user account",
+          status: "checked",
+        },
+        {
+          text: "Unlimited templates",
+          status: "checked",
+        },
+        {
+          text: "100 GB storage",
+          status: "unchecked",
+        },
+        {
+          text: "Feature benefit pro",
+          status: "checked",
+        },
+        {
+          text: "Unlimited audiences",
+          status: "checked",
+        },
+        {
+          text: "Phone and priority support",
+          status: "checked",
+        },
+      ],
+      button: "<a href='#'>Start Free Trial</a>",
+      position: 3,
+    },
+  ],
+  [
+    "brandy/pricing-card",
+    {
+      title: "Pack Premium",
+      pricing: "$59.00 <sub>/monthly</sub>",
+      description: "Get benefit pro for your entire team",
+      features: [
+        {
+          text: "Unlimited user account",
+          status: "checked",
+        },
+        {
+          text: "Unlimited templates",
+          status: "checked",
+        },
+        {
+          text: "100 GB storage",
+          status: "unchecked",
+        },
+        {
+          text: "Feature benefit pro",
+          status: "checked",
+        },
+        {
+          text: "Unlimited audiences",
+          status: "checked",
+        },
+        {
+          text: "Phone and priority support",
+          status: "checked",
+        },
+      ],
+      button: "<a href='#'>Start Free Trial</a>",
+      position: 3,
+    },
   ],
 ];
 
 export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps();
-  const a = useResizeObserver();
-  console.log(a);
 
   const dataAttributes = useMemo(
     () => ({
+      number_card:
+        attributes.number_card ?? metadata.attributes.number_card.default,
       card_title:
         attributes.card_title ?? metadata.attributes.card_title.default,
       card_pricing:
@@ -161,48 +175,35 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         attributes.card_features ?? metadata.attributes.card_features.default,
       card_button:
         attributes.card_button ?? metadata.attributes.card_button.default,
-      general: attributes.general ?? metadata.attributes.general.default,
-      highlight_price:
-        attributes.highlight_price ??
-        metadata.attributes.highlight_price.default,
+      card_highlight_badge:
+        attributes.card_highlight_badge ??
+        metadata.attributes.card_highlight_badge.default,
+      card_settings:
+        attributes.card_settings ?? metadata.attributes.card_settings.default,
+      highlight_settings:
+        attributes.highlight_settings ??
+        metadata.attributes.highlight_settings.default,
       card_layout:
         attributes.card_layout ?? metadata.attributes.card_layout.default,
-      layout: attributes.layout ?? metadata.attributes.layout.default,
     }),
     [attributes]
   );
-
-  const innerBlocks = useSelect(
-    (select) => {
-      const { getBlocks } = select("core/block-editor");
-      return getBlocks(clientId);
-    },
-    [clientId]
-  );
-
-  const _template =
-    innerBlocks.length < 1
-      ? TEMPLATE
-      : innerBlocks.map((block) => [
-          block.name,
-          block.attributes,
-          (block.innerBlocks ?? []).map((b) => [
-            b.name,
-            b.attributes,
-            (b.innerBlocks ?? []).map((c) => [c.name, c.attributes]),
-          ]),
-        ]);
-
-  const [template, setTemplate] = useState(_template);
 
   const contextValue = useMemo(
     () => ({
       attributes: dataAttributes,
       setAttributes,
       clientId,
-      setTemplate,
     }),
-    [dataAttributes, setAttributes, clientId, setTemplate]
+    [dataAttributes, setAttributes, clientId]
+  );
+
+  const template = useMemo(
+    () =>
+      Array.from({ length: attributes.number_card ?? 3 }).map(
+        (_, ind) => TEMPLATE_DEFAULT[ind]
+      ),
+    [attributes.number_card]
   );
 
   return (
@@ -212,14 +213,14 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         <div
           className="brandy-pricing-wrapper"
           card-horizontal-alignment={
-            dataAttributes.general.horizontal_alignment
+            dataAttributes.card_settings.horizontal_alignment
           }
           style={{
             /**
              * Card title
              */
-            "--card-title-padding": getPaddingValue(
-              dataAttributes.card_title.padding
+            "--card-title-margin": getPaddingValue(
+              dataAttributes.card_title.margin
             ),
             "--card-title-color": dataAttributes.card_title.color,
             ...getTypographyVariables(
@@ -230,8 +231,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             /**
              * Card pricing
              */
-            "--card-pricing-padding": getPaddingValue(
-              dataAttributes.card_pricing.padding
+            "--card-pricing-margin": getPaddingValue(
+              dataAttributes.card_pricing.margin
             ),
             "--card-pricing-price-color":
               dataAttributes.card_pricing.price.color,
@@ -251,8 +252,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             /**
              * Card description
              */
-            "--card-description-padding": getPaddingValue(
-              dataAttributes.card_description.padding
+            "--card-description-margin": getPaddingValue(
+              dataAttributes.card_description.margin
             ),
             "--card-description-color": dataAttributes.card_description.color,
             ...getTypographyVariables(
@@ -262,8 +263,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             /**
              * Card features
              */
-            "--card-features-padding": getPaddingValue(
-              dataAttributes.card_features.padding
+            "--card-features-margin": getPaddingValue(
+              dataAttributes.card_features.margin
             ),
             "--card-features-item-spacing": `${dataAttributes.card_features.item_spacing}px`,
             "--pricing-feature-checked-title-color":
@@ -289,6 +290,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             /**
              * Card button
              */
+            "--card-button-margin": getPaddingValue(
+              dataAttributes.card_button.margin
+            ),
             "--card-button-padding": getPaddingValue(
               dataAttributes.card_button.padding
             ),
@@ -323,15 +327,20 @@ export default function Edit({ attributes, setAttributes, clientId }) {
              * Card general
              */
             "--card-background-normal":
-              dataAttributes.general.background.normal,
-            "--card-background-hover": dataAttributes.general.background.hover,
-            "--card-shadow": getShadowValue(dataAttributes.general.shadow),
+              dataAttributes.card_settings.background.normal,
+            "--card-background-hover":
+              dataAttributes.card_settings.background.hover,
+            "--card-shadow": getShadowValue(
+              dataAttributes.card_settings.shadow
+            ),
             "--card-border-color-normal":
-              dataAttributes.general.border_color.normal,
+              dataAttributes.card_settings.border_color.normal,
             "--card-border-color-hover":
-              dataAttributes.general.border_color.hover,
-            "--card-spacing": `${dataAttributes.general.spacing}px`,
-            "--card-padding": getPaddingValue(dataAttributes.general.padding),
+              dataAttributes.card_settings.border_color.hover,
+            "--card-spacing": `${dataAttributes.card_settings.spacing}px`,
+            "--card-padding": getPaddingValue(
+              dataAttributes.card_settings.padding
+            ),
             "--card-title-display": dataAttributes.card_title.visible
               ? "block"
               : "none",
@@ -350,9 +359,11 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                   "--card-pricing-display": "flex",
                   "--card-pricing-flex-direction": "column",
                   "--card-pricing-flex-align-items":
-                    dataAttributes.general.horizontal_alignment === "center"
+                    dataAttributes.card_settings.horizontal_alignment ===
+                    "center"
                       ? "center"
-                      : dataAttributes.general.horizontal_alignment === "right"
+                      : dataAttributes.card_settings.horizontal_alignment ===
+                        "right"
                       ? "flex-end"
                       : "flex-start",
                 }
@@ -363,11 +374,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                 }),
           }}
         >
-          <InnerBlocks
-            template={template}
-            allowedBlocks={["brandy/pricing-card"]}
-            templateLock="all"
-          />
+          <div className="brandy-pricing-list">
+            <InnerBlocks
+              template={template}
+              allowedBlocks={["brandy/pricing-card"]}
+              templateLock="all"
+            />
+          </div>
         </div>
       </PricingContext.Provider>
     </div>

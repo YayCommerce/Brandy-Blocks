@@ -2,14 +2,14 @@ import { useContext } from "@wordpress/element";
 import { ReactSortable } from "react-sortablejs";
 import Button from "./Button";
 import Description from "./Description";
-import Highlight from "./Highlight";
+import HighlightBadge from "./HighlightBadge";
 import Pricing from "./Pricing";
 import Title from "./Title";
 import ListFeatures from "./ListFeatures";
 import { PricingContext } from "../../../edit";
 
 const layoutDefinition = {
-  highlight: Highlight,
+  highlight_badge: HighlightBadge,
   title: Title,
   pricing: Pricing,
   description: Description,

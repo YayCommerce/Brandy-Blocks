@@ -11,14 +11,14 @@ export default function Save({ attributes }) {
     <div {...blockProps}>
       <div
         className="brandy-pricing-wrapper"
-        card-horizontal-alignment={attributes.general.horizontal_alignment}
+        card-horizontal-alignment={
+          attributes.card_settings.horizontal_alignment
+        }
         style={{
           /**
            * Card title
            */
-          "--card-title-padding": getPaddingValue(
-            attributes.card_title.padding
-          ),
+          "--card-title-margin": getPaddingValue(attributes.card_title.margin),
           "--card-title-color": attributes.card_title.color,
           ...getTypographyVariables(
             "card-title",
@@ -28,8 +28,8 @@ export default function Save({ attributes }) {
           /**
            * Card pricing
            */
-          "--card-pricing-padding": getPaddingValue(
-            attributes.card_pricing.padding
+          "--card-pricing-margin": getPaddingValue(
+            attributes.card_pricing.margin
           ),
           "--card-pricing-price-color": attributes.card_pricing.price.color,
           ...getTypographyVariables(
@@ -47,8 +47,8 @@ export default function Save({ attributes }) {
           /**
            * Card description
            */
-          "--card-description-padding": getPaddingValue(
-            attributes.card_description.padding
+          "--card-description-margin": getPaddingValue(
+            attributes.card_description.margin
           ),
           "--card-description-color": attributes.card_description.color,
           ...getTypographyVariables(
@@ -58,8 +58,8 @@ export default function Save({ attributes }) {
           /**
            * Card features
            */
-          "--card-features-padding": getPaddingValue(
-            attributes.card_features.padding
+          "--card-features-margin": getPaddingValue(
+            attributes.card_features.margin
           ),
           "--card-features-item-spacing": `${attributes.card_features.item_spacing}px`,
           "--pricing-feature-checked-title-color":
@@ -85,6 +85,9 @@ export default function Save({ attributes }) {
           /**
            * Card button
            */
+          "--card-button-margin": getPaddingValue(
+            attributes.card_button.margin
+          ),
           "--card-button-padding": getPaddingValue(
             attributes.card_button.padding
           ),
@@ -117,13 +120,16 @@ export default function Save({ attributes }) {
           /**
            * Card general
            */
-          "--card-background-normal": attributes.general.background.normal,
-          "--card-background-hover": attributes.general.background.hover,
-          "--card-shadow": getShadowValue(attributes.general.shadow),
-          "--card-border-color-normal": attributes.general.border_color.normal,
-          "--card-border-color-hover": attributes.general.border_color.hover,
-          "--card-spacing": `${attributes.general.spacing}px`,
-          "--card-padding": getPaddingValue(attributes.general.padding),
+          "--card-background-normal":
+            attributes.card_settings.background.normal,
+          "--card-background-hover": attributes.card_settings.background.hover,
+          "--card-shadow": getShadowValue(attributes.card_settings.shadow),
+          "--card-border-color-normal":
+            attributes.card_settings.border_color.normal,
+          "--card-border-color-hover":
+            attributes.card_settings.border_color.hover,
+          "--card-spacing": `${attributes.card_settings.spacing}px`,
+          "--card-padding": getPaddingValue(attributes.card_settings.padding),
           "--card-title-display": attributes.card_title.visible
             ? "block"
             : "none",
@@ -141,9 +147,9 @@ export default function Save({ attributes }) {
                 "--card-pricing-display": "flex",
                 "--card-pricing-flex-direction": "column",
                 "--card-pricing-flex-align-items":
-                  attributes.general.horizontal_alignment === "center"
+                  attributes.card_settings.horizontal_alignment === "center"
                     ? "center"
-                    : attributes.general.horizontal_alignment === "right"
+                    : attributes.card_settings.horizontal_alignment === "right"
                     ? "flex-end"
                     : "flex-start",
               }
@@ -154,7 +160,9 @@ export default function Save({ attributes }) {
               }),
         }}
       >
-        <InnerBlocks.Content />
+        <div className="brandy-pricing-list">
+          <InnerBlocks.Content />
+        </div>
       </div>
     </div>
   );
