@@ -1,4 +1,4 @@
-.testimonials-wrapper {
+.brandy-testimonials-wrapper {
 	margin-top: 50px;
 	margin-bottom: 50px;
 	padding: 0 10px;
@@ -10,39 +10,9 @@
 		}
 	}
 
-	.testimonials__rating {
-		margin: auto;
-		padding: var(--label-padding);
-		color: var(--label-color);
-		margin-bottom: 20px;
-		background: var(--label-background-color);
-		text-align: center;
-		font-size: var(--label-font-size);
-		font-weight: var(--label-font-weight, var(--label-bold));
-		font-style: var(--label-font-styles);
-		text-transform: var(--label-text-transform, auto);
-	}
-
-	.testimonials__heading {
-		margin: auto;
-		width: 100%;
-		text-align: center;
-		padding: var(--title-padding);
-		color: var(--title-color);
-		font-size: var(--title-font-size);
-		font-weight: var(--title-font-weight, var(--title-bold));
-		font-style: var(--title-font-styles);
-		text-transform: var(--title-text-transform, auto);
-	}
-
-	.brandy-carousel {
-		overflow: hidden;
-		position: relative;
-		display: block !important;
-		padding: 20px calc(var(--carousel-arrow-size)/2 + 20px);
-		--dots-margin-top: 25px;
-
-		.testimonials__list {
+	.brandy-testimonials {
+		&__list,
+		&__list .block-editor-block-list__layout {
 			gap: var(--carousel-item-spacing, 50px);
 			flex-wrap: nowrap !important;
 			display: flex;
@@ -51,6 +21,14 @@
 			transition-timing-function: ease-in-out;
 			transition-duration: var(--carousel-transition-speed, 500ms);
 		}
+	}
+
+	&.brandy-carousel {
+		overflow: hidden;
+		position: relative;
+		display: block !important;
+		padding: 20px calc(var(--carousel-arrow-size) / 2 + 20px);
+		--dots-margin-top: 25px;
 
 		.carousel-arrow {
 			display: inline-flex;
@@ -102,7 +80,7 @@
 				cursor: pointer;
 				display: inline-block;
 				transition-property: background, width;
-				transition-duration: .2s;
+				transition-duration: 0.2s;
 				transition-timing-function: ease-in-out;
 
 				&.current-slide {
@@ -120,7 +98,6 @@
 
 .brandy-editor {
 	.testimonial-sort {
-
 		&__list {
 			display: flex;
 			flex-direction: column;
@@ -152,5 +129,4 @@
 		align-items: center;
 		cursor: grab;
 	}
-
 }

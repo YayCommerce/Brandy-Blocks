@@ -1,51 +1,53 @@
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
 
-import { useSelect } from "@wordpress/data";
+import { createContext, useMemo, useState } from "@wordpress/element";
 import {
-  useEffect,
-  useMemo,
-  useState,
-  createContext,
-} from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
+  getPaddingValue,
+  getShadowValue,
+  getTypographyVariables,
+} from "../../utils/helpers";
 import Settings from "./Settings";
 import metadata from "./block.json";
-import { getTypographyVariables } from "../../utils/helpers";
 
 const TEMPLATE = [
   [
-    "core/columns",
+    "brandy/single-testimonial",
     {
-      className: "brandy-carousel",
+      id: Date.now(),
+      name: "William Hallen",
+      subname: "CEO",
+      content:
+        "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
+      rating: 5,
+      image:
+        "https://thien.ninjateam.org/wp-content/uploads/2024/01/slide2-human-1-1.png",
     },
-    [
-      [
-        "core/columns",
-        {
-          className: "testimonials__list",
-        },
-        [
-          [
-            "brandy/single-testimonial",
-            {
-              className: "testimonial-card",
-            },
-          ],
-          [
-            "brandy/single-testimonial",
-            {
-              className: "testimonial-card",
-            },
-          ],
-          [
-            "brandy/single-testimonial",
-            {
-              className: "testimonial-card",
-            },
-          ],
-        ],
-      ],
-    ],
+  ],
+  [
+    "brandy/single-testimonial",
+    {
+      id: Date.now(),
+      name: "Anthony Nguyen",
+      subname: "Customer feedback at Google Reviews",
+      content:
+        "Making a type specimen book, also the leap into electronic typesetting, remain essentially unchanged or avoids pleasure itself the master builder of amet lorem ipsum human happiness.",
+      rating: 5,
+      image:
+        "https://thien.ninjateam.org/wp-content/uploads/2024/01/slide3-pic1-1-1.png",
+    },
+  ],
+  [
+    "brandy/single-testimonial",
+    {
+      id: Date.now(),
+      name: "William Hallen",
+      subname: "CEO",
+      content:
+        "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
+      rating: 5,
+      image:
+        "https://thien.ninjateam.org/wp-content/uploads/2024/01/01-12-1-1.png",
+    },
   ],
 ];
 
@@ -59,155 +61,25 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       number_testimonials:
         attributes.number_testimonials ??
         metadata.attributes.number_testimonials.default,
+      shadow: attributes.shadow ?? metadata.attributes.shadow.default,
       content_alignment:
         attributes.content_alignment ?? metadata.attributes.content_alignment,
-      avatar: {
-        visible:
-          attributes.avatar?.visible ??
-          metadata.attributes.avatar.default.visible,
-        size:
-          attributes.avatar?.size ?? metadata.attributes.avatar.default.size,
-        fitting:
-          attributes.avatar?.fitting ??
-          metadata.attributes.avatar.default.fitting,
-        border_radius:
-          attributes.avatar?.border_radius ??
-          metadata.attributes.avatar.default.border_radius,
-      },
-      name: {
-        visible:
-          attributes.name?.visible ?? metadata.attributes.name.default.visible,
-        padding:
-          attributes.name?.padding ?? metadata.attributes.name.default.padding,
-        typography:
-          attributes.name?.typography ??
-          metadata.attributes.name.default.typography,
-        color: attributes.name?.color ?? metadata.attributes.name.default.color,
-      },
-      subname: {
-        visible:
-          attributes.subname?.visible ??
-          metadata.attributes.subname.default.visible,
-        padding:
-          attributes.subname?.padding ??
-          metadata.attributes.subname.default.padding,
-        typography:
-          attributes.subname?.typography ??
-          metadata.attributes.subname.default.typography,
-        color:
-          attributes.subname?.color ??
-          metadata.attributes.subname.default.color,
-      },
-      content: {
-        visible:
-          attributes.content?.visible ??
-          metadata.attributes.content.default.visible,
-        padding:
-          attributes.content?.padding ??
-          metadata.attributes.content.default.padding,
-        typography:
-          attributes.content?.typography ??
-          metadata.attributes.content.default.typography,
-        color:
-          attributes.content?.color ??
-          metadata.attributes.content.default.color,
-      },
-      carousel: {
-        transition_speed:
-          attributes.carousel?.transition_speed ??
-          metadata.attributes.carousel.default.transition_speed,
-        autoplay:
-          attributes.carousel?.autoplay ??
-          metadata.attributes.carousel.default.autoplay,
-        infinite_loop:
-          attributes.carousel?.infinite_loop ??
-          metadata.attributes.carousel.default.infinite_loop,
-      },
+      avatar: attributes.avatar ?? metadata.attributes.avatar,
+      name: attributes.name ?? metadata.attributes.name,
+      subname: attributes.subname ?? metadata.attributes.subname,
+      content: attributes.content ?? metadata.attributes.content.default,
+      carousel: attributes.carousel ?? metadata.attributes.carousel,
       item_spacing:
         attributes.item_spacing ?? metadata.attributes.item_spacing.default,
-      star: {
-        visible:
-          attributes.star?.visible ?? metadata.attributes.star.default.visible,
-        size: attributes.star?.size ?? metadata.attributes.star.default.size,
-        active_color:
-          attributes.star?.active_color ??
-          metadata.attributes.star.default.active_color,
-        default_color:
-          attributes.star?.default_color ??
-          metadata.attributes.star.default.default_color,
-        spacing:
-          attributes.star?.spacing ?? metadata.attributes.star.default.spacing,
-        padding:
-          attributes.star?.padding ?? metadata.attributes.star.default.padding,
-      },
-      dots: {
-        size: attributes.dots?.size ?? metadata.attributes.dots.default.size,
-        active_color:
-          attributes.dots?.active_color ??
-          metadata.attributes.dots.default.active_color,
-        default_color:
-          attributes.dots?.default_color ??
-          metadata.attributes.dots.default.default_color,
-        spacing:
-          attributes.dots?.spacing ?? metadata.attributes.dots.default.spacing,
-      },
-      arrow: {
-        size: attributes.arrow?.size ?? metadata.attributes.arrow.default.size,
-        icon_color:
-          attributes.arrow?.icon_color ??
-          metadata.attributes.arrow.default.icon_color,
-        background_color:
-          attributes.arrow?.background_color ??
-          metadata.attributes.arrow.default.background_color,
-      },
+      star: attributes.star ?? metadata.attributes.star,
+      dots: attributes.dots ?? metadata.attributes.dots,
+      arrow: attributes.arrow ?? metadata.attributes.arrow,
       layout: attributes.layout ?? metadata.attributes.layout.default,
     }),
     [attributes]
   );
 
-  const innerBlocks = useSelect(
-    (select) => {
-      const { getBlocks } = select("core/block-editor");
-      return getBlocks(clientId);
-    },
-    [clientId]
-  );
-
-  const _template =
-    innerBlocks.length < 1
-      ? TEMPLATE
-      : innerBlocks.map((block) => [
-          block.name,
-          block.attributes,
-          (block.innerBlocks ?? []).map((b) => [
-            b.name,
-            b.attributes,
-            (b.innerBlocks ?? []).map((c) => [c.name, c.attributes]),
-          ]),
-        ]);
-
-  const [template, setTemplate] = useState(_template);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const newTemplate = [...template];
-      while (newTemplate.lastItem.length == 0) {
-        newTemplate.pop();
-      }
-      setTemplate(newTemplate);
-    }, 1);
-  }, [template.length]);
-
-  function reloadTemplate() {
-    setTemplate((t) => [...t, []]);
-  }
-
-  useEffect(() => {
-    window.addEventListener("reloadTestimonialsTemplate", reloadTemplate);
-    return () => {
-      window.removeEventListener("reloadTestimonialsTemplate", reloadTemplate);
-    };
-  }, []);
+  const [template, setTemplate] = useState(TEMPLATE);
 
   const contextValue = useMemo(
     () => ({
@@ -219,6 +91,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     }),
     [dataAttributes, setAttributes, clientId, setTemplate, template]
   );
+
   const visibility = {
     "--avatar-visible": dataAttributes.avatar.visible ? "block" : "none",
     "--name-visible": dataAttributes.name.visible ? "block" : "none",
@@ -232,7 +105,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       <TestimonialsContext.Provider value={contextValue}>
         <Settings />
         <div
-          className="testimonials-wrapper"
+          className="brandy-testimonials-wrapper brandy-carousel"
           /**
            * General
            */
@@ -253,13 +126,17 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             "--carousel-transition-speed":
               dataAttributes.carousel.transition_speed + "ms",
 
+            "--card-shadow": getShadowValue(dataAttributes.shadow),
+
             /** star */
             "--testimonial-star-size": dataAttributes.star.size + "px",
             "--testimonial-star-default-color":
               dataAttributes.star.default_color,
             "--testimonial-star-active-color": dataAttributes.star.active_color,
             "--testimonial-star-spacing": dataAttributes.star.spacing + "px",
-            "--testimonial-star-padding": `${dataAttributes.star.padding.top}px ${dataAttributes.star.padding.right}px ${dataAttributes.star.padding.bottom}px ${dataAttributes.star.padding.left}px`,
+            "--testimonial-star-margin": getPaddingValue(
+              dataAttributes.star.margin
+            ),
 
             "--carousel-item-spacing": dataAttributes.item_spacing + "px",
             /** carousel dot */
@@ -278,14 +155,15 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             "--avatar-border-radius": `${dataAttributes.avatar.border_radius.top}px ${dataAttributes.avatar.border_radius.right}px ${dataAttributes.avatar.border_radius.bottom}px ${dataAttributes.avatar.border_radius.left}px`,
             "--avatar-size": dataAttributes.avatar.size + "px",
             "--avatar-fitting": dataAttributes.avatar.fitting,
+            "--avatar-margin": getPaddingValue(dataAttributes.avatar.margin),
 
             /** name */
-            "--name-padding": `${dataAttributes.name.padding.top}px ${dataAttributes.name.padding.right}px ${dataAttributes.name.padding.bottom}px ${dataAttributes.name.padding.left}px`,
+            "--name-margin": getPaddingValue(dataAttributes.name.margin),
             "--name-color": dataAttributes.name.color,
             ...getTypographyVariables("name", dataAttributes.name.typography),
 
             /** subname */
-            "--subname-padding": `${dataAttributes.subname.padding.top}px ${dataAttributes.subname.padding.right}px ${dataAttributes.subname.padding.bottom}px ${dataAttributes.subname.padding.left}px`,
+            "--subname-margin": getPaddingValue(dataAttributes.subname.margin),
             "--subname-color": dataAttributes.subname.color,
             ...getTypographyVariables(
               "subname",
@@ -293,7 +171,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             ),
 
             /** content */
-            "--content-padding": `${dataAttributes.content.padding.top}px ${dataAttributes.content.padding.right}px ${dataAttributes.content.padding.bottom}px ${dataAttributes.content.padding.left}px`,
+            "--content-margin": getPaddingValue(dataAttributes.content.margin),
             "--content-color": dataAttributes.content.color,
             ...getTypographyVariables(
               "content",
@@ -303,13 +181,54 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             ...visibility,
           }}
         >
-          <InnerBlocks
-            template={template}
-            allowedBlocks={["brandy/single-testimonial"]}
-            templateLock="all"
-          />
+          <span class="forward-arrow carousel-arrow" data-slide="forward">
+            {leftArrow}
+          </span>
+          <div className="brandy-testimonials__list">
+            <InnerBlocks
+              template={template}
+              allowedBlocks={["brandy/single-testimonial"]}
+              templateLock="all"
+            />
+          </div>
+          <span class="backward-arrow carousel-arrow" data-slide="backward">
+            {rightArrow}
+          </span>
         </div>
       </TestimonialsContext.Provider>
     </div>
   );
 }
+
+const leftArrow = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10.5549 5.99554L16.0135 12L10.5549 18.0045L9.44495 16.9955L13.9863 12L9.44495 7.00456L10.5549 5.99554Z"
+      fill="#1E1E1E"
+    />
+  </svg>
+);
+const rightArrow = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M13.4451 18.0045L7.98645 12L13.4451 5.99548L14.555 7.00449L10.0136 12L14.555 16.9955L13.4451 18.0045Z"
+      fill="#1E1E1E"
+    />
+  </svg>
+);

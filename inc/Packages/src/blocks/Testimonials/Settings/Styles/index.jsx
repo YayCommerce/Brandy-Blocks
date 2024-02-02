@@ -1,18 +1,16 @@
-import { __ } from "@wordpress/i18n";
 import { useContext } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 import CollapseMenu from "../../../../components/CollapseMenu";
 import Arrow from "./ArrowAndDot/Arrow";
 import Dots from "./ArrowAndDot/Dots";
 import Star from "./ItemBlock/Star";
-import HeaderLabel from "./Header/Label";
 
-import HeaderTitle from "./Header/Title";
+import { ReactSortable } from "react-sortablejs";
+import { TestimonialsContext } from "../../edit";
 import Avatar from "./ItemBlock/Avatar";
+import Content from "./ItemBlock/Content";
 import Name from "./ItemBlock/Name";
 import Subname from "./ItemBlock/Subname";
-import Content from "./ItemBlock/Content";
-import { TestimonialsContext } from "../../edit";
-import { ReactSortable } from "react-sortablejs";
 
 const layoutDefinition = {
   avatar: Avatar,
@@ -24,6 +22,7 @@ const layoutDefinition = {
 
 export default function Styles() {
   const { attributes, setAttributes } = useContext(TestimonialsContext);
+
   const layout = attributes.layout ?? [
     "avatar",
     "name",
@@ -35,19 +34,9 @@ export default function Styles() {
     setAttributes({
       layout: newList.map((i) => i.toString()),
     });
-    const newEvent = new CustomEvent("changeTestimonialLayout", {
-      detail: {
-        layout: newList.map((i) => i.toString()),
-      },
-    });
-    window.dispatchEvent(newEvent);
   };
   return (
     <div className="testimonial-settings__styles">
-      {/* <CollapseMenu title={__("Header", "brandy")}>
-        <HeaderLabel />
-        <HeaderTitle />
-      </CollapseMenu> */}
       <CollapseMenu title={__("Item block", "brandy")}>
         <ReactSortable
           list={layout}
@@ -62,7 +51,7 @@ export default function Styles() {
             if (Comp) {
               return <Comp />;
             }
-            return false;
+            return null;
           })}
         </ReactSortable>
       </CollapseMenu>

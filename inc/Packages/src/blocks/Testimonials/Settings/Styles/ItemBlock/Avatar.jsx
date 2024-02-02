@@ -59,6 +59,16 @@ export default function Avatar() {
           onChange={handleChangeValue("border_radius")}
         />
       </div>
+      <div>
+        <Label
+          title={__("Margin", "brandy")}
+          style={{ display: "block", marginBottom: 10 }}
+        />
+        <Spacing
+          value={attributes.avatar.margin}
+          onChange={handleChangeValue("margin")}
+        />
+      </div>
     </Card>
   );
 }

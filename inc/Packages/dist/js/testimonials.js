@@ -48,14 +48,6 @@
       }
       this.init();
     }
-    initArrows() {
-      $(this.carouselElement).append(
-        `<span class="forward-arrow carousel-arrow" data-slide="forward"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5549 5.99554L16.0135 12L10.5549 18.0045L9.44495 16.9955L13.9863 12L9.44495 7.00456L10.5549 5.99554Z" fill="#1E1E1E"/></svg></span>`
-      );
-      $(this.carouselElement).prepend(
-        `<span class="backward-arrow carousel-arrow" data-slide="backward"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.4451 18.0045L7.98645 12L13.4451 5.99548L14.555 7.00449L10.0136 12L14.555 16.9955L13.4451 18.0045Z" fill="#1E1E1E"/></svg></span>`
-      );
-    }
     showHideArrow() {
       if (this.settings.infiniteLoop) {
         return;
@@ -73,36 +65,31 @@
     }
     initData() {
       this.settings.autoplay =
-        $(this.blockElement).find(".testimonials-wrapper").attr("auto-play") ==
-        "true"
+        $(this.blockElement)
+          .find(".brandy-testimonials-wrapper")
+          .attr("auto-play") == "true"
           ? true
           : false;
-      // this.settings.pauseOnHover =
-      //   $(this.blockElement)
-      //     .find(".testimonials-wrapper")
-      //     .attr("pause-on-hover") == "true"
-      //     ? true
-      //     : false;
       this.settings.infiniteLoop =
         $(this.blockElement)
-          .find(".testimonials-wrapper")
+          .find(".brandy-testimonials-wrapper")
           .attr("infinite-loop") == "true"
           ? true
           : false;
       this.settings.infiniteLoop =
         $(this.blockElement)
-          .find(".testimonials-wrapper")
+          .find(".brandy-testimonials-wrapper")
           .attr("infinite-loop") == "true"
           ? true
           : false;
 
       this.totalItems =
-        $(this.carouselElement).find(".testimonial-card").length ?? 0;
+        $(this.carouselElement).find(".brandy-testimonials__card").length ?? 0;
 
       this.itemGap =
         parseFloat(
           $(this.blockElement)
-            .find(".testimonials-wrapper")
+            .find(".brandy-testimonials-wrapper")
             .attr("item-spacing") ?? DEFAULT_GAP
         ) / 2;
 
@@ -122,24 +109,21 @@
       this.currentSlide = 0;
       this.totalSlides = Math.ceil(this.totalItems / this.numberCard);
     }
-    removeArrows() {
-      $(this.carouselElement).find(".carousel-arrow").remove();
-    }
     removeDots() {
       $(this.carouselElement).find(".carousel-dots").remove();
     }
     applyStyles() {
       $(this.carouselElement)
-        .find(".testimonials__list")
+        .find(".brandy-testimonials__list")
         .css("transform", "translateX(0)");
       $(this.carouselElement)
-        .find(".testimonial-card")
+        .find(".brandy-testimonials__card")
         .outerWidth(this.singleItemWidth);
       $(this.carouselElement)
-        .find(".testimonials__list")
+        .find(".brandy-testimonials__list")
         .width(this.totalItems * this.singleItemWidth * 2);
       $(this.carouselElement)
-        .find(".testimonials__list")
+        .find(".brandy-testimonials__list")
         .css("gap", this.itemGap * 2);
     }
     nextSlide() {
@@ -166,7 +150,7 @@
     }
     activateSlides() {
       $(this.carouselElement)
-        .find(".testimonial-card")
+        .find(".brandy-testimonials__card")
         .each((index, el) => {
           $(el).removeClass("current-card");
           if (
@@ -207,7 +191,7 @@
       this.activateSlides();
 
       $(this.carouselElement)
-        .find(".testimonials__list")
+        .find(".brandy-testimonials__list")
         .css("transform", `translateX(${xOffset}px)`);
       $(this.carouselElement)
         .find(".carousel-dot")
@@ -297,9 +281,7 @@
         });
     }
     init() {
-      this.removeArrows();
       this.removeDots();
-      this.initArrows();
       this.initData();
       this.applyStyles();
       this.start();
@@ -323,6 +305,9 @@
   $(document).ready(function () {
     window.brandy.carousels.load();
     $(window).on("resize", function () {
+      window.dispatchEvent(new CustomEvent("loadTestimonials"));
+    });
+    $(window).on("loadTestimonials", function () {
       window.brandy.carousels.load();
     });
   });

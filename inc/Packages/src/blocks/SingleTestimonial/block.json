@@ -4,14 +4,42 @@
   "name": "brandy/single-testimonial",
   "category": "brandy-blocks",
   "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "subname": {
+      "type": "string",
+      "default": ""
+    },
+    "content": {
+      "type": "string",
+      "default": ""
+    },
     "rating": {
       "type": "number",
       "attribute": "data-rating",
       "default": 5
+    },
+    "image": {
+      "type": "string",
+      "default": "#"
+    },
+    "context": {
+      "type": "object",
+      "default": {}
     }
   },
-  "parent": ["brandy/testimonials"],
-  "icon": "testimonial",
+  "parent": [
+    "brandy/testimonials"
+  ],
+  "usesContext": [
+    "brandy/testimonials/layout"
+  ],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

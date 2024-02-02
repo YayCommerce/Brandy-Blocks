@@ -64,10 +64,10 @@ export default function Name() {
         </div>
       </div>
       <div>
-        <Label title={__("Padding", "brandy")} />
+        <Label title={__("Margin", "brandy")} />
         <Spacing
-          value={attributes.name.padding}
-          onChange={handleChangeValue("padding")}
+          value={attributes.name.margin}
+          onChange={handleChangeValue("margin")}
         />
       </div>
     </Card>

@@ -1,15 +1,14 @@
-import { BaseControl } from "@wordpress/components";
 import { useSelect } from "@wordpress/data";
-import { useMemo, useContext } from "@wordpress/element";
-import { ReactSortable } from "react-sortablejs";
-import { TestimonialsContext } from "../../edit";
+import { useContext, useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
+import { ReactSortable } from "react-sortablejs";
 import Label from "../../../../components/Label";
+import { TestimonialsContext } from "../../edit";
 
 export default function Sort() {
-  const { clientId, setTemplate, setAttributes } =
+  const { clientId, setTemplate, setAttributes, template } =
     useContext(TestimonialsContext);
-  const innerBlocks = useSelect(
+  let innerBlocks = useSelect(
     (select) => {
       const { getBlocks } = select("core/block-editor");
       return getBlocks(clientId);
@@ -17,38 +16,24 @@ export default function Sort() {
     [clientId]
   );
 
-  const listTestimonials = useMemo(() => {
-    const columnsBlock = innerBlocks.find(
-      (t) => t.attributes?.className == "brandy-carousel"
-    );
-    if (columnsBlock == null) {
-      return [];
-    }
-    return columnsBlock.innerBlocks[0].innerBlocks.map((b) => ({
-      id: b.clientId,
-      name:
-        (b.innerBlocks ?? []).find(
-          (s) => s.attributes.className === "testmainname"
-        )?.attributes?.content ?? "",
-      avatar:
-        (b.innerBlocks ?? []).find(
-          (s) => s.attributes.className === "testimonial__avatar"
-        )?.attributes?.url ?? "#",
-    }));
-  }, [innerBlocks]);
+  useEffect(() => {
+    setTimeout(() => {
+      const newTemplate = [...template];
+      while (newTemplate.lastItem.length == 0) {
+        newTemplate.pop();
+      }
+      setTemplate(newTemplate);
+    }, 1);
+  }, [template.length]);
 
-  const setList = (v) => {
-    if (innerBlocks[2] == null) {
-      return;
-    }
-    const newList = v.map((t) =>
-      innerBlocks[2].innerBlocks[0].innerBlocks.find((b) => b.clientId === t.id)
-    );
-    innerBlocks[2].innerBlocks[0].innerBlocks = newList;
-    setTemplate((t) => {
-      return [...t, []];
+  const setList = (newList) => {
+    innerBlocks.forEach((_, ind) => {
+      innerBlocks[ind] = newList[ind];
     });
-    setAttributes({ change_detecter: new Date().getTime() });
+
+    setTemplate(() => {
+      return [...template, []];
+    });
   };
 
   return (
@@ -58,16 +43,16 @@ export default function Sort() {
         style={{ marginBottom: 0 }}
       />
       <ReactSortable
-        list={listTestimonials}
+        list={innerBlocks}
         setList={setList}
         animation={150}
         easing="ease-in-out"
         className="testimonial-sort__list"
       >
-        {listTestimonials.map((t) => (
-          <div key={t.id} className="testimonial-sort__item">
-            <img src={t.avatar} alt="item-avatar" />
-            <span>{t.name}</span>
+        {innerBlocks.map((b) => (
+          <div key={b.clientId} className="testimonial-sort__item">
+            <img src={b.attributes.image} alt="item-avatar" />
+            <span>{b.attributes.name}</span>
           </div>
         ))}
       </ReactSortable>

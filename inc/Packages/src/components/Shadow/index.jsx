@@ -39,10 +39,10 @@ export default function Shadow({ selected, onChange, ...rest }) {
       onChange({
         type: v,
         x: 0,
-        y: 4,
-        blur: 16,
+        y: 3,
+        blur: 10,
         spread: 0,
-        color: "rgba(0, 0, 0, 0.06)",
+        color: "rgba(0, 0, 0, 0.05)",
       });
     }
     if (v == "regular") {
@@ -52,7 +52,7 @@ export default function Shadow({ selected, onChange, ...rest }) {
         y: 4,
         blur: 16,
         spread: 0,
-        color: "rgba(0, 0, 0, 0.05)",
+        color: "rgba(0, 0, 0, 0.06)",
       });
     }
     if (v == "medium") {

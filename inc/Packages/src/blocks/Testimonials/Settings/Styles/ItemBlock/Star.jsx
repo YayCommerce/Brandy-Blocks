@@ -50,11 +50,11 @@ export default function Star() {
       },
     });
   };
-  const handleChangePadding = (v) => {
+  const handleChangeMargin = (v) => {
     setAttributes({
       star: {
         ...attributes.star,
-        padding: v,
+        margin: v,
       },
     });
   };
@@ -132,13 +132,10 @@ export default function Star() {
       </div>
       <div>
         <Label
-          title={__("Padding", "brandy")}
+          title={__("Margin", "brandy")}
           style={{ display: "block", marginBottom: 10 }}
         />
-        <Spacing
-          value={attributes.star.padding}
-          onChange={handleChangePadding}
-        />
+        <Spacing value={attributes.star.margin} onChange={handleChangeMargin} />
       </div>
     </Card>
   );

@@ -17,12 +17,18 @@ export default function Count() {
   const handleChangeNumber = (v) => {
     setAttributes({ number_testimonials: v });
     setTemplate((t) => {
-      t[0][2][0][2] = Array(v)
+      t = Array(v)
         .fill(true)
         .map((_) => [
           "brandy/single-testimonial",
           {
-            className: "testimonial-card",
+            name: "William Hallen",
+            subname: "CEO",
+            content:
+              "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
+            rating: 5,
+            image:
+              "https://thien.ninjateam.org/wp-content/uploads/2024/01/slide2-human-1-1.png",
           },
         ]);
       return [...t, []];

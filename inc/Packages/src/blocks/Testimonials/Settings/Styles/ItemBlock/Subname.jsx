@@ -64,10 +64,10 @@ export default function Subname() {
         </div>
       </div>
       <div>
-        <Label title={__("Padding", "brandy")} />
+        <Label title={__("Margin", "brandy")} />
         <Spacing
-          value={attributes.subname.padding}
-          onChange={handleChangeValue("padding")}
+          value={attributes.subname.margin}
+          onChange={handleChangeValue("margin")}
         />
       </div>
     </Card>

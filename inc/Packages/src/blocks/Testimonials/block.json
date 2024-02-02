@@ -11,6 +11,17 @@
       "attribute": "data-length",
       "default": 3
     },
+    "shadow": {
+      "type": "object",
+      "default": {
+        "type": "regular",
+        "x": 0,
+        "y": 4,
+        "blur": 16,
+        "spread": 0,
+        "color": "rgba(0, 0, 0, 0.06)"
+      }
+    },
     "change_detecter": {
       "string": "string",
       "default": 0
@@ -43,28 +54,30 @@
           "bottom": 50,
           "constrain": true
         },
-        "fitting": "cover"
+        "fitting": "cover",
+        "margin": {
+          "top": 0,
+          "left": 0,
+          "right": 0,
+          "bottom": 7,
+          "constrain": false
+        }
       }
     },
     "name": {
       "type": "object",
       "default": {
         "visible": true,
-        "color": "var(--palette_3)",
+        "color": "var(--body_text)",
         "typography": {
-          "font_family": "primary",
-          "font_size": 16,
+          "font_size": 18,
           "bold": false,
           "italic": false,
-          "decoration": "auto",
           "text_transform": "none",
-          "text_align": "center",
-          "font_weight": 400,
-          "line_height": 40,
-          "letter_spacing": 0
+          "font_weight": 500
         },
-        "padding": {
-          "top": 7,
+        "margin": {
+          "top": 0,
           "left": 0,
           "right": 0,
           "bottom": 0,
@@ -78,18 +91,13 @@
         "visible": true,
         "color": "#7F8287",
         "typography": {
-          "font_family": "primary",
           "font_size": 14,
           "bold": false,
           "italic": false,
-          "decoration": "auto",
           "text_transform": "none",
-          "text_align": "center",
-          "font_weight": 300,
-          "line_height": 40,
-          "letter_spacing": 0
+          "font_weight": 300
         },
-        "padding": {
+        "margin": {
           "top": 0,
           "left": 0,
           "right": 0,
@@ -104,18 +112,13 @@
         "visible": true,
         "color": "var(--palette_3)",
         "typography": {
-          "font_family": "primary",
-          "font_size": 16,
+          "font_size": 24,
           "bold": false,
-          "italic": false,
-          "decoration": "auto",
+          "italic": true,
           "text_transform": "none",
-          "text_align": "center",
-          "font_weight": 400,
-          "line_height": 40,
-          "letter_spacing": 0
+          "font_weight": 300
         },
-        "padding": {
+        "margin": {
           "top": 30,
           "left": 0,
           "right": 0,
@@ -132,7 +135,7 @@
         "active_color": "#f8b84e",
         "default_color": "#bebfc2",
         "spacing": 5,
-        "padding": {
+        "margin": {
           "top": 0,
           "left": 0,
           "right": 0,
@@ -152,10 +155,10 @@
     "dots": {
       "type": "object",
       "default": {
-        "size": 15,
+        "size": 12,
         "active_color": "#122940",
         "default_color": "#D3DCE5",
-        "spacing": 15
+        "spacing": 12
       }
     },
     "layout": {
@@ -172,6 +175,9 @@
   "example": {
     "viewportWidth": 2000,
     "attributes": {}
+  },
+  "providesContext": {
+    "brandy/testimonials/layout": "layout"
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

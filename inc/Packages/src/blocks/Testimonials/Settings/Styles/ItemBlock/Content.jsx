@@ -64,10 +64,10 @@ export default function Content() {
         </div>
       </div>
       <div>
-        <Label title={__("Padding", "brandy")} />
+        <Label title={__("Margin", "brandy")} />
         <Spacing
-          value={attributes.content.padding}
-          onChange={handleChangeValue("padding")}
+          value={attributes.content.margin}
+          onChange={handleChangeValue("margin")}
         />
       </div>
     </Card>

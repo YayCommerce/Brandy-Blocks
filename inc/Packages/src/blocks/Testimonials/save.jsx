@@ -1,5 +1,9 @@
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
-import { getTypographyVariables } from "../../utils/helpers";
+import {
+  getPaddingValue,
+  getShadowValue,
+  getTypographyVariables,
+} from "../../utils/helpers";
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save();
@@ -15,8 +19,10 @@ export default function Save({ attributes }) {
   return (
     <div {...blockProps}>
       <div
-        className="testimonials-wrapper"
-        /** general */
+        className="brandy-testimonials-wrapper brandy-carousel"
+        /**
+         * General
+         */
         number-testimonials={attributes.number_testimonials}
         auto-play={attributes.carousel.autoplay.toString()}
         // pause-on-hover={attributes.carousel.pause_on_hover.toString()}
@@ -28,18 +34,20 @@ export default function Save({ attributes }) {
          */
         content-alignment={attributes.content_alignment}
         /**
-         * Styles
+         * styles
          */
         style={{
           "--carousel-transition-speed":
             attributes.carousel.transition_speed + "ms",
+
+          "--card-shadow": getShadowValue(attributes.shadow),
 
           /** star */
           "--testimonial-star-size": attributes.star.size + "px",
           "--testimonial-star-default-color": attributes.star.default_color,
           "--testimonial-star-active-color": attributes.star.active_color,
           "--testimonial-star-spacing": attributes.star.spacing + "px",
-          "--testimonial-star-padding": `${attributes.star.padding.top}px ${attributes.star.padding.right}px ${attributes.star.padding.bottom}px ${attributes.star.padding.left}px`,
+          "--testimonial-star-margin": getPaddingValue(attributes.star.margin),
 
           "--carousel-item-spacing": attributes.item_spacing + "px",
           /** carousel dot */
@@ -58,27 +66,69 @@ export default function Save({ attributes }) {
           "--avatar-border-radius": `${attributes.avatar.border_radius.top}px ${attributes.avatar.border_radius.right}px ${attributes.avatar.border_radius.bottom}px ${attributes.avatar.border_radius.left}px`,
           "--avatar-size": attributes.avatar.size + "px",
           "--avatar-fitting": attributes.avatar.fitting,
+          "--avatar-margin": getPaddingValue(attributes.avatar.margin),
 
           /** name */
-          "--name-padding": `${attributes.name.padding.top}px ${attributes.name.padding.right}px ${attributes.name.padding.bottom}px ${attributes.name.padding.left}px`,
+          "--name-margin": getPaddingValue(attributes.name.margin),
           "--name-color": attributes.name.color,
           ...getTypographyVariables("name", attributes.name.typography),
 
           /** subname */
-          "--subname-padding": `${attributes.subname.padding.top}px ${attributes.subname.padding.right}px ${attributes.subname.padding.bottom}px ${attributes.subname.padding.left}px`,
+          "--subname-margin": getPaddingValue(attributes.subname.margin),
           "--subname-color": attributes.subname.color,
           ...getTypographyVariables("subname", attributes.subname.typography),
 
           /** content */
-          "--content-padding": `${attributes.content.padding.top}px ${attributes.content.padding.right}px ${attributes.content.padding.bottom}px ${attributes.content.padding.left}px`,
+          "--content-margin": getPaddingValue(attributes.content.margin),
           "--content-color": attributes.content.color,
           ...getTypographyVariables("content", attributes.content.typography),
 
           ...visibility,
         }}
       >
-        <InnerBlocks.Content />
+        <span class="forward-arrow carousel-arrow" data-slide="forward">
+          {leftArrow}
+        </span>
+        <div className="brandy-testimonials__list">
+          <InnerBlocks.Content />
+        </div>
+        <span class="backward-arrow carousel-arrow" data-slide="backward">
+          {rightArrow}
+        </span>
       </div>
     </div>
   );
 }
+
+const leftArrow = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10.5549 5.99554L16.0135 12L10.5549 18.0045L9.44495 16.9955L13.9863 12L9.44495 7.00456L10.5549 5.99554Z"
+      fill="#1E1E1E"
+    />
+  </svg>
+);
+const rightArrow = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M13.4451 18.0045L7.98645 12L13.4451 5.99548L14.555 7.00449L10.0136 12L14.555 16.9955L13.4451 18.0045Z"
+      fill="#1E1E1E"
+    />
+  </svg>
+);
