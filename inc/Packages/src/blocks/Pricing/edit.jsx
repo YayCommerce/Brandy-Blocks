@@ -152,7 +152,7 @@ const TEMPLATE_DEFAULT = [
         },
       ],
       button: "<a href='#'>Start Free Trial</a>",
-      position: 3,
+      position: 4,
     },
   ],
 ];

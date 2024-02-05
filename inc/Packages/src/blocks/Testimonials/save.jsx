@@ -19,7 +19,7 @@ export default function Save({ attributes }) {
   return (
     <div {...blockProps}>
       <div
-        className="brandy-testimonials-wrapper brandy-carousel"
+        className="brandy-testimonials-wrapper"
         /**
          * General
          */
@@ -86,15 +86,17 @@ export default function Save({ attributes }) {
           ...visibility,
         }}
       >
-        <span class="forward-arrow carousel-arrow" data-slide="forward">
-          {leftArrow}
-        </span>
-        <div className="brandy-testimonials__list">
-          <InnerBlocks.Content />
+        <div className="brandy-testimonials-carousel">
+          <span class="forward-arrow carousel-arrow" data-slide="forward">
+            {leftArrow}
+          </span>
+          <div className="brandy-testimonials__list">
+            <InnerBlocks.Content />
+          </div>
+          <span class="backward-arrow carousel-arrow" data-slide="backward">
+            {rightArrow}
+          </span>
         </div>
-        <span class="backward-arrow carousel-arrow" data-slide="backward">
-          {rightArrow}
-        </span>
       </div>
     </div>
   );

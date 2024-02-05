@@ -5,36 +5,38 @@ export default function Save({ attributes }) {
   const { rating } = attributes;
   const context = attributes.context;
   return (
-    <div {...blockProps} rating={rating}>
-      <div className="brandy-testimonials__card" data-rating={rating}>
-        {(context["brandy/testimonials/layout"] ?? []).map((item) => (
-          <>
-            {item === "avatar" && <InnerBlocks.Content />}
-            {item === "name" && (
-              <RichText.Content
-                tagName="p"
-                value={attributes.name}
-                className="brandy-testimonials__card__name"
-              />
-            )}
-            {item === "subname" && (
-              <RichText.Content
-                tagName="p"
-                value={attributes.subname}
-                className="brandy-testimonials__card__subname"
-              />
-            )}
-            {item === "content" && (
-              <RichText.Content
-                tagName="p"
-                value={attributes.content}
-                className="brandy-testimonials__card__content"
-              />
-            )}
-            {item === "rating" && <Rating />}
-          </>
-        ))}
-      </div>
+    <div
+      {...blockProps}
+      className={`${blockProps.className} brandy-testimonials__card`}
+      data-rating={rating}
+    >
+      {(context["brandy/testimonials/layout"] ?? []).map((item) => (
+        <>
+          {item === "avatar" && <InnerBlocks.Content />}
+          {item === "name" && (
+            <RichText.Content
+              tagName="p"
+              value={attributes.name}
+              className="brandy-testimonials__card__name"
+            />
+          )}
+          {item === "subname" && (
+            <RichText.Content
+              tagName="p"
+              value={attributes.subname}
+              className="brandy-testimonials__card__subname"
+            />
+          )}
+          {item === "content" && (
+            <RichText.Content
+              tagName="p"
+              value={attributes.content}
+              className="brandy-testimonials__card__content"
+            />
+          )}
+          {item === "rating" && <Rating />}
+        </>
+      ))}
     </div>
   );
 }

@@ -95,7 +95,8 @@ const FeatureCard = ({ detail, position }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDelete = () => {
+  const handleDelete = (e) => {
+    e.stopPropagation();
     const newList = [...attributes.features];
     newList.splice(position, 1);
     setAttributes({

@@ -40,7 +40,11 @@ export default function Edit({ attributes, setAttributes, context }) {
   );
 
   return (
-    <div {...blockProps} rating={attributes.rating}>
+    <div
+      {...blockProps}
+      className={`${blockProps.className} brandy-testimonials__card`}
+      data-rating={rating}
+    >
       <InspectorControls key="setting">
         <div className="brandy-editor">
           <div className="setting-wrapper">
@@ -54,40 +58,38 @@ export default function Edit({ attributes, setAttributes, context }) {
           </div>
         </div>
       </InspectorControls>
-      <div className="brandy-testimonials__card" data-rating={rating}>
-        {context["brandy/testimonials/layout"].map((item) => (
-          <>
-            {item === "avatar" && (
-              <InnerBlocks template={template} templateLock="all" />
-            )}
-            {item === "name" && (
-              <RichText
-                tagName="p"
-                value={attributes.name}
-                onChange={handleChangeValue("name")}
-                className="brandy-testimonials__card__name"
-              />
-            )}
-            {item === "subname" && (
-              <RichText
-                tagName="p"
-                value={attributes.subname}
-                onChange={handleChangeValue("subname")}
-                className="brandy-testimonials__card__subname"
-              />
-            )}
-            {item === "content" && (
-              <RichText
-                tagName="p"
-                value={attributes.content}
-                onChange={handleChangeValue("content")}
-                className="brandy-testimonials__card__content"
-              />
-            )}
-            {item === "rating" && <Rating />}
-          </>
-        ))}
-      </div>
+      {context["brandy/testimonials/layout"].map((item) => (
+        <>
+          {item === "avatar" && (
+            <InnerBlocks template={template} templateLock="all" />
+          )}
+          {item === "name" && (
+            <RichText
+              tagName="p"
+              value={attributes.name}
+              onChange={handleChangeValue("name")}
+              className="brandy-testimonials__card__name"
+            />
+          )}
+          {item === "subname" && (
+            <RichText
+              tagName="p"
+              value={attributes.subname}
+              onChange={handleChangeValue("subname")}
+              className="brandy-testimonials__card__subname"
+            />
+          )}
+          {item === "content" && (
+            <RichText
+              tagName="p"
+              value={attributes.content}
+              onChange={handleChangeValue("content")}
+              className="brandy-testimonials__card__content"
+            />
+          )}
+          {item === "rating" && <Rating />}
+        </>
+      ))}
     </div>
   );
 }

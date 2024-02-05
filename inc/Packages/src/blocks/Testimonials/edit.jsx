@@ -105,7 +105,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       <TestimonialsContext.Provider value={contextValue}>
         <Settings />
         <div
-          className="brandy-testimonials-wrapper brandy-carousel"
+          className="brandy-testimonials-wrapper"
           /**
            * General
            */
@@ -181,19 +181,21 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             ...visibility,
           }}
         >
-          <span class="forward-arrow carousel-arrow" data-slide="forward">
-            {leftArrow}
-          </span>
-          <div className="brandy-testimonials__list">
-            <InnerBlocks
-              template={template}
-              allowedBlocks={["brandy/single-testimonial"]}
-              templateLock="all"
-            />
+          <div className="brandy-testimonials-carousel">
+            <span class="forward-arrow carousel-arrow" data-slide="forward">
+              {leftArrow}
+            </span>
+            <div className="brandy-testimonials__list">
+              <InnerBlocks
+                template={template}
+                allowedBlocks={["brandy/single-testimonial"]}
+                templateLock="all"
+              />
+            </div>
+            <span class="backward-arrow carousel-arrow" data-slide="backward">
+              {rightArrow}
+            </span>
           </div>
-          <span class="backward-arrow carousel-arrow" data-slide="backward">
-            {rightArrow}
-          </span>
         </div>
       </TestimonialsContext.Provider>
     </div>

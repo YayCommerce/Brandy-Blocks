@@ -25,6 +25,7 @@
     intervalId = null;
     numberCard = 2;
     carouselElement = null;
+    testimonialsElement = null;
     blockElement = null;
     settings = {
       autoplay: true,
@@ -42,8 +43,15 @@
         this.numberCard = 1;
       }
       this.blockElement = $(element);
-      this.carouselElement = $(element).find(".brandy-carousel");
-      if (this.carouselElement == null || this.blockElement == null) {
+      this.carouselElement = $(element).find(".brandy-testimonials-carousel");
+      this.testimonialsElement = $(element).find(
+        ".brandy-testimonials-wrapper"
+      );
+      if (
+        this.carouselElement == null ||
+        this.blockElement == null ||
+        this.testimonialsElement == null
+      ) {
         return;
       }
       this.init();
@@ -52,12 +60,12 @@
       if (this.settings.infiniteLoop) {
         return;
       }
-      if (this.currentSlide === this.totalSlides - 1) {
+      if (this.currentSlide == this.totalSlides - 1) {
         $(this.carouselElement).find(".forward-arrow").hide();
       } else {
         $(this.carouselElement).find(".forward-arrow").show();
       }
-      if (this.currentSlide === 0) {
+      if (this.currentSlide == 0) {
         $(this.carouselElement).find(".backward-arrow").hide();
       } else {
         $(this.carouselElement).find(".backward-arrow").show();
@@ -110,7 +118,7 @@
       this.totalSlides = Math.ceil(this.totalItems / this.numberCard);
     }
     removeDots() {
-      $(this.carouselElement).find(".carousel-dots").remove();
+      $(this.testimonialsElement).find(".carousel-dots").remove();
     }
     applyStyles() {
       $(this.carouselElement)
@@ -193,10 +201,10 @@
       $(this.carouselElement)
         .find(".brandy-testimonials__list")
         .css("transform", `translateX(${xOffset}px)`);
-      $(this.carouselElement)
+      $(this.testimonialsElement)
         .find(".carousel-dot")
         .removeClass("current-slide");
-      $(this.carouselElement)
+      $(this.testimonialsElement)
         .find(`.carousel-dot[data-position='${this.currentSlide}']`)
         .addClass("current-slide");
     }
@@ -253,7 +261,7 @@
     }
     initDots() {
       if (this.totalItems > this.numberCard) {
-        $(this.carouselElement).append(
+        $(this.testimonialsElement).append(
           `<div class='carousel-dots'>${Array(this.totalSlides)
             .fill(true)
             .map(
@@ -267,7 +275,7 @@
       }
 
       const parentThis = this;
-      $(this.carouselElement)
+      $(this.testimonialsElement)
         .find(".carousel-dot")
         .on("click", function (e) {
           e.stopPropagation();
@@ -285,6 +293,7 @@
       this.initData();
       this.applyStyles();
       this.start();
+      this.showHideArrow();
       this.initDots();
     }
   }

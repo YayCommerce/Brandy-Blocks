@@ -41,40 +41,6 @@ const textStyles = [
       </svg>
     ),
   },
-  // {
-  //   key: "underline",
-  //   label: (
-  //     <svg
-  //       width="18"
-  //       height="18"
-  //       viewBox="0 0 18 18"
-  //       fill="none"
-  //       xmlns="http://www.w3.org/2000/svg"
-  //     >
-  //       <path
-  //         d="M4 15V16H14V15H4ZM9 13C10.5 13 11.6 12.6 12.4 11.8C13.2 11 13.5 9.8 13.5 8.3V2H12V7.8C12 9 11.8 9.9 11.4 10.6C11 11.3 10.2 11.6 9 11.6C7.8 11.6 7 11.3 6.6 10.6C6.2 9.9 6 9 6 7.8V2H4.5V8.2C4.5 9.7 4.9 10.9 5.6 11.7C6.4 12.6 7.5 13 9 13Z"
-  //         fill="#5A6D80"
-  //       />
-  //     </svg>
-  //   ),
-  // },
-  // {
-  //   key: "line_through",
-  //   label: (
-  //     <svg
-  //       width="18"
-  //       height="18"
-  //       viewBox="0 0 18 18"
-  //       fill="none"
-  //       xmlns="http://www.w3.org/2000/svg"
-  //     >
-  //       <path
-  //         d="M6.1 6V5.5C6.1 4.9 6.3 4.4 6.8 4.1C7.3 3.8 8 3.6 8.8 3.6C9.5 3.6 10.2 3.7 10.9 3.9C11.6 4.1 12.3 4.4 13 4.8L13.2 2.9C12.6 2.6 12 2.4 11.3 2.2C10.5 2.1 9.7 2 8.9 2C7.4 2 6.2 2.3 5.3 3C4.5 3.7 4.1 4.5 4.1 5.6V6H6.1ZM17 9H1V10H9.3C9.6 10.1 9.9 10.2 10.1 10.3C10.6 10.5 11 10.8 11.2 11.1C11.5 11.4 11.6 11.8 11.6 12.3C11.6 13 11.4 13.4 10.8 13.8C10.3 14.1 9.6 14.3 8.7 14.3C7.9 14.3 7.1 14.2 6.3 14C5.5 13.8 4.8 13.5 4.1 13.2L4 15.1C4.5 15.3 5.2 15.5 6 15.7C6.8 15.9 7.6 16 8.4 16C10.1 16 11.4 15.7 12.3 15C13.2 14.3 13.6 13.4 13.6 12.2C13.6 11.3 13.4 10.5 12.9 10H17V9Z"
-  //         fill="#5A6D80"
-  //       />
-  //     </svg>
-  //   ),
-  // },
 ];
 
 const transforms = [
@@ -268,7 +234,10 @@ export default function Typography({ value, onChange }) {
                 </div>
               </div>
               <div className="brandy-typography-group brandy-typography__font-weight">
-                <Label title={__("Weight", "brandy")} />
+                <Label
+                  title={__("Weight", "brandy")}
+                  style={{ display: "block" }}
+                />
                 <Select
                   options={weights}
                   selected={value.font_weight}

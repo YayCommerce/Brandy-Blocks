@@ -30,12 +30,6 @@
 		}
 	}
 
-	&__features-list {
-		display: var(--card-features-display);
-		flex-direction: column;
-		gap: var(--card-features-item-spacing);
-	}
-
 	&__highlight-badge {
 		display: none;
 		width: fit-content;
@@ -97,9 +91,9 @@
 
 		& > * {
 			display: block;
-			width: 100%;
 			padding: var(--card-button-padding);
 			color: var(--card-button-color) !important;
+			text-decoration: none;
 			& * {
 				color: var(--card-button-color) !important;
 			}
@@ -117,9 +111,9 @@
 	}
 
 	&__features-list {
-		display: flex;
+		display: var(--card-features-display);
 		flex-direction: column;
-		gap: 15px;
+		gap: var(--card-features-item-spacing);
 		padding: var(--card-features-margin);
 
 		.brandy-pricing-feature {
