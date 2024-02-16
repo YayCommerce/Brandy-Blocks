@@ -13,7 +13,7 @@
       "type": "object",
       "default": {
         "visible": true,
-        "color": "var(--body_text)",
+        "color": "var(--body_text, #000729)",
         "margin": {
           "top": 0,
           "left": 0,
@@ -35,7 +35,7 @@
       "default": {
         "visible": true,
         "price": {
-          "color": "#3858E9",
+          "color": "var(--accent, #3858E9)",
           "typography": {
             "font_size": 36,
             "bold": false,
@@ -68,7 +68,7 @@
       "type": "object",
       "default": {
         "visible": true,
-        "color": "#5A6D80",
+        "color": "var(--secondary_text, #5A6D80)",
         "typography": {
           "font_size": 16,
           "bold": false,
@@ -90,8 +90,8 @@
       "default": {
         "visible": true,
         "checked": {
-          "title_color": "var(--body_text)",
-          "icon_color": "#3858E9",
+          "title_color": "var(--body_text, #000729)",
+          "icon_color": "var(--accent, #3858E9)",
           "icon_background_color": "#EBF1F5",
           "typography": {
             "font_size": 18,
@@ -133,8 +133,8 @@
           "hover": "#ffffff"
         },
         "background_color": {
-          "normal": "#3858E9",
-          "hover": "#3858E9"
+          "normal": "var(--accent, #3858E9)",
+          "hover": "var(--accent, #3858E9)"
         },
         "width": 100,
         "border_radius": {
@@ -177,7 +177,7 @@
         },
         "border_color": {
           "normal": "#EBF1F5",
-          "hover": "#3858E9"
+          "hover": "var(--accent, #3858E9)"
         },
         "shadow": {
           "type": "none",
@@ -230,11 +230,11 @@
       "default": {
         "selected": 2,
         "card": {
-          "title_color": "#000729",
-          "pricing_price_color": "#3858E9",
-          "pricing_period_color": "#3858E9",
-          "description_color": "#5A6D80",
-          "checked_feature_icon_color": "#3858E9",
+          "title_color": "var(--body_text, #000729)",
+          "pricing_price_color": "var(--accent, #3858E9)",
+          "pricing_period_color": "var(--accent, #3858E9)",
+          "description_color": "var(--secondary_text, #5A6D80)",
+          "checked_feature_icon_color": "var(--accent, #3858E9)",
           "checked_feature_icon_background_color": "#EBF1F5",
           "checked_feature_title_color": "#000729",
           "unchecked_feature_icon_color": "#FFFFFF",
@@ -246,16 +246,16 @@
             "hover": "#ffffff"
           },
           "button_background_color": {
-            "normal": "#3858E9",
-            "hover": "#3858E9"
+            "normal": "var(--accent, #3858E9)",
+            "hover": "var(--accent, #3858E9)"
           },
           "background_color": {
             "normal": "#ffffff",
             "hover": "#ffffff"
           },
           "border_color": {
-            "normal": "#3858E9",
-            "hover": "#3858E9"
+            "normal": "var(--accent, #3858E9)",
+            "hover": "var(--accent, #3858E9)"
           }
         }
       }

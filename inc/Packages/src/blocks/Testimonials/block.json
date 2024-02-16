@@ -68,7 +68,7 @@
       "type": "object",
       "default": {
         "visible": true,
-        "color": "var(--body_text)",
+        "color": "var(--body_text, #122940)",
         "typography": {
           "font_size": 18,
           "bold": false,
@@ -89,7 +89,7 @@
       "type": "object",
       "default": {
         "visible": true,
-        "color": "#7F8287",
+        "color": "var(--secondary_text, #7F8287)",
         "typography": {
           "font_size": 14,
           "bold": false,
@@ -110,7 +110,7 @@
       "type": "object",
       "default": {
         "visible": true,
-        "color": "var(--palette_3)",
+        "color": "var(--palette_3, #122940)",
         "typography": {
           "font_size": 24,
           "bold": false,

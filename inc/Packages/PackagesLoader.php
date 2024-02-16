@@ -10,7 +10,11 @@ class PackagesLoader {
 
 	protected function __construct() {
 		$this->register_blocks();
+		global $pagenow;
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		if ( 'post.php' === $pagenow || 'page.php' === $pagenow ) {
+			add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
+		}
 		add_filter(
 			'block_categories_all',
 			function( $test ) {
