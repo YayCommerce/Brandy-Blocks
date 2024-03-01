@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eo pipefail
 
-function init-dependencies {
-	cd inc/Packages && yarn install
+function dev-init {
+	composer install && cd inc/Packages && yarn install
 }
 
 function dev {
