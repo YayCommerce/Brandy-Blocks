@@ -1,11 +1,9 @@
 import {
   InnerBlocks,
   InspectorControls,
-  useBlockProps,
   RichText,
-  MediaPlaceholder,
+  useBlockProps,
 } from "@wordpress/block-editor";
-import { useSelect } from "@wordpress/data";
 import { useEffect, useMemo } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import Slider from "../../components/Slider";

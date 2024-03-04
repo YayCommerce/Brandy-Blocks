@@ -1,0 +1,17 @@
+{
+  "apiVersion": 3,
+  "title": "All Products",
+  "name": "brandy/all-products",
+  "category": "brandy-blocks",
+  "description": "",
+  "attributes": {},
+  "providesContext": {},
+  "example": {
+    "viewportWidth": 2000,
+    "attributes": {}
+  },
+  "icon": "money-alt",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
