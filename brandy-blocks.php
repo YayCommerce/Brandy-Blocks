@@ -17,8 +17,8 @@ namespace BrandyBlocks;
 
 defined( 'ABSPATH' ) || exit;
 
-if ( ! defined( 'BRANDY_BLOCKS' ) ) {
-	define( 'BRANDY_BLOCKS', __FILE__ );
+if ( ! defined( 'BRANDY_BLOCKS_FILE' ) ) {
+	define( 'BRANDY_BLOCKS_FILE', __FILE__ );
 }
 if ( ! defined( 'BRANDY_BLOCKS_ABSPATH' ) ) {
 	define( 'BRANDY_BLOCKS_ABSPATH', dirname( __FILE__ ) . '/' );
