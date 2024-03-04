@@ -101,7 +101,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   };
 
   return (
-    <div {...blockProps}>
+    <div {...blockProps} className={blockProps.className + " block-upgraded"}>
       <TestimonialsContext.Provider value={contextValue}>
         <Settings />
         <div

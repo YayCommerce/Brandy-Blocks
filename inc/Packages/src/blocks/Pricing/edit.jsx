@@ -207,7 +207,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   );
 
   return (
-    <div {...blockProps}>
+    <div {...blockProps} className={blockProps.className + " block-upgraded"}>
       <PricingContext.Provider value={contextValue}>
         <Settings />
         <div
