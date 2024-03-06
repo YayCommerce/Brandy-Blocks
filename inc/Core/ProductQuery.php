@@ -7,65 +7,97 @@ use Automattic\WooCommerce\Blocks\Utils\BlocksWpQuery;
 
 class ProductQuery {
 
-    use SingletonTrait;
+	use SingletonTrait;
 
-    protected $meta_query;
+	protected $meta_query;
 
-    protected $attributes = [];
+	protected $attributes = array();
 
-    protected function parse_query_args() {
+	protected function parse_query_args() {
 
-        $meta_query = \WC()->query->get_meta_query();
+		$meta_query = \WC()->query->get_meta_query();
 
-        return array(
+		$order_by = isset( $this->attributes['order_by'] ) ? $this->attributes['order_by'] : 'latest';
+		$orderby  = '';
+		$order    = '';
+		$meta_key = '';
+
+		if ( 'latest' === $order_by ) {
+			$orderby = 'date';
+			$order   = 'DESC';
+		}
+
+		if ( 'popularity' === $order_by ) {
+			$meta_key = 'total_sales';
+			$orderby  = 'meta_value_num';
+		}
+
+		if ( 'rating' === $order_by ) {
+			$meta_key = '_wc_average_rating';
+			$orderby  = 'meta_value_num';
+		}
+
+		if ( 'lowest' === $order_by ) {
+			$meta_key = '_price';
+			$orderby  = 'meta_value_num';
+			$order    = 'asc';
+		}
+
+		if ( 'highest' === $order_by ) {
+			$meta_key = '_price';
+			$orderby  = 'meta_value_num';
+			$order    = 'desc';
+		}
+
+		return array(
 			'post_type'           => 'product',
 			'post_status'         => 'publish',
 			'fields'              => 'ids',
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => false,
-			'orderby'             => '',
-			'order'               => '',
+			'orderby'             => $orderby,
+			'order'               => $order,
 			'meta_query'          => $meta_query, // phpcs:ignore WordPress.DB.SlowDBQuery
 			'tax_query'           => array(), // phpcs:ignore WordPress.DB.SlowDBQuery
+			'meta_key'            => $meta_key,
 			'posts_per_page'      => $this->get_products_limit(),
+			'offset'              => $this->get_offset(),
 		);
-    }
-
-    protected function get_products_limit() {
-		if ( isset( $this->attributes['rows'], $this->attributes['columns'] ) && ! empty( $this->attributes['rows'] ) ) {
-			$this->attributes['limit'] = intval( $this->attributes['columns'] ) * intval( $this->attributes['rows'] );
-		}
-		return intval( $this->attributes['limit'] );
 	}
 
-    public function query( $attributes ) {
+	protected function get_offset() {
+		$current_page = isset( $this->attributes['page'] ) ? $this->attributes['page'] : 1;
+		$current_page = max( 1, $current_page );
+		$offset       = ( $current_page - 1 ) * ( $this->get_products_limit() );
+		return $offset;
+	}
 
-        $this->attributes = $attributes;
+	protected function get_products_limit() {
 
-        $query_args = $this->parse_query_args();
-
-        $is_cacheable      = (bool) apply_filters( 'woocommerce_blocks_product_grid_is_cacheable', true, $query_args );
-
-		$transient_version = \WC_Cache_Helper::get_transient_version( 'product_query' );
-
-		$query   = new BlocksWpQuery( $query_args );
-		$results = wp_parse_id_list( $is_cacheable ? $query->get_cached_posts( $transient_version ) : $query->get_posts() );
-
-		// Remove ordering query arguments which may have been added by get_catalog_ordering_args.
-		WC()->query->remove_ordering_args();
-
-		// Prime caches to reduce future queries. Note _prime_post_caches is private--we could replace this with our own
-		// query if it becomes unavailable.
-		if ( is_callable( '_prime_post_caches' ) ) {
-			_prime_post_caches( $results );
+		if ( false === $this->attributes['pagination'] ) {
+			return -1;
 		}
 
-		$this->prime_product_variations( $results );
+		if ( ! isset( $this->attributes['number_products'] ) ) {
+			return 9;
+		}
+		return intval( $this->attributes['number_products'] );
+	}
+
+	public function query( $attributes ) {
+
+		$this->attributes = $attributes;
+
+		$query_args = $this->parse_query_args();
+
+		$query = new BlocksWpQuery( $query_args );
+
+		$results = $query->get_posts();
 
 		return $results;
-    }
+	}
 
-    protected function prime_product_variations( $product_ids ) {
+	protected function prime_product_variations( $product_ids ) {
 		$cache_group       = 'product_variation_meta_data';
 		$prime_product_ids = $this->get_non_cached_ids( wp_parse_id_list( $product_ids ), $cache_group );
 
@@ -98,23 +130,23 @@ class ProductQuery {
 				$values[ $variation_ids_by_parent[ $data->variation_id ] ?? 0 ][] = $data;
 				return $values;
 			},
-			array_fill_keys( $prime_product_ids, [] )
+			array_fill_keys( $prime_product_ids, array() )
 		);
 
 		// Cache everything.
 		foreach ( $primed_data as $product_id => $variation_meta_data ) {
 			wp_cache_set(
 				$product_id,
-				[
+				array(
 					'last_modified' => get_the_modified_date( 'U', $product_id ),
 					'data'          => $variation_meta_data,
-				],
+				),
 				$cache_group
 			);
 		}
 	}
 
-    protected function get_non_cached_ids( $product_ids, $cache_key ) {
+	protected function get_non_cached_ids( $product_ids, $cache_key ) {
 		$non_cached_ids = array();
 		$cache_values   = wp_cache_get_multiple( $product_ids, $cache_key );
 

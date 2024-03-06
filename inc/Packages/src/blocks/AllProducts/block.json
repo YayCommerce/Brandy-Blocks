@@ -4,7 +4,27 @@
   "name": "brandy/all-products",
   "category": "brandy-blocks",
   "description": "",
-  "attributes": {},
+  "attributes": {
+    "layout_settings": {
+      "type": "object",
+      "default": {
+        "columns": {
+          "desktop": 4,
+          "tablet": 2,
+          "mobile": 1
+        },
+        "number_products": 9
+      }
+    },
+    "content_settings": {
+      "type": "object",
+      "default": {
+        "show_sorting": true,
+        "pagination": true,
+        "order_by": "latest"
+      }
+    }
+  },
   "providesContext": {},
   "example": {
     "viewportWidth": 2000,

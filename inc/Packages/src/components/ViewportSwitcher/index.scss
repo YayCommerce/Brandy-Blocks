@@ -1,0 +1,50 @@
+.viewport-switcher {
+    position: relative;
+    display: inline-block;
+
+    .viewport-item {
+        width: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+        cursor: pointer;
+    }
+
+    .viewport-modal {
+        opacity: 0;
+        visibility: hidden;
+        background-color: #ffffff;
+        box-shadow: 2px 4px 10px 0px rgba(105, 116, 132, 0.2);
+        padding: 5px 2px;
+        border-radius: 5px;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+
+        &.opened {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .viewport-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .viewport-item {
+                &:hover {
+                    background-color: rgb(239, 246, 255);
+                }
+                &.selected {
+                    svg *[fill] {
+                        fill: #2271b1;
+                    }
+                }
+                padding: 5px 3px;
+            }
+        }
+    }
+}
