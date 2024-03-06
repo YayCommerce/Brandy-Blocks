@@ -30,6 +30,16 @@ class AllProducts extends AbstractBlock {
 
 	protected $attributes = array();
 
+	protected function __construct() {
+
+		if ( ! function_exists( 'WC' ) ) {
+			return;
+		}
+
+		parent::__construct();
+
+	}
+
 	protected function init_hooks() {
 		add_action( 'wp_ajax_nopriv_brandy_blocks_all_products_render_list', array( $this, 'ajax_render_list' ) );
 		add_action( 'wp_ajax_brandy_blocks_all_products_render_list', array( $this, 'ajax_render_list' ) );
@@ -279,6 +289,11 @@ class AllProducts extends AbstractBlock {
 	}
 
 	public static function render_product_placeholder() {
+
+		if ( ! function_exists( 'WC' ) ) {
+			return '';
+		}
+
 		return sprintf(
 			'<li class="brandy-block-product-placeholder" aria-hidden="true">
 				<div class="brandy-block-product-placeholder__image">
