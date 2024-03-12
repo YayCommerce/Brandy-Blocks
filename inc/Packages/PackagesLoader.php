@@ -61,6 +61,10 @@ class PackagesLoader {
 			'brandy_blocks_script',
 			'brandyBlocks',
 			array(
+				'url'    => array(
+					'site'   => get_site_url(),
+					'images' => BRANDY_BLOCKS_PLUGIN_URL . 'assets/images',
+				),
 				'ajax'   => array(
 					'path' => admin_url( 'admin-ajax.php' ),
 				),

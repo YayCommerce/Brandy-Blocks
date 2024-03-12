@@ -9,51 +9,48 @@ import {
 import Settings from "./Settings";
 import metadata from "./block.json";
 
-const TEMPLATE = [
-  [
-    "brandy/single-testimonial",
-    {
-      id: Date.now(),
-      name: "William Hallen",
-      subname: "CEO",
-      content:
-        "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
-      rating: 5,
-      image:
-        "https://thien.ninjateam.org/wp-content/uploads/2024/01/slide2-human-1-1.png",
-    },
-  ],
-  [
-    "brandy/single-testimonial",
-    {
-      id: Date.now(),
-      name: "Anthony Nguyen",
-      subname: "Customer feedback at Google Reviews",
-      content:
-        "Making a type specimen book, also the leap into electronic typesetting, remain essentially unchanged or avoids pleasure itself the master builder of amet lorem ipsum human happiness.",
-      rating: 5,
-      image:
-        "https://thien.ninjateam.org/wp-content/uploads/2024/01/slide3-pic1-1-1.png",
-    },
-  ],
-  [
-    "brandy/single-testimonial",
-    {
-      id: Date.now(),
-      name: "William Hallen",
-      subname: "CEO",
-      content:
-        "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
-      rating: 5,
-      image:
-        "https://thien.ninjateam.org/wp-content/uploads/2024/01/01-12-1-1.png",
-    },
-  ],
-];
-
 export const TestimonialsContext = createContext({});
 
 export default function Edit({ attributes, setAttributes, clientId }) {
+  const TEMPLATE = [
+    [
+      "brandy/single-testimonial",
+      {
+        id: Date.now(),
+        name: "William Hallen",
+        subname: "CEO",
+        content:
+          "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
+        rating: 5,
+        image: window.brandyBlocks.url.images + "/member-1.png",
+      },
+    ],
+    [
+      "brandy/single-testimonial",
+      {
+        id: Date.now(),
+        name: "Anthony Nguyen",
+        subname: "Customer feedback at Google Reviews",
+        content:
+          "Making a type specimen book, also the leap into electronic typesetting, remain essentially unchanged or avoids pleasure itself the master builder of amet lorem ipsum human happiness.",
+        rating: 5,
+        image: window.brandyBlocks.url.images + "/member-2.png",
+      },
+    ],
+    [
+      "brandy/single-testimonial",
+      {
+        id: Date.now(),
+        name: "William Hallen",
+        subname: "CEO",
+        content:
+          "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
+        rating: 5,
+        image: window.brandyBlocks.url.images + "/member-3.png",
+      },
+    ],
+  ];
+
   const blockProps = useBlockProps();
 
   const dataAttributes = useMemo(

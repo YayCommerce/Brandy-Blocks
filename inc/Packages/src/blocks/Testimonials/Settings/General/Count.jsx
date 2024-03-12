@@ -27,8 +27,7 @@ export default function Count() {
             content:
               "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled. That produces no resultant pleasure.",
             rating: 5,
-            image:
-              "https://thien.ninjateam.org/wp-content/uploads/2024/01/slide2-human-1-1.png",
+            image: window.brandyBlocks.url.images + "/member-3.png",
           },
         ]);
       return [...t, []];
