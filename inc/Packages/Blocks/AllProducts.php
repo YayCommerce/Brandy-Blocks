@@ -6,6 +6,7 @@ use BrandyBlocks\Core\ProductController;
 use BrandyBlocks\Core\ProductQuery;
 use BrandyBlocks\Packages\Abstracts\AbstractBlock;
 use BrandyBlocks\Traits\SingletonTrait;
+use BrandyBlocks\Utils\Helpers;
 use Error;
 
 class AllProducts extends AbstractBlock {
@@ -263,7 +264,7 @@ class AllProducts extends AbstractBlock {
 				throw new Error( 'Verify nonce failed!' );
 			}
 
-			$attributes = isset( $_POST['attributes'] ) ? $_POST['attributes'] : array();
+			$attributes = isset( $_POST['attributes'] ) ? Helpers::sanitize_array( $_POST['attributes'] ) : array();
 
 			if ( empty( $attributes ) ) {
 				throw new Error( 'Null data!' );
