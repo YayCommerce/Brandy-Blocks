@@ -61,7 +61,7 @@ class ProductController {
 			return '';
 		}
 
-		return sprintf( '<span class="brandy-block-product__sale-flash onsale">%s</span>', esc_html__( 'Sale!', 'woocommerce' ) );
+		return sprintf( '<span class="brandy-block-product__sale-flash onsale">%s</span>', esc_html__( 'Sale!', 'brandy-blocks' ) );
 	}
 
 	public function get_template_pricing() {

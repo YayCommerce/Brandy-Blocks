@@ -92,7 +92,7 @@ class AllProducts extends AbstractBlock {
 		return sprintf(
 			'<ul class="products brandy-product-list" %s>%s</ul>',
 			join( ' ', $list_attributes ),
-			implode( '', array_map( array( $this, 'render_product' ), $products ) ),
+			implode( '', array_map( array( $this, 'render_product' ), $products ) )
 		);
 	}
 
@@ -219,7 +219,7 @@ class AllProducts extends AbstractBlock {
 				"$page_class $arrow_class next-arrow",
 				'→',
 				__( 'Next page', 'brandy-blocks' ),
-				$this->attributes['page'] === $total_pages ? 'disabled' : '',
+				$this->attributes['page'] === $total_pages ? 'disabled' : ''
 			);
 		}
 

@@ -51,7 +51,7 @@ class TestElement extends \Elementor\Widget_Base {
 
 		?>
 
-		<p> Hello <?php echo $settings['title']; ?> </p>
+		<p> Hello <?php echo esc_html( $settings['title'] ); ?> </p>
 
 		<?php
 	}
