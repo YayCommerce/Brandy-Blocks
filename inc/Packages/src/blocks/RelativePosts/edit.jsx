@@ -29,6 +29,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   return (
     <div {...blockProps} className={blockProps.className + " block-upgraded"}>
       <AllProductsContext.Provider value={contextValue}>
+        <Settings/> 
         <ServerSideRender
           block="brandy/relative-posts"
           LoadingResponsePlaceholder={Loader}
