@@ -9,7 +9,7 @@
       "type": "object",
       "default": {
         "related": "category",
-        "order_by": "date",
+        "order_by": "title",
         "order": "desc"
       }
     }

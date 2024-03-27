@@ -24,7 +24,7 @@ export default function Settings() {
     <InspectorControls key="setting">
       <div className="brandy-editor relative-posts-settings">
         <PanelBody title={__("Posts Query", "brandy")}>
-          <div style={{ marginBottom: 20 }}>
+          <div style={{ marginBottom: 15 }}>
             <Label
               title={__("Related Posts by", "brandy")}
               style={labelStyle}
@@ -38,7 +38,7 @@ export default function Settings() {
               onChange={handleChangeValue("related")}
             />
           </div>
-          <div style={{ marginBottom: 20 }}>
+          <div style={{ marginBottom: 15 }}>
             <Label title={__("Order by", "brandy")} style={labelStyle} />
             <Select
               options={[
