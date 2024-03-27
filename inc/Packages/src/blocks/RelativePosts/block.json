@@ -5,23 +5,12 @@
   "category": "brandy-blocks",
   "description": "",
   "attributes": {
-    "layout_settings": {
+    "posts_query": {
       "type": "object",
       "default": {
-        "columns": {
-          "desktop": 4,
-          "tablet": 2,
-          "mobile": 1
-        },
-        "number_products": 9
-      }
-    },
-    "content_settings": {
-      "type": "object",
-      "default": {
-        "show_sorting": true,
-        "pagination": true,
-        "order_by": "latest"
+        "related": "category",
+        "order_by": "date",
+        "order": "desc"
       }
     }
   },

@@ -51,8 +51,9 @@ class RelativePosts extends AbstractBlock {
 	}
 
 	public function render( $attributes = array(), $content = '', $block = null ) {
-		$a = do_shortcode( '[brandy_relative_blogs]' );
-		return $a;
+		$posts_query = $attributes['posts_query'] ?? [];
+		$shortcode = sprintf( '[brandy_relative_blogs related="%s" order_by="%s" order="%s"]', $posts_query['related'] ?? '', $posts_query['order_by'] ?? '', $posts_query['order'] ?? '' );
+		return do_shortcode( $shortcode );
 	}
 
 }

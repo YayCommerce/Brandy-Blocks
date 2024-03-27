@@ -4,17 +4,15 @@ import ServerSideRender from "@wordpress/server-side-render";
 import Settings from "./Settings";
 import metadata from "./block.json";
 
-export const AllProductsContext = createContext({});
+export const RelativePostsContext = createContext({});
 
 export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps();
 
   const dataAttributes = useMemo(
     () => ({
-      layout_settings:
-        attributes.layout_settings ?? metadata.attributes.layout_settings,
-      content_settings:
-        attributes.content_settings ?? metadata.attributes.content_settings,
+      posts_query:
+        attributes.posts_query ?? metadata.attributes.posts_query,
     }),
     [attributes]
   );
@@ -28,14 +26,14 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   );
   return (
     <div {...blockProps} className={blockProps.className + " block-upgraded"}>
-      <AllProductsContext.Provider value={contextValue}>
+      <RelativePostsContext.Provider value={contextValue}>
         <Settings/> 
         <ServerSideRender
           block="brandy/relative-posts"
           LoadingResponsePlaceholder={Loader}
           attributes={dataAttributes}
         />
-      </AllProductsContext.Provider>
+      </RelativePostsContext.Provider>
     </div>
   );
 }
