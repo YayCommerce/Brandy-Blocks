@@ -9,7 +9,6 @@ import { useContext } from "@wordpress/element";
 const labelStyle = { marginBottom: 10 };
 
 export default function Settings() {
-
   const { attributes, setAttributes } = useContext(RelativePostsContext);
 
   const handleChangeValue = (key) => (value) => {
@@ -23,37 +22,47 @@ export default function Settings() {
 
   return (
     <InspectorControls key="setting">
-      <div className="brandy-editor all-products-settings">
+      <div className="brandy-editor relative-posts-settings">
         <PanelBody title={__("Posts Query", "brandy")}>
-          <Label title={__("Related Posts by", "brandy")} style={labelStyle} />
-          <Select
-            options={[
-              { label: "Categories", value: "categories" },
-              { label: "Tags", value: "tag" },
-            ]}
-            selected={attributes.posts_query.relative_posts_by ?? "categories"}
-            onChange={handleChangeValue('related')}
-          />
-
-          <Label title={__("Order by", "brandy")} style={labelStyle} />
-          <Select
-            options={[
-              { label: "Date", value: "date" },
-              { label: "Title", value: "title" },
-            ]}
-            selected={attributes.posts_query.order_by ?? "date"}
-            onChange={handleChangeValue('order_by')}
-          />
-
-          <Label title={__("Order", "brandy")} style={labelStyle} />
-          <Select
-            options={[
-              { label: "Ascending", value: "asc" },
-              { label: "Descending", value: "des" },
-            ]}
-            selected={attributes.posts_query.order ?? "desc"}
-            onChange={handleChangeValue('order')}
-          />
+          <div style={{ marginBottom: 20 }}>
+            <Label
+              title={__("Related Posts by", "brandy")}
+              style={labelStyle}
+            />
+            <Select
+              options={[
+                { label: "Categories", value: "categories" },
+                { label: "Tags", value: "tag" },
+              ]}
+              selected={attributes.posts_query.related ?? "categories"}
+              onChange={handleChangeValue("related")}
+            />
+          </div>
+          <div style={{ marginBottom: 20 }}>
+            <Label title={__("Order by", "brandy")} style={labelStyle} />
+            <Select
+              options={[
+                { label: "Date", value: "date" },
+                { label: "Title", value: "title" },
+                { label: "Post Order", value: "menu_order" },
+                { label: "Random", value: "rand" },
+                { label: "Comment Counts", value: "comment_count" },
+              ]}
+              selected={attributes.posts_query.order_by ?? "date"}
+              onChange={handleChangeValue("order_by")}
+            />
+          </div>
+          <div>
+            <Label title={__("Order", "brandy")} style={labelStyle} />
+            <Select
+              options={[
+                { label: "Ascending", value: "asc" },
+                { label: "Descending", value: "des" },
+              ]}
+              selected={attributes.posts_query.order ?? "desc"}
+              onChange={handleChangeValue("order")}
+            />
+          </div>
         </PanelBody>
       </div>
     </InspectorControls>
