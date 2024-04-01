@@ -3,17 +3,31 @@
 namespace BrandyBlocks\Elementor;
 
 use BrandyBlocks\Elementor\Elements\TestElement;
+use BrandyBlocks\Elementor\Elements\ProductCatalogElement;
+
 use BrandyBlocks\Traits\SingletonTrait;
 
 class ElementorSetup {
 	use SingletonTrait;
 
 	protected function __construct() {
+		add_action( 'elementor/elements/categories_registered', array( $this, 'add_brandy_widget_categories' ) );
 		add_action( 'elementor/widgets/register', array( $this, 'register_elements' ) );
+		
+	}
 
+	public function add_brandy_widget_categories( $elements_manager ) {
+		$elements_manager->add_category(
+			'brandy-blocks',
+			[
+				'title' => __( 'Brandy', 'text-domain' ),
+				'icon'  => 'fa fa-brands fa-bandcam',
+			]
+		);
 	}
 
 	public function register_elements( $widgets_manager ) {
 		$widgets_manager->register( new TestElement() );
+		$widgets_manager->register( new ProductCatalogElement() );
 	}
 }

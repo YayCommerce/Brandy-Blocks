@@ -7,7 +7,6 @@ export default function ContentSettings() {
   const { attributes, setAttributes } = useContext(ProductCatalogContext);
 
   const handleChangeValue = (key) => (value) => {
-    console.log(key,Boolean(value))
     setAttributes({
       content_settings: {
         ...attributes.content_settings,

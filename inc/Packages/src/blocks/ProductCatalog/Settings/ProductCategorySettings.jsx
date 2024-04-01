@@ -4,7 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { ProductCatalogContext } from "../edit";
 import { useSelect } from '@wordpress/data';
 
-export default function ProductSettings() {
+export default function ProductCategorySettings() {
     
     const { attributes, setAttributes } = useContext(ProductCatalogContext);
     const selectedCategories = attributes.product_category_settings.selectedCategories;
