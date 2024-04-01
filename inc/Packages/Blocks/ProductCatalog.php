@@ -19,13 +19,14 @@ class ProductCatalog extends AbstractBlock {
 				'mediaID'  => null,
 				'imageURL' => 'https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png',
 				'title'    => 'Our top stars',
-				'subtitle' => 'Discover and shop our most popular plants, pots and accessories',
+				'subTitle' => 'Discover and shop our most popular plants, pots and accessories',
+                'buttonText' => 'Shop Now',
 			),
 			'secondary' => array(
 				'mediaID'  => null,
 				'imageURL' => 'https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png',
 				'title'    => 'Love Your Space',
-				'subtitle' => 'Get 25% off everything',
+				'buttonText' => 'Shop Now',
 			),
 		),
 		'content_settings'          => array(
@@ -122,8 +123,9 @@ class ProductCatalog extends AbstractBlock {
 		$banner   = $this->attributes['banner_settings'][ $key ];
 		$imageURL = isset( $banner['imageURL'] ) && ! empty( $banner['imageURL'] ) ? $banner['imageURL'] : '';
 		$title    = ! empty( $banner['title'] ) ? $banner['title'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['title'];
-		$subTitle = ! empty( $banner['subtitle'] ) ? $banner['subtitle'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['subtitle'];
-
+		$subTitle = ! empty( $banner['subTitle'] ) ? $banner['subTitle'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['subTitle'];
+        $buttonText = ! empty( $banner['buttonText'] ) ? $banner['buttonText'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['buttonText'];
+        
 		return sprintf(
 			'<div class="product brandy-banner-wrapper %1$s" id="%2$s">
                 <div class="brandy-product-catalog-banner">
@@ -132,14 +134,15 @@ class ProductCatalog extends AbstractBlock {
                     <h2>%4$s</h2>
                     <p>%5$s</p>
                     </div>
-                    <p><a href="#" class="brandy-button-banner">Shop Now</a></p>
+                    <p><a href="#" class="brandy-button-banner">%6$s</a></p>
             </div>
         </div>',
 			esc_attr( 'brandy-' . $key . '-banner-wrapper' ),
 			esc_attr( 'brandy_' . $key . '_banner_' . md5( uniqid() ) ),
 			esc_url( $imageURL ),
 			esc_html( $title ),
-			esc_html( $subTitle )
+			esc_html( $subTitle ),
+            esc_html( $buttonText )
 		);
 	}
 

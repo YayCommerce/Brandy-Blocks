@@ -84,8 +84,14 @@ export default function BannerSettings() {
                         <TextareaControl
                             label="Textarea"
                             rows={2}
-                            value={ banner.subtitle }
-                            onChange={ doChangeBannerText(key,"subtitle") }
+                            value={ banner.subTitle }
+                            onChange={ doChangeBannerText(key,"subTitle") }
+                        />
+                        <TextControl
+                            label={__("Button text", "brandy")}
+                            value={ banner.buttonText }
+                            onChange={doChangeBannerText(key,"buttonText")}
+                            type="text"
                         />
                     </div>
                 </PanelBody>

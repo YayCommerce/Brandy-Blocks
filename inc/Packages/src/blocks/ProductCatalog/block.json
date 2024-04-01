@@ -12,13 +12,15 @@
                 "mediaID": null,
                 "imageURL": "https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png",
                 "title": "Our top stars",
-                "subtitle":"Discover and shop our most popular plants, pots and accessories"
+                "subTitle":"Discover and shop our most popular plants, pots and accessories",
+                "buttonText" : "Shop Now"
             },
             "secondary": {
                 "mediaID": null,
                 "imageURL": "https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png",
                 "title": "Love Your Space",
-                "subtitle":"Get 25% off everything"
+                "subTitle":"Get 25% off everything",
+                "buttonText" : "Shop Now"
             }
         }
         
