@@ -243,20 +243,37 @@ class ProductCatalogElement extends \Elementor\Widget_Base {
 	public function render_product( $product ) {
 
         $product_controller = new ProductController( $product );
-
-        $content            = sprintf(
-			'<div class="product">
-				<div class="brandy-block-product__thumbnail">%s%s</div>
-				<div class="brandy-block-product__content">%s%s%s%s%s</div>
-			</div>',
-			$this->parse_bool($this->settings['showImage']) ? $product_controller->get_template_sale_flash() : '',
-			$this->parse_bool($this->settings['showImage']) ? $product_controller->get_template_image() : '',
-			$this->parse_bool($this->settings['showCategory']) ? $product_controller->get_template_category() : '',
-			$this->parse_bool($this->settings['showTitle']) ? $product_controller->get_template_title() : '',
-			$this->parse_bool($this->settings['showRating']) ? $product_controller->get_template_rating() : '',
-			$this->parse_bool($this->settings['showPrice']) ? $product_controller->get_template_pricing() : '',
-			$this->parse_bool($this->settings['showAddToCart']) ? $product_controller->get_template_button() : ''
-		);
+		if ( function_exists( 'brandy_loop_product_item' ) ) {
+			ob_start();
+			\brandy_loop_product_item(
+				$product,
+				array(
+					'show_title'      => $this->parse_bool( $this->settings['showTitle'] ),
+					'show_image'      => $this->parse_bool( $this->settings['showImage'] ),
+					'show_button'     => $this->parse_bool( $this->settings['showAddToCart'] ),
+					'show_category'   => $this->parse_bool( $this->settings['showCategory'] ),
+					'show_rating'     => $this->parse_bool( $this->settings['showRating'] ),
+					'show_price'      => $this->parse_bool( $this->settings['showPrice'] ),
+					'show_sale_flash' => $this->parse_bool( $this->settings['showImage'] ),
+				)
+			);
+			$content = ob_get_contents();
+			ob_end_clean();
+		} else {
+			$content            = sprintf(
+				'<div class="product">
+					<div class="brandy-block-product__thumbnail">%s%s</div>
+					<div class="brandy-block-product__content">%s%s%s%s%s</div>
+				</div>',
+				$this->parse_bool($this->settings['showImage']) ? $product_controller->get_template_sale_flash() : '',
+				$this->parse_bool($this->settings['showImage']) ? $product_controller->get_template_image() : '',
+				$this->parse_bool($this->settings['showCategory']) ? $product_controller->get_template_category() : '',
+				$this->parse_bool($this->settings['showTitle']) ? $product_controller->get_template_title() : '',
+				$this->parse_bool($this->settings['showRating']) ? $product_controller->get_template_rating() : '',
+				$this->parse_bool($this->settings['showPrice']) ? $product_controller->get_template_pricing() : '',
+				$this->parse_bool($this->settings['showAddToCart']) ? $product_controller->get_template_button() : ''
+			);
+		}
        
 		return $content;
 	}
