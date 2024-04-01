@@ -1,0 +1,89 @@
+.brandy-block-product-catalog {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    .brandy-primary-banner-wrapper{
+        grid-column: 1; 
+        grid-row: span 2;
+    }
+    .brandy-secondary-banner-wrapper{
+        grid-column: 4; 
+        grid-row: span 2;
+    }
+    .brandy-product-catalog-banner {
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+    
+      .brandy-product-catalog-banner img {
+        width: 100%;
+        height: auto;
+      }
+    
+      .banner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 5px;
+        h2{
+            color: #fff;
+        }
+      }
+      .brandy-button-banner {
+        background-color: #cccccc;
+        text-decoration: none !important;
+        padding: 15px 10px;
+        color: #fff;
+        border-radius: 10px;
+      }
+      .product {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+      }
+    
+      .product-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+}
+.brandy-product-settings-wrapper{
+    .brandy-product-show-hide-element{
+        margin: 15px 0px;
+    }
+}
+
+.product-catalog-banner-wrapper {
+    .brandy-banner-image-container{
+        position: relative;
+        display: inline-block;
+        margin-top: 15px;
+        .brandy-remove-image-button{
+            &:hover {
+                opacity: 0.6;
+            }
+            position: absolute;
+            top: 5px;
+            right: -25px;
+            background-color: #a04545;
+            color: white;
+            padding: 5px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+    }
+}
