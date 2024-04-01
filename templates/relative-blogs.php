@@ -16,7 +16,7 @@ $related    = $args['related'] ?? 'categories';
 $order_by   = $args['order_by'] ?? 'title';
 $order_type = $args['order'] ?? 'asc';
 
-$relative_posts = Helpers::brandy_get_relative_posts( get_the_ID(), $related, $order_by, $order_type );
+$relative_posts = Helpers::get_relative_posts( get_the_ID(), $related, $order_by, $order_type );
 
 ?>
 

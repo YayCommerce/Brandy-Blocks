@@ -11,9 +11,8 @@ class Helpers {
 		}
 	}
 
-	public static function brandy_get_relative_posts( $post_id, $related = 'categories', $order_by = 'title', $order_type = 'asc' ) {
-		$term_ids          = array();
-		$current_post_type = get_post_type( $post_id );
+	public static function get_relative_posts( $post_id, $related = 'categories', $order_by = 'title', $order_type = 'asc' ) {
+		$term_ids = array();
 
 		$terms = ( 'tags' === $related ) ? get_the_tags( $post_id ) : get_the_category( $post_id );
 
@@ -26,7 +25,7 @@ class Helpers {
 			'posts_per_page'         => 3,
 			'no_found_rows'          => true,
 			'post_status'            => 'publish',
-			'post_type'              => $current_post_type,
+			'post_type'              => 'post',
 			'orderby'                => $order_by,
 			'fields'                 => 'ids',
 			'order'                  => $order_type,

@@ -10,11 +10,11 @@ class ShortcodesLoader {
 
 	protected function __construct() {
 		if ( ! defined( 'BRANDY_TEMPLATE_DIR' ) ) {
-			add_shortcode( 'brandy_relative_blogs', array( $this, 'brandy_relative_blogs' ) );
+			add_shortcode( 'brandy_relative_blogs', array( $this, 'relative_blogs' ) );
 		}
 	}
 
-	public function brandy_relative_blogs( $atts ) {
+	public function relative_blogs( $atts ) {
 		$atts = shortcode_atts(
 			array(
 				'related'  => 'categories',

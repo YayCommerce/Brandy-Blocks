@@ -15,20 +15,7 @@ class RelativePosts extends AbstractBlock {
 
 	public $name = 'RelativePosts';
 
-	public const RENDER_LIST_ACTION = 'brandy_blocks_relative_posts_render_list';
-
-
 	protected $attributes = array();
-
-	protected function __construct() {
-
-		if ( ! function_exists( 'WC' ) ) {
-			return;
-		}
-
-		parent::__construct();
-
-	}
 
 	protected function init_hooks() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -51,8 +38,8 @@ class RelativePosts extends AbstractBlock {
 	}
 
 	public function render( $attributes = array(), $content = '', $block = null ) {
-		$posts_query = $attributes['posts_query'] ?? [];
-		$shortcode = sprintf( '[brandy_relative_blogs related="%s" order_by="%s" order="%s"]', $posts_query['related'] ?? '', $posts_query['order_by'] ?? '', $posts_query['order'] ?? '' );
+		$posts_query = $attributes['posts_query'] ?? array();
+		$shortcode   = sprintf( '[brandy_relative_blogs related="%s" order_by="%s" order="%s"]', $posts_query['related'] ?? '', $posts_query['order_by'] ?? '', $posts_query['order'] ?? '' );
 		return do_shortcode( $shortcode );
 	}
 
