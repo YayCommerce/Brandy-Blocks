@@ -23,7 +23,7 @@ if ( ! defined( 'BRANDY_BLOCKS_FILE' ) ) {
 	define( 'BRANDY_BLOCKS_FILE', __FILE__ );
 }
 if ( ! defined( 'BRANDY_BLOCKS_ABSPATH' ) ) {
-	define( 'BRANDY_BLOCKS_ABSPATH', dirname( __FILE__ ) . '/' );
+	define( 'BRANDY_BLOCKS_ABSPATH', __DIR__ . '/' );
 }
 if ( ! defined( 'BRANDY_BLOCKS_PLUGIN_PATH' ) ) {
 	define( 'BRANDY_BLOCKS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );

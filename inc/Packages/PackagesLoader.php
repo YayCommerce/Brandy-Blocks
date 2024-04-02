@@ -19,7 +19,7 @@ class PackagesLoader {
 		}
 		add_filter(
 			'block_categories_all',
-			function( $test ) {
+			function ( $test ) {
 				$test[] = array(
 					'slug'  => 'brandy-blocks',
 					'title' => 'Brandy',

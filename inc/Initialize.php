@@ -1,6 +1,7 @@
 <?php
 
 namespace BrandyBlocks;
+
 use BrandyBlocks\Elementor\ElementorSetup;
 use BrandyBlocks\Packages\PackagesLoader;
 

@@ -1,24 +1,35 @@
 {
-  "name": "brandy-blocks/tools",
+  "name": "tatthang96/catfolders",
+  "description": "Tools for developement",
+  "type": "project",
+  "license": "GPL",
   "authors": [
     {
-      "name": "yaycommerce"
+      "name": "thang-nhatrangart",
+      "email": "thang@nhatrangart.com"
     }
   ],
-  "require-dev": {
-    "10up/phpcs-composer": "dev-master"
-  },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
-  },
   "scripts": {
+    "cs": "./vendor/bin/phpcs",
+    "cbf": "./vendor/bin/phpcbf",
+    "dev": "./vendor/bin/phpcs --config-set installed_paths ../../phpcompatibility/php-compatibility,../../phpcompatibility/phpcompatibility-paragonie,../../phpcompatibility/phpcompatibility-wp,../../wp-coding-standards/wpcs",
+    "cs-log": "./vendor/bin/phpcs --report=xml ../includes > log.xml",
     "lint": [
       "phpcs --report=xml ../ > log.xml"
     ],
     "lint-fix": [
       "phpcbf ../"
     ]
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "squizlabs/php_codesniffer": "*",
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpcompatibility/phpcompatibility-wp": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }

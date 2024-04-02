@@ -13,16 +13,16 @@ class ElementorSetup {
 	protected function __construct() {
 		add_action( 'elementor/elements/categories_registered', array( $this, 'add_brandy_widget_categories' ) );
 		add_action( 'elementor/widgets/register', array( $this, 'register_elements' ) );
-		
+
 	}
 
 	public function add_brandy_widget_categories( $elements_manager ) {
 		$elements_manager->add_category(
 			'brandy-blocks',
-			[
+			array(
 				'title' => __( 'Brandy', 'text-domain' ),
 				'icon'  => 'fa fa-brands fa-bandcam',
-			]
+			)
 		);
 	}
 

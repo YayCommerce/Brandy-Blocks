@@ -182,7 +182,7 @@ class AllProducts extends AbstractBlock {
 			implode(
 				'',
 				array_map(
-					function( $value ) use ( $list, $order_by ) {
+					function ( $value ) use ( $list, $order_by ) {
 						return sprintf(
 							'<option value="%s" %s>%s</option>',
 							$value,
@@ -319,5 +319,4 @@ class AllProducts extends AbstractBlock {
 			\wc_placeholder_img_src()
 		);
 	}
-
 }
