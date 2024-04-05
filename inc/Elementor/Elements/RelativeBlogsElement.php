@@ -18,7 +18,7 @@ class RelativeBlogsElement extends \Elementor\Widget_Base {
 	}
 
 	public function get_categories() {
-		return array( 'brandy-blocks' );
+		return array( 'basic' );
 	}
 
 	public function get_keywords() {
@@ -26,20 +26,57 @@ class RelativeBlogsElement extends \Elementor\Widget_Base {
 	}
 
 	protected function _register_controls() {
+
 		$this->start_controls_section(
-			'section_title',
+			'content_section',
 			array(
-				'label' => esc_html__( 'Title', 'brandy-blocks' ),
+				'label' => esc_html__( 'Post Query', 'brandy-blocks' ),
 				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
 			)
 		);
 
 		$this->add_control(
-			'title',
+			'posts_related',
 			array(
-				'label'   => esc_html__( 'Title', 'brandy-blocks' ),
-				'type'    => \Elementor\Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Brandy', 'brandy-blocks' ),
+				'label'   => esc_html__( 'Related posts by', 'brandy-blocks' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => 'categories',
+				'options' => array(
+					'categories' => esc_html__( 'Categories', 'brandy-blocks' ),
+					'tag'        => esc_html__( 'Tags', 'brandy-blocks' ),
+				),
+
+			)
+		);
+
+		$this->add_control(
+			'posts_order_by',
+			array(
+				'label'   => esc_html__( 'Order by', 'brandy-blocks' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => 'title',
+				'options' => array(
+					'date'          => esc_html__( 'Date', 'brandy-blocks' ),
+					'title'         => esc_html__( 'Title', 'brandy-blocks' ),
+					'menu_order'    => esc_html__( 'Post Order', 'brandy-blocks' ),
+					'rand'          => esc_html__( 'Random', 'brandy-blocks' ),
+					'comment_count' => esc_html__( 'Comment Counts', 'brandy-blocks' ),
+				),
+
+			)
+		);
+
+		$this->add_control(
+			'posts_order',
+			array(
+				'label'   => esc_html__( 'Order', 'brandy-blocks' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'default' => 'asc',
+				'options' => array(
+					'asc' => esc_html__( 'Ascending', 'brandy-blocks' ),
+					'des' => esc_html__( 'Descending', 'brandy-blocks' ),
+				),
+
 			)
 		);
 
@@ -48,10 +85,10 @@ class RelativeBlogsElement extends \Elementor\Widget_Base {
 
 	protected function render() {
 		$this->settings = $this->get_settings_for_display();
+		$shortcode      = sprintf( '[brandy_relative_blogs related="%s" order_by="%s" order="%s"]', $this->settings['posts_related'] ?? '', $this->settings['posts_order_by'] ?? '', $this->settings['posts_order'] ?? '' );
+
 		?>
-
-		<p> Hello <?php echo esc_html( $settings['title'] ); ?> </p>
-
+		<?php echo wp_kses_post( do_shortcode( $shortcode ) ); ?>
 		<?php
 	}
 }

@@ -1,4 +1,8 @@
 .post-relative {
+	&__title {
+		margin-bottom: 10px;
+	}
+
 	&__list {
 		display: flex;
 		gap: 1.5rem;
