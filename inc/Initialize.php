@@ -2,6 +2,7 @@
 
 namespace BrandyBlocks;
 
+use BrandyBlocks\Elementor\ElementorSetup;
 use BrandyBlocks\Packages\PackagesLoader;
 
 class Initialize {
@@ -9,6 +10,6 @@ class Initialize {
 
 	protected function __construct() {
 		PackagesLoader::get_instance();
-		// ElementorSetup::get_instance();
+		ElementorSetup::get_instance();
 	}
 }
