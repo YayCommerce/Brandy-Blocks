@@ -14,7 +14,7 @@ class RelativeBlogsElement extends \Elementor\Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-products';
+		return 'eicon-post-list';
 	}
 
 	public function get_categories() {
