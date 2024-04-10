@@ -16,16 +16,16 @@ class ProductCatalog extends AbstractBlock {
 	public const DEFAULT_ATTRIBUTES = array(
 		'banner_settings'           => array(
 			'primary'   => array(
-				'mediaID'  => null,
-				'imageURL' => 'https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png',
-				'title'    => 'Our top stars',
-				'subTitle' => 'Discover and shop our most popular plants, pots and accessories',
-                'buttonText' => 'Shop Now',
+				'mediaID'    => null,
+				'imageURL'   => 'https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png',
+				'title'      => 'Our top stars',
+				'subTitle'   => 'Discover and shop our most popular plants, pots and accessories',
+				'buttonText' => 'Shop Now',
 			),
 			'secondary' => array(
-				'mediaID'  => null,
-				'imageURL' => 'https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png',
-				'title'    => 'Love Your Space',
+				'mediaID'    => null,
+				'imageURL'   => 'https://thien.ninjateam.org/wp-content/uploads/2024/01/fashion-banner-img.png',
+				'title'      => 'Love Your Space',
 				'buttonText' => 'Shop Now',
 			),
 		),
@@ -120,12 +120,12 @@ class ProductCatalog extends AbstractBlock {
 	}
 
 	protected function render_banner( $key = 'primary' ) {
-		$banner   = $this->attributes['banner_settings'][ $key ];
-		$imageURL = isset( $banner['imageURL'] ) && ! empty( $banner['imageURL'] ) ? $banner['imageURL'] : '';
-		$title    = ! empty( $banner['title'] ) ? $banner['title'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['title'];
-		$subTitle = ! empty( $banner['subTitle'] ) ? $banner['subTitle'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['subTitle'];
-        $buttonText = ! empty( $banner['buttonText'] ) ? $banner['buttonText'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['buttonText'];
-        
+		$banner     = $this->attributes['banner_settings'][ $key ];
+		$imageURL   = isset( $banner['imageURL'] ) && ! empty( $banner['imageURL'] ) ? $banner['imageURL'] : '';
+		$title      = ! empty( $banner['title'] ) ? $banner['title'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['title'];
+		$subTitle   = ! empty( $banner['subTitle'] ) ? $banner['subTitle'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['subTitle'];
+		$buttonText = ! empty( $banner['buttonText'] ) ? $banner['buttonText'] : self::DEFAULT_ATTRIBUTES['banner_settings'][ $key ]['buttonText'];
+
 		return sprintf(
 			'<div class="product brandy-banner-wrapper %1$s" id="%2$s">
                 <div class="brandy-product-catalog-banner">
@@ -142,7 +142,7 @@ class ProductCatalog extends AbstractBlock {
 			esc_url( $imageURL ),
 			esc_html( $title ),
 			esc_html( $subTitle ),
-            esc_html( $buttonText )
+			esc_html( $buttonText )
 		);
 	}
 
@@ -208,5 +208,4 @@ class ProductCatalog extends AbstractBlock {
 
 		return apply_filters( 'brandy_blocks_loop_product_content', $content, $product, $product_controller, $content_settings );
 	}
-
 }
