@@ -91,7 +91,7 @@ class AllProducts extends AbstractBlock {
 			'mobile-columns="' . $columns['mobile'] . '"',
 		);
 		return sprintf(
-			'<ul class="products brandy-product-list" %s>%s</ul>',
+			'<ul class="products brandy-product-list brandy-blocks" %s>%s</ul>',
 			join( ' ', $list_attributes ),
 			implode( '', array_map( array( $this, 'render_product' ), $products ) )
 		);
