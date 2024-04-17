@@ -25,12 +25,11 @@ $relative_posts = Helpers::get_relative_posts( get_the_ID(), $related, $order_by
 if ( ! empty( $relative_posts ) ) :
 	;
 	?>
-	<h2 class="post-relative__title"><?php esc_html_e( 'Related posts', 'brandy-blocks' ); ?></h2>
 	<div class="post-relative__list">
 	<?php foreach ( $relative_posts as $relative_post ) : ?>
 			<div class="post-relative__item">
 				<a href="<?php echo esc_url( get_the_permalink( $relative_post ) ); ?>" class="post-relative__item__link">
-					<img src="<?php echo esc_url( get_the_post_thumbnail_url( $relative_post ) ); ?>" alt="<?php echo esc_attr( get_the_title( $relative_post ) ); ?>" class="post-relative__item__image">
+					<img src="<?php echo esc_url( brandy_blocks_get_post_thumbnail_url( $relative_post ) ); ?>" alt="<?php echo esc_attr( get_the_title( $relative_post ) ); ?>" class="post-relative__item__image">
 				</a>
 				<div class="post-relative__content">
 					<p class="post-relative__post-date"> 
