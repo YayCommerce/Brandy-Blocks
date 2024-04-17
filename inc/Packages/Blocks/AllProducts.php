@@ -73,7 +73,8 @@ class AllProducts extends AbstractBlock {
 		$query_result     = $this->get_query_result();
 		$products         = array_values( array_map( 'wc_get_product', $query_result ) );
 		$content          = sprintf(
-			'<div class="brandy-block-all-products" data-settings="%s">%s%s%s</div>',
+			'<div class="brandy-block-all-products %s" data-settings="%s">%s%s%s</div>',
+			is_brandy_exists() ? 'brandy-core-styles' : '',
 			esc_attr( wp_json_encode( $this->attributes ) ),
 			$this->render_sorting(),
 			$this->render_list( $products ),
@@ -91,7 +92,7 @@ class AllProducts extends AbstractBlock {
 			'mobile-columns="' . $columns['mobile'] . '"',
 		);
 		return sprintf(
-			'<ul class="products brandy-product-list brandy-blocks" %s>%s</ul>',
+			'<ul class="products brandy-product-list" %s>%s</ul>',
 			join( ' ', $list_attributes ),
 			implode( '', array_map( array( $this, 'render_product' ), $products ) )
 		);

@@ -1,7 +1,7 @@
 @import "../../assets/tailwind.mixins";
 @import "../../assets/utility.mixins.scss";
 
-.relative-blogs.brandy-blocks {
+.relative-blogs:not(.brandy-core-styles) {
 
 	.relative-blogs__list {
 		display: grid;

@@ -20,7 +20,7 @@ $relative_posts = Helpers::get_relative_posts( get_the_ID(), $related, $order_by
 
 ?>
 
-<div class="relative-blogs brandy-blocks">
+<div class="relative-blogs<?php echo is_brandy_exists() ? ' brandy-core-styles' : ''; ?>">
 <?php
 if ( ! empty( $relative_posts ) ) :
 	;
