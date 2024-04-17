@@ -1,0 +1,71 @@
+@import "../../assets/tailwind.mixins";
+@import "../../assets/utility.mixins.scss";
+
+.post-relative:not(.brandy-core) {
+
+	.post-relative__list {
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: repeat(4, 1fr);
+
+		@include md() {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
+		}
+
+		@include sm() {
+			grid-template-columns: 1fr;
+		}
+
+	}
+
+	.post-relative__item__link {
+		overflow: hidden;
+		display: flex;
+		border-radius: 12px;
+		margin-bottom: 1rem;
+	}
+
+	.post-relative__item__image {
+		width: 100%;
+		height: auto;
+		border-radius: 12px;
+		transition: transform 0.5s;
+		aspect-ratio: 1.5;
+		object-fit: cover;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	.post-relative__content {
+		text-align: center;
+	}
+
+	.post-relative__post-date {
+		color: var(--secondary_text, rgb(90 109 128)) !important;
+		@include text-sm();
+		font-weight: 300 !important;
+		display: block;
+		text-align: center;
+		margin-bottom: 4px !important;
+	}
+
+	.post-relative__post-title {
+		@include text-ellipsis(2);
+		@include text-lg();
+		font-weight: 600;
+		color: var(--primary_text, #122940) !important;
+	}
+
+	.post-relative__detail-link {
+		color: inherit;
+		text-decoration: none !important;
+		@include text-underline-animation();
+
+		&:hover {
+			color: inherit;
+		}
+	}
+}
