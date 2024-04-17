@@ -73,8 +73,8 @@ class RelativeBlogsElement extends \Elementor\Widget_Base {
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'asc',
 				'options' => array(
-					'asc' => esc_html__( 'Ascending', 'brandy-blocks' ),
-					'des' => esc_html__( 'Descending', 'brandy-blocks' ),
+					'asc'  => esc_html__( 'Ascending', 'brandy-blocks' ),
+					'desc' => esc_html__( 'Descending', 'brandy-blocks' ),
 				),
 
 			)

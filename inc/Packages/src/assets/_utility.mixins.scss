@@ -1,0 +1,24 @@
+@mixin text-ellipsis($line) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+}
+
+@mixin brandy-icon-scale() {
+	transform: scaleX(1.1) scaleY(1.1);
+}
+
+@mixin text-underline-animation() {
+	text-decoration: none;
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0% 100%;
+	background-repeat: no-repeat;
+	background-size: 0% 1px;
+	transition: background-size .4s;
+
+	&:hover {
+		background-size: 100% 1px;
+	}
+}

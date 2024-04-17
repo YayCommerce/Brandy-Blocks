@@ -57,9 +57,9 @@ export default function Settings() {
             <Select
               options={[
                 { label: "Ascending", value: "asc" },
-                { label: "Descending", value: "des" },
+                { label: "Descending", value: "desc" },
               ]}
-              selected={attributes.posts_query.order ?? "desc"}
+              selected={attributes.posts_query.order ?? "asc"}
               onChange={handleChangeValue("order")}
             />
           </div>
