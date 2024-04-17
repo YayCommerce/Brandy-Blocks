@@ -1,3 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpcs version="3.7.1">
+<phpcs version="3.9.2">
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Core/ProductQuery.php" errors="0" warnings="1" fixable="0">
+    <warning line="62" column="13" source="WordPress.DB.SlowDBQuery.slow_db_query_meta_key" severity="5" fixable="0">Detected usage of meta_key, possible slow query.</warning>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Utils/Helpers.php" errors="0" warnings="1" fixable="0">
+    <warning line="6" column="44" source="Universal.NamingConventions.NoReservedKeywordParameterNames.varFound" severity="5" fixable="0">It is recommended not to use reserved keyword &quot;var&quot; as function parameter name. Found: $var</warning>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Elementor/Elements/ProductCatalogElement.php" errors="4" warnings="1" fixable="0">
+    <error line="144" column="24" source="WordPress.WP.DeprecatedParameters.Get_termsParam2Found" severity="5" fixable="0">The parameter &quot;array( 'hide_empty' =&gt; true )&quot; at position #2 of get_terms() has been deprecated since WordPress version 4.5.0. Instead do not pass the parameter.</error>
+    <warning line="210" column="19" source="WordPress.DB.SlowDBQuery.slow_db_query_tax_query" severity="5" fixable="0">Detected usage of tax_query, possible slow query.</warning>
+    <error line="229" column="13" source="WordPress.Security.EscapeOutput.OutputNotEscaped" severity="5" fixable="0">All output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'self'.</error>
+    <error line="230" column="13" source="WordPress.Security.EscapeOutput.OutputNotEscaped" severity="5" fixable="0">All output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'self'.</error>
+    <error line="231" column="13" source="WordPress.Security.EscapeOutput.OutputNotEscaped" severity="5" fixable="0">All output should be run through an escaping function (see the Security sections in the WordPress Developer Handbooks), found 'self'.</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/Blocks/ProductCatalog.php" errors="6" warnings="12" fixable="17">
+    <warning line="19" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 4 space(s) between &quot;'mediaID'&quot; and double arrow, but found 2.</warning>
+    <warning line="20" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 3 space(s) between &quot;'imageURL'&quot; and double arrow, but found 1.</warning>
+    <warning line="21" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 6 space(s) between &quot;'title'&quot; and double arrow, but found 4.</warning>
+    <warning line="22" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 3 space(s) between &quot;'subTitle'&quot; and double arrow, but found 1.</warning>
+    <error line="23" column="1" source="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" severity="5" fixable="1">Tabs must be used to indent lines; spaces are not allowed</error>
+    <warning line="26" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 4 space(s) between &quot;'mediaID'&quot; and double arrow, but found 2.</warning>
+    <warning line="27" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 3 space(s) between &quot;'imageURL'&quot; and double arrow, but found 1.</warning>
+    <warning line="28" column="28" source="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" severity="5" fixable="1">Array double arrow not aligned correctly; expected 6 space(s) between &quot;'title'&quot; and double arrow, but found 4.</warning>
+    <warning line="107" column="19" source="WordPress.DB.SlowDBQuery.slow_db_query_tax_query" severity="5" fixable="0">Detected usage of tax_query, possible slow query.</warning>
+    <warning line="123" column="19" source="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" severity="5" fixable="1">Equals sign not aligned with surrounding assignments; expected 5 spaces but found 3 spaces</warning>
+    <warning line="124" column="19" source="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" severity="5" fixable="1">Equals sign not aligned with surrounding assignments; expected 3 spaces but found 1 space</warning>
+    <warning line="125" column="19" source="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" severity="5" fixable="1">Equals sign not aligned with surrounding assignments; expected 6 spaces but found 4 spaces</warning>
+    <warning line="126" column="19" source="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" severity="5" fixable="1">Equals sign not aligned with surrounding assignments; expected 3 spaces but found 1 space</warning>
+    <error line="127" column="1" source="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" severity="5" fixable="1">Tabs must be used to indent lines; spaces are not allowed</error>
+    <error line="128" column="1" source="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" severity="5" fixable="1">Tabs must be used to indent lines; spaces are not allowed</error>
+    <error line="128" column="1" source="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" severity="5" fixable="1">Whitespace found at end of line</error>
+    <error line="145" column="1" source="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" severity="5" fixable="1">Tabs must be used to indent lines; spaces are not allowed</error>
+    <error line="212" column="1" source="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" severity="5" fixable="1">The closing brace for the class must go on the next line after the body</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/Blocks/AllProducts.php" errors="2" warnings="0" fixable="0">
+    <error line="248" column="30" source="WordPress.WP.I18n.MissingTranslatorsComment" severity="5" fixable="0">A function call to __() with texts containing placeholders was found, but was not accompanied by a &quot;translators:&quot; comment on the line above to clarify the meaning of the placeholders.</error>
+    <error line="277" column="84" source="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized" severity="5" fixable="0">Detected usage of a non-sanitized input variable: $_POST['attributes']</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/build/blocks/AllProducts/index.asset.php" errors="5" warnings="0" fixable="5">
+    <error line="1" column="19" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="43" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="161" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+    <error line="1" column="199" source="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" severity="5" fixable="1">When a multi-item array uses associative keys, each value should start on a new line.</error>
+    <error line="1" column="199" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/build/blocks/Testimonials/index.asset.php" errors="5" warnings="0" fixable="5">
+    <error line="1" column="19" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="43" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="136" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+    <error line="1" column="174" source="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" severity="5" fixable="1">When a multi-item array uses associative keys, each value should start on a new line.</error>
+    <error line="1" column="174" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/build/blocks/PricingCard/index.asset.php" errors="5" warnings="0" fixable="5">
+    <error line="1" column="19" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="43" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="125" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+    <error line="1" column="163" source="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" severity="5" fixable="1">When a multi-item array uses associative keys, each value should start on a new line.</error>
+    <error line="1" column="163" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/build/blocks/ProductCatalog/index.asset.php" errors="5" warnings="0" fixable="5">
+    <error line="1" column="19" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="43" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="161" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+    <error line="1" column="199" source="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" severity="5" fixable="1">When a multi-item array uses associative keys, each value should start on a new line.</error>
+    <error line="1" column="199" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/build/blocks/Pricing/index.asset.php" errors="5" warnings="0" fixable="5">
+    <error line="1" column="19" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="43" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="125" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+    <error line="1" column="163" source="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" severity="5" fixable="1">When a multi-item array uses associative keys, each value should start on a new line.</error>
+    <error line="1" column="163" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+</file>
+<file name="/Users/imac/Sites/yaycommerce/wp-content/plugins/Brandy-Blocks/inc/Packages/build/blocks/SingleTestimonial/index.asset.php" errors="5" warnings="0" fixable="5">
+    <error line="1" column="19" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="43" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceAfterArrayOpenerSingleLine" severity="5" fixable="1">Expected 1 space after the array opener in a single line array. Found: no spaces</error>
+    <error line="1" column="125" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+    <error line="1" column="163" source="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound" severity="5" fixable="1">When a multi-item array uses associative keys, each value should start on a new line.</error>
+    <error line="1" column="163" source="NormalizedArrays.Arrays.ArrayBraceSpacing.SpaceBeforeArrayCloserSingleLine" severity="5" fixable="1">Expected 1 space before the array closer in a single line array. Found: no spaces</error>
+</file>
 </phpcs>

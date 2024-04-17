@@ -24,5 +24,4 @@ class Pricing extends AbstractBlock {
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'brandy-pricing-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/pricing.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
 	}
-
 }

@@ -109,5 +109,4 @@ class ProductQuery {
 
 		return $non_cached_ids;
 	}
-
 }

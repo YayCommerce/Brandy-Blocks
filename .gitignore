@@ -1,4 +1,8 @@
-.vscode
+.DS_Store
+.vscode/
+.vscode/launch.json
+/build
+*.xml
 
 inc/Packages/node_modules
 inc/Packages/build

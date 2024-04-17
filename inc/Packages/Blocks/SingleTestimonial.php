@@ -10,5 +10,4 @@ class SingleTestimonial extends AbstractBlock {
 	use SingletonTrait;
 
 	public $name = 'SingleTestimonial';
-
 }

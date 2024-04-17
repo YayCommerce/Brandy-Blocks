@@ -21,5 +21,4 @@ abstract class AbstractBlock {
 	protected function init_hooks() {
 
 	}
-
 }

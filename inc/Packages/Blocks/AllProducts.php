@@ -73,7 +73,8 @@ class AllProducts extends AbstractBlock {
 		$query_result     = $this->get_query_result();
 		$products         = array_values( array_map( 'wc_get_product', $query_result ) );
 		$content          = sprintf(
-			'<div class="brandy-block-all-products" data-settings="%s">%s%s%s</div>',
+			'<div class="brandy-block-all-products %s" data-settings="%s">%s%s%s</div>',
+			is_brandy_exists() ? 'brandy-core-styles' : '',
 			esc_attr( wp_json_encode( $this->attributes ) ),
 			$this->render_sorting(),
 			$this->render_list( $products ),
@@ -131,22 +132,32 @@ class AllProducts extends AbstractBlock {
 	}
 
 	public function render_product( $product ) {
-		$product_controller = new ProductController( $product );
-		$content            = sprintf(
-			'<li class="product">
-				<div class="brandy-block-product__thumbnail">%s%s</div>
-				<div class="brandy-block-product__content">%s%s%s%s%s</div>
-			</li>',
-			$product_controller->get_template_sale_flash(),
-			$product_controller->get_template_image(),
-			$product_controller->get_template_category(),
-			$product_controller->get_template_title(),
-			$product_controller->get_template_rating(),
-			$product_controller->get_template_pricing(),
-			$product_controller->get_template_button()
-		);
 
-		return apply_filters( 'brandy_block_product_content', $content, $product, $product_controller );
+		$product_controller = new ProductController( $product );
+		if ( function_exists( 'brandy_loop_product_item' ) ) {
+			ob_start();
+			\brandy_loop_product_item(
+				$product
+			);
+			$content = ob_get_contents();
+			ob_end_clean();
+		} else {
+			$content = sprintf(
+				'<li class="product">
+					<div class="brandy-block-product__thumbnail">%s%s</div>
+					<div class="brandy-block-product__content">%s%s%s%s%s</div>
+				</li>',
+				$product_controller->get_template_sale_flash(),
+				$product_controller->get_template_image(),
+				$product_controller->get_template_category(),
+				$product_controller->get_template_title(),
+				$product_controller->get_template_rating(),
+				$product_controller->get_template_pricing(),
+				$product_controller->get_template_button()
+			);
+		}
+
+		return apply_filters( 'brandy_blocks_loop_product_content', $content, $product, $product_controller );
 	}
 
 	public function render_sorting() {
@@ -172,7 +183,7 @@ class AllProducts extends AbstractBlock {
 			implode(
 				'',
 				array_map(
-					function( $value ) use ( $list, $order_by ) {
+					function ( $value ) use ( $list, $order_by ) {
 						return sprintf(
 							'<option value="%s" %s>%s</option>',
 							$value,
@@ -309,5 +320,4 @@ class AllProducts extends AbstractBlock {
 			\wc_placeholder_img_src()
 		);
 	}
-
 }

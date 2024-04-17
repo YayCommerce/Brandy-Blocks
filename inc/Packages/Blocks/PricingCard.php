@@ -10,5 +10,4 @@ class PricingCard extends AbstractBlock {
 	use SingletonTrait;
 
 	public $name = 'PricingCard';
-
 }

@@ -31,5 +31,4 @@ trait SingletonTrait {
 	public function __wakeup() {
 		throw new \Exception( 'Cannot unserialize a singleton.' );
 	}
-
 }
