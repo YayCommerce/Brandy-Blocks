@@ -10,33 +10,27 @@ export default function Save({ attributes }) {
       className={`${blockProps.className} brandy-testimonials__card`}
       data-rating={rating}
     >
-      {(context["brandy/testimonials/layout"] ?? []).map((item) => (
-        <>
-          {item === "avatar" && <InnerBlocks.Content />}
-          {item === "name" && (
-            <RichText.Content
-              tagName="p"
-              value={attributes.name}
-              className="brandy-testimonials__card__name"
-            />
-          )}
-          {item === "subname" && (
-            <RichText.Content
-              tagName="p"
-              value={attributes.subname}
-              className="brandy-testimonials__card__subname"
-            />
-          )}
-          {item === "content" && (
-            <RichText.Content
-              tagName="p"
-              value={attributes.content}
-              className="brandy-testimonials__card__content"
-            />
-          )}
-          {item === "rating" && <Rating />}
-        </>
-      ))}
+      <div className="brand-testimonials__card__header">
+        <InnerBlocks.Content />
+        <div class="brand-testimonials__card__info">
+          <RichText.Content
+            tagName="p"
+            value={attributes.name}
+            className="brandy-testimonials__card__name"
+          />
+          <RichText.Content
+            tagName="p"
+            value={attributes.subname}
+            className="brandy-testimonials__card__subname"
+          />
+        </div>
+      </div>
+      <RichText.Content
+        tagName="p"
+        value={attributes.content}
+        className="brandy-testimonials__card__content"
+      />
+      <Rating />
     </div>
   );
 }

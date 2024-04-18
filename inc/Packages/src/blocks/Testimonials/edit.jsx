@@ -72,6 +72,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       dots: attributes.dots ?? metadata.attributes.dots,
       arrow: attributes.arrow ?? metadata.attributes.arrow,
       layout: attributes.layout ?? metadata.attributes.layout.default,
+      layout_style: attributes.layout_style ?? metadata.attributes.layout_style.default,
     }),
     [attributes]
   );
@@ -96,13 +97,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     "--content-visible": dataAttributes.content.visible ? "block" : "none",
     "--rating-visible": dataAttributes.star.visible ? "flex" : "none",
   };
-
+  const wrapperClass = `brandy-testimonials-wrapper brandy-${attributes.layout_style}-wrapper`;
   return (
     <div {...blockProps} className={blockProps.className + " block-upgraded"}>
       <TestimonialsContext.Provider value={contextValue}>
         <Settings />
         <div
-          className="brandy-testimonials-wrapper"
+          className={wrapperClass}
           /**
            * General
            */
