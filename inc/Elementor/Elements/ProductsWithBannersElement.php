@@ -3,7 +3,7 @@
 namespace BrandyBlocks\Elementor\Elements;
 
 use BrandyBlocks\Core\ProductController;
-class ProductCatalogElement extends \Elementor\Widget_Base {
+class ProductsWithBannersElement extends \Elementor\Widget_Base {
 	protected $settings = array();
 
 	public function get_name() {
@@ -11,7 +11,7 @@ class ProductCatalogElement extends \Elementor\Widget_Base {
 	}
 
 	public function get_title() {
-		return esc_html__( 'Product Catalog', 'brandy-blocks' );
+		return esc_html__( 'Products With Banners', 'brandy-blocks' );
 	}
 
 	public function get_icon() {
@@ -23,7 +23,7 @@ class ProductCatalogElement extends \Elementor\Widget_Base {
 	}
 
 	public function get_keywords() {
-		return array( __( 'Product Catalog', 'brandy-blocks' ), __( 'Product Catalog element', 'brandy-blocks' ) );
+		return array( __( 'Products With banners', 'brandy-blocks' ), __( 'Products With Banners element', 'brandy-blocks' ) );
 	}
 	protected function banner_controls_tab( $key = 'primary_banner' ) {
 		$label_tab = 'primary_banner' === $key ? __( 'Primary Banner', 'brandy-blocks' ) : __( 'Secondary Banner', 'brandy-blocks' );
@@ -177,15 +177,13 @@ class ProductCatalogElement extends \Elementor\Widget_Base {
 
 		return sprintf(
 			'<div class="product brandy-banner-wrapper %1$s" id="%2$s">
-                <div class="brandy-product-catalog-banner">
-                    <img src="%3$s" alt="%4$s">
-                    <div class="banner-content">
-                    <h2>%4$s</h2>
-                    <p>%5$s</p>
-                    </div>
-                    <p><a href="#" class="brandy-button-banner">%6$s</a></p>
-            </div>
-        </div>',
+			<div class="brandy-product-catalog-banner">
+				<h2 class="brandy-product-catalog-banner__title">%4$s</h2>
+				<p class="brandy-product-catalog-banner__description">%5$s</p>
+				<img class="brandy-product-catalog-banner__img" src="%3$s" alt="%4$s">
+				<a href="#" class="brandy-product-catalog-banner__button">%6$s</a>
+		</div>
+	</div>',
 			esc_attr( 'brandy-' . $key . '-banner-wrapper' ),
 			esc_attr( 'brandy_' . $key . '_banner_' . md5( uniqid() ) ),
 			esc_url( $imageURL ),
@@ -225,7 +223,8 @@ class ProductCatalogElement extends \Elementor\Widget_Base {
 	protected function render() {
 		$this->settings = $this->get_settings_for_display();
 		printf(
-			'<div class="brandy-block-product-catalog">%s%s%s</div>',
+			'<div class="brandy-block-product-catalog %s">%s%s%s</div>',
+			is_brandy_exists() ? 'brandy-core-styles' : '',
 			self::render_banner( 'primary' ),
 			self::render_list( $this->products_by_categories() ),
 			self::render_banner( 'secondary' ),

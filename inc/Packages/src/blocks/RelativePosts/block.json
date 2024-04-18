@@ -10,7 +10,7 @@
       "default": {
         "related": "category",
         "order_by": "title",
-        "order": "desc"
+        "order": "asc"
       }
     }
   },

@@ -20,24 +20,23 @@ $relative_posts = Helpers::get_relative_posts( get_the_ID(), $related, $order_by
 
 ?>
 
-<div class="post-relative">
+<div class="relative-blogs<?php echo is_brandy_exists() ? ' brandy-core-styles' : ''; ?>">
 <?php
 if ( ! empty( $relative_posts ) ) :
 	;
 	?>
-	<h2 class="post-relative__title"><?php esc_html_e( 'Related posts', 'brandy-blocks' ); ?></h2>
-	<div class="post-relative__list">
+	<div class="relative-blogs__list">
 	<?php foreach ( $relative_posts as $relative_post ) : ?>
-			<div class="post-relative__item">
-				<a href="<?php echo esc_url( get_the_permalink( $relative_post ) ); ?>" class="post-relative__item__link">
-					<img src="<?php echo esc_url( get_the_post_thumbnail_url( $relative_post ) ); ?>" alt="<?php echo esc_attr( get_the_title( $relative_post ) ); ?>" class="post-relative__item__image">
+			<div class="relative-blogs__item">
+				<a href="<?php echo esc_url( get_the_permalink( $relative_post ) ); ?>" class="relative-blogs__item__link">
+					<img src="<?php echo esc_url( brandy_blocks_get_post_thumbnail_url( $relative_post ) ); ?>" alt="<?php echo esc_attr( get_the_title( $relative_post ) ); ?>" class="relative-blogs__item__image">
 				</a>
-				<div class="post-relative__content">
-					<p class="post-relative__post-date"> 
+				<div class="relative-blogs__content">
+					<p class="relative-blogs__post-date"> 
 						<?php echo esc_html( get_the_date( '', $relative_post ) ); ?>
 					</p>
-					<div class="post-relative__post-title">
-						<a  class="post-relative__detail-link" href="<?php echo esc_url( get_the_permalink( $relative_post ) ); ?>">
+					<div class="relative-blogs__post-title">
+						<a  class="relative-blogs__detail-link" href="<?php echo esc_url( get_the_permalink( $relative_post ) ); ?>">
 							<?php echo esc_html( get_the_title( $relative_post ) ); ?>
 						</a>
 					</div>
