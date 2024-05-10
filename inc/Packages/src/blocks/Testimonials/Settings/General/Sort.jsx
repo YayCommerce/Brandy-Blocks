@@ -19,10 +19,12 @@ export default function Sort() {
   useEffect(() => {
     setTimeout(() => {
       const newTemplate = [...template];
-      while (newTemplate.lastItem.length == 0) {
-        newTemplate.pop();
+      if (newTemplate.slice(-1)[0] != null) {
+        while (newTemplate.slice(-1)[0].length == 0) {
+          newTemplate.pop();
+        }
+        setTemplate(newTemplate);
       }
-      setTemplate(newTemplate);
     }, 1);
   }, [template.length]);
 

@@ -129,12 +129,10 @@ class ProductCatalog extends AbstractBlock {
 		return sprintf(
 			'<div class="product brandy-banner-wrapper %1$s" id="%2$s">
                 <div class="brandy-product-catalog-banner">
-                    <img src="%3$s" alt="%4$s">
-                    <div class="banner-content">
-                    <h2>%4$s</h2>
-                    <p>%5$s</p>
-                    </div>
-                    <p><a href="#" class="brandy-button-banner">%6$s</a></p>
+					<h2 class="brandy-product-catalog-banner__title">%4$s</h2>
+					<p class="brandy-product-catalog-banner__description">%5$s</p>
+					<img class="brandy-product-catalog-banner__img" src="%3$s" alt="%4$s">
+                    <a href="#" class="brandy-product-catalog-banner__button">%6$s</a>
             </div>
         </div>',
 			esc_attr( 'brandy-' . $key . '-banner-wrapper' ),
