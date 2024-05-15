@@ -38,46 +38,11 @@ class FeatureProduct extends AbstractBlock {
 			add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
 
 		}
-
-		add_action( 'woocommerce_before_add_to_cart_quantity', array( $this, 'woocommerce_before_add_to_cart_quantity' ) );
-		add_action( 'woocommerce_after_add_to_cart_quantity', array( $this, 'woocommerce_after_add_to_cart_quantity' ) );
-
 	}
 
 	public function enqueue_scripts() {
 		if ( ! is_admin() ) {
 			wp_enqueue_script( 'brandy-feature-product-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/feature-product.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
-		}
-	}
-
-	// Add class
-	public function woocommerce_before_add_to_cart_quantity() {
-		if ( function_exists( 'register_block_type' ) ) {
-			$blocks = parse_blocks( get_post_field( 'post_content', get_the_ID() ) );
-			foreach ( $blocks as $block ) {
-				if ( 'brandy/feature-product' === $block['blockName'] ) {
-					echo '<div class="brandy-feature-product-quantity"><a href="javascript:void(0)" class="quantity-minus">-</a>';
-					break;
-				}
-			}
-		}
-		if ( class_exists( 'Elementor\Plugin' ) && \Elementor\Plugin::$instance->db->is_built_with_elementor( get_the_ID() ) ) {
-			echo '<div class="brandy-feature-product-quantity"><a href="javascript:void(0)" class="quantity-minus">-</a>';
-		}
-	}
-
-	public function woocommerce_after_add_to_cart_quantity() {
-		if ( function_exists( 'register_block_type' ) ) {
-			$blocks = parse_blocks( get_post_field( 'post_content', get_the_ID() ) );
-			foreach ( $blocks as $block ) {
-				if ( 'brandy/feature-product' === $block['blockName'] ) {
-					echo '<a href="javascript:void(0)" class="quantity-plus">+</a></div>';
-					break;
-				}
-			}
-		}
-		if ( class_exists( 'Elementor\Plugin' ) && \Elementor\Plugin::$instance->db->is_built_with_elementor( get_the_ID() ) ) {
-			echo '<a href="javascript:void(0)" class="quantity-plus">+</a></div>';
 		}
 	}
 
@@ -118,16 +83,15 @@ class FeatureProduct extends AbstractBlock {
 		$content_settings   = isset( $this->attributes['content_settings'] ) ? $this->attributes['content_settings'] : ProductHelpers::product_content_settings();
 		$product_controller = new ProductController( $product );
 		$content            = sprintf(
-			'<div class="brandy-feature-product-container">%s
-			<div class="brandy-feature-product-details">
-				<span class="brandy-feature-product-categories">%s</span>
-				<h1 class="brandy-feature-product-title">%s</h1>
-				%s%s%s%s
-			</div>
+			'<div class="brandy-block-feature-product-container">%s
+				<div class="brandy-block-feature-product__details">
+					<div class="brandy-block-feature-product__categories">%s</div>
+					%s%s%s%s%s
+				</div>
 			</div>',
 			ProductHelpers::parse_bool( $content_settings['show_image'] ) ? ProductHelpers::feature_product_image( $product_controller, $content_settings ) : '',
 			ProductHelpers::parse_bool( $content_settings['show_category'] ) ? ProductHelpers::feature_product_category_names( $product_id ) : '',
-			ProductHelpers::parse_bool( $content_settings['show_title'] ) ? $product->get_title() : '',
+			ProductHelpers::parse_bool( $content_settings['show_title'] ) ? sprintf( '<h3 class="brandy-block-feature-product__title"><a href="%s">%s</a></h3>', $product->get_permalink(), $product->get_title() ) : '',
 			ProductHelpers::parse_bool( $content_settings['show_price'] ) || ProductHelpers::parse_bool( $content_settings['show_rating'] ) ? ProductHelpers::feature_product_price( $product, $content_settings ) : '',
 			ProductHelpers::parse_bool( $content_settings['show_add_to_cart'] ) ? ProductHelpers::feature_product_add_to_cart( $product_id ) : '',
 			ProductHelpers::parse_bool( $content_settings['show_meta'] ) || ProductHelpers::parse_bool( $content_settings['show_short_desc'] ) ? ProductHelpers::feature_product_meta( $product, $content_settings ) : '',
