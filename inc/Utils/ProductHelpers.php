@@ -106,7 +106,7 @@ class ProductHelpers {
 
 	public static function feature_product_image( $product_controller, $content_settings ) {
 		return sprintf(
-			'<div class="brandy-feature-product-image">%s</div>',
+			'<div class="brandy-block-feature-product__images">%s</div>',
 			self::parse_bool( $content_settings['show_image'] ) ? $product_controller->get_template_image() : ''
 		);
 	}
@@ -119,15 +119,15 @@ class ProductHelpers {
 		if ( $rating > 0 ) {
 			$rating_html .= '<span class="brandy-feature-product-length-area">|</span>';
 			$rating_html .= '<div class="brandy-feature-product-rating">';
-			$rating_html .= '<span class="brandy-feature-product-star">';
-			$rating_html .= '<span style="width:' . ( ( $rating / 5 ) * 100 ) . '%">';
-			$rating_html .= '</span></span>';
+			foreach ( array( 1, 2, 3, 4, 5 ) as $ind ) {
+				$rating_html .= '<span class="brandy-feature-product-star' . ( $ind < $rating ? ' star-active' : '' ) . '"></span>';
+			}
 			$rating_html .= '</div>';
 			$rating_html .= '<span class="brandy-feature-product-count-review-text">' . $review_count . ' reviews</span>';
 		}
 
 		return sprintf(
-			'<div class="brandy-feature-product-price-area-wrapper">%s %s</div>',
+			'<div class="brandy-block-feature-product__pricing-area"><div class="brandy-blocks-feature-product__pricing">%s</div><div class="brandy-blocks-feature-product__rating">%s</div></div>',
 			self::parse_bool( $content_settings['show_price'] ) ? $product->get_price_html() : '',
 			self::parse_bool( $content_settings['show_rating'] ) ? $rating_html : ''
 		);
@@ -166,18 +166,17 @@ class ProductHelpers {
 					}
 					$value_product_attributes = implode( ', ', $attribute_values );
 				}
-				$product_attributes .= '<p class="brandy-feature-product-attribute-container"><label class="brandy-feature-attribute-label-text">' . wc_attribute_label( $attribute->get_name() ) . '</label>:<span class="brandy-feature-attribute-value"> ' . esc_html( $value_product_attributes ) . '</span></p>';
+				$product_attributes .= '<div class="brandy-block-feature-product__product-attribute"><label class="brandy-block-feature-product__product-info__label">' . wc_attribute_label( $attribute->get_name() ) . ':</label><span class="brandy-block-feature-product__product-infor__value"> ' . esc_html( $value_product_attributes ) . '</span></div>';
 			}
 			$product_attributes .= '</div>';
 		}
 
 		return sprintf(
-			'<div class="brandy-feature-product-data-container">%s %s %s</div>',
-			self::parse_bool( $content_settings['show_meta'] ) ? '<p class="brandy-feature-product-metadata-info">
-			<label class="brandy-feature-product-sku-label-text">' . esc_html__( 'SKU', 'woocommerce' ) . '</label>: <span class="brandy-feature-product-sku-value">' . $product->get_sku() . '</span> -  <span class="brandy-feature-product-instock-text">In stock</span>
-		</p>' : '',
+			'<div class="brandy-block-feature-product__product-info">%s%s%s</div>',
+			self::parse_bool( $content_settings['show_meta'] ) ? '<div class="brandy-block-feature-product__product-metadata">
+			<label class="brandy-block-feature-product__product-info__label">' . esc_html__( 'SKU', 'woocommerce' ) . ':</label><span class="brandy-feature-product-sku-value">' . $product->get_sku() . '</span></div>' : '',
 			$product_attributes,
-			self::parse_bool( $content_settings['show_short_desc'] ) ? '<div class="brandy-feature-product-description-container">' . $product->get_short_description() . '</div>' : '',
+			self::parse_bool( $content_settings['show_short_desc'] ) ? '<div class="brandy-block-feature-product__description">' . $product->get_short_description() . '</div>' : '',
 		);
 
 	}
@@ -186,9 +185,9 @@ class ProductHelpers {
 		$html         = '';
 		$product_tags = wp_get_post_terms( $product->get_id(), 'product_tag' );
 		if ( ! empty( $product_tags ) && ! is_wp_error( $product_tags ) ) {
-			$html = '<div class="brandy-feature-product-tag-container">';
+			$html = '<div class="brandy-block-feature-product__tags">';
 			foreach ( $product_tags as $tag ) {
-				$html .= '<span class="brandy-product-tag-text">' . esc_html( $tag->name ) . '</span>';
+				$html .= '<span class="brandy-block-feature-product__tag-text">' . esc_html( $tag->name ) . '</span>';
 			}
 			$html .= '</div>';
 		}

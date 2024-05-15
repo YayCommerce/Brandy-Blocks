@@ -2,8 +2,6 @@
 
 namespace BrandyBlocks\Elementor;
 
-use BrandyBlocks\Elementor\Elements\TestElement;
-
 use BrandyBlocks\Elementor\Elements\ProductsWithBannersElement;
 use BrandyBlocks\Elementor\Elements\FeatureProductElement;
 use BrandyBlocks\Elementor\Elements\RelativeBlogsElement;
@@ -29,9 +27,8 @@ class ElementorSetup {
 	}
 
 	public function register_elements( $widgets_manager ) {
-		$widgets_manager->register( new TestElement() );
+		$widgets_manager->register( new FeatureProductElement() );
 		$widgets_manager->register( new ProductsWithBannersElement() );
 		$widgets_manager->register( new RelativeBlogsElement() );
-		$widgets_manager->register( new FeatureProductElement() );
 	}
 }

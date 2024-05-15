@@ -114,10 +114,10 @@ class FeatureProductElement extends \Elementor\Widget_Base {
 		$product            = wc_get_product( $product_id );
 		$product_controller = new ProductController( $product );
 		$content            = sprintf(
-			'<div class="brandy-feature-product-container">%s
-			<div class="brandy-feature-product-details">
-				<span class="brandy-feature-product-categories">%s</span>
-				<h1 class="brandy-feature-product-title">%s</h1>
+			'<div class="brandy-block-feature-product-container">%s
+			<div class="brandy-block-feature-product__details">
+				<div class="brandy-block-feature-product__categories">%s</div>
+				<h3 class="brandy-block-feature-product__title">%s</h3>
 				%s%s%s%s
 			</div>
 			</div>',

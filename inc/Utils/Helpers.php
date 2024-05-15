@@ -80,6 +80,5 @@ class Helpers {
 		$query_posts = new \WP_Query( $query_args );
 
 		return $query_posts->get_posts();
-
 	}
 }
