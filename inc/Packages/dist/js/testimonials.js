@@ -303,7 +303,6 @@
       load: function () {
         clearIntervals();
         $(".wp-block-brandy-testimonials").each(function () {
-          $(this).addClass("block-upgraded");
           new BrandyCarousel(this);
         });
       },

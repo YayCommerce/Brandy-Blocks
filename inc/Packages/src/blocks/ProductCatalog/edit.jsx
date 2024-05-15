@@ -15,7 +15,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         attributes.banner_settings ?? metadata.attributes.banner_settings,
       content_settings:
         attributes.content_settings ?? metadata.attributes.content_settings,
-        product_category_settings: attributes.product_category_settings ?? metadata.attributes.product_category_settings,
+      product_category_settings:
+        attributes.product_category_settings ??
+        metadata.attributes.product_category_settings,
     }),
     [attributes]
   );
@@ -29,7 +31,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   );
 
   return (
-    <div {...blockProps} className={blockProps.className + " block-upgraded"}>
+    <div {...blockProps}>
       <ProductCatalogContext.Provider value={contextValue}>
         <Settings />
         <ServerSideRender
