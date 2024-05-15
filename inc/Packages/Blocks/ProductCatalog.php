@@ -206,5 +206,4 @@ class ProductCatalog extends AbstractBlock {
 
 		return apply_filters( 'brandy_blocks_loop_product_content', $content, $product, $product_controller, $content_settings );
 	}
-
 }
