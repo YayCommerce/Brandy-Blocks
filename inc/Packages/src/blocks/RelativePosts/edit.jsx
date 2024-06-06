@@ -11,8 +11,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
   const dataAttributes = useMemo(
     () => ({
-      posts_query:
-        attributes.posts_query ?? metadata.attributes.posts_query,
+      posts_query: attributes.posts_query ?? metadata.attributes.posts_query,
     }),
     [attributes]
   );
@@ -25,9 +24,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     [dataAttributes, setAttributes]
   );
   return (
-    <div {...blockProps} className={blockProps.className + " block-upgraded"}>
+    <div {...blockProps}>
       <RelativePostsContext.Provider value={contextValue}>
-        <Settings/> 
+        <Settings />
         <ServerSideRender
           block="brandy/relative-posts"
           LoadingResponsePlaceholder={Loader}

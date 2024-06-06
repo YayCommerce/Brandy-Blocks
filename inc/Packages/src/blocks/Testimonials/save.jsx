@@ -7,7 +7,7 @@ import {
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save();
-
+  console.log({attributes})
   const visibility = {
     "--avatar-visible": attributes.avatar.visible ? "block" : "none",
     "--name-visible": attributes.name.visible ? "block" : "none",
@@ -15,11 +15,11 @@ export default function Save({ attributes }) {
     "--content-visible": attributes.content.visible ? "block" : "none",
     "--rating-visible": attributes.star.visible ? "flex" : "none",
   };
-
+  const wrapperClass = `brandy-testimonials-wrapper brandy-${attributes.layout_style}-wrapper`;
   return (
     <div {...blockProps}>
       <div
-        className="brandy-testimonials-wrapper"
+        className={wrapperClass}
         /**
          * General
          */

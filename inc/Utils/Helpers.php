@@ -51,7 +51,6 @@ class Helpers {
 			return $data;
 		}
 	}
-
 	public static function get_relative_posts( $post_id, $related = 'categories', $order_by = 'title', $order_type = 'asc' ) {
 		$term_ids = array();
 

@@ -56,38 +56,30 @@ export default function Edit({ attributes, setAttributes, context }) {
           </div>
         </div>
       </InspectorControls>
-      {context["brandy/testimonials/layout"].map((item) => (
-        <>
-          {item === "avatar" && (
-            <InnerBlocks template={template} templateLock="all" />
-          )}
-          {item === "name" && (
-            <RichText
-              tagName="p"
-              value={attributes.name}
-              onChange={handleChangeValue("name")}
-              className="brandy-testimonials__card__name"
-            />
-          )}
-          {item === "subname" && (
-            <RichText
-              tagName="p"
-              value={attributes.subname}
-              onChange={handleChangeValue("subname")}
-              className="brandy-testimonials__card__subname"
-            />
-          )}
-          {item === "content" && (
-            <RichText
-              tagName="p"
-              value={attributes.content}
-              onChange={handleChangeValue("content")}
-              className="brandy-testimonials__card__content"
-            />
-          )}
-          {item === "rating" && <Rating />}
-        </>
-      ))}
+      <div className="brand-testimonials__card__header">
+          <InnerBlocks template={template} templateLock="all" />
+          <div class="brand-testimonials__card__info">
+                <RichText
+                    tagName="p"
+                    value={attributes.name}
+                    onChange={handleChangeValue("name")}
+                    className="brandy-testimonials__card__name"
+                />
+                <RichText
+                  tagName="p"
+                  value={attributes.subname}
+                  onChange={handleChangeValue("subname")}
+                  className="brandy-testimonials__card__subname"
+                />
+            </div>
+      </div>
+      <RichText
+        tagName="p"
+        value={attributes.content}
+        onChange={handleChangeValue("content")}
+        className="brandy-testimonials__card__content"
+      />
+      <Rating />
     </div>
   );
 }
