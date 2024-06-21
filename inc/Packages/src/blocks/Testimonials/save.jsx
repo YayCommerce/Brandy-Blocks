@@ -7,7 +7,6 @@ import {
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save();
-  console.log({attributes})
   const visibility = {
     "--avatar-visible": attributes.avatar.visible ? "block" : "none",
     "--name-visible": attributes.name.visible ? "block" : "none",
