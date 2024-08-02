@@ -140,3 +140,43 @@
 		}
 	}
 }
+
+.brandy-horizontal-wrapper{
+	.brandy-testimonials__list {
+		display: flex;
+		.brand-testimonials__card__header{
+			flex: 1;
+			display: flex;
+    		align-items: center;
+			.brand-testimonials__card__info{
+				padding-left: 5px;
+			}
+			
+		}
+	}
+}
+.brandy-testimonials-wrapper.brandy-horizontal-wrapper[content-alignment=right] {
+	.brandy-testimonials__card__avatar {
+		margin-left: unset !important;
+	}
+	.brand-testimonials__card__header{
+		flex-direction: row-reverse;
+		.brand-testimonials__card__info{
+			padding-left: 0px;
+			padding-right: 5px;
+		}
+	}
+}
+
+.brandy-testimonials-wrapper.brandy-horizontal-wrapper[content-alignment=center] {
+	
+	.brandy-testimonials__card__avatar {
+		margin-left: unset !important;
+		margin-right: unset !important;
+	}
+
+	.brand-testimonials__card__header{
+		margin-left: 131px; // card wrapper: 530px & padding left& right : 60px, card header: 468px , avatar: 80px => center: ( 530 - (568-80) ) / 2 = 71 + 60 
+	}
+	
+}

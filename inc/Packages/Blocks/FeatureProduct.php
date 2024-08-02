@@ -29,21 +29,6 @@ class FeatureProduct extends AbstractBlock {
 	}
 
 	protected function init_hooks() {
-
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		global $pagenow;
-		if ( 'post.php' === $pagenow || 'page.php' === $pagenow ) {
-			add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
-
-		}
-	}
-
-	public function enqueue_scripts() {
-		if ( ! is_admin() ) {
-			wp_enqueue_script( 'brandy-feature-product-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/feature-product.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
-		}
 	}
 
 	protected function get_block_attributes() {

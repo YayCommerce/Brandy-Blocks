@@ -27,7 +27,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     [dataAttributes, setAttributes]
   );
   return (
-    <div {...blockProps} className={blockProps.className + " block-upgraded"}>
+    <div {...blockProps}>
       <AllProductsContext.Provider value={contextValue}>
         <Settings />
         <ServerSideRender
