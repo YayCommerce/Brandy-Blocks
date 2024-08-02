@@ -51,3 +51,29 @@ if ( ! function_exists( 'BrandyBlocks\\brandyblocks_load_plugin' ) ) {
 		Initialize::get_instance();
 	}
 }
+
+add_action(
+	'plugins_loaded',
+	function() {
+
+		$current_theme = wp_get_theme();
+
+		if ( 'brandy' !== $current_theme->template ) {
+			return;
+		}
+
+		/**
+		 * Trick to add widget editor to customizer
+		 */
+		add_filter(
+			'customize_loaded_components',
+			function( $components ) {
+				if ( ! isset( $components['widgets'] ) ) {
+					$components[] = 'widgets';
+				}
+				return $components;
+			}
+		);
+	},
+	1
+);
