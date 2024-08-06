@@ -30,7 +30,6 @@ class ElementorSetup {
 
 	public function register_elements( $widgets_manager ) {
 		$widgets_manager->register( new TestElement() );
-		$widgets_manager->register( new FeatureProductElement() );
 		$widgets_manager->register( new ProductsWithBannersElement() );
 		$widgets_manager->register( new RelativeBlogsElement() );
 	}

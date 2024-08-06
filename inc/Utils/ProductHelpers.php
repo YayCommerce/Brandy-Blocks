@@ -56,37 +56,6 @@ class ProductHelpers {
 		return $rules;
 	}
 
-
-	public static function get_random_feature_product( $type = 'ID' ) {
-		$args = array(
-			'post_type'      => 'product',
-			'posts_per_page' => -1,
-			'post__in'       => wc_get_featured_product_ids(),
-		);
-
-		$query = new \WP_Query( $args );
-		if ( 'ID' === $type ) {
-			$random_product_id = 0;
-			if ( $query->have_posts() ) {
-				$featured_product_ids = wp_list_pluck( $query->posts, 'ID' );
-				shuffle( $featured_product_ids );
-				$random_product_id = $featured_product_ids[0];
-			}
-			return $random_product_id;
-		} else {
-			$data = array();
-			if ( $query->have_posts() ) {
-				foreach ( $query->posts as $key => $post ) {
-					if ( $key <= 20 ) {
-						$data[ $post->ID ] = $post->post_title;
-					}
-				}
-			}
-			return $data;
-		}
-
-	}
-
 	public static function feature_product_category_names( $product_id, $separator = ', ', $final_separator = ' and ' ) {
 		$categories = wp_get_post_terms( $product_id, 'product_cat' );
 		if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
