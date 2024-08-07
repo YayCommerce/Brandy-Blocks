@@ -3,7 +3,7 @@
   "title": "Relative Posts",
   "name": "brandy/relative-posts",
   "category": "brandy-blocks",
-  "description": "",
+  "description": "Displays posts which are related with current post page",
   "attributes": {
     "queryId": {
       "type": "number"
@@ -15,7 +15,10 @@
         "orderBy": "title",
         "order": "asc",
         "perPage": 3,
-        "offset": 0
+        "offset": 0,
+        "categoryIds": [],
+        "tagIds": [],
+        "exclude": []
       }
     }
   },

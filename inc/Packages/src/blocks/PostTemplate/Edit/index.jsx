@@ -153,26 +153,19 @@ export default function Edit(props) {
         orderby: context?.query?.orderBy || "title",
       };
 
-      const relatedBy = context?.query?.relatedBy ?? "category";
-
       if (context?.query?.perPage) {
         query.per_page = context?.query?.perPage;
       }
 
-      if (relatedBy === "tag") {
-        const tagIds = select("core/editor").getEditedPostAttribute("tags");
-        query.tags = tagIds;
+      if (context?.query?.categoryIds) {
+        query.categories = context?.query?.categoryIds;
       }
-
-      if (relatedBy === "category") {
-        const categoryIds =
-          select("core/editor").getEditedPostAttribute("categories");
-        query.categories = categoryIds;
+      if (context?.query?.tagIds) {
+        query.tags = context?.query?.tagIds;
       }
-
-      const currentPostId = select("core/editor").getCurrentPostId();
-
-      query.exclude = [currentPostId];
+      if (context?.query?.exclude) {
+        query.exclude = context?.query?.exclude;
+      }
 
       return {
         posts: getEntityRecords("postType", "post", {

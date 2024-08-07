@@ -4,7 +4,7 @@ import ServerSideRender from "@wordpress/server-side-render";
 import Settings from "./Settings";
 import metadata from "./block.json";
 
-export const ProductCatalogContext = createContext({});
+export const ProductsWithBannersContext = createContext({});
 
 export default function Edit({ attributes, setAttributes, clientId }) {
   const blockProps = useBlockProps();
@@ -15,7 +15,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         attributes.banner_settings ?? metadata.attributes.banner_settings,
       content_settings:
         attributes.content_settings ?? metadata.attributes.content_settings,
-        product_category_settings: attributes.product_category_settings ?? metadata.attributes.product_category_settings,
+      product_category_settings:
+        attributes.product_category_settings ??
+        metadata.attributes.product_category_settings,
     }),
     [attributes]
   );
@@ -30,14 +32,14 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
   return (
     <div {...blockProps} className={blockProps.className + " block-upgraded"}>
-      <ProductCatalogContext.Provider value={contextValue}>
+      <ProductsWithBannersContext.Provider value={contextValue}>
         <Settings />
         <ServerSideRender
-          block="brandy/product-catalog"
+          block="brandy/products-with-banners"
           LoadingResponsePlaceholder={Loader}
           attributes={dataAttributes}
         />
-      </ProductCatalogContext.Provider>
+      </ProductsWithBannersContext.Provider>
     </div>
   );
 }

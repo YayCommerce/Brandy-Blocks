@@ -10,15 +10,15 @@ import PanelBody from "../../../components/PanelBody";
 export default function Settings() {
   return (
     <InspectorControls key="setting">
-      <div className="brandy-editor product-catalog-settings">
+      <div className="brandy-editor products-with-banners-settings">
         <PanelBody title={__("Banner settings", "brandy")}>
           <BannerSettings />
         </PanelBody>
         <PanelBody title={__("Content settings", "brandy")}>
           <ContentSettings />
         </PanelBody>
-        <PanelBody title={ __("Filter by Product Category","brandy") }>
-            <ProductCategorySettings/>
+        <PanelBody title={__("Filter by Product Category", "brandy")}>
+          <ProductCategorySettings />
         </PanelBody>
       </div>
     </InspectorControls>

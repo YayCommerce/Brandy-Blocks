@@ -10,25 +10,24 @@ class PackagesLoader {
 	use SingletonTrait;
 
 	protected function __construct() {
-		$this->register_blocks();
-		global $pagenow;
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		if ( 'post.php' === $pagenow || 'page.php' === $pagenow ) {
-			add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
-		}
-		add_filter(
-			'block_categories_all',
-			function ( $test ) {
-				$test[] = array(
-					'slug'  => 'brandy-blocks',
-					'title' => 'Brandy',
-					'icon'  => null,
-				);
-				return $test;
+
+		add_action( 'init', array( $this, 'register_blocks' ) );
+
+		add_action(
+			'init',
+			function() {
+				global $pagenow;
+				add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+				if ( 'post.php' === $pagenow || 'page.php' === $pagenow ) {
+					add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
+				}
 			}
 		);
 
+		add_filter( 'block_categories_all', array( $this, 'register_block_categories' ) );
+
+		add_filter( 'block_type_metadata', array( $this, 'alter_core_block_registration' ) );
 	}
 
 	public function register_blocks() {
@@ -81,5 +80,21 @@ class PackagesLoader {
 			)
 		);
 
+	}
+
+	public function register_block_categories( $categories ) {
+		$categories[] = array(
+			'slug'  => 'brandy-blocks',
+			'title' => 'Brandy',
+			'icon'  => null,
+		);
+		return $categories;
+	}
+
+	public function alter_core_block_registration( $metadata ) {
+		if ( 'core/query-pagination' === $metadata['name'] ) {
+			$metadata['ancestor'][] = 'brandy/relative-posts';
+		}
+		return $metadata;
 	}
 }

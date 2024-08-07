@@ -1,7 +1,7 @@
 {
   "apiVersion": 3,
   "title": "Products With Banners",
-  "name": "brandy/product-catalog",
+  "name": "brandy/products-with-banners",
   "category": "brandy-blocks",
   "description": "",
   "attributes": {

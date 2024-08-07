@@ -7,11 +7,11 @@ use BrandyBlocks\Packages\Abstracts\AbstractBlock;
 use BrandyBlocks\Traits\SingletonTrait;
 
 
-class ProductCatalog extends AbstractBlock {
+class ProductsWithBanners extends AbstractBlock {
 
 	use SingletonTrait;
 
-	public $name = 'ProductCatalog';
+	public $name = 'ProductsWithBanners';
 
 	public const DEFAULT_ATTRIBUTES = array(
 		'banner_settings'           => array(
@@ -77,7 +77,7 @@ class ProductCatalog extends AbstractBlock {
 		$this->attributes = $this->parse_attributes_from_block_attributes( $attributes );
 		$products         = $this->get_query_result( $this->attributes );
 		$content          = sprintf(
-			'<div class="brandy-block-product-catalog" data-settings="%s">%s%s%s</div>',
+			'<div class="brandy-block-products-with-banners" data-settings="%s">%s%s%s</div>',
 			esc_attr( wp_json_encode( $this->attributes ) ),
 			self::render_banner( 'primary' ),
 			$this->render_list( $products ),
@@ -88,7 +88,7 @@ class ProductCatalog extends AbstractBlock {
 
 	public function enqueue_scripts() {
 		if ( ! is_admin() ) {
-			wp_enqueue_script( 'brandy-product-catalog-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/product-catalog.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
+			wp_enqueue_script( 'brandy-products-with-banners-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/products-with-banners.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
 		}
 	}
 
@@ -128,11 +128,11 @@ class ProductCatalog extends AbstractBlock {
 
 		return sprintf(
 			'<div class="product brandy-banner-wrapper %1$s" id="%2$s">
-                <div class="brandy-product-catalog-banner">
-					<h2 class="brandy-product-catalog-banner__title">%4$s</h2>
-					<p class="brandy-product-catalog-banner__description">%5$s</p>
-					<img class="brandy-product-catalog-banner__img" src="%3$s" alt="%4$s">
-                    <a href="#" class="brandy-product-catalog-banner__button">%6$s</a>
+                <div class="brandy-products-with-banners-banner">
+					<h2 class="brandy-products-with-banners-banner__title">%4$s</h2>
+					<p class="brandy-products-with-banners-banner__description">%5$s</p>
+					<img class="brandy-products-with-banners-banner__img" src="%3$s" alt="%4$s">
+                    <a href="#" class="brandy-products-with-banners-banner__button">%6$s</a>
             </div>
         </div>',
 			esc_attr( 'brandy-' . $key . '-banner-wrapper' ),

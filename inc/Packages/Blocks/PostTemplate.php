@@ -43,20 +43,7 @@ class PostTemplate extends AbstractBlock {
 		$page_key = isset( $block->context['queryId'] ) ? 'query-' . $block->context['queryId'] . '-page' : 'query-page';
 		$page     = empty( $_GET[ $page_key ] ) ? 1 : (int) $_GET[ $page_key ];
 
-		$query_args                 = \build_query_vars_from_query_block( $block, $page );
-		$current_post_id            = get_the_ID();
-		$query_args['post__not_in'] = array( $current_post_id );
-
-		if ( isset( $block->context['query']['relatedBy'] ) ) {
-			if ( 'tag' === $block->context['query']['relatedBy'] ) {
-				$tags                  = wp_get_post_tags( $current_post_id );
-				$query_args['tag__in'] = $tags;
-			}
-			if ( 'tag' !== $block->context['query']['relatedBy'] ) {
-				$categories                 = wp_get_post_categories( $current_post_id );
-				$query_args['category__in'] = $categories;
-			}
-		}
+		$query_args = \build_query_vars_from_query_block( $block, $page );
 
 		$query = new \WP_Query( $query_args );
 

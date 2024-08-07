@@ -1,13 +1,13 @@
 @import "../../assets/tailwind.mixins";
 @import "../../assets/utility.mixins";
 
-.brandy-block-product-catalog {
+.brandy-block-products-with-banners {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto;
   grid-gap: 20px;
 
-  .brandy-product-catalog-banner {
+  .brandy-products-with-banners-banner {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -30,11 +30,11 @@
     grid-column: 1;
     grid-row: span 2;
 
-    .brandy-product-catalog-banner__img {
+    .brandy-products-with-banners-banner__img {
       order: -1;
     }
 
-    .brandy-product-catalog-banner__button {
+    .brandy-products-with-banners-banner__button {
       padding: 14px 19px;
       color: #122940;
       border: 1.5px solid #122940;
@@ -49,7 +49,7 @@
     grid-column: 4;
     grid-row: span 2;
 
-    .brandy-product-catalog-banner__button {
+    .brandy-products-with-banners-banner__button {
       color: #122940;
       width: fit-content;
       line-height: 1;
@@ -58,13 +58,13 @@
     }
   }
 
-  .brandy-product-catalog-banner__title {
+  .brandy-products-with-banners-banner__title {
     font-size: 1.875rem;
     font-weight: 400;
     color: var(--primary_text, #122940);
   }
 
-  .brandy-product-catalog-banner__description {
+  .brandy-products-with-banners-banner__description {
     @include text-base();
     font-weight: 400;
     color: var(--secondary_text, #5A6D80);
@@ -78,7 +78,7 @@
   }
 }
 
-.product-catalog-banner-wrapper {
+.products-with-banners-banner-wrapper {
   .brandy-banner-image-container {
     position: relative;
     display: inline-block;
@@ -104,7 +104,7 @@
   }
 }
 
-.brandy-block-product-catalog:not(.brandy-core-styles) {
+.brandy-block-products-with-banners:not(.brandy-core-styles) {
   .product {
     position: relative;
     padding-bottom: 50px;

@@ -37,7 +37,7 @@ export default function Edit(props) {
     template: TEMPLATE,
   });
 
-  const { queryId } = attributes;
+  const { queryId, query } = attributes;
 
   useEffect(() => {
     if (!Number.isFinite(queryId)) {
@@ -45,6 +45,39 @@ export default function Edit(props) {
       setAttributes({ queryId: instanceId });
     }
   }, [queryId, instanceId]);
+
+  useEffect(() => {
+    const relatedBy = query.relatedBy ?? "category";
+    const newQuery = {};
+    if (relatedBy === "tag") {
+      const tagIds = window.wp.data
+        .select("core/editor")
+        .getEditedPostAttribute("tags");
+      newQuery.tagIds = tagIds;
+      newQuery.categoryIds = [];
+    }
+
+    if (relatedBy === "category") {
+      const categoryIds = window.wp.data
+        .select("core/editor")
+        .getEditedPostAttribute("categories");
+      newQuery.tagIds = [];
+      newQuery.categoryIds = categoryIds;
+    }
+
+    const currentPostId = window.wp.data
+      .select("core/editor")
+      .getCurrentPostId();
+
+    newQuery.exclude = [currentPostId];
+
+    setAttributes({
+      query: {
+        ...query,
+        ...newQuery,
+      },
+    });
+  }, [query.relatedBy]);
 
   return (
     <>

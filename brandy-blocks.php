@@ -40,22 +40,11 @@ if ( ! defined( 'BRANDY_BLOCKS_VERSION' ) ) {
 
 require_once BRANDY_BLOCKS_PLUGIN_PATH . 'vendor/autoload.php';
 
-
-add_action( 'init', '\\BrandyBlocks\\brandyblocks_load_plugin' );
-
-if ( ! function_exists( 'BrandyBlocks\\brandyblocks_load_plugin' ) ) {
-	/**
-	 * Initialize plugin instance
-	 */
-	function brandyblocks_load_plugin() { //phpcs:ignore
-		Initialize::get_instance();
-	}
-}
+Initialize::get_instance();
 
 add_action(
 	'plugins_loaded',
 	function() {
-
 		$current_theme = wp_get_theme();
 
 		if ( 'brandy' !== $current_theme->template ) {

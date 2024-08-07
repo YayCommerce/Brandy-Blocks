@@ -40,11 +40,11 @@ export default function QueryToolbar(props) {
                     return;
                   }
                   updateQuery({
-                    per_page: value,
+                    perPage: value,
                   });
                 }}
                 step="1"
-                value={query.per_page ?? 3}
+                value={query.perPage ?? 3}
                 isDragEnabled={false}
               />
               <NumberControl

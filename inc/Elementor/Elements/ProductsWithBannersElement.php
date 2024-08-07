@@ -7,7 +7,7 @@ class ProductsWithBannersElement extends \Elementor\Widget_Base {
 	protected $settings = array();
 
 	public function get_name() {
-		return 'product-catalog-element';
+		return 'products-with-banners-element';
 	}
 
 	public function get_title() {
@@ -177,11 +177,11 @@ class ProductsWithBannersElement extends \Elementor\Widget_Base {
 
 		return sprintf(
 			'<div class="product brandy-banner-wrapper %1$s" id="%2$s">
-			<div class="brandy-product-catalog-banner">
-				<h2 class="brandy-product-catalog-banner__title">%4$s</h2>
-				<p class="brandy-product-catalog-banner__description">%5$s</p>
-				<img class="brandy-product-catalog-banner__img" src="%3$s" alt="%4$s">
-				<a href="#" class="brandy-product-catalog-banner__button">%6$s</a>
+			<div class="brandy-products-with-banners-banner">
+				<h2 class="brandy-products-with-banners-banner__title">%4$s</h2>
+				<p class="brandy-products-with-banners-banner__description">%5$s</p>
+				<img class="brandy-products-with-banners-banner__img" src="%3$s" alt="%4$s">
+				<a href="#" class="brandy-products-with-banners-banner__button">%6$s</a>
 		</div>
 	</div>',
 			esc_attr( 'brandy-' . $key . '-banner-wrapper' ),
@@ -223,7 +223,7 @@ class ProductsWithBannersElement extends \Elementor\Widget_Base {
 	protected function render() {
 		$this->settings = $this->get_settings_for_display();
 		printf(
-			'<div class="brandy-block-product-catalog %s">%s%s%s</div>',
+			'<div class="brandy-block-products-with-banners %s">%s%s%s</div>',
 			is_brandy_exists() ? 'brandy-core-styles' : '',
 			self::render_banner( 'primary' ),
 			self::render_list( $this->products_by_categories() ),

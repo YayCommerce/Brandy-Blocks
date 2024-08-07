@@ -15,7 +15,6 @@ class Initialize {
 		ShortcodesLoader::get_instance();
 		PackagesLoader::get_instance();
 		ElementorSetup::get_instance();
-		ShortcodesLoader::get_instance();
 
 	}
 }
