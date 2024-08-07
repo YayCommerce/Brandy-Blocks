@@ -5,21 +5,29 @@
   "category": "brandy-blocks",
   "description": "",
   "attributes": {
-    "posts_query": {
+    "queryId": {
+      "type": "number"
+    },
+    "query": {
       "type": "object",
       "default": {
-        "related": "category",
-        "order_by": "title",
-        "order": "asc"
+        "relatedBy": "category",
+        "orderBy": "title",
+        "order": "asc",
+        "perPage": 3,
+        "offset": 0
       }
     }
   },
-  "providesContext": {},
   "example": {
-    "viewportWidth": 2000,
+    "viewportWidth": 1400,
     "attributes": {}
   },
-  "icon": "money-alt",
+  "providesContext": {
+    "query": "query",
+    "displayLayout": "displayLayout",
+    "queryId": "queryId"
+  },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

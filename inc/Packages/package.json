@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@wordpress/icons": "^10.4.0",
     "@wordpress/scripts": "^26.18.0",
+    "clsx": "^2.1.1",
     "react-sortablejs": "^6.1.4",
     "sortablejs": "^1.15.1"
   }
