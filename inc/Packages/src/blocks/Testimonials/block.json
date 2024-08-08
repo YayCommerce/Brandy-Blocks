@@ -163,13 +163,7 @@
     },
     "layout": {
       "type": "array",
-      "default": [
-        "avatar",
-        "name",
-        "subname",
-        "content",
-        "rating"
-      ]
+      "default": ["avatar", "name", "subname", "content", "rating"]
     }
   },
   "example": {
@@ -182,6 +176,7 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
+  "script": "brandy-testimonials",
   "selectors": {
     "color": {
       "text": "h2.testimonials__heading"

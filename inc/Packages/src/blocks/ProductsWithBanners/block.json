@@ -51,5 +51,6 @@
   "icon": "money-alt",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "script": "brandy-products-with-banners"
 }

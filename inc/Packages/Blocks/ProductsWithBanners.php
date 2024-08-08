@@ -58,13 +58,8 @@ class ProductsWithBanners extends AbstractBlock {
 
 	protected function init_hooks() {
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		wp_register_script( 'brandy-products-with-banners', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/products-with-banners.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
 
-		global $pagenow;
-		if ( 'post.php' === $pagenow || 'page.php' === $pagenow ) {
-			add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
-		}
 	}
 
 	protected function get_block_attributes() {
@@ -84,12 +79,6 @@ class ProductsWithBanners extends AbstractBlock {
 			self::render_banner( 'secondary' ),
 		);
 		return $content;
-	}
-
-	public function enqueue_scripts() {
-		if ( ! is_admin() ) {
-			wp_enqueue_script( 'brandy-products-with-banners-js', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/products-with-banners.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
-		}
 	}
 
 	public function get_query_result( $attributes ) {
