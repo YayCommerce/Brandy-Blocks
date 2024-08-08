@@ -2,7 +2,6 @@
 
 namespace BrandyBlocks\Packages;
 
-use BrandyBlocks\Packages\Blocks\AllProducts;
 use BrandyBlocks\Traits\SingletonTrait;
 
 class PackagesLoader {
@@ -67,16 +66,7 @@ class PackagesLoader {
 				'ajax'   => array(
 					'path' => admin_url( 'admin-ajax.php' ),
 				),
-				'blocks' => array(
-					'allProducts' => array(
-						'nonces'    => array(
-							'render_list' => wp_create_nonce( AllProducts::RENDER_LIST_ACTION ),
-						),
-						'templates' => array(
-							'product_placeholder' => AllProducts::render_product_placeholder(),
-						),
-					),
-				),
+				'blocks' => array(),
 			)
 		);
 
