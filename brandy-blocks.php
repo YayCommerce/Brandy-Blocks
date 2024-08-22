@@ -3,7 +3,7 @@
  * Plugin Name: Brandy Blocks - Extra blocks for Brandy theme
  * Plugin URI: https://yaycommerce.com/
  * Description: Brandy blocks.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: YayCommerce
  * Author URI: https://yaycommerce.com/
  * License: GPLv3 or later
@@ -35,7 +35,7 @@ if ( ! defined( 'BRANDY_BLOCKS_PLUGIN_BASENAME' ) ) {
 	define( 'BRANDY_BLOCKS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 }
 if ( ! defined( 'BRANDY_BLOCKS_VERSION' ) ) {
-	define( 'BRANDY_BLOCKS_VERSION', '1.0.2' );
+	define( 'BRANDY_BLOCKS_VERSION', '1.0.3' );
 }
 
 require_once BRANDY_BLOCKS_PLUGIN_PATH . 'vendor/autoload.php';

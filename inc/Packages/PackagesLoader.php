@@ -73,12 +73,14 @@ class PackagesLoader {
 	}
 
 	public function register_block_categories( $categories ) {
-		$categories[] = array(
-			'slug'  => 'brandy-blocks',
-			'title' => 'Brandy',
-			'icon'  => null,
+		return array(
+			array(
+				'slug'  => 'brandy-blocks',
+				'title' => 'Brandy',
+				'icon'  => null,
+			),
+			...$categories,
 		);
-		return $categories;
 	}
 
 	public function alter_core_block_registration( $metadata ) {
