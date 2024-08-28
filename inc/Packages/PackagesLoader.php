@@ -27,6 +27,8 @@ class PackagesLoader {
 		add_filter( 'block_categories_all', array( $this, 'register_block_categories' ) );
 
 		add_filter( 'block_type_metadata', array( $this, 'alter_core_block_registration' ) );
+
+		require BRANDY_BLOCKS_PLUGIN_PATH . 'inc/Packages/Externals/ExternalsLoader.php';
 	}
 
 	public function register_blocks() {
