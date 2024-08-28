@@ -1,0 +1,13 @@
+{
+  "name": "theme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/YayCommerce/WooCommerce-Theme.git",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently --kill-others \" cd inc/Packages && yarn run dev \" \" cd inc/Externals && yarn run dev \""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

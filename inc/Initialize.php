@@ -3,6 +3,7 @@
 namespace BrandyBlocks;
 
 use BrandyBlocks\Elementor\ElementorSetup;
+use BrandyBlocks\Externals\ExternalsLoader;
 use BrandyBlocks\Packages\PackagesLoader;
 use BrandyBlocks\Shortcodes\ShortcodesLoader;
 
@@ -15,6 +16,6 @@ class Initialize {
 		ShortcodesLoader::get_instance();
 		PackagesLoader::get_instance();
 		ElementorSetup::get_instance();
-
+		ExternalsLoader::get_instance();
 	}
 }

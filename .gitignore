@@ -4,8 +4,12 @@
 /build
 *.xml
 
+node_modules
+
 inc/Packages/node_modules
 inc/Packages/build
+inc/Externals/node_modules
+inc/Externals/build
 vendor
 release
 composer.lock
