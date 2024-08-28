@@ -2,7 +2,7 @@
 set -eo pipefail
 
 function dev-init {
-	composer install && cd inc/Packages && yarn install && cd ../Externals && yarn install
+	composer install && yarn install && cd inc/Packages && yarn install && cd ../Externals && yarn install
 }
 
 function dev {
