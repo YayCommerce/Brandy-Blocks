@@ -14,7 +14,7 @@ class JumpToSection extends AbstractBlock {
 	protected $attributes = array();
 
 	protected function init_hooks() {
-		wp_register_script( 'jump-to-section', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Packages/dist/js/jump-to-section.js', array( 'jquery' ), time(), true );
+		wp_register_script( 'jump-to-section', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Packages/Blocks/JumpToSection.js', array( 'jquery' ), time(), true );
 	}
 
 }

@@ -58,7 +58,7 @@ class ProductsWithBanners extends AbstractBlock {
 
 	protected function init_hooks() {
 
-		wp_register_script( 'brandy-products-with-banners', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/products-with-banners.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
+		wp_register_script( 'brandy-products-with-banners', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Blocks/ProductsWithBanners.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
 
 	}
 

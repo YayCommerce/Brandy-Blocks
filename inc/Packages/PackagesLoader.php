@@ -15,12 +15,9 @@ class PackagesLoader {
 		add_action(
 			'init',
 			function() {
-				global $pagenow;
-				add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-				if ( 'post.php' === $pagenow || 'page.php' === $pagenow ) {
-					add_action( 'enqueue_block_assets', array( $this, 'enqueue_scripts' ) );
-				}
+				add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_scripts' ) );
+
 			}
 		);
 
@@ -28,7 +25,6 @@ class PackagesLoader {
 
 		add_filter( 'block_type_metadata', array( $this, 'alter_core_block_registration' ) );
 
-		require BRANDY_BLOCKS_PLUGIN_PATH . 'inc/Packages/Externals/ExternalsLoader.php';
 	}
 
 	public function register_blocks() {
@@ -55,8 +51,8 @@ class PackagesLoader {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'brandy_blocks_script', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/js/script.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
-		wp_enqueue_style( 'brandy_block_editor_styles', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/dist/css/editor-style.css', array(), BRANDY_BLOCKS_VERSION );
+		wp_enqueue_script( 'brandy_blocks_script', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Assets/js/script.js', array( 'jquery' ), time(), true );
+		wp_enqueue_style( 'brandy_block_editor_styles', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Assets/css/editor-style.css', array(), time() );
 		wp_localize_script(
 			'brandy_blocks_script',
 			'brandyBlocks',

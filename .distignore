@@ -24,5 +24,11 @@ package-lock.json
 /inc/Packages/package.json
 /inc/Packages/yarn.lock
 
+/inc/Externals/node_modules
+/inc/Externals/src
+/inc/Externals/package.json
+/inc/Externals/yarn.lock
+/inc/Externals/webpack.config.js
+
 /vendor/bin
 /vendor/squizlabs
