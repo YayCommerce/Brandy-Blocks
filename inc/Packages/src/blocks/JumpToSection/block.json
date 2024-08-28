@@ -93,5 +93,5 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "script": "jump-to-section"
+  "script": "brandy-blocks/jump-to-section"
 }

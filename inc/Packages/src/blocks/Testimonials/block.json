@@ -176,7 +176,7 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "script": "brandy-testimonials",
+  "script": "brandy-blocks/testimonials",
   "selectors": {
     "color": {
       "text": "h2.testimonials__heading"
