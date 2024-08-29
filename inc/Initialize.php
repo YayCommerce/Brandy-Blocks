@@ -12,6 +12,7 @@ class Initialize {
 
 	protected function __construct() {
 		require_once BRANDY_BLOCKS_PLUGIN_PATH . 'inc/Functions.php';
+		require_once BRANDY_BLOCKS_PLUGIN_PATH . 'inc/Admin/SettingsMenu.php';
 
 		ShortcodesLoader::get_instance();
 		PackagesLoader::get_instance();

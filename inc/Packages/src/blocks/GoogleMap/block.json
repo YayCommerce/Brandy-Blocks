@@ -5,10 +5,6 @@
   "category": "brandy-blocks",
   "description": "Display Google map",
   "attributes": {
-    "apiKey": {
-      "type": "string",
-      "default": ""
-    },
     "currentAddress": {
       "type": "string",
       "default": ""

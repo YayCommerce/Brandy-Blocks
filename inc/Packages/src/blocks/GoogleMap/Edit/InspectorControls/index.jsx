@@ -7,20 +7,11 @@ import {
 import { __ } from "@wordpress/i18n";
 
 export default function AllInspectorSettings({ attributes, setAttributes }) {
-  const { apiKey, currentAddress, zoomLevel, mapStyle, language } = attributes;
+  const { currentAddress, zoomLevel, mapStyle, language } = attributes;
 
   return (
     <>
       <PanelBody title={__("Settings")}>
-        <InputControl
-          label={__("API key")}
-          value={apiKey}
-          onChange={(value) =>
-            setAttributes({
-              apiKey: value,
-            })
-          }
-        />
         <InputControl
           label={__("Current address")}
           value={currentAddress}
@@ -34,10 +25,10 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
           label="Map style"
           value={mapStyle}
           options={[
-            { label: "Roadmap", value: "roadmap" },
-            { label: "Satellite", value: "satellite" },
-            { label: "Hybrid", value: "hybrid" },
-            { label: "Terrain", value: "terrain" },
+            { label: "Roadmap", value: "ROADMAP" },
+            { label: "Satellite", value: "SATELLITE" },
+            { label: "Hybrid", value: "HYBRID" },
+            { label: "Terrain", value: "TERRAIN" },
           ]}
           onChange={(value) =>
             setAttributes({
@@ -58,7 +49,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
           min={5}
           max={100}
         />
-        <SelectControl
+        {/* <SelectControl
           label="Language"
           value={language}
           options={[
@@ -71,7 +62,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
             })
           }
           __nextHasNoMarginBottom
-        />
+        /> */}
       </PanelBody>
     </>
   );
