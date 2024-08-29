@@ -1,6 +1,6 @@
+import { PanelBody } from "@wordpress/components";
 import { useContext } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import CollapseMenu from "../../../../components/CollapseMenu";
 import Arrow from "./ArrowAndDot/Arrow";
 import Dots from "./ArrowAndDot/Dots";
 import Star from "./ItemBlock/Star";
@@ -37,7 +37,7 @@ export default function Styles() {
   };
   return (
     <div className="testimonial-settings__styles">
-      <CollapseMenu title={__("Item block", "brandy")}>
+      <PanelBody title={__("Item block", "brandy")}>
         <ReactSortable
           list={layout}
           setList={setLayout}
@@ -54,11 +54,11 @@ export default function Styles() {
             return null;
           })}
         </ReactSortable>
-      </CollapseMenu>
-      <CollapseMenu title={__("Arrow & dot", "brandy")}>
+      </PanelBody>
+      <PanelBody title={__("Arrow & dot", "brandy")}>
         <Dots />
         <Arrow />
-      </CollapseMenu>
+      </PanelBody>
     </div>
   );
 }
