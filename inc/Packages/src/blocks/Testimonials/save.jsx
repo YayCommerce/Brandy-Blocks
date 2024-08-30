@@ -7,7 +7,6 @@ import {
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save();
-  console.log({attributes})
   const visibility = {
     "--avatar-visible": attributes.avatar.visible ? "block" : "none",
     "--name-visible": attributes.name.visible ? "block" : "none",
@@ -45,7 +44,7 @@ export default function Save({ attributes }) {
           /** star */
           "--testimonial-star-size": attributes.star.size + "px",
           "--testimonial-star-default-color": attributes.star.default_color,
-          "--testimonial-star-active-color": attributes.star.active_color,
+          "--testimonial-star-active-color":  attributes.star.active_color,
           "--testimonial-star-spacing": attributes.star.spacing + "px",
           "--testimonial-star-margin": getPaddingValue(attributes.star.margin),
 

@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "title": "Testimonial Content",
+  "name": "brandy/single-testimonial-content",
+  "category": "brandy-blocks",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "visible": "", 
+    "color": "", 
+    "typography": "",
+    "margin":""
+  },
+  "parent": [
+    "brandy/single-testimonial"
+  ],
+  "usesContext": [
+    "brandy/testimonials/layout"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

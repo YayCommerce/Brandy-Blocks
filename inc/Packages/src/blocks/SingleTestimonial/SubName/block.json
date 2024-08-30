@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "title": "Testimonial SubName",
+  "name": "brandy/single-testimonial-subname",
+  "category": "brandy-blocks",
+  "attributes": {
+    "subname": {
+       "type": "string",
+      "default": ""
+    },
+    "visible": "",
+    "color": "",
+    "typography": "",
+    "margin": ""
+  },
+  "parent": [
+    "brandy/single-testimonial"
+  ],
+  "usesContext": [
+    "brandy/testimonials/layout"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

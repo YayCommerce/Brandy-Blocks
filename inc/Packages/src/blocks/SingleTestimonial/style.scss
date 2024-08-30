@@ -176,7 +176,18 @@
 	}
 
 	.brand-testimonials__card__header{
-		margin-left: 131px; // card wrapper: 530px & padding left& right : 60px, card header: 468px , avatar: 80px => center: ( 530 - (568-80) ) / 2 = 71 + 60 
+		//margin-left: 131px; // card wrapper: 530px & padding left& right : 60px, card header: 468px , avatar: 80px => center: ( 530 - (568-80) ) / 2 = 71 + 60 
+		margin: 0px;
+		display: unset !important;
+		.block-editor-block-list__layout{
+			display: flex;
+		}
 	}
-	
+
+}
+
+.wp-block-brandy-single-testimonial {
+	.block-editor-block-list__layout {
+		display: unset !important;
+	}
 }

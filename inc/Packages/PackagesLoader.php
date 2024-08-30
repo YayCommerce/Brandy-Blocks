@@ -43,14 +43,21 @@ class PackagesLoader {
 				continue;
 			}
 
-			$class_name = 'BrandyBlocks\\Packages\\Blocks\\' . $folder_name;
+			self::get_class_instance( $folder_name );
 
-			if ( ! class_exists( $class_name ) || ! is_callable( array( $class_name, 'get_instance' ) ) ) {
-				continue;
+			if ( 'SingleTestimonial' === $folder_name ) {
+				foreach ( array( 'Avatar', 'Name', 'SubName', 'Content', 'Star' ) as $file_name ) {
+					self::get_class_instance( $folder_name . '\\' . $file_name );
+				}
 			}
+		}
 
+	}
+
+	protected function get_class_instance( $folder_name ) {
+		$class_name = 'BrandyBlocks\\Packages\\Blocks\\' . $folder_name;
+		if ( class_exists( $class_name ) && is_callable( array( $class_name, 'get_instance' ) ) ) {
 			$class_name::get_instance();
-
 		}
 	}
 

@@ -1,0 +1,53 @@
+.brandy-testimonials-wrapper {
+	&[content-alignment="center"] {
+		.brandy-testimonials__card {
+			&__subname {
+				text-align: center;
+			}
+		}
+	}
+
+	&[content-alignment="right"] {
+		.brandy-testimonials__card {
+			&__subname,
+			&__content {
+				text-align: right;
+			}
+		}
+	}
+}
+
+.brandy-testimonials__card {
+	
+	&__subname {
+		display: var(--subname-visible);
+		line-height: 24px;
+		margin: var(--subname-margin, 0) !important;
+		color: var(--subname-color);
+		font-size: var(--subname-font-size);
+		font-weight: var(--subname-font-weight, var(--subname-bold));
+		font-style: var(--subname-font-styles);
+		text-transform: var(--subname-text-transform, auto);
+	}
+
+}
+
+.brandy-editor-testimonial-subname{
+	&__options{
+        &__color {
+			padding: 0px;
+		}
+        &__typography{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__visible{
+			display: flex;
+			gap: 15px;
+		}
+        padding: calc(16px);
+        border-top: 1px solid rgb(221, 221, 221);
+		
+	}
+}

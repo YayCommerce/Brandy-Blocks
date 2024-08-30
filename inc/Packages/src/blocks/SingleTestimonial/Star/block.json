@@ -1,0 +1,28 @@
+{
+  "apiVersion": 3,
+  "title": "Testimonial Star",
+  "name": "brandy/single-testimonial-star",
+  "category": "brandy-blocks",
+  "attributes": {
+    "rating": {
+      "type": "number",
+      "attribute": "data-rating",
+      "default": 5
+    },
+    "visible": "",
+    "size": "",
+    "active_color": "",
+    "default_color": "",
+    "spacing": "",
+    "margin": ""
+  },
+  "parent": [
+    "brandy/single-testimonial"
+  ],
+  "usesContext": [
+    "brandy/testimonials/layout"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

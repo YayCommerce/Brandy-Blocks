@@ -22,7 +22,7 @@ export default function LayoutStyle() {
         layout_style: style,
     });
   };
-  console.log(attributes)
+ 
   return (
     <div className="setting-wrapper">
       <div>

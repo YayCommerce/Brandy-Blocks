@@ -1,0 +1,26 @@
+{
+  "apiVersion": 3,
+  "title": "Testimonial Avatar",
+  "name": "brandy/single-testimonial-avatar",
+  "category": "brandy-blocks",
+  "attributes": {
+    "image": {
+      "type": "string",
+      "default": "#"
+    },
+    "visible": "true",
+    "size": "",
+    "border_radius": "",
+    "fitting": "",
+    "margin": ""
+  },
+  "parent": [
+    "brandy/single-testimonial"
+  ],
+  "usesContext": [
+    "brandy/testimonials/layout"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
