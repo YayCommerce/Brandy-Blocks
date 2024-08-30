@@ -71,7 +71,7 @@ const DisplayAnimationControls = wp.compose.createHigherOrderComponent(
                   <option value="slide_out">Slide out</option>
                 </optgroup> */}
               </SelectControl>
-              {attributes.displayAnimation.type &&
+              {attributes.displayAnimation?.type &&
                 attributes.displayAnimation.type != "none" && (
                   <>
                     <RangeControl
@@ -95,7 +95,7 @@ const DisplayAnimationControls = wp.compose.createHigherOrderComponent(
                         "Animate when viewing",
                         "brandy-blocks"
                       )}
-                      checked={!!attributes.displayAnimation.animateOnView}
+                      checked={!!attributes.displayAnimation?.animateOnView}
                       onChange={(value) => {
                         setAttributes({
                           displayAnimation: {
