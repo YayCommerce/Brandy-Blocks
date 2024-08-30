@@ -9,6 +9,8 @@ import { createBlock } from "@wordpress/blocks";
 import { View } from "@wordpress/primitives";
 import { __ } from "@wordpress/i18n";
 
+import "../style.scss";
+
 import AllInspectorSettings from "./InspectorControls";
 
 export default function Edit(props) {
@@ -42,13 +44,20 @@ export default function Edit(props) {
           },
         },
         [
-          ["brandy/form-input"],
+          [
+            "brandy/form-input",
+            {
+              label: "Username",
+              name: "username",
+              id: "username",
+            },
+          ],
           [
             "brandy/form-input",
             {
               label: "User password",
-              name: "user_password",
-              id: "user-password",
+              name: "password",
+              id: "password",
             },
           ],
           ["brandy/form-submit"],

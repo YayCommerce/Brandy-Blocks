@@ -29,6 +29,7 @@ export function Content({ isSave = false }) {
         {
           text: "Submit",
           type: "submit",
+          tagName: "button",
         },
       ],
     ],
