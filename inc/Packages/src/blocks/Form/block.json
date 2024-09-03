@@ -26,6 +26,9 @@
       "default": ""
     }
   },
+  "providesContext": {
+    "formAction": "action"
+  },
   "supports": {
     "reusable": false,
     "html": false,

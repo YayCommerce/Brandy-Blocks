@@ -5,7 +5,12 @@
   "category": "brandy-blocks",
   "description": "Display a submit button",
   "ancestor": ["brandy/form"],
-  "attributes": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "value": "Submit"
+    }
+  },
   "supports": {
     "reusable": false,
     "html": false,
@@ -68,6 +73,7 @@
   "example": {
     "viewportWidth": 400
   },
+  "usesContext": ["formAction"],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

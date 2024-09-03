@@ -1,38 +1,30 @@
 {
   "apiVersion": 3,
-  "title": "Form Input",
-  "name": "brandy/form-input",
+  "title": "Form Password",
+  "name": "brandy/form-password",
   "category": "brandy-blocks",
-  "description": "Display a form input",
+  "description": "Display a form password",
   "ancestor": ["brandy/form"],
   "attributes": {
     "name": {
       "type": "string",
-      "default": "username"
+      "default": "password"
     },
     "isRequired": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "label": {
       "type": "string",
-      "default": "Username"
+      "default": "Password"
     },
     "id": {
       "type": "string",
-      "default": "username"
+      "default": "password"
     },
-    "autocomplete": {
+    "validate": {
       "type": "boolean",
       "default": true
-    },
-    "type": {
-      "type": "string",
-      "default": "text"
-    },
-    "line": {
-      "type": "number",
-      "default": 5
     }
   },
   "supports": {

@@ -53,7 +53,7 @@ export default function Edit(props) {
             },
           ],
           [
-            "brandy/form-input",
+            "brandy/form-password",
             {
               label: "User password",
               name: "password",
@@ -78,9 +78,7 @@ export default function Edit(props) {
         />
       </InspectorControls>
       {!showPlaceholder ? (
-        <div {...blockProps}>
-          <form {...innerBlocksProps} />
-        </div>
+        <form {...innerBlocksProps} />
       ) : (
         <View>
           {innerBlocksProps.children}

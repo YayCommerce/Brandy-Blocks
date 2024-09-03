@@ -2,11 +2,13 @@ import {
   PanelBody,
   SelectControl,
   __experimentalInputControl as InputControl,
+  __experimentalDivider as Divider,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 
 export default function AllInspectorSettings({ attributes, setAttributes }) {
-  const { action, successUrl, failedUrl } = attributes;
+  const { action, successUrl, successMessage, failedUrl, failedMessage } =
+    attributes;
 
   return (
     <>
@@ -20,6 +22,13 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
             { label: "Custom", value: "custom" },
           ]}
           onChange={(v) => setAttributes({ action: v })}
+          help={
+            action === "login"
+              ? __(
+                  "Please make sure you have two fields with name: username - password"
+                )
+              : ""
+          }
           __nextHasNoMarginBottom
         />
         <InputControl
@@ -28,18 +37,19 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
           onChange={(v) => setAttributes({ successUrl: v })}
         />
         <InputControl
-          label={__("Success message")}
-          value={successUrl}
-          onChange={(v) => setAttributes({ successMessage: v })}
-        />
-        <InputControl
           label={__("Failed redirect url")}
           value={failedUrl}
           onChange={(v) => setAttributes({ failedUrl: v })}
         />
+        <Divider />
+        <InputControl
+          label={__("Success message")}
+          value={successMessage}
+          onChange={(v) => setAttributes({ successMessage: v })}
+        />
         <InputControl
           label={__("Failed message")}
-          value={failedUrl}
+          value={failedMessage}
           onChange={(v) => setAttributes({ failedMessage: v })}
         />
       </PanelBody>

@@ -1,7 +1,7 @@
 import {
   InspectorControls,
   useBlockProps,
-  useInnerBlocksProps,
+  RichText,
 } from "@wordpress/block-editor";
 
 import AllInspectorSettings from "./InspectorControls";
@@ -19,27 +19,23 @@ export default function Edit(props) {
   );
 }
 
-export function Content({ isSave = false }) {
-  const blockProps = isSave ? useBlockProps.save() : useBlockProps();
+export function Content({ isSave = false, attributes, setAttributes }) {
+  const { text = "Submit" } = attributes;
 
-  const innerConfig = {
-    template: [
-      [
-        "core/button",
-        {
-          text: "Submit",
-          type: "submit",
-          tagName: "button",
-        },
-      ],
-    ],
-    renderAppender: false,
-    templateLock: true,
+  const props = {
+    class: "wp-element-button",
+    className: "wp-element-button",
+    tagName: "button",
   };
 
-  const innerBlockProps = isSave
-    ? useInnerBlocksProps.save(blockProps, innerConfig)
-    : useInnerBlocksProps(blockProps, innerConfig);
-
-  return <div {...innerBlockProps}></div>;
+  const blockProps = useBlockProps(props);
+  return (
+    <RichText
+      {...blockProps}
+      value={text}
+      onChange={(v) => {
+        setAttributes({ text: v });
+      }}
+    />
+  );
 }
