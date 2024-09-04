@@ -121,3 +121,34 @@ wp.hooks.addFilter(
   "brandy-blocks/display-animation-controls",
   DisplayAnimationControls
 );
+
+/**
+ * Save function
+ */
+function addAnimationAttribute(props, blockType, attributes) {
+  const { displayAnimation } = attributes;
+
+  if (displayAnimation == null || displayAnimation.type == null) {
+    return props;
+  }
+
+  if (displayAnimation?.type == "none") {
+    return props;
+  }
+
+  Object.assign(props, {
+    ["data-animate-effect"]: displayAnimation.type,
+    style: {
+      ...(props.style ?? {}),
+      animationDuration: `${displayAnimation.duration ?? 3}s`,
+    },
+    ["data-animate-on-view"]: displayAnimation.animateOnView ? "true" : "false",
+  });
+  return props;
+}
+
+wp.hooks.addFilter(
+  "blocks.getSaveContent.extraProps",
+  "brandy-blocks/display-animation-props",
+  addAnimationAttribute
+);
