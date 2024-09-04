@@ -6,11 +6,6 @@ function addResponsiveConditionsAttribute(settings, name) {
   settings.attributes = Object.assign(settings.attributes, {
     responsiveConditions: {
       type: "object",
-      default: {
-        hideOnDesktop: false,
-        hideOnTablet: false,
-        hideOnMobile: false,
-      },
     },
   });
 
