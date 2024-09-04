@@ -57,14 +57,16 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
             setAttributes({ autocomplete: v });
           }}
         />
-        <RangeControl
-          __nextHasNoMarginBottom
-          label="Number of lines"
-          value={line}
-          onChange={(value) => setAttributes({ line: value })}
-          min={2}
-          max={20}
-        />
+        {type === "textarea" && (
+          <RangeControl
+            __nextHasNoMarginBottom
+            label="Number of lines"
+            value={line}
+            onChange={(value) => setAttributes({ line: value })}
+            min={2}
+            max={20}
+          />
+        )}
       </PanelBody>
     </>
   );

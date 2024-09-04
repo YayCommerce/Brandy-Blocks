@@ -23,35 +23,42 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
           ]}
           onChange={(v) => setAttributes({ action: v })}
           help={
-            action === "login"
-              ? __(
+            <>
+              {action === "login" &&
+                __(
                   "Please make sure you have two fields with name: username - password"
-                )
-              : ""
+                )}
+              {action === "reset_password" &&
+                __("Please make sure you have field: user_login")}
+            </>
           }
           __nextHasNoMarginBottom
         />
-        <InputControl
-          label={__("Success redirect url")}
-          value={successUrl}
-          onChange={(v) => setAttributes({ successUrl: v })}
-        />
-        <InputControl
-          label={__("Failed redirect url")}
-          value={failedUrl}
-          onChange={(v) => setAttributes({ failedUrl: v })}
-        />
-        <Divider />
-        <InputControl
-          label={__("Success message")}
-          value={successMessage}
-          onChange={(v) => setAttributes({ successMessage: v })}
-        />
-        <InputControl
-          label={__("Failed message")}
-          value={failedMessage}
-          onChange={(v) => setAttributes({ failedMessage: v })}
-        />
+        {action !== "reset_password" && (
+          <>
+            <InputControl
+              label={__("Success redirect url")}
+              value={successUrl}
+              onChange={(v) => setAttributes({ successUrl: v })}
+            />
+            <InputControl
+              label={__("Failed redirect url")}
+              value={failedUrl}
+              onChange={(v) => setAttributes({ failedUrl: v })}
+            />
+            <Divider />
+            <InputControl
+              label={__("Success message")}
+              value={successMessage}
+              onChange={(v) => setAttributes({ successMessage: v })}
+            />
+            <InputControl
+              label={__("Failed message")}
+              value={failedMessage}
+              onChange={(v) => setAttributes({ failedMessage: v })}
+            />
+          </>
+        )}
       </PanelBody>
     </>
   );

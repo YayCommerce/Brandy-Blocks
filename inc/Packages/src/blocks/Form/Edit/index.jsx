@@ -19,7 +19,7 @@ export default function Edit(props) {
   const blockProps = useBlockProps();
 
   const showPlaceholder = useSelect((select) => {
-    return select("core/editor").getBlock(clientId).innerBlocks.length < 1;
+    return select("core/editor").getBlock(clientId)?.innerBlocks.length < 1;
   });
 
   let renderAppender;
@@ -35,34 +35,22 @@ export default function Edit(props) {
   const innerBlocksProps = useInnerBlocksProps(blockProps, {
     template: [
       [
-        "core/group",
+        "brandy/form-input",
         {
-          style: {
-            spacing: {
-              blockGap: "var(--wp--preset--spacing--20)",
-            },
-          },
+          label: "Username",
+          name: "username",
+          id: "username",
         },
-        [
-          [
-            "brandy/form-input",
-            {
-              label: "Username",
-              name: "username",
-              id: "username",
-            },
-          ],
-          [
-            "brandy/form-password",
-            {
-              label: "User password",
-              name: "password",
-              id: "password",
-            },
-          ],
-          ["brandy/form-submit"],
-        ],
       ],
+      [
+        "brandy/form-password",
+        {
+          label: "User password",
+          name: "password",
+          id: "password",
+        },
+      ],
+      ["brandy/form-submit"],
     ],
     renderAppender,
     allowedBlocks: ALLOWED_BLOCKS,
@@ -78,7 +66,7 @@ export default function Edit(props) {
         />
       </InspectorControls>
       {!showPlaceholder ? (
-        <form {...innerBlocksProps} />
+        <div {...innerBlocksProps} />
       ) : (
         <View>
           {innerBlocksProps.children}

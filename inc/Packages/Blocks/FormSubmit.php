@@ -32,6 +32,12 @@ class FormSubmit extends AbstractBlock {
 		if ( isset( $block->context['formAction'] ) && 'login' === $block->context['formAction'] ) {
 			$button_attributes['name'] = 'login';
 		}
+		if ( isset( $block->context['formAction'] ) && 'reset_password' === $block->context['formAction'] ) {
+			$button_attributes['name'] = 'Reset password';
+		}
+		if ( isset( $block->context['formAction'] ) && 'custom' === $block->context['formAction'] ) {
+			$button_attributes['name'] = 'custom_action';
+		}
 
 		$html = '';
 		ob_start(); ?>

@@ -42,6 +42,7 @@ class Caller {
 		$attributes = (array) $block['attrs'];
 
 		$escaped_data_attributes = array();
+		$escaped_style           = '';
 
 		foreach ( $attributes as $key => $value ) {
 			if ( 'displayAnimation' !== $key ) {
@@ -57,7 +58,27 @@ class Caller {
 			}
 			$escaped_data_attributes[] = 'data-animate-effect="' . esc_attr( $value['type'] ) . '"';
 			$escaped_data_attributes[] = 'data-animate-on-view="' . esc_attr( $value['animateOnView'] ? 'true' : 'false' ) . '"';
-			$escaped_data_attributes[] = 'style="animation-duration:' . esc_attr( $value['duration'] ?? 3 ) . 's"';
+			$escaped_style             = 'animation-duration:' . esc_attr( $value['duration'] ?? 3 ) . 's';
+		}
+
+		if ( ! empty( $escaped_style ) ) {
+			$tags = new \WP_HTML_Tag_Processor( $content );
+			if ( $tags->next_tag() ) {
+				$existing_style = $tags->get_attribute( 'style' );
+				$updated_style  = '';
+
+				if ( empty( $existing_style ) ) {
+					$existing_style = '';
+				} else {
+					if ( ! str_ends_with( $existing_style, ';' ) ) {
+						$existing_style .= ';';
+					}
+				}
+				$updated_style  = $existing_style;
+				$updated_style .= $escaped_style . ';';
+				$tags->set_attribute( 'style', $updated_style );
+				$content = $tags->get_updated_html();
+			}
 		}
 
 		return preg_replace( '/^<div /', '<div ' . implode( ' ', $escaped_data_attributes ) . ' ', trim( $content ) );

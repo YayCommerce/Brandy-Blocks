@@ -32,6 +32,7 @@
   "supports": {
     "reusable": false,
     "html": false,
+    "align": ["wide", "full"],
     "spacing": {
       "blockGap": {
         "__experimentalDefault": "1.25em"
@@ -57,6 +58,9 @@
     },
     "interactivity": {
       "clientNavigation": true
+    },
+    "layout": {
+      "allowSizingOnChildren": true
     }
   },
   "example": {

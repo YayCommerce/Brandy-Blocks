@@ -25,6 +25,14 @@ class PackagesLoader {
 
 		add_filter( 'block_type_metadata', array( $this, 'alter_core_block_registration' ) );
 
+		add_filter(
+			'__experimental_woocommerce_blocks_add_data_attributes_to_namespace',
+			function( $allowed_namespaces ) {
+				$allowed_namespaces[] = 'brandy';
+				return $allowed_namespaces;
+			}
+		);
+
 	}
 
 	public function register_blocks() {
