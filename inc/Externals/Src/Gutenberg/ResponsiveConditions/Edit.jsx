@@ -41,7 +41,7 @@ const ResponsiveConditionsControls = wp.compose.createHigherOrderComponent(
               <PanelBody title={__("Responsive Conditions", "brandy-blocks")}>
                 <ToggleControl
                   label={wp.i18n.__("Hide on desktop", "brandy-blocks")}
-                  checked={!!attributes.responsiveConditions.hideOnDesktop}
+                  checked={!!attributes.responsiveConditions?.hideOnDesktop}
                   onChange={(value) => {
                     setAttributes({
                       responsiveConditions: {
@@ -53,7 +53,7 @@ const ResponsiveConditionsControls = wp.compose.createHigherOrderComponent(
                 />
                 <ToggleControl
                   label={wp.i18n.__("Hide on tablet", "brandy-blocks")}
-                  checked={!!attributes.responsiveConditions.hideOnTablet}
+                  checked={!!attributes.responsiveConditions?.hideOnTablet}
                   onChange={(value) =>
                     setAttributes({
                       responsiveConditions: {
@@ -65,7 +65,7 @@ const ResponsiveConditionsControls = wp.compose.createHigherOrderComponent(
                 />
                 <ToggleControl
                   label={wp.i18n.__("Hide on mobile", "brandy-blocks")}
-                  checked={!!attributes.responsiveConditions.hideOnMobile}
+                  checked={!!attributes.responsiveConditions?.hideOnMobile}
                   onChange={(value) =>
                     setAttributes({
                       responsiveConditions: {

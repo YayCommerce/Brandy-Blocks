@@ -6,6 +6,8 @@
 
 node_modules
 
+yarn.lock
+package-lock.json
 inc/Packages/node_modules
 inc/Packages/build
 inc/Externals/node_modules
