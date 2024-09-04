@@ -89,3 +89,28 @@ wp.hooks.addFilter(
   "brandy-blocks/responsive-conditions-controls",
   ResponsiveConditionsControls
 );
+
+/**
+ * Save function
+ */
+function addResponsiveClass(props, blockType, attributes) {
+  const { hideOnDesktop, hideOnTablet, hideOnMobile } = attributes;
+
+  if (hideOnDesktop) {
+    Object.assign(props, { "data-hide-on-desktop": "true" });
+  }
+  if (hideOnTablet) {
+    Object.assign(props, { "data-hide-on-tablet": "true" });
+  }
+  if (hideOnMobile) {
+    Object.assign(props, { "data-hide-on-mobile": "true" });
+  }
+
+  return props;
+}
+
+wp.hooks.addFilter(
+  "blocks.getSaveContent.extraProps",
+  "brandy-blocks/responsive-conditions-props",
+  addResponsiveClass
+);
