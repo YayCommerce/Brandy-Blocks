@@ -6,11 +6,6 @@ function addDisplayAnimationAttribute(settings) {
   settings.attributes = Object.assign(settings.attributes, {
     displayAnimation: {
       type: "object",
-      default: {
-        type: "none",
-        duration: 3,
-        animateOnView: false,
-      },
     },
   });
 
