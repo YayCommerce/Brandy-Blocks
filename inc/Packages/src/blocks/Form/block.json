@@ -33,6 +33,19 @@
     "reusable": false,
     "html": false,
     "align": ["wide", "full"],
+    "background": {
+      "backgroundImage": true,
+      "backgroundSize": true,
+      "__experimentalDefaultControls": {
+        "backgroundImage": true
+      }
+    },
+    "color": {
+      "gradients": true,
+      "__experimentalDefaultControls": {
+        "background": true
+      }
+    },
     "spacing": {
       "blockGap": {
         "__experimentalDefault": "1.25em"

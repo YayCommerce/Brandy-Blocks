@@ -1,9 +1,11 @@
 import { registerBlockType } from "@wordpress/blocks";
 import metadata from "./block.json";
 import Edit from "./Edit";
+import Save from "./save";
 
 registerBlockType(metadata.name, {
   edit: Edit,
+  save: Save,
   icon: (
     <svg
       width="25"

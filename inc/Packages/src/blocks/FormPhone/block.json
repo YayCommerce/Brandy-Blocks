@@ -34,6 +34,7 @@
   "supports": {
     "reusable": false,
     "html": false,
+    "align": ["wide", "full"],
     "color": {
       "gradients": true,
       "link": true,
@@ -56,15 +57,9 @@
       }
     },
     "spacing": {
-      "blockGap": {
-        "__experimentalDefault": "1.25em"
-      },
       "margin": true,
       "padding": true,
-      "border": true,
-      "__experimentalDefaultControls": {
-        "blockGap": true
-      }
+      "border": true
     },
     "__experimentalBorder": {
       "color": true,

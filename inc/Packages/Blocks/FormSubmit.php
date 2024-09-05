@@ -19,15 +19,18 @@ class FormSubmit extends AbstractBlock {
 
 	public function render( $attributes, $content, $block ) {
 
-		$class = 'wp-block-brandy-form-submit wp-element-button';
-		if ( ! empty( $attributes['className'] ) ) {
-			$class .= ' ' . $attributes['className'];
-		}
+		$tags = new \WP_HTML_Tag_Processor( $content );
 
 		$button_attributes = array(
-			'class' => $class,
+			'class' => '',
 			'name'  => '',
+			'style' => 'display: block;',
 		);
+
+		if ( $tags->next_tag() ) {
+			$button_attributes['class']  = $tags->get_attribute( 'class' );
+			$button_attributes['style'] .= $tags->get_attribute( 'style' );
+		}
 
 		if ( isset( $block->context['formAction'] ) && 'login' === $block->context['formAction'] ) {
 			$button_attributes['name'] = 'login';
@@ -43,7 +46,8 @@ class FormSubmit extends AbstractBlock {
 		ob_start(); ?>
 		<button 
 			class="<?php echo esc_attr( $button_attributes['class'] ); ?>" 
-			name="<?php echo esc_attr( $button_attributes['name'] ); ?>" >
+			name="<?php echo esc_attr( $button_attributes['name'] ); ?>" 
+			style="<?php echo esc_attr( $button_attributes['style'] ); ?>">
 			<?php echo esc_html( $attributes['text'] ?? 'Submit' ); ?>
 		</button>
 		<?php

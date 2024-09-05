@@ -8,20 +8,21 @@
   "attributes": {
     "text": {
       "type": "string",
-      "value": "Submit"
+      "default": "Submit"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "width": {
+      "type": "string",
+      "default": "100%"
     }
   },
   "supports": {
     "reusable": false,
     "html": false,
     "align": ["wide", "full"],
-    "layout": {
-      "allowSwitching": false,
-      "allowInheriting": false,
-      "default": {
-        "type": "flex"
-      }
-    },
     "color": {
       "gradients": true,
       "link": true,
@@ -44,15 +45,9 @@
       }
     },
     "spacing": {
-      "blockGap": {
-        "__experimentalDefault": "1.25em"
-      },
       "margin": true,
       "padding": true,
-      "border": true,
-      "__experimentalDefaultControls": {
-        "blockGap": true
-      }
+      "border": true
     },
     "__experimentalBorder": {
       "color": true,
