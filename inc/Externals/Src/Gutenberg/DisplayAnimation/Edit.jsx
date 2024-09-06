@@ -6,6 +6,11 @@ function addDisplayAnimationAttribute(settings) {
   settings.attributes = Object.assign(settings.attributes, {
     displayAnimation: {
       type: "object",
+      default: {
+        type: "none",
+        duration: 3,
+        animateOnView: false,
+      },
     },
   });
 
@@ -34,7 +39,7 @@ const DisplayAnimationControls = wp.compose.createHigherOrderComponent(
           {isSelected && (
             <InspectorAdvancedControls>
               <SelectControl
-                label={__("Display animation effect:")}
+                label={__("Display animation effect")}
                 value={attributes.displayAnimation?.type ?? "none"}
                 onChange={(selection) => {
                   setAttributes({

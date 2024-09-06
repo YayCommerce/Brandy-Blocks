@@ -1,0 +1,15 @@
+.wp-block-brandy-form-options-list {
+	display: flex;
+	flex-direction: row;
+
+	&.vertical-list {
+		flex-direction: column;
+	}
+
+	.wp-block-brandy-form-options-item {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+}
