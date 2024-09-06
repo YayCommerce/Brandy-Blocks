@@ -21,6 +21,14 @@ function release {
 	echo "Build Blocks..."
 	yarn build
 
+	echo "Install External settings dependencies..."
+	cd ../..
+	cd inc/Externals
+	yarn install
+
+	echo "Build External settins..."
+	yarn build
+
 	echo "Syncing files..."
 	cd ../..
 	rsync -rc --exclude-from="$(pwd)/.distignore" "$(pwd)/" "$(pwd)/release/brandy-blocks" --delete --delete-excluded

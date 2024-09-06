@@ -8,58 +8,53 @@ registerBlockType(metadata.name, {
   save: Save,
   icon: (
     <svg
-      width="25"
+      width="24"
       height="24"
-      viewBox="0 0 25 24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_36_39)" fill="transparent">
-        <path
-          d="M21.0238 8.32858L19.8333 9.47144L18.6429 8.32858"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M17.3334 4.90002L19.4167 4.90002C19.5272 4.90002 19.6332 4.93244 19.7113 4.99015C19.7895 5.04785 19.8334 5.12611 19.8334 5.20772L19.8334 8.90002"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
       <rect
-        x="2.5"
+        x="2"
         y="3"
-        width="12"
-        height="6"
-        rx="2.5"
-        stroke="#2355F4"
+        width="7"
+        height="7"
+        rx="2"
+        stroke="#0061FE"
         stroke-width="1.5"
+        fill="transparent"
+      />
+      <rect x="13" y="6" width="9" height="1" rx="0.5" stroke="#0061FE" />
+      <path
+        d="M4.2 6.6875L4.97037 7.5L6.86666 5.5"
+        stroke="#0061FE"
+        stroke-width="1.2"
+        stroke-linecap="round"
         stroke-linejoin="round"
+      />
+      <rect
+        x="2"
+        y="13"
+        width="7"
+        height="7"
+        rx="2"
+        stroke="#0061FE"
+        stroke-width="1.5"
         fill="transparent"
       />
       <rect
-        x="2.5"
-        y="14"
-        width="19"
-        height="7"
-        rx="2.5"
-        stroke="#2355F4"
-        stroke-width="1.5"
-        stroke-linejoin="round"
-        fill="transparent"
+        width="9"
+        height="1"
+        rx="0.5"
+        transform="matrix(1 0 0 -1 13 18)"
+        stroke="#0061FE"
       />
-      <defs>
-        <clipPath id="clip0_36_39">
-          <rect
-            width="8"
-            height="5"
-            fill="white"
-            transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 21.5 10.5)"
-          />
-        </clipPath>
-      </defs>
+      <path
+        d="M4.2 16.6875L4.97037 17.5L6.86666 15.5"
+        stroke="#0061FE"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
   ),
 });

@@ -8,58 +8,32 @@ registerBlockType(metadata.name, {
   save: Save,
   icon: (
     <svg
-      width="25"
+      width="24"
       height="24"
-      viewBox="0 0 25 24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_36_39)" fill="transparent">
-        <path
-          d="M21.0238 8.32858L19.8333 9.47144L18.6429 8.32858"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M17.3334 4.90002L19.4167 4.90002C19.5272 4.90002 19.6332 4.93244 19.7113 4.99015C19.7895 5.04785 19.8334 5.12611 19.8334 5.20772L19.8334 8.90002"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
-      <rect
-        x="2.5"
-        y="3"
-        width="12"
-        height="6"
-        rx="2.5"
-        stroke="#2355F4"
+      <path
+        d="M17 8C17 10.7667 12 17.4445 12 17.4445C12 17.4445 7 10.7667 7 8C7 6.67392 7.52678 5.40215 8.46447 4.46447C9.40215 3.52678 10.6739 3 12 3C13.3261 3 14.5979 3.52678 15.5355 4.46447C16.4732 5.40215 17 6.67392 17 8V8Z"
+        stroke="#0061FE"
         stroke-width="1.5"
+        stroke-linecap="round"
         stroke-linejoin="round"
         fill="transparent"
       />
-      <rect
-        x="2.5"
-        y="14"
-        width="19"
-        height="7"
-        rx="2.5"
-        stroke="#2355F4"
+      <path
+        d="M12 9.66668C12.9205 9.66668 13.6667 8.92049 13.6667 8.00001C13.6667 7.07954 12.9205 6.33334 12 6.33334C11.0795 6.33334 10.3333 7.07954 10.3333 8.00001C10.3333 8.92049 11.0795 9.66668 12 9.66668Z"
+        fill="#0061FE"
+      />
+      <path
+        d="M6.5 13.5H5C3.34315 13.5 2 14.8431 2 16.5V18C2 19.6569 3.34315 21 5 21H19C20.6569 21 22 19.6569 22 18V16.5C22 14.8431 20.6569 13.5 19 13.5H17.5"
+        stroke="#0061FE"
         stroke-width="1.5"
+        stroke-linecap="round"
         stroke-linejoin="round"
         fill="transparent"
       />
-      <defs>
-        <clipPath id="clip0_36_39">
-          <rect
-            width="8"
-            height="5"
-            fill="white"
-            transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 21.5 10.5)"
-          />
-        </clipPath>
-      </defs>
     </svg>
   ),
 });
