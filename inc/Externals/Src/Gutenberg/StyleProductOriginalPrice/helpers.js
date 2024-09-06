@@ -1,6 +1,9 @@
 export function updateOriginalPriceStyles(attributes) {
   const typography = attributes.originalPriceTypography;
-  const styles = `font-size: ${typography.fontSize} !important; font-weight: ${typography.fontWeight} !important; color: ${typography.color} !important`;
+  const fontWeight = typography.appearance.style.fontWeight;
+  const fontStyle = typography.appearance.style.fontStyle;
+
+  const styles = `font-size: ${typography.fontSize} !important; font-weight: ${fontWeight} !important; font-style: ${fontStyle}; color: ${typography.color} !important`;
 
   const productPrice = jQuery(".wp-block-woocommerce-product-price");
 

@@ -12,9 +12,16 @@ function addWooProductPriceBlockAttribute(settings, name) {
             originalPriceTypography: {
                 type: 'object',
                 default: {
-                    fontSize: '17px',
-                    color: '#111111',
-                    fontWeight: '400'
+                    fontSize: 'default',
+                    color: 'default',
+                    appearance: {
+                        key: 'default',
+                        name: 'Default',
+                        style: {
+                            fontWeight: 'default',
+                            fontStyle: 'default'
+                        }
+                    },
                 }
             }
         });

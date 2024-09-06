@@ -1,0 +1,16 @@
+.brandy-original-price-settings-panel h2 {
+  border-bottom: 1px solid #dddddd;
+}
+
+.brandy-original-price-color-settings {
+  padding: 16px 0 !important;
+  border: none !important;
+}
+
+.brandy-original-price-color-settings h2 {
+  border: none !important;
+}
+
+.brandy-original-price-color-settings .components-tools-panel-item {
+  margin-top: 16px !important;
+}

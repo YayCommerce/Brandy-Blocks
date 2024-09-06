@@ -9,10 +9,10 @@
       // Access the individual properties
       const fontSize = styleObject.fontSize;
       const color = styleObject.color;
-      const fontWeight = styleObject.fontWeight;
+      const appearanceStyle = styleObject.appearance.style;
 
       //Apply style
-      const styles = `font-size: ${fontSize} !important; font-weight: ${fontWeight} !important; color: ${color} !important`;
+      const styles = `font-size: ${fontSize} !important; font-weight: ${appearanceStyle.fontWeight} !important; font-style: ${appearanceStyle.fontStyle} ;color: ${color} !important`;
       const delTag = jQuery(el).find(
         "div.wc-block-components-product-price del"
       );
