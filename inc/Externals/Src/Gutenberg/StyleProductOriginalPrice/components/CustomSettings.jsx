@@ -7,7 +7,7 @@ import {
     CustomSelectControl,
 } from '@wordpress/components';
 import { updateOriginalPriceStyles } from '../helpers';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 const getFontSizes = (themeFontSizes) => {
     if (Array.isArray(themeFontSizes) && themeFontSizes.length > 0) {
@@ -128,10 +128,8 @@ const CustomSettings = ({ attributes, setAttributes }) => {
         return getFontSizes(themeFontSizes);
     }, [themeFontSizes]);
 
+    updateOriginalPriceStyles(attributes);
 
-    useEffect(() => {
-        updateOriginalPriceStyles(attributes);
-    }, [typography])
     return (
         <InspectorControls>
             <PanelBody title={__("Original Price", "brandy-blocks")} className='brandy-original-price-settings-panel'>
