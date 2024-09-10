@@ -6,8 +6,8 @@ import {
     PanelBody,
     CustomSelectControl,
 } from '@wordpress/components';
-import { updateOriginalPriceStyles } from '../helpers';
-import React, { useMemo } from 'react';
+import { loadOriginalPriceStyles } from '../helpers';
+import React, { useMemo, useEffect } from 'react';
 
 const getFontSizes = (themeFontSizes) => {
     if (Array.isArray(themeFontSizes) && themeFontSizes.length > 0) {
@@ -120,7 +120,7 @@ const appearanceOptions = [
     },
 ];
 
-const CustomSettings = ({ attributes, setAttributes }) => {
+const CustomSettings = ({ attributes, setAttributes, clientId }) => {
     const themeFontSizes = brandyGlobalSettings?.typography?.fontSizes?.theme
     const typography = attributes.originalPriceTypography;
 
@@ -128,7 +128,24 @@ const CustomSettings = ({ attributes, setAttributes }) => {
         return getFontSizes(themeFontSizes);
     }, [themeFontSizes]);
 
-    updateOriginalPriceStyles(attributes);
+    useEffect(() => {
+        const updateStyles = () => {
+            loadOriginalPriceStyles(clientId, wp.data.select('core/block-editor').getBlockAttributes(clientId));
+        };
+
+        // Initial update
+        updateStyles();
+
+        // Subscribe to block updates
+        const unsubscribe = wp.data.subscribe(() => {
+            updateStyles();
+        });
+
+        // Clean up
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
     return (
         <InspectorControls>

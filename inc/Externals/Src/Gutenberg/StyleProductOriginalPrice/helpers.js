@@ -1,4 +1,4 @@
-export function updateOriginalPriceStyles(attributes) {
+export function loadOriginalPriceStyles(clientId, attributes) {
   const typography = attributes.originalPriceTypography;
   const fontWeight = typography.appearance.style.fontWeight;
   const fontStyle = typography.appearance.style.fontStyle;
@@ -8,12 +8,10 @@ export function updateOriginalPriceStyles(attributes) {
   let productPrice = null;
 
   if (jQuery("iframe").length === 0) {
-    productPrice = jQuery(".wp-block-woocommerce-product-price");
+    productPrice = jQuery(`#block-${clientId}`);
   } else {
     const iframe = jQuery("iframe")[0];
-    productPrice = jQuery(iframe)
-      .contents()
-      .find(".wp-block-woocommerce-product-price");
+    productPrice = jQuery(iframe).contents().find(`#block-${clientId}`);
   }
 
   if (null !== productPrice) {
@@ -25,40 +23,6 @@ export function updateOriginalPriceStyles(attributes) {
       if (delTag.length > 0) {
         delTag.attr("style", styles);
       }
-    });
-  }
-
-  // Add MutationObserver to track changes
-  const targetNode = document.querySelector(
-    ".brandy-original-price-settings-panel"
-  );
-  if (targetNode) {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "style"
-        ) {
-          const newStyles = targetNode.getAttribute("style");
-          if (newStyles) {
-            if (null !== productPrice) {
-              productPrice.each(function () {
-                const delTag = jQuery(this).find(
-                  "del.wc-block-components-product-price__regular"
-                );
-                if (delTag.length > 0) {
-                  delTag.attr("style", newStyles);
-                }
-              });
-            }
-          }
-        }
-      });
-    });
-
-    observer.observe(targetNode, {
-      attributes: true,
-      attributeFilter: ["style"],
     });
   }
 }

@@ -1,4 +1,6 @@
+import React, { useEffect } from "react";
 import CustomSettings from "./components/CustomSettings";
+import { loadOriginalPriceStyles } from "./helpers";
 
 /** Register attribute */
 function addWooProductPriceBlockAttribute(settings, name) {
@@ -40,14 +42,23 @@ const StylePriceControls = wp.compose.createHigherOrderComponent(
   (BlockEdit) => {
     return (props) => {
       const { Fragment } = wp.element;
-      const { attributes, setAttributes, name } = props;
+      const { attributes, setAttributes, name, clientId, isSelected } = props;
+
+      if ("woocommerce/product-price" === name) {
+        useEffect(() => {
+          loadOriginalPriceStyles(clientId, attributes);
+        }, []);
+      }
+
+
       return (
         <Fragment>
           <BlockEdit {...props} />
-          {"woocommerce/product-price" === name && (
+          {isSelected && "woocommerce/product-price" === name && (
             <CustomSettings
               attributes={attributes}
               setAttributes={setAttributes}
+              clientId={clientId}
             />
           )}
         </Fragment>
