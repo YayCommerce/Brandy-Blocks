@@ -18,5 +18,6 @@ class Initialize {
 		PackagesLoader::get_instance();
 		ElementorSetup::get_instance();
 		ExternalsLoader::get_instance();
+		Wishlist::get_instance();
 	}
 }
