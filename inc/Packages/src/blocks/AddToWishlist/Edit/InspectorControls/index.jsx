@@ -1,65 +1,83 @@
 import {
-  PanelBody,
-  SelectControl,
-  __experimentalInputControl as InputControl,
-  __experimentalDivider as Divider,
+  __experimentalUnitControl as UnitControl,
+  __experimentalToolsPanel as ToolsPanel,
 } from "@wordpress/components";
+import { PanelColorSettings } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
+import State from "./State";
 
 export default function AllInspectorSettings({ attributes, setAttributes }) {
-  const { action, successUrl, successMessage, failedUrl, failedMessage } =
-    attributes;
-
+  const {
+    backgroundColor,
+    backgroundColorHover,
+    backgroundColorActive,
+    iconSize,
+    loadingSpinnerColor,
+  } = attributes;
   return (
     <>
-      <PanelBody title={__("Settings")}>
-        <SelectControl
-          label={__("Action")}
-          value={action}
-          options={[
-            { label: "Login", value: "login" },
-            { label: "Reset password", value: "reset_password" },
-            { label: "Custom", value: "custom" },
-          ]}
-          onChange={(v) => setAttributes({ action: v })}
-          help={
-            <>
-              {action === "login" &&
-                __(
-                  "Please make sure you have two fields with name: username - password"
-                )}
-              {action === "reset_password" &&
-                __("Please make sure you have field: user_login")}
-            </>
-          }
-          __nextHasNoMarginBottom
+      <PanelColorSettings
+        title={__("Background Color", "brandy-blocks")}
+        initialOpen={false}
+        colorSettings={[
+          {
+            value: backgroundColor,
+            onChange: (newColor) =>
+              setAttributes({
+                backgroundColor: newColor,
+              }),
+            label: __("Default", "brandy-blocks"),
+          },
+          {
+            value: backgroundColorHover,
+            onChange: (newColor) =>
+              setAttributes({
+                backgroundColorHover: newColor,
+              }),
+            label: __("Hover", "brandy-blocks"),
+          },
+          {
+            value: backgroundColorActive,
+            onChange: (newColor) =>
+              setAttributes({
+                backgroundColorActive: newColor,
+              }),
+            label: __("Active", "brandy-blocks"),
+          },
+          {
+            value: loadingSpinnerColor,
+            onChange: (newColor) =>
+              setAttributes({
+                loadingSpinnerColor: newColor,
+              }),
+            label: __("Spinner color", "brandy-blocks"),
+          },
+        ]}
+      />
+      <State
+        attributes={attributes}
+        setAttributes={setAttributes}
+        state="default"
+      />
+      <State
+        attributes={attributes}
+        setAttributes={setAttributes}
+        state="hover"
+      />
+      <State
+        attributes={attributes}
+        setAttributes={setAttributes}
+        state="active"
+      />
+      <ToolsPanel label={__("Settings")}>
+        <UnitControl
+          label="Icon size"
+          value={iconSize}
+          onChange={(v) => {
+            setAttributes({ iconSize: v });
+          }}
         />
-        {action !== "reset_password" && (
-          <>
-            <InputControl
-              label={__("Success redirect url")}
-              value={successUrl}
-              onChange={(v) => setAttributes({ successUrl: v })}
-            />
-            <InputControl
-              label={__("Failed redirect url")}
-              value={failedUrl}
-              onChange={(v) => setAttributes({ failedUrl: v })}
-            />
-            <Divider />
-            <InputControl
-              label={__("Success message")}
-              value={successMessage}
-              onChange={(v) => setAttributes({ successMessage: v })}
-            />
-            <InputControl
-              label={__("Failed message")}
-              value={failedMessage}
-              onChange={(v) => setAttributes({ failedMessage: v })}
-            />
-          </>
-        )}
-      </PanelBody>
+      </ToolsPanel>
     </>
   );
 }
