@@ -8,58 +8,33 @@ registerBlockType(metadata.name, {
   save: Save,
   icon: (
     <svg
-      width="25"
+      width="24"
       height="24"
-      viewBox="0 0 25 24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_36_39)" fill="transparent">
-        <path
-          d="M21.0238 8.32858L19.8333 9.47144L18.6429 8.32858"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M17.3334 4.90002L19.4167 4.90002C19.5272 4.90002 19.6332 4.93244 19.7113 4.99015C19.7895 5.04785 19.8334 5.12611 19.8334 5.20772L19.8334 8.90002"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
       <rect
-        x="2.5"
+        x="3"
         y="3"
-        width="12"
-        height="6"
-        rx="2.5"
-        stroke="#2355F4"
+        width="18"
+        height="18"
+        rx="3"
+        stroke="#0061FE"
         stroke-width="1.5"
         stroke-linejoin="round"
         fill="transparent"
       />
-      <rect
-        x="2.5"
-        y="14"
-        width="19"
-        height="7"
-        rx="2.5"
-        stroke="#2355F4"
+      <path
+        d="M8 3.5V4.5C8 5.05228 8.44772 5.5 9 5.5H15C15.5523 5.5 16 5.05228 16 4.5V3.5"
+        stroke="#0061FE"
         stroke-width="1.5"
-        stroke-linejoin="round"
         fill="transparent"
       />
-      <defs>
-        <clipPath id="clip0_36_39">
-          <rect
-            width="8"
-            height="5"
-            fill="white"
-            transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 21.5 10.5)"
-          />
-        </clipPath>
-      </defs>
+      <path
+        d="M8.22647 15.3376C8.29082 14.9111 8.49131 14.5168 8.79804 14.2136L13.6728 9.39461C14.2051 8.86846 15.0686 8.86846 15.6008 9.39461C16.1331 9.92077 16.1331 10.7744 15.6008 11.3005L10.7288 16.1168C10.4613 16.3813 10.1245 16.565 9.75725 16.6467L8.18663 16.9962C8.08241 17.0195 7.98564 16.9312 8.00177 16.827L8.22647 15.3376Z"
+        fill="#0061FE"
+      />
     </svg>
   ),
 });

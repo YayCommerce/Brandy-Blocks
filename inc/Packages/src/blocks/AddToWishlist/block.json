@@ -1,0 +1,78 @@
+{
+  "apiVersion": 3,
+  "title": "Add To Wishlist",
+  "name": "brandy/add-to-wishlist",
+  "category": "brandy-blocks",
+  "description": "Display add to wishlist button",
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "default": "https://wpbrandy.s3.us-west-2.amazonaws.com/uploads/20240912044751/wishlist-icon.png"
+    },
+    "iconHover": {
+      "type": "string",
+      "default": "https://wpbrandy.s3.us-west-2.amazonaws.com/uploads/20240912044751/wishlist-icon.png"
+    },
+    "iconActive": {
+      "type": "string",
+      "default": "https://wpbrandy.s3.us-west-2.amazonaws.com/uploads/20240912044751/wishlist-icon-active.png"
+    },
+    "iconSize": {
+      "type": "string",
+      "default": "20px"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#ffffff00"
+    },
+    "backgroundColorHover": {
+      "type": "string",
+      "default": "#ffffff00"
+    },
+    "backgroundColorActive": {
+      "type": "string",
+      "default": "#ffffff00"
+    },
+    "loadingSpinnerColor": {
+      "type": "string",
+      "default": "#000000"
+    }
+  },
+  "usesContext": ["postType", "postId"],
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "spacing": {
+      "blockGap": {
+        "__experimentalDefault": "1.25em"
+      },
+      "margin": true,
+      "padding": true,
+      "border": true,
+      "__experimentalDefaultControls": {
+        "blockGap": true
+      }
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true,
+      "__experimentalDefaultControls": {
+        "color": true,
+        "radius": true,
+        "style": true,
+        "width": true
+      }
+    },
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "example": {
+    "viewportWidth": 1400
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

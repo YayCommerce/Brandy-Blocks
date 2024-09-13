@@ -8,58 +8,39 @@ registerBlockType(metadata.name, {
   save: Save,
   icon: (
     <svg
-      width="25"
+      width="24"
       height="24"
-      viewBox="0 0 25 24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_36_39)" fill="transparent">
-        <path
-          d="M21.0238 8.32858L19.8333 9.47144L18.6429 8.32858"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M17.3334 4.90002L19.4167 4.90002C19.5272 4.90002 19.6332 4.93244 19.7113 4.99015C19.7895 5.04785 19.8334 5.12611 19.8334 5.20772L19.8334 8.90002"
-          stroke="#2355F4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
       <rect
-        x="2.5"
+        x="3"
         y="3"
-        width="12"
-        height="6"
-        rx="2.5"
-        stroke="#2355F4"
+        width="18"
+        height="18"
+        rx="3"
+        stroke="#0061FE"
         stroke-width="1.5"
         stroke-linejoin="round"
         fill="transparent"
       />
-      <rect
-        x="2.5"
-        y="14"
-        width="19"
-        height="7"
-        rx="2.5"
-        stroke="#2355F4"
+      <path
+        d="M10.2 8.39996V8.39996C11.1941 8.39996 12 9.20585 12 10.2V13.8C12 14.7941 11.1941 15.6 10.2 15.6V15.6"
+        stroke="#0061FE"
         stroke-width="1.5"
+        stroke-linecap="round"
         stroke-linejoin="round"
         fill="transparent"
       />
-      <defs>
-        <clipPath id="clip0_36_39">
-          <rect
-            width="8"
-            height="5"
-            fill="white"
-            transform="matrix(1.19249e-08 -1 -1 -1.19249e-08 21.5 10.5)"
-          />
-        </clipPath>
-      </defs>
+      <path
+        d="M13.8 8.40002V8.40002C12.8059 8.40002 12 9.20591 12 10.2V13.8C12 14.7941 12.8059 15.6 13.8 15.6V15.6"
+        stroke="#0061FE"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="transparent"
+      />
     </svg>
   ),
 });
