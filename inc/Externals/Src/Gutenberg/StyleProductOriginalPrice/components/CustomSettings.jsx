@@ -6,8 +6,7 @@ import {
     PanelBody,
     CustomSelectControl,
 } from '@wordpress/components';
-import { loadOriginalPriceStyles } from '../helpers';
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 
 const getFontSizes = (themeFontSizes) => {
     if (Array.isArray(themeFontSizes) && themeFontSizes.length > 0) {
@@ -127,25 +126,6 @@ const CustomSettings = ({ attributes, setAttributes, clientId }) => {
     let fontSizes = useMemo(() => {
         return getFontSizes(themeFontSizes);
     }, [themeFontSizes]);
-
-    useEffect(() => {
-        const updateStyles = () => {
-            loadOriginalPriceStyles(clientId, wp.data.select('core/block-editor').getBlockAttributes(clientId));
-        };
-
-        // Initial update
-        updateStyles();
-
-        // Subscribe to block updates
-        const unsubscribe = wp.data.subscribe(() => {
-            updateStyles();
-        });
-
-        // Clean up
-        return () => {
-            unsubscribe();
-        };
-    }, []);
 
     return (
         <InspectorControls>

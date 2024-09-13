@@ -14,3 +14,10 @@
 .brandy-original-price-color-settings .components-tools-panel-item {
   margin-top: 16px !important;
 }
+
+.wc-block-components-product-price del {
+  color: var(--original-price-color, inherit) !important;
+  font-size: var(--original-price-size, inherit) !important;
+  font-weight: var(--original-price-weight, inherit) !important;
+  font-style: var(--original-price-style, inherit) !important;
+}

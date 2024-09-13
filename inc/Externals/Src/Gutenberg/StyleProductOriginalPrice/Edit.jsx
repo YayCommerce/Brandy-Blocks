@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import CustomSettings from "./components/CustomSettings";
-import { loadOriginalPriceStyles } from "./helpers";
 
 /** Register attribute */
 function addWooProductPriceBlockAttribute(settings, name) {
@@ -44,13 +43,6 @@ const StylePriceControls = wp.compose.createHigherOrderComponent(
       const { Fragment } = wp.element;
       const { attributes, setAttributes, name, clientId, isSelected } = props;
 
-      if ("woocommerce/product-price" === name) {
-        useEffect(() => {
-          loadOriginalPriceStyles(clientId, attributes);
-        }, []);
-      }
-
-
       return (
         <Fragment>
           <BlockEdit {...props} />
@@ -73,3 +65,26 @@ wp.hooks.addFilter(
   "brandy-blocks/woo-product-original-price-controls",
   StylePriceControls
 );
+
+const addStyle = wp.compose.createHigherOrderComponent((BlockListBlock) => {
+  return (props) => {
+    const { name, attributes } = props;
+
+    if (name === "woocommerce/product-price") {
+      const extraProps = {
+        style: {
+          "--original-price-color": attributes.originalPriceTypography?.color ?? "",
+          "--original-price-size": attributes.originalPriceTypography?.fontSize ?? "",
+          "--original-price-weight": attributes.originalPriceTypography?.appearance?.style?.fontWeight ?? "",
+          "--original-price-style": attributes.originalPriceTypography?.appearance?.style?.fontStyle ?? "",
+        }
+      };
+      return <BlockListBlock {...props} wrapperProps={extraProps} />;
+    }
+
+    // For all other blocks, return unchanged
+    return <BlockListBlock {...props} />;
+  };
+}, "addStyle");
+
+wp.hooks.addFilter("editor.BlockListBlock", "my-plugin/add-style", addStyle);
