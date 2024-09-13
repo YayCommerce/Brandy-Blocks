@@ -10,6 +10,7 @@ class Caller {
 	protected function __construct() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_settings_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_frontend_scripts' ) );
 		add_filter( 'block_type_metadata_settings', array( $this, 'declare_attribute' ), 10 );
 		add_filter( 'render_block', array( $this, 'add_external_button_attributes' ), 10, 2 );
 	}
@@ -34,7 +35,6 @@ class Caller {
 
 	public function enqueue_settings_scripts() {
 		wp_enqueue_script( 'brandy-blocks/button-settings-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/ButtonSettings/index.js', array( 'wp-edit-post' ), time(), true );
-		wp_enqueue_style( 'brandy-blocks/button-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/ButtonSettings/style.css', array(), time() );
 	}
 
 	public function enqueue_frontend_scripts() {
