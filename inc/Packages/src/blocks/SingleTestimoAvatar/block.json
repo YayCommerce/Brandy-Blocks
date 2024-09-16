@@ -1,0 +1,50 @@
+{
+  "apiVersion": 3,
+  "title": "Single Testimo Avatar",
+  "name": "brandy/single-testimo-avatar",
+  "category": "brandy-blocks",
+  "ancestor": "brandy/single-testimo",
+  "description": "Display add to wishlist button",
+  "attributes": {
+    "description": {
+      "type": "string",
+      "default": "Customer feedback at Google Reviews"
+    }
+  },
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "spacing": {
+      "blockGap": {
+        "__experimentalDefault": "1.25em"
+      },
+      "margin": true,
+      "padding": true,
+      "border": true,
+      "__experimentalDefaultControls": {
+        "blockGap": true
+      }
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true,
+      "__experimentalDefaultControls": {
+        "color": true,
+        "radius": true,
+        "style": true,
+        "width": true
+      }
+    },
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "example": {
+    "viewportWidth": 1400
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

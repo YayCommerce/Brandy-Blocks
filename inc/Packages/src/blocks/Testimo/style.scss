@@ -1,0 +1,79 @@
+@keyframes brandy-atw-spinning {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+.wp-block-brandy-add-to-wishlist {
+	display: flex;
+	width: fit-content;
+	background-color: var(--atw-background-color);
+	cursor: pointer;
+	position: relative;
+
+	&:hover {
+		background-color: var(--atw-background-color-hover);
+	}
+
+	&.added {
+		background-color: var(--atw-background-color-active);
+	}
+
+	&.adding,
+	&.removing {
+		.wp-block-brandy-add-to-wishlist-loading {
+			display: inline-flex;
+			animation: brandy-atw-spinning 1s linear infinite;
+		}
+	}
+}
+
+.wp-block-brandy-add-to-wishlist-loading {
+	display: none;
+	position: absolute;
+	width: min(20px, 100%);
+	height: min(20px, 100%);
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+
+	border: 2px solid var(--atw-loading-spinner-color, #000000);
+	border-bottom-color: transparent;
+	border-radius: 50%;
+}
+
+.wp-block-brandy-add-to-wishlist-icon {
+	width: var(--atw-icon-size);
+	height: var(--atw-icon-size);
+	object-fit: contain;
+}
+
+.wp-block-brandy-add-to-wishlist-icon.hover-state {
+	display: none;
+}
+
+.wp-block-brandy-add-to-wishlist:not(.added) {
+	.wp-block-brandy-add-to-wishlist-icon.active-state {
+		display: none;
+	}
+}
+
+.wp-block-brandy-add-to-wishlist.added {
+	.wp-block-brandy-add-to-wishlist-icon.default-state {
+		display: none;
+	}
+}
+
+.wp-block-brandy-add-to-wishlist:not(.added):hover {
+	.wp-block-brandy-add-to-wishlist-icon.default-state {
+		display: none;
+	}
+
+	.wp-block-brandy-add-to-wishlist-icon.hover-state {
+		display: block;
+	}
+}

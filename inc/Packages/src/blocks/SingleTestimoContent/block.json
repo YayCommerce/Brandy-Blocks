@@ -1,0 +1,50 @@
+{
+  "apiVersion": 3,
+  "title": "Single Testimo Content",
+  "name": "brandy/single-testimo-content",
+  "category": "brandy-blocks",
+  "ancestor": "brandy/single-testimo",
+  "description": "Display add to wishlist button",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": "Making a type specimen book, also the leap into electronic typesetting, remain essentially unchanged or avoids pleasure itself the master builder of lorem ipsum amet quist human happiness."
+    }
+  },
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "spacing": {
+      "blockGap": {
+        "__experimentalDefault": "1.25em"
+      },
+      "margin": true,
+      "padding": true,
+      "border": true,
+      "__experimentalDefaultControls": {
+        "blockGap": true
+      }
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true,
+      "__experimentalDefaultControls": {
+        "color": true,
+        "radius": true,
+        "style": true,
+        "width": true
+      }
+    },
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "example": {
+    "viewportWidth": 1400
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
