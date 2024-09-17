@@ -1,0 +1,112 @@
+{
+  "apiVersion": 3,
+  "title": "CountDown",
+  "name": "brandy/countdown",
+  "category": "brandy-blocks",
+  "description": "Displays a customizable timer counting down",
+  "attributes": {
+    "countdownDate": {
+      "type": "string",
+      "default": ""
+    },
+    "overallDirection": {
+        "type": "string",
+        "default": "horizontal"
+    },
+    "itemDirection": {
+      "type": "string",
+        "default": "vertical"
+    },
+    "overallAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "itemAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "prefix": {
+      "type": "object",
+      "default": {
+        "color": "",
+        "typography": {
+          "font_size": 19,
+          "bold": false,
+          "italic": false,
+          "text_transform": "none",
+          "font_weight": 500
+        }
+      }
+    },
+
+    "main": {
+      "type": "object",
+      "default": {
+        "color": "",
+        "typography": {
+          "font_size": 59,
+          "bold": false,
+          "italic": false,
+          "text_transform": "none",
+          "font_weight": 500
+        }
+      }
+    },
+    
+    "suffix": {
+      "type": "object",
+      "default": {
+        "color": "",
+        "typography": {
+          "font_size": 19,
+          "bold": false,
+          "italic": false,
+          "text_transform": "none",
+          "font_weight": 500
+        }
+      }
+    },
+    "dayOptions": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "prefix": "",
+        "suffix": "Days"
+      }
+    },
+    "hourOptions": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "prefix": "",
+        "suffix": "Hours"
+      }
+    },
+    "minuteOptions": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "prefix": "",
+        "suffix": "Minutes"
+      }
+    },
+    "secondOptions": {
+      "type": "object",
+      "default": {
+        "visible": true,
+        "prefix": "",
+        "suffix": "Seconds"
+      }
+    }
+  },
+  "providesContext": {},
+  "example": {
+    "viewportWidth": 2000,
+    "attributes": {}
+  },
+  "icon": "clock",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "script": "brandy-blocks/countdown"
+}
