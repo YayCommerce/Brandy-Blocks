@@ -1,14 +1,22 @@
 /** Edit Block **/
-.brandy-tab-panel .components-tab-panel__tabs-item {
-  justify-content: center !important;
+.brandy-tab-panel {
+	.components-tab-panel__tabs-item {
+		justify-content: center !important;
+	}
 }
-
 .brandy-countdown-settings {
-  padding: 15px 0px;
+	padding: 15px 0px;
 }
-
-.typography-indicator:hover {
-  cursor: pointer;
+.brandy-countdown-typography-settings {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 5px;
+}
+.typography-indicator {
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .brandy-countdown-wrapper {

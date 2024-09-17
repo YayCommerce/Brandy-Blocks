@@ -40,42 +40,21 @@ export default function TextStylingSettings() {
             ]}
         />
         <PanelBody title={__('Typography Settings')}>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding:"10px 5px"
-                }}
-            >
+            <div className="brandy-countdown-typography-settings" >
                 <Label title={__("Prefix")}  />
                 <Typography
                     value={attributes.prefix.typography}
                     onChange={handleChangeObjectValues('prefix','typography')}
                 />
             </div>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding:"10px 5px"
-                }}
-            >
+            <div className="brandy-countdown-typography-settings" >
                 <Label title={__("Main")}  />
                 <Typography
                     value={attributes.main.typography}
                     onChange={handleChangeObjectValues('main','typography')}
                 />
             </div>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding:"10px 5px"
-                }}
-            >
+            <div className="brandy-countdown-typography-settings" >
                 <Label title={__("Suffix")}  />
                 <Typography
                     value={attributes.suffix.typography}
