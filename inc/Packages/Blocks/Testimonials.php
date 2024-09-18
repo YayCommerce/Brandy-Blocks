@@ -12,9 +12,7 @@ class Testimonials extends AbstractBlock {
 	public $name = 'Testimonials';
 
 	protected function init_hooks() {
-
-		wp_register_script( 'brandy-blocks/testimonials', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Blocks/Testimonials.js', array( 'jquery' ), BRANDY_BLOCKS_VERSION, true );
-
+		wp_register_script( 'brandy-blocks/testimonials', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Packages/Blocks/Testimonials.js', array( 'jquery' ), time(), true );
 	}
 
 }
