@@ -57,6 +57,9 @@
         "width": true
       }
     },
+    "layout": {
+			"allowSizingOnChildren": true
+		},
     "interactivity": {
       "clientNavigation": true
     }

@@ -19,7 +19,7 @@ export default function Edit(props) {
 export function Content(props) {
   const { isSave = false, attributes, clientId } = props;
 
-  const { ratingPoint } = attributes;
+  const { ratingPoint, align } = attributes;
 
   const dataProps = {
     ...getDataAttributes(attributes),
@@ -72,6 +72,7 @@ function getDataAttributes(attributes) {
       ['--rating-active-color']: attributes.activeColor,
       ['--rating-size']: attributes.size,
       ['--rating-spacing']: attributes.spacing,
+      ['--rating-alignment']: attributes.align,
     },
   };
 }

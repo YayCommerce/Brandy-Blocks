@@ -9,6 +9,9 @@
     "name": {
       "type": "string",
       "default": "Anthony Nguyen"
+    },
+    "align": {
+      "type": "string"
     }
   },
   "supports": {

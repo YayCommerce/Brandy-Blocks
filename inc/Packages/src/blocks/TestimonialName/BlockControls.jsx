@@ -1,7 +1,15 @@
 import { ToolbarGroup, Button } from '@wordpress/components';
-import { BlockControls as CoreBlockControls } from '@wordpress/block-editor';
+import {
+  BlockControls as CoreBlockControls,
+  AlignmentControl,
+} from '@wordpress/block-editor';
 
-export default function BlockControls({ context, clientId }) {
+export default function BlockControls({
+  context,
+  clientId,
+  attributes,
+  setAttributes,
+}) {
   const handleSyncLayout = () => {
     window.dispatchEvent(
       new CustomEvent('brandySyncTestimonialsLayout', {
@@ -15,12 +23,20 @@ export default function BlockControls({ context, clientId }) {
     );
   };
   return (
-    <CoreBlockControls>
+    <CoreBlockControls group="block">
       <ToolbarGroup>
         <Button isPrimary onClick={handleSyncLayout}>
           Sync all testinomial name
         </Button>
       </ToolbarGroup>
+      <AlignmentControl
+        value={attributes.align ?? 'left'}
+        onChange={(newAlign) =>
+          setAttributes({
+            align: newAlign,
+          })
+        }
+      />
     </CoreBlockControls>
   );
 }

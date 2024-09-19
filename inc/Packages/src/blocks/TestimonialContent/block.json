@@ -9,6 +9,9 @@
     "content": {
       "type": "string",
       "default": "Making a type specimen book, also the leap into electronic typesetting, remain essentially unchanged or avoids pleasure itself the master builder of lorem ipsum amet quist human happiness."
+    },
+    "align": {
+      "type": "string"
     }
   },
   "supports": {

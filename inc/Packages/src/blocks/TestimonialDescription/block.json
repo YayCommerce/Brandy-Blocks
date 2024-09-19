@@ -9,6 +9,9 @@
     "description": {
       "type": "string",
       "default": "Customer feedback at Google Reviews"
+    },
+    "align": {
+      "type": "string"
     }
   },
   "supports": {

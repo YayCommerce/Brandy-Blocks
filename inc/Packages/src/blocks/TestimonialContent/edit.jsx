@@ -18,7 +18,15 @@ export default function Edit(props) {
 export function Content(props) {
   const { isSave = false, attributes, setAttributes } = props;
 
-  const blockProps = isSave ? useBlockProps.save() : useBlockProps();
+  const { align } = attributes;
+
+  const dataProps = {
+    className: align ? `has-text-align-${align}` : '',
+  };
+
+  const blockProps = isSave
+    ? useBlockProps.save(dataProps)
+    : useBlockProps(dataProps);
 
   return (
     <div {...blockProps}>

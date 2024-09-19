@@ -1,6 +1,8 @@
 .wp-block-brandy-testimonial-rating {
 	display: flex;
 	gap: var(--rating-spacing);
+	align-items: center;
+	justify-content: var(--rating-alignment, left);
 
 	.wp-block-brandy-testimonial-rating__star {
 		svg {

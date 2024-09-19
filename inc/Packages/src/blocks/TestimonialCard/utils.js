@@ -55,6 +55,17 @@ export const syncWithOtherBlocks = ({
     const changingBlocks = syncBlocks.includes('all')
       ? window.wp.data.select('core/block-editor').getBlocks(ev.detail.singleId)
       : currentBlocksInSingle;
+
+    if (syncBlocks.includes('all')) {
+      const changingSingle = window.wp.data
+        .select('core/block-editor')
+        .getBlock(ev.detail.singleId);
+
+      window.wp.data.dispatch('core/block-editor').updateBlock(singleId, {
+        attributes: JSON.parse(JSON.stringify(changingSingle.attributes)),
+      });
+    }
+
     let nameBlock, descriptionBlock, contentBlock, avatarBlock, ratingBlock;
     if (syncBlocks.includes('all')) {
       nameBlock = getInsideBlock(
