@@ -2,17 +2,37 @@
   $(document).ready(function () {
     const defaultConfig = {
       direction: 'horizontal',
-      slidesPerView: 3,
+      slidesPerView: 1,
       spaceBetween: 40,
+      breakpoints: {
+        782: {
+          slidesPerView: 2,
+        },
+        1000: {
+          slidesPerView: 3,
+        },
+      },
     };
     function getConfigFromBlock(blockEl) {
       const isInEditor = $(blockEl).hasClass('block-editor-block-list__block');
       const isInfiniteLoop = !isInEditor && blockEl.dataset.loop === 'true';
       const isAutoPlay = !isInEditor && blockEl.dataset.autoPlay === 'true';
+      const slidesPerView =
+        blockEl.dataset.slidesPerView ?? defaultConfig.slidesPerView;
       return {
         defaultConfig,
-        slidesPerView:
-          blockEl.dataset.slidesPerView ?? defaultConfig.slidesPerView,
+        breakpoints: {
+          ...defaultConfig.breakpoints,
+          782: {
+            slidesPerView: Math.min(
+              slidesPerView,
+              defaultConfig.breakpoints[782].slidesPerView
+            ),
+          },
+          1000: {
+            slidesPerView,
+          },
+        },
         spaceBetween:
           blockEl.dataset.itemsSpacing ?? defaultConfig.spaceBetween,
         navigation: {
