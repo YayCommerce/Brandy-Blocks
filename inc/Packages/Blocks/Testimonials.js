@@ -4,6 +4,7 @@
       direction: 'horizontal',
       slidesPerView: 1,
       spaceBetween: 40,
+      speed: 1000,
       breakpoints: {
         782: {
           slidesPerView: 2,
@@ -20,7 +21,7 @@
       const slidesPerView =
         blockEl.dataset.slidesPerView ?? defaultConfig.slidesPerView;
       return {
-        defaultConfig,
+        ...defaultConfig,
         breakpoints: {
           ...defaultConfig.breakpoints,
           782: {

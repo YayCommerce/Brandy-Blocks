@@ -1,6 +1,10 @@
 .wp-block-brandy-testimonials {
 	position: relative;
 
+	[data-block-name="brandy/testimonial-card"] {
+		cursor: grab;
+	}
+
 	.wp-block-brandy-testimonials__navigation {
 		position: absolute;
 		top: 50%;
