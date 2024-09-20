@@ -1,0 +1,55 @@
+{
+  "apiVersion": 3,
+  "title": "Rating",
+  "name": "brandy/rating",
+  "category": "brandy-blocks",
+  "description": "Brandy Rating block",
+  "attributes": {
+    "alignment":{
+      "type": "string",
+      "default": "center"
+    },
+    "starNumbers": {
+      "type": "number",
+      "default": 5
+    },
+    "rate": {
+        "type": "number",
+        "default": 4.5
+    },
+    "starSize": {
+      "type": "number",
+      "default": 45
+    },
+    "markColor": {
+      "type": "string",
+      "default": "#FFD700"
+    },
+    "unmarkColor": {
+      "type": "string",
+      "default": "#ccc"
+    },
+    "spacing": {
+      "type": "number",
+      "default": 5
+    },
+    "useProductRating":{
+      "type": "boolean",
+      "default": false
+    },
+    "selectedProductId": {
+      "type": "number",
+      "default": null
+    }
+  },
+  "providesContext": {},
+  "example": {
+    "viewportWidth": 2000,
+    "attributes": {}
+  },
+  "icon": "clock",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "script": "brandy-blocks/rating"
+}
