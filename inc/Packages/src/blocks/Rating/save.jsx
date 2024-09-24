@@ -1,19 +1,13 @@
 import { useBlockProps } from "@wordpress/block-editor";
+import { getStarFillPercentage } from "../../utils/helpers";
+
 const Save = ({ attributes }) => {
   const blockProps = useBlockProps.save();
-  const currentRate = attributes.useProductRating ? (attributes.fetchedRating ?? 0) : attributes.rate;
-
-  const getStarFillPercentage = (index) => {
-    if (index + 1 <= currentRate) return 100;
-    if (index < currentRate) return (currentRate % 1) * 100;
-    return 0;
-  };
-
   return (
     <div {...blockProps}>
       <div className="brandy-star-wrapper" style={{ display: 'flex', justifyContent: attributes.alignment, gap: `${attributes.spacing}px` }}>
         {Array.from({ length: attributes.starNumbers }, (_, index) => {
-          const fillPercentage = getStarFillPercentage(index);
+          const fillPercentage = getStarFillPercentage(index, attributes.rate);
           const starStyle = { width: `${attributes.starSize}px`, height: `${attributes.starSize}px`, position: 'relative' };
           const svgStyle = { position: 'absolute', top: 0, left: 0 };
 

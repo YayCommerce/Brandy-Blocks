@@ -2,43 +2,34 @@ import { useContext, useEffect, useState } from "@wordpress/element";
 import { RatingContext } from "../edit";
 import { __ } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
+import { getStarFillPercentage } from "../../../utils/helpers"
 
 export default function Display() {
     const { attributes, setAttributes } = useContext(RatingContext);
     const { starNumbers, rate, starSize, markColor, unmarkColor, spacing, useProductRating, selectedProductId, } = attributes;
-    const [currentRate, setCurrentRate] = useState(rate);
 
     useEffect(() => {
         if (useProductRating) {
             if (!selectedProductId) {
-                setCurrentRate(0);
+                setAttributes({ rate: 0 });
             } else {
                 // Fetch the product rating using the selectedProductId
                 apiFetch({ path: `/wc/v3/products/${selectedProductId}` })
                     .then((product) => {
-                        const productAverageRating = product.average_rating ?? rate;
-                        setAttributes({ fetchedRating: productAverageRating });
-                        setCurrentRate(productAverageRating);
+                        const productAverageRating = product.average_rating ? parseFloat(product.average_rating) : rate;
+                        setAttributes({ rate: productAverageRating });
                     })
                     .catch(() => {
-                        setCurrentRate(rate);
-                        setAttributes({ fetchedRating: rate });
+                        setAttributes({ rate: 0 });
                     });
             }
-
-        } else {
-            setCurrentRate(rate);
         }
     }, [useProductRating, selectedProductId, rate]);
-
-    const getStarFillPercentage = (index) => {
-        return index + 1 <= currentRate ? 100 : (index < currentRate ? (currentRate % 1) * 100 : 0);
-    };
 
     return (
         <div className="brandy-star-wrapper" style={{ display: 'flex', justifyContent: attributes.alignment, gap: `${spacing}px` }}>
             {Array.from({ length: starNumbers }, (_, index) => {
-                const fillPercentage = getStarFillPercentage(index);
+                const fillPercentage = getStarFillPercentage(index, rate);
                 return (
                     <div key={index} style={{ width: `${starSize}px`, height: `${starSize}px`, position: 'relative' }}>
                         <svg viewBox="0 0 24 24" width={starSize} height={starSize} style={{ position: 'absolute' }}>
