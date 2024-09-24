@@ -53,7 +53,7 @@ class Form extends AbstractBlock {
 		$mapped_views = array(
 			'login'          => __DIR__ . '/Form/html-login-form.php',
 			'reset_password' => __DIR__ . '/Form/html-reset-password-form.php',
-			'default'        => '',
+			'custom'         => __DIR__ . '/Form/html-custom-form.php',
 		);
 		$path         = $mapped_views[ $attributes['action'] ?? '' ];
 		if ( file_exists( $path ) ) {
