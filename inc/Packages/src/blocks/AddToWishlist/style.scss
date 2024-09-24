@@ -14,6 +14,9 @@
 	background-color: var(--atw-background-color);
 	cursor: pointer;
 	position: relative;
+	align-items: center;
+	justify-content: center;
+	gap: var(--atw-content-spacing, 10px);
 
 	&:hover {
 		background-color: var(--atw-background-color-hover);
@@ -46,6 +49,11 @@
 	border-radius: 50%;
 }
 
+.wp-block-brandy-add-to-wishlist-icon-wrap {
+
+	display: flex;
+}
+
 .wp-block-brandy-add-to-wishlist-icon {
 	width: var(--atw-icon-size);
 	height: var(--atw-icon-size);
@@ -75,5 +83,17 @@
 
 	.wp-block-brandy-add-to-wishlist-icon.hover-state {
 		display: block;
+	}
+}
+
+.wp-block-brandy-add-to-wishlist:not(.added) {
+	.wp-block-brandy-add-to-wishlist-text.active-state {
+		display: none;
+	}
+}
+
+.wp-block-brandy-add-to-wishlist.added {
+	.wp-block-brandy-add-to-wishlist-text.default-state {
+		display: none;
 	}
 }

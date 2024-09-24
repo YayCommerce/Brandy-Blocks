@@ -7,9 +7,9 @@ if ( ! \is_wc_installed() ) {
 	return;
 }
 
-	$wishlist_list = empty( $args['wishlist_list'] ) ? array() : $args['wishlist_list'];
-	$products      = array_map( 'wc_get_product', $wishlist_list );
-	$in_drawer     = true;
+$wishlist_list = empty( $args['wishlist_list'] ) ? array() : $args['wishlist_list'];
+$products      = array_map( 'wc_get_product', $wishlist_list );
+$in_drawer     = true;
 
 ?>
 

@@ -1,6 +1,8 @@
 import {
   __experimentalUnitControl as UnitControl,
   __experimentalToolsPanel as ToolsPanel,
+  __experimentalToolsPanelItem as ToolsPanelItem,
+  TextControl,
 } from "@wordpress/components";
 import { PanelColorSettings } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
@@ -70,13 +72,40 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
         state="active"
       />
       <ToolsPanel label={__("Settings")}>
-        <UnitControl
-          label="Icon size"
-          value={iconSize}
-          onChange={(v) => {
-            setAttributes({ iconSize: v });
-          }}
-        />
+        <ToolsPanelItem
+          hasValue={() => true}
+          label={__("Icon")}
+          onDeselect={() => {}}
+        >
+          <UnitControl
+            label="Icon size"
+            value={iconSize}
+            onChange={(v) => {
+              setAttributes({ iconSize: v });
+            }}
+          />
+        </ToolsPanelItem>
+
+        <ToolsPanelItem
+          hasValue={() => true}
+          label={__("Text")}
+          onDeselect={() => {}}
+        >
+          <TextControl
+            __nextHasNoMarginBottom
+            label="Text"
+            help="Leave it empty to hide"
+            value={attributes.defaultText ?? ""}
+            onChange={(value) => setAttributes({ defaultText: value })}
+          />
+          <TextControl
+            __nextHasNoMarginBottom
+            label="Added Text"
+            help="Leave it empty to hide"
+            value={attributes.addedText ?? ""}
+            onChange={(value) => setAttributes({ addedText: value })}
+          />
+        </ToolsPanelItem>
       </ToolsPanel>
     </>
   );

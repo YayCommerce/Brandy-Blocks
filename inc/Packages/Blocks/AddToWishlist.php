@@ -28,12 +28,19 @@ class AddToWishlist extends AbstractBlock {
 		if ( ! is_wc_installed() ) {
 			return esc_html_e( 'Please install WooCommerce', 'brandy-blocks' );
 		}
+		$current_product = null;
 
-		global $product;
-		if ( ! $product || ! ( $product instanceof \WC_Product ) ) {
+		if ( ! empty( $block->context['singleProduct'] ) && ! empty( $block->context['postId'] ) ) {
+			$current_product = wc_get_product( $block->context['postId'] );
+		} else {
+			global $product;
+			$current_product = $product;
+		}
+
+		if ( ! $current_product || ! ( $current_product instanceof \WC_Product ) ) {
 			return '';
 		}
-		$product_id     = $product->get_id();
+		$product_id     = $current_product->get_id();
 		$wishlist_items = Wishlist::get_wishlist_items();
 
 		$is_added = in_array( $product_id, $wishlist_items );

@@ -7,15 +7,15 @@
   "attributes": {
     "icon": {
       "type": "string",
-      "default": "https://wpbrandy.s3.us-west-2.amazonaws.com/uploads/20240912044751/wishlist-icon.png"
+      "default": "https://images.wpbrandy.com/uploads/wishlist-icon-1.png"
     },
     "iconHover": {
       "type": "string",
-      "default": "https://wpbrandy.s3.us-west-2.amazonaws.com/uploads/20240912044751/wishlist-icon.png"
+      "default": "https://images.wpbrandy.com/uploads/wishlist-icon-1.png"
     },
     "iconActive": {
       "type": "string",
-      "default": "https://wpbrandy.s3.us-west-2.amazonaws.com/uploads/20240912044751/wishlist-icon-active.png"
+      "default": "https://images.wpbrandy.com/uploads/wishlisted-icon.png"
     },
     "iconSize": {
       "type": "string",
@@ -36,12 +36,38 @@
     "loadingSpinnerColor": {
       "type": "string",
       "default": "#000000"
+    },
+    "defaultText": {
+      "type": "string",
+      "default": "Add to wishlist"
+    },
+    "addedText": {
+      "type": "string",
+      "default": "Wishlisted"
     }
   },
   "usesContext": ["postType", "postId"],
   "supports": {
     "reusable": false,
     "html": false,
+    "color": {
+      "__experimentalDefaultControls": {
+        "text": true
+      }
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true,
+      "__experimentalFontStyle": true,
+      "__experimentalTextTransform": true,
+      "__experimentalTextDecoration": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true
+      }
+    },
     "spacing": {
       "blockGap": {
         "__experimentalDefault": "1.25em"

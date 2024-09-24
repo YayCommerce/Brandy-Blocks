@@ -22,11 +22,7 @@ export default function Edit(props) {
 }
 
 export function Content(props) {
-  const { isSave = false, context } = props;
-
-  if (!isSave && (context?.postType !== "product" || !context?.postId)) {
-    return "There is no product found";
-  }
+  const { isSave = false, context, attributes } = props;
 
   const {
     icon,
@@ -53,21 +49,42 @@ export function Content(props) {
   const blockProps = isSave
     ? useBlockProps.save(dataProps)
     : useBlockProps(dataProps);
+
+  if (!isSave && (context?.postType !== "product" || !context?.postId)) {
+    return <div {...blockProps}>There is no product found</div>;
+  }
+
   return (
     <div {...blockProps}>
       <span className="wp-block-brandy-add-to-wishlist-loading"></span>
-      <img
-        src={icon}
-        className="wp-block-brandy-add-to-wishlist-icon default-state"
-      />
-      <img
-        src={iconHover}
-        className="wp-block-brandy-add-to-wishlist-icon hover-state"
-      />
-      <img
-        src={iconActive}
-        className="wp-block-brandy-add-to-wishlist-icon active-state"
-      />
+      <div className="wp-block-brandy-add-to-wishlist-icon-wrap">
+        <img
+          src={icon}
+          className="wp-block-brandy-add-to-wishlist-icon default-state"
+        />
+        <img
+          src={iconHover}
+          className="wp-block-brandy-add-to-wishlist-icon hover-state"
+        />
+        <img
+          src={iconActive}
+          className="wp-block-brandy-add-to-wishlist-icon active-state"
+        />
+      </div>
+      {(attributes.defaultText || attributes.addedText) && (
+        <div className="wp-block-brandy-add-to-wishlist-text-wrap">
+          {attributes.defaultText && (
+            <span className="wp-block-brandy-add-to-wishlist-text default-state">
+              {attributes.defaultText}
+            </span>
+          )}
+          {attributes.addedText && (
+            <span className="wp-block-brandy-add-to-wishlist-text active-state">
+              {attributes.addedText}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }
