@@ -9,28 +9,28 @@
       "type": "string",
       "default": ""
     },
-    "overallDirection": {
-        "type": "string",
-        "default": "horizontal"
+    "overall": {
+      "type": "object",
+      "default": {
+        "direction": "horizontal",
+        "align": "center",
+        "spacing": 20
+      }
     },
-    "itemDirection": {
-      "type": "string",
-        "default": "vertical"
-    },
-    "overallAlign": {
-      "type": "string",
-      "default": "center"
-    },
-    "itemAlign": {
-      "type": "string",
-      "default": "center"
+    "item": {
+      "type": "object",
+      "default": {
+        "direction": "vertical",
+        "align": "center",
+        "spacing": 0
+      }
     },
     "prefix": {
       "type": "object",
       "default": {
         "color": "",
         "typography": {
-          "font_size": 19,
+          "font_size": 15,
           "bold": false,
           "italic": false,
           "text_transform": "none",
@@ -38,13 +38,13 @@
         }
       }
     },
-
     "main": {
       "type": "object",
       "default": {
         "color": "",
+        "backgroundColor": "#F0F5FA",
         "typography": {
-          "font_size": 59,
+          "font_size": 45,
           "bold": false,
           "italic": false,
           "text_transform": "none",
@@ -52,13 +52,12 @@
         }
       }
     },
-    
     "suffix": {
       "type": "object",
       "default": {
         "color": "",
         "typography": {
-          "font_size": 19,
+          "font_size": 15,
           "bold": false,
           "italic": false,
           "text_transform": "none",
@@ -97,9 +96,35 @@
         "prefix": "",
         "suffix": "Seconds"
       }
+    },
+    "separator": {
+      "type": "object",
+      "default": {
+        "text": ":",
+        "color": "",
+        "typography": {
+          "font_size": 29,
+          "bold": false,
+          "italic": false,
+          "text_transform": "none",
+          "font_weight": 500
+        }
+      }
     }
   },
   "providesContext": {},
+  "supports": {
+    "color": {
+      "gradients": true,
+      "__experimentalDefaultControls": {
+        "background": true
+      }
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
   "example": {
     "viewportWidth": 2000,
     "attributes": {}

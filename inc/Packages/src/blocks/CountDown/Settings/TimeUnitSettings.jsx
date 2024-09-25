@@ -1,6 +1,6 @@
 import { CountDownContext } from "../edit";
 import { useContext } from "@wordpress/element";
-import { 
+import {
   PanelBody,
   TextControl,
   ToggleControl,
@@ -36,23 +36,30 @@ export default function TimeUnitSettings() {
               <ToggleControl
                 label={__('Visibility')}
                 checked={attributes[unitTab.name].visible}
-                onChange={handleChangeObjectValues(unitTab.name,'visible')}
+                onChange={handleChangeObjectValues(unitTab.name, 'visible')}
               />
             </div>
             <TextControl
               label={__('Prefix')}
               value={attributes[unitTab.name].prefix}
-              onChange={handleChangeObjectValues(unitTab.name,'prefix')}
+              onChange={handleChangeObjectValues(unitTab.name, 'prefix')}
             />
             <TextControl
               label={__('Suffix')}
               value={attributes[unitTab.name].suffix}
-              onChange={handleChangeObjectValues(unitTab.name,'suffix')}
+              onChange={handleChangeObjectValues(unitTab.name, 'suffix')}
             />
-                          
+
           </div>
         )}
       </TabPanel>
+      <div className="brandy-separator-settings">
+        <TextControl
+          label={__('Separator')}
+          value={attributes.separator.text}
+          onChange={handleChangeObjectValues('separator', 'text')}
+        />
+      </div>
     </PanelBody>
   );
 }
