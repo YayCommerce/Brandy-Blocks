@@ -16,9 +16,9 @@
     }
 
     if (detail.action === "add") {
-      $('[data-block-name="brandy/add-to-wishlist"]').addClass("added");
+      $(`[data-block-name="brandy/add-to-wishlist"][data-product-id="${detail.productId}"]`).addClass("added");
     } else {
-      $('[data-block-name="brandy/add-to-wishlist"]').removeClass("added");
+      $(`[data-block-name="brandy/add-to-wishlist"][data-product-id="${detail.productId}"]`).removeClass("added");
     }
   }
 

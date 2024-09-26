@@ -36,8 +36,8 @@
 
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: var(--theme-product-thumb-radius);
-  background-color: var(--theme-product-background-color);
+  border-radius: var(--order-item-thumb-radius);
+  background-color: var(--order-item-background-color);
 }
 
 .brandy-wishlist-shortcode .item-thumbnail img {
