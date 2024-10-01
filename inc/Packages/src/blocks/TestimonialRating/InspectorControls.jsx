@@ -28,18 +28,18 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
         initialOpen={false}
         colorSettings={[
           {
-            value: activeColor,
-            onChange: (newColor) =>
-              setAttributes({
-                activeColor: newColor,
-              }),
-            label: __('Default color', 'brandy-blocks'),
-          },
-          {
             value: defaultColor,
             onChange: (newColor) =>
               setAttributes({
                 defaultColor: newColor,
+              }),
+            label: __('Default color', 'brandy-blocks'),
+          },
+          {
+            value: activeColor,
+            onChange: (newColor) =>
+              setAttributes({
+                activeColor: newColor,
               }),
             label: __('Active color', 'brandy-blocks'),
           },

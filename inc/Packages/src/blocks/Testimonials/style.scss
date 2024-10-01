@@ -26,6 +26,10 @@
 		transition-duration: .2s;
 		transition-timing-function: ease-in-out;
 
+		--swiper-navigation-size: var(--brandy-testimonials-navigation-icon-size, 14px);
+		--swiper-navigation-icon-color: var(--brandy-testimonials-navigation-icon-color, #122940);
+		--swiper-navigation-icon-color-hover: var(--brandy-testimonials-navigation-icon-color-hover, #808890);
+
 		&.swiper-button-prev {
 			left: calc(var(--brandy-testimonials-navigation-size, 50px) / 2 * -1);
 		}
@@ -38,10 +42,33 @@
 			display: none !important;
 		}
 
-		--swiper-navigation-size: var(--brandy-testimonials-navigation-icon-size, 14px);
+		svg {
+			width: var(--swiper-navigation-size);
+
+			*[fill],
+			*[stroke] {
+				transition-property: fill, stroke;
+				transition-duration: .2s;
+				transition-timing-function: ease-in-out;
+			}
+
+			*[fill] {
+				fill: var(--swiper-navigation-icon-color);
+			}
+
+			*[stroke] {
+				stroke: var(--swiper-navigation-icon-color);
+			}
+		}
+
+		&:not(:empty) {
+			&::after {
+				display: none;
+			}
+		}
 
 		&::after {
-			color: var(--brandy-testimonials-navigation-icon-color, #122940);
+			color: var(--swiper-navigation-icon-color);
 			font-weight: 900;
 		}
 
@@ -49,7 +76,18 @@
 			background-color: var(--brandy-testimonials-navigation-background-color-hover, #EFF2F4);
 
 			&::after {
-				color: var(--brandy-testimonials-navigation-icon-color-hover, #808890);
+				color: var(--swiper-navigation-icon-color-hover);
+			}
+
+			svg {
+
+				*[fill] {
+					fill: var(--swiper-navigation-icon-color-hover);
+				}
+
+				*[stroke] {
+					stroke: var(--swiper-navigation-icon-color-hover);
+				}
 			}
 		}
 	}

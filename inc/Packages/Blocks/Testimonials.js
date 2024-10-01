@@ -3,7 +3,7 @@
     const defaultConfig = {
       direction: 'horizontal',
       slidesPerView: 1,
-      spaceBetween: 40,
+      spaceBetween: 30,
       speed: 1000,
       breakpoints: {
         782: {
@@ -14,6 +14,8 @@
         },
       },
     };
+    const nextIcon = window.brandyBlocksTestimonials?.nextIcon;
+    const backIcon = window.brandyBlocksTestimonials?.backIcon;
     function getConfigFromBlock(blockEl) {
       const isInEditor = $(blockEl).hasClass('block-editor-block-list__block');
       const isInfiniteLoop = !isInEditor && blockEl.dataset.loop === 'true';
@@ -64,6 +66,12 @@
           .find('.swiper')
           .each((__, swiperEl) => {
             new Swiper(swiperEl, getConfigFromBlock(block));
+            if (nextIcon) {
+              $(block).find('.swiper-button-next').html(nextIcon);
+            }
+            if (backIcon) {
+              $(block).find('.swiper-button-prev').html(backIcon);
+            }
           });
       });
     });
