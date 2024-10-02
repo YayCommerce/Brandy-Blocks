@@ -44,6 +44,7 @@
 
 		svg {
 			width: var(--swiper-navigation-size);
+			height: fit-content;
 
 			*[fill],
 			*[stroke] {

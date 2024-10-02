@@ -17,7 +17,7 @@
       "type": "object",
       "default": {
         "size": "50px",
-        "iconSize": "14px",
+        "iconSize": "7px",
         "iconColor": "#122940",
         "iconHoverColor": "#808890",
         "backgroundColor": "#FFFFFF",
