@@ -67,14 +67,17 @@ export function Content(props) {
         <img
           src={icon}
           className="wp-block-brandy-add-to-wishlist-icon default-state"
+          alt='add-to-wishlist-icon'
         />
         <img
           src={iconHover}
           className="wp-block-brandy-add-to-wishlist-icon hover-state"
+          alt='add-to-wishlist-icon-hover'
         />
         <img
           src={iconActive}
           className="wp-block-brandy-add-to-wishlist-icon active-state"
+          alt='add-to-wishlist-icon-active'
         />
       </div>
       {(attributes.defaultText || attributes.addedText) && (
