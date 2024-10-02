@@ -19,12 +19,24 @@
 	gap: var(--atw-content-spacing, 10px);
 	transition: all ease-in-out .2s;
 
+	.wp-block-brandy-add-to-wishlist-text {
+		color: var(--atw-text-color);
+	}
+
 	&:hover {
 		background-color: var(--atw-background-color-hover);
+
+		.wp-block-brandy-add-to-wishlist-text {
+			color: var(--atw-text-color-hover);
+		}
 	}
 
 	&.added {
 		background-color: var(--atw-background-color-active);
+
+		.wp-block-brandy-add-to-wishlist-text {
+			color: var(--atw-text-color-active);
+		}
 	}
 
 	&.adding,

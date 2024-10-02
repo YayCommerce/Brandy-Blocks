@@ -33,6 +33,18 @@
       "type": "string",
       "default": "#ffffff00"
     },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColorHover": {
+      "type": "string",
+      "default": ""
+    },
+    "textColorActive": {
+      "type": "string",
+      "default": ""
+    },
     "loadingSpinnerColor": {
       "type": "string",
       "default": "#000000"
@@ -50,11 +62,6 @@
   "supports": {
     "reusable": false,
     "html": false,
-    "color": {
-      "__experimentalDefaultControls": {
-        "text": true
-      }
-    },
     "typography": {
       "fontSize": true,
       "lineHeight": true,

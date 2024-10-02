@@ -1,8 +1,8 @@
-import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
-import AllInspectorSettings from "./InspectorControls";
+import AllInspectorSettings from './InspectorControls';
 
-import "../style.scss";
+import '../style.scss';
 
 export default function Edit(props) {
   const { attributes, setAttributes, clientId } = props;
@@ -31,18 +31,24 @@ export function Content(props) {
     backgroundColor,
     backgroundColorHover,
     backgroundColorActive,
+    textColor,
+    textColorHover,
+    textColorActive,
     iconSize,
     loadingSpinnerColor,
   } = props.attributes;
 
   const dataProps = {
-    "data-product-id": context?.postId ?? "",
+    'data-product-id': context?.postId ?? '',
     style: {
-      "--atw-background-color": backgroundColor,
-      "--atw-background-color-hover": backgroundColorHover,
-      "--atw-background-color-active": backgroundColorActive,
-      "--atw-icon-size": iconSize,
-      "--atw-loading-spinner-color": loadingSpinnerColor,
+      '--atw-background-color': backgroundColor,
+      '--atw-background-color-hover': backgroundColorHover,
+      '--atw-background-color-active': backgroundColorActive,
+      '--atw-text-color': textColor,
+      '--atw-text-color-hover': textColorHover,
+      '--atw-text-color-active': textColorActive,
+      '--atw-icon-size': iconSize,
+      '--atw-loading-spinner-color': loadingSpinnerColor,
     },
   };
 
@@ -50,7 +56,7 @@ export function Content(props) {
     ? useBlockProps.save(dataProps)
     : useBlockProps(dataProps);
 
-  if (!isSave && (context?.postType !== "product" || !context?.postId)) {
+  if (!isSave && (context?.postType !== 'product' || !context?.postId)) {
     return <div {...blockProps}>There is no product found</div>;
   }
 
