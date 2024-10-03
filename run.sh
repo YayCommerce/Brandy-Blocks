@@ -35,6 +35,7 @@ function release {
 
 	echo "Generating zip file..."
 	cd release/brandy-blocks
+	sed -i "" "s|'BRANDY_BLOCKS_IS_DEVELOPMENT', true|'BRANDY_BLOCKS_IS_DEVELOPMENT', false|g" brandy-blocks.php
 	cd ..
 
 	zip -q -r "brandy-blocks.zip" "brandy-blocks/"

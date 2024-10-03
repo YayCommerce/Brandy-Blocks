@@ -16,7 +16,7 @@ class Caller {
 	}
 
 	public function enqueue_settings_scripts() {
-		wp_enqueue_script( 'brandy-blocks/woo-product-original-price-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/StyleProductOriginalPrice/index.js', array( 'wp-edit-post' ), time() );
+		wp_enqueue_script( 'brandy-blocks/woo-product-original-price-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/StyleProductOriginalPrice/index.js', array( 'wp-edit-post' ), BRANDY_BLOCKS_SCRIPT_VERSION );
 		wp_localize_script(
 			'brandy-blocks/woo-product-original-price-controls',
 			'brandyGlobalSettings',
@@ -25,11 +25,11 @@ class Caller {
 	}
 
 	public function enqueue_admin_scripts() {
-		wp_enqueue_style( 'brandy-blocks/admin-original-price-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/StyleProductOriginalPrice/style.css', array(), time() );
+		wp_enqueue_style( 'brandy-blocks/admin-original-price-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/StyleProductOriginalPrice/style.css', array(), BRANDY_BLOCKS_SCRIPT_VERSION );
 	}
 
 	public function enqueue_frontend_scripts() {
-		wp_enqueue_style( 'brandy-blocks/original-price-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/StyleProductOriginalPrice/style.css', array(), time() );
+		wp_enqueue_style( 'brandy-blocks/original-price-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/StyleProductOriginalPrice/style.css', array(), BRANDY_BLOCKS_SCRIPT_VERSION );
 	}
 
 	public function add_original_price_style_attribute( $content, $block ) {

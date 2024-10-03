@@ -41,11 +41,11 @@ class Caller {
 	}
 
 	public function enqueue_settings_scripts() {
-		wp_enqueue_script( 'brandy-blocks/button-settings-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/ButtonSettings/index.js', array( 'wp-edit-post' ), time(), true );
+		wp_enqueue_script( 'brandy-blocks/button-settings-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/ButtonSettings/index.js', array( 'wp-edit-post' ), BRANDY_BLOCKS_SCRIPT_VERSION, true );
 	}
 
 	public function enqueue_frontend_scripts() {
-		wp_enqueue_style( 'brandy-blocks/button-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/ButtonSettings/style.css', array(), time() );
+		wp_enqueue_style( 'brandy-blocks/button-settings-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/ButtonSettings/style.css', array(), BRANDY_BLOCKS_SCRIPT_VERSION );
 	}
 
 	public function change_woocommerce_button_styles( $html, $block ) {
