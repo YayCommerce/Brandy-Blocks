@@ -1,129 +1,114 @@
-.brandy-testimonials-wrapper {
-	padding: 0 10px;
+.wp-block-brandy-testimonials {
+	position: relative;
 
-	&[label-type="badge"] {
-		.testimonials__rating {
-			border-radius: var(--label-border-radius);
-			width: fit-content;
-		}
+	[data-block-name="brandy/testimonial-card"] {
+		cursor: grab;
 	}
 
-	.brandy-testimonials {
-		&__list,
-		&__list .block-editor-block-list__layout {
-			gap: var(--carousel-item-spacing, 50px);
-			flex-wrap: nowrap !important;
-			display: flex;
-			position: relative;
-			transition-property: transform;
-			transition-timing-function: ease-in-out;
-			transition-duration: var(--carousel-transition-speed, 500ms);
+	.wp-block-brandy-testimonials__navigation {
+		position: absolute;
+		top: 50%;
+		z-index: 10;
+		cursor: pointer;
+
+		width: var(--brandy-testimonials-navigation-size, 50px);
+		height: var(--brandy-testimonials-navigation-size, 50px);
+		background-color: var(--brandy-testimonials-navigation-background-color, #ffffff);
+		box-shadow: var(--brandy-testimonials-navigation-shadow, 0 10px 25px 0 rgba(55, 126, 98, 0.05));
+		border-radius: 100%;
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transform: translateY(-50%);
+
+		transition-property: background-color, box-shadow;
+		transition-duration: .2s;
+		transition-timing-function: ease-in-out;
+
+		--swiper-navigation-size: var(--brandy-testimonials-navigation-icon-size, 14px);
+		--swiper-navigation-icon-color: var(--brandy-testimonials-navigation-icon-color, #122940);
+		--swiper-navigation-icon-color-hover: var(--brandy-testimonials-navigation-icon-color-hover, #808890);
+
+		&.swiper-button-prev {
+			left: calc(var(--brandy-testimonials-navigation-size, 50px) / 2 * -1);
 		}
-	}
 
-	.brandy-testimonials-carousel {
-		overflow: hidden;
-		position: relative;
-		display: block !important;
-		padding: 20px calc(var(--carousel-arrow-size) / 2 + 20px);
-		--dots-margin-top: 25px;
+		&.swiper-button-next {
+			right: calc(var(--brandy-testimonials-navigation-size, 50px) / 2 * -1);
+		}
 
-		.carousel-arrow {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			position: absolute;
-			z-index: 10;
-			top: calc(50% - var(--carousel-dot-size));
-			transform: translateY(calc(-50% + var(--carousel-dot-size) / 2 - var(--dots-margin-top) / 2));
-			cursor: pointer;
-			border-radius: 50px;
-			background: var(--carousel-arrow-background-color);
+		&.swiper-button-disabled {
+			display: none !important;
+		}
+
+		svg {
+			width: var(--swiper-navigation-size);
+			height: fit-content;
+
+			*[fill],
+			*[stroke] {
+				transition-property: fill, stroke;
+				transition-duration: .2s;
+				transition-timing-function: ease-in-out;
+			}
+
+			*[fill] {
+				fill: var(--swiper-navigation-icon-color);
+			}
+
+			*[stroke] {
+				stroke: var(--swiper-navigation-icon-color);
+			}
+		}
+
+		&:not(:empty) {
+			&::after {
+				display: none;
+			}
+		}
+
+		&::after {
+			color: var(--swiper-navigation-icon-color);
+			font-weight: 900;
+		}
+
+		&:hover {
+			background-color: var(--brandy-testimonials-navigation-background-color-hover, #EFF2F4);
+
+			&::after {
+				color: var(--swiper-navigation-icon-color-hover);
+			}
 
 			svg {
-				width: var(--carousel-arrow-size);
-				height: var(--carousel-arrow-size);
 
-				[fill] {
-					fill: var(--carousel-arrow-icon-color);
+				*[fill] {
+					fill: var(--swiper-navigation-icon-color-hover);
+				}
+
+				*[stroke] {
+					stroke: var(--swiper-navigation-icon-color-hover);
 				}
 			}
-
-			&:hover {
-				box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.03);
-			}
-		}
-
-		.backward-arrow {
-			left: 0;
-		}
-
-		.forward-arrow {
-			right: 0;
 		}
 	}
-	.carousel-dots {
+
+	.wp-block-brandy-testimonials__pagination {
+
 		position: relative;
-		display: flex;
-		justify-content: center;
-		gap: var(--carousel-dot-spacing);
-		align-items: center;
-		margin-top: var(--dots-margin-top);
+		margin-top: 20px;
 
-		.carousel-dot {
-			width: var(--carousel-dot-size);
-			height: var(--carousel-dot-size);
-			border-radius: 50px;
-			background: var(--carousel-dot-default-color);
-			cursor: pointer;
-			display: inline-block;
-			transition-property: background, width;
-			transition-duration: 0.2s;
-			transition-timing-function: ease-in-out;
+		--swiper-pagination-bullet-horizontal-gap: calc(var(--brandy-testimonials-pagination-bullet-spacing, 12px) / 2);
 
-			&.current-slide {
-				background: var(--carousel-dot-active-color);
-				width: calc(var(--carousel-dot-size) * 2);
+		.swiper-pagination-bullet {
+			--swiper-pagination-color: var(--brandy-testimonials-pagination-bullet-color, #D3DCE5);
+
+			--swiper-pagination-bullet-size: var(--brandy-testimonials-pagination-bullet-size, 12px);
+
+			&.swiper-pagination-bullet-active {
+
+				--swiper-pagination-color: var(--brandy-testimonials-pagination-bullet-active, #122940);
 			}
 		}
-	}
-
-	.wp-block-missing {
-		display: none;
-	}
-}
-
-.brandy-editor {
-	.testimonial-sort {
-		&__list {
-			display: flex;
-			flex-direction: column;
-			gap: 15px;
-		}
-
-		&__item {
-			padding: 10px;
-			border-radius: 7px;
-			background: #fff;
-			border: 1px solid #e7e8e9;
-			box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.03);
-			cursor: grab;
-			display: flex;
-			align-items: center;
-			gap: 15px;
-
-			img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50px;
-			}
-		}
-	}
-
-	.item-block-drag-handler {
-		padding: 5px;
-		display: flex;
-		align-items: center;
-		cursor: grab;
 	}
 }

@@ -1,0 +1,21 @@
+.wp-block-brandy-testimonial-rating {
+	display: flex;
+	gap: var(--rating-spacing);
+	align-items: center;
+	justify-content: var(--rating-alignment, left);
+
+	.wp-block-brandy-testimonial-rating__star {
+		svg {
+			width: var(--rating-size);
+			height: var(--rating-size);
+			fill: var(--rating-default-color);
+		}
+
+		&.active-star {
+			svg {
+				fill: var(--rating-active-color);
+			}
+		}
+	}
+
+}

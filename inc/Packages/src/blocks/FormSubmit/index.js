@@ -30,6 +30,7 @@ registerBlockType(metadata.name, {
         d="M7.99994 3.5V4.5C7.99994 5.05228 8.44765 5.5 8.99994 5.5H14.9999C15.5522 5.5 15.9999 5.05228 15.9999 4.5V3.5"
         stroke="#0061FE"
         stroke-width="1.5"
+        fill="transparent"
       />
     </svg>
   ),
