@@ -9,6 +9,22 @@
       "type": "string",
       "default": ""
     },
+    "overallDirection": {
+      "type": "string",
+      "default": "horizontal"
+    },
+    "itemDirection": {
+      "type": "string",
+      "default": "vertical"
+    },
+    "overallAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "itemAlign": {
+      "type": "string",
+      "default": "center"
+    },
     "overall": {
       "type": "object",
       "default": {
@@ -38,6 +54,7 @@
         }
       }
     },
+
     "main": {
       "type": "object",
       "default": {
@@ -52,6 +69,7 @@
         }
       }
     },
+
     "suffix": {
       "type": "object",
       "default": {

@@ -53,4 +53,17 @@ class Helpers {
 
 		return $query_posts->get_posts();
 	}
+
+	public static function get_user_roles() {
+		global $wp_roles;
+		$roles = $wp_roles->roles;
+		$roles = array_map(function($key, $role) {
+			return array(
+				'label' => $role['name'],
+				'value' => $key
+			);
+		}, array_keys($roles), $roles);
+		return $roles;
+	}
+	
 }

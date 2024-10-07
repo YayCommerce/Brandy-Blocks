@@ -12,6 +12,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   const dataAttributes = useMemo(
     () => ({
       countdownDate: attributes.countdownDate ?? metadata.attributes.countdownDate.default,
+      overallDirection: attributes.overallDirection ?? metadata.attributes.overallDirection.default,
+      itemDirection: attributes.itemDirection ?? metadata.attributes.itemDirection.default,
+      overallAlign: attributes.overallAlign ?? metadata.attributes.overallAlign.default,
+      itemAlign: attributes.itemAlign ?? metadata.attributes.itemAlign.default,
       overall: attributes.overall ?? metadata.attributes.overall.default,
       item: attributes.item ?? metadata.attributes.item.default,
       main: attributes.main ?? metadata.attributes.main.default,
