@@ -69,6 +69,11 @@ class ProductsWithBanners extends AbstractBlock {
 	}
 
 	public function render( $attributes = array(), $content = '', $block = null ) {
+
+		if ( ! \is_wc_installed() ) {
+			return __( 'Please install WooCommerce', 'brandy-blocks' );
+		}
+
 		$this->attributes = $this->parse_attributes_from_block_attributes( $attributes );
 		$products         = $this->get_query_result( $this->attributes );
 		$content          = sprintf(

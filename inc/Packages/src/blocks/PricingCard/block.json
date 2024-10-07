@@ -46,10 +46,7 @@
     "brandy/pricing/card_layout",
     "brandy/pricing/card_highlight_badge"
   ],
-  "parent": [
-    "brandy/pricing"
-  ],
-  "icon": "testimonial",
+  "parent": ["brandy/pricing"],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"
