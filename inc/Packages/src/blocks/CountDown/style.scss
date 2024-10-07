@@ -1,26 +1,46 @@
 /** Edit Block **/
 .brandy-tab-panel {
-	.components-tab-panel__tabs-item {
-		justify-content: center !important;
-	}
+  padding: 10px 0px;
+
+  .components-tab-panel__tabs-item {
+    justify-content: center !important;
+  }
 }
+
 .brandy-countdown-settings {
-	padding: 15px 0px;
+  padding: 15px 0px;
 }
+
+.brandy-separator-settings {
+  margin-top: 30px;
+  border-top: 1px solid #f0f0f1;
+  padding-top: 10px;
+}
+
 .brandy-countdown-typography-settings {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
 }
+
 .typography-indicator {
-	&:hover {
-		cursor: pointer;
-	}
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .brandy-countdown-wrapper {
   display: flex;
+  gap: var(--overall__spacing);
+
+  @media (max-width: 768px) {
+    gap: unset;
+  }
+
+  @media (max-width: 480px) {
+    gap: unset;
+  }
 
   .brandy-countdown-item {
     display: flex;
@@ -28,6 +48,9 @@
 
   &.brandy-overall-direction-horizontal {
     flex-direction: row;
+    .brandy-countdown-separator{
+      align-self: center;
+    }
   }
 
   &.brandy-overall-direction-vertical {
@@ -36,7 +59,8 @@
 
   &.brandy-overall-direction-horizontal.brandy-item-direction-horizontal,
   &.brandy-overall-direction-vertical.brandy-item-direction-horizontal {
-    gap: 40px;
+    gap: var(--overall__spacing);
+
     /* Keep structure but reduce size for mobile */
     @media (max-width: 768px) {
       gap: 0px;
@@ -45,33 +69,31 @@
     @media (max-width: 480px) {
       gap: 0px;
     }
-  
   }
 
   &.brandy-item-direction-vertical {
     .brandy-countdown-item {
       flex-direction: column;
-      padding: 20px 0;
+      gap: var(--item__spacing);
     }
   }
 
   &.brandy-overall-direction-horizontal.brandy-countdown-wrapper.brandy-item-direction-vertical {
     .brandy-countdown-item {
-      margin: 0 80px;
       @media (max-width: 768px) {
-        margin: 0 24px;
+        margin: 0 10px;
+        gap: unset;
       }
-      @media (max-width: 480px) {
-        margin: 0 20px;
-      }
+
+      gap: var(--item__spacing);
     }
-    
+
   }
 
   &.brandy-item-direction-horizontal {
     .brandy-countdown-item {
       flex-direction: row;
-      gap: 5px;
+      gap: var(--item__spacing);
     }
   }
 
@@ -143,6 +165,12 @@ span.brandy-countdown-values {
   font-weight: var(--main-font-weight, var(--main-bold));
   text-transform: var(--main-text-transform);
   line-height: 1;
+  padding: 15px 20px;
+  @media (max-width: 768px) {
+    padding: 15px 15px;
+  }
+  background: var(--main__bg__color, '#F0F5FA');
+  border-radius: 10px;
 
   @media (max-width: 768px) {
     font-size: 2.2em;
@@ -167,4 +195,12 @@ span.brandy-countdown-suffix {
   @media (max-width: 480px) {
     font-size: 1em;
   }
+}
+
+.brandy-countdown-separator {
+  font-size: var(--separator-font-size);
+  color: var(--separator__color);
+  font-weight: var(--separator-font-weight, var(--separator-bold));
+  text-transform: var(--separator-text-transform);
+  line-height: 1;
 }
