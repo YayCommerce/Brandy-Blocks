@@ -3,183 +3,88 @@
   "title": "Testimonials",
   "name": "brandy/testimonials",
   "category": "brandy-blocks",
-  "icon": "testimonial",
-  "description": "Display a responsive testimonial slider.",
+  "description": "Display testimonials",
   "attributes": {
-    "number_testimonials": {
+    "slidesPerView": {
       "type": "number",
-      "attribute": "data-length",
       "default": 3
     },
-    "shadow": {
-      "type": "object",
-      "default": {
-        "type": "regular",
-        "x": 0,
-        "y": 4,
-        "blur": 16,
-        "spread": 0,
-        "color": "rgba(0, 0, 0, 0.06)"
-      }
-    },
-    "change_detecter": {
-      "string": "string",
-      "default": 0
-    },
-    "carousel": {
-      "type": "object",
-      "default": {
-        "autoplay": true,
-        "infinite_loop": true,
-        "transition_speed": 500
-      }
-    },
-    "item_spacing": {
+    "testimonialsCount": {
       "type": "number",
-      "default": 50
+      "default": 3
     },
-    "content_alignment": {
-      "type": "string",
-      "default": "center"
-    },
-    "avatar": {
+    "navigation": {
       "type": "object",
       "default": {
-        "visible": true,
-        "size": 80,
-        "border_radius": {
-          "top": 50,
-          "left": 50,
-          "right": 50,
-          "bottom": 50,
-          "constrain": true
-        },
-        "fitting": "cover",
-        "margin": {
-          "top": 0,
-          "left": 0,
-          "right": 0,
-          "bottom": 7,
-          "constrain": false
-        }
+        "size": "50px",
+        "iconSize": "7px",
+        "iconColor": "#122940",
+        "iconHoverColor": "#808890",
+        "backgroundColor": "#FFFFFF",
+        "backgroundHoverColor": "#EFF2F4",
+        "shadow": "0 10px 25px 0 rgba(55,126,98,0.05)"
       }
     },
-    "name": {
+    "pagination": {
       "type": "object",
       "default": {
-        "visible": true,
-        "color": "var(--body_text, #122940)",
-        "typography": {
-          "font_size": 18,
-          "bold": false,
-          "italic": false,
-          "text_transform": "none",
-          "font_weight": 500
-        },
-        "margin": {
-          "top": 0,
-          "left": 0,
-          "right": 0,
-          "bottom": 0,
-          "constrain": false
-        }
+        "enabled": true,
+        "size": "12px",
+        "activeColor": "#122940",
+        "defaultColor": "#D3DCE5",
+        "spacing": "12px"
       }
     },
-    "subname": {
-      "type": "object",
-      "default": {
-        "visible": true,
-        "color": "var(--secondary_text, #7F8287)",
-        "typography": {
-          "font_size": 14,
-          "bold": false,
-          "italic": false,
-          "text_transform": "none",
-          "font_weight": 300
-        },
-        "margin": {
-          "top": 0,
-          "left": 0,
-          "right": 0,
-          "bottom": 0,
-          "constrain": false
-        }
+    "autoPlay": {
+      "type": "boolean",
+      "default": true
+    },
+    "infiniteLoop": {
+      "type": "boolean",
+      "default": true
+    },
+    "autoPlayDelay": {
+      "type": "number",
+      "default": 3000
+    }
+  },
+  "allowedBlocks": ["brandy/testimonial-card"],
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "blockGap": {
+        "__experimentalDefault": "1.25em"
+      },
+      "margin": true,
+      "padding": true,
+      "border": true,
+      "__experimentalDefaultControls": {
+        "blockGap": true
       }
     },
-    "content": {
-      "type": "object",
-      "default": {
-        "visible": true,
-        "color": "var(--palette_3, #122940)",
-        "typography": {
-          "font_size": 24,
-          "bold": false,
-          "italic": true,
-          "text_transform": "none",
-          "font_weight": 300
-        },
-        "margin": {
-          "top": 30,
-          "left": 0,
-          "right": 0,
-          "bottom": 30,
-          "constrain": false
-        }
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true,
+      "__experimentalDefaultControls": {
+        "color": true,
+        "radius": true,
+        "style": true,
+        "width": true
       }
     },
-    "star": {
-      "type": "object",
-      "default": {
-        "visible": true,
-        "size": 16,
-        "active_color": "#f8b84e",
-        "default_color": "#bebfc2",
-        "spacing": 5,
-        "margin": {
-          "top": 0,
-          "left": 0,
-          "right": 0,
-          "bottom": 0,
-          "constrain": false
-        }
-      }
-    },
-    "arrow": {
-      "type": "object",
-      "default": {
-        "size": 30,
-        "icon_color": "#808890",
-        "background_color": "#EFF2F4"
-      }
-    },
-    "dots": {
-      "type": "object",
-      "default": {
-        "size": 12,
-        "active_color": "#122940",
-        "default_color": "#D3DCE5",
-        "spacing": 12
-      }
-    },
-    "layout": {
-      "type": "array",
-      "default": ["avatar", "name", "subname", "content", "rating"]
+    "interactivity": {
+      "clientNavigation": true
     }
   },
   "example": {
-    "viewportWidth": 2000,
-    "attributes": {}
-  },
-  "providesContext": {
-    "brandy/testimonials/layout": "layout"
+    "viewportWidth": 1400
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "script": "brandy-blocks/testimonials",
-  "selectors": {
-    "color": {
-      "text": "h2.testimonials__heading"
-    }
-  }
+  "script": "brandy-blocks/testimonials"
 }

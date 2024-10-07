@@ -29,12 +29,12 @@ class Caller {
 	}
 
 	public function enqueue_settings_scripts() {
-		wp_enqueue_script( 'brandy-blocks/display-animation-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/DisplayAnimation/index.js', array( 'wp-edit-post' ), time(), true );
+		wp_enqueue_script( 'brandy-blocks/display-animation-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/DisplayAnimation/index.js', array( 'wp-edit-post' ), BRANDY_BLOCKS_SCRIPT_VERSION, true );
 	}
 
 	public function enqueue_frontend_scripts() {
-		wp_enqueue_style( 'brandy-blocks/display-animation-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/DisplayAnimation/style.css', array(), time() );
-		wp_enqueue_script( 'brandy-blocks/display-animation-script', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/DisplayAnimation/script.js', array( 'jquery' ), time(), true );
+		wp_enqueue_style( 'brandy-blocks/display-animation-style', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/DisplayAnimation/style.css', array(), BRANDY_BLOCKS_SCRIPT_VERSION );
+		wp_enqueue_script( 'brandy-blocks/display-animation-script', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Settings/DisplayAnimation/script.js', array( 'jquery' ), BRANDY_BLOCKS_SCRIPT_VERSION, true );
 	}
 
 	public function add_animation_data_attribute( $content, $block ) {
