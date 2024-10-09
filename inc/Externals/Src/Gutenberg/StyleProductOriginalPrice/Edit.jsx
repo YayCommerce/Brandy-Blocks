@@ -71,15 +71,23 @@ const addStyle = wp.compose.createHigherOrderComponent((BlockListBlock) => {
     const { name, attributes } = props;
 
     if (name === "woocommerce/product-price") {
-      const extraProps = {
-        style: {
-          "--original-price-color": attributes.originalPriceTypography?.color ?? "",
-          "--original-price-size": attributes.originalPriceTypography?.fontSize ?? "",
-          "--original-price-weight": attributes.originalPriceTypography?.appearance?.style?.fontWeight ?? "",
-          "--original-price-style": attributes.originalPriceTypography?.appearance?.style?.fontStyle ?? "",
-        }
+      const wrapperProps = props.wrapperProps ?? {};
+
+      wrapperProps.style = {
+        ...wrapperProps.style,
+        "--original-price-color":
+          attributes.originalPriceTypography?.color ?? "",
+        "--original-price-size":
+          attributes.originalPriceTypography?.fontSize ?? "",
+        "--original-price-weight":
+          attributes.originalPriceTypography?.appearance?.style?.fontWeight ??
+          "",
+        "--original-price-style":
+          attributes.originalPriceTypography?.appearance?.style?.fontStyle ??
+          "",
       };
-      return <BlockListBlock {...props} wrapperProps={extraProps} />;
+
+      return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
     }
 
     // For all other blocks, return unchanged

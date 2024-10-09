@@ -70,9 +70,12 @@ const addExternalButtonStyle = wp.compose.createHigherOrderComponent(
   (BlockListBlock) => {
     return (props) => {
       const { attributes, name } = props;
-      const extraWrapperProps = {};
+      const extraWrapperProps = props.wrapperProps ?? {};
       if (isButtonBlock(name)) {
-        extraWrapperProps.style = getStyleFromAttributes(attributes);
+        extraWrapperProps.style = {
+          ...extraWrapperProps.style,
+          ...getStyleFromAttributes(attributes),
+        };
       }
       return (
         <BlockListBlock {...props} wrapperProps={{ ...extraWrapperProps }} />

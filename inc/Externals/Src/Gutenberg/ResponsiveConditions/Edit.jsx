@@ -133,13 +133,14 @@ const addStyle = wp.compose.createHigherOrderComponent((BlockListBlock) => {
       hideOns.push("Mobile");
     }
 
-    const wrapperProps =
-      hideOns.length < 1
+    const wrapperProps = {
+      ...(props.wrapperProps ?? {}),
+      ...(hideOns.length < 1
         ? {}
         : {
             ["data-hide-ons"]: hideOns.join(", "),
-          };
-
+          }),
+    };
     return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
   };
 }, "addStyle");
