@@ -48,7 +48,7 @@
   "github.gitAuthentication": false,
   "material-icon-theme.folders.theme": "specific",
   "php.validate.executablePath": "/opt/homebrew/bin/php",
-  "prettier.singleQuote": true,
+  "prettier.singleQuote": false,
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
   },
