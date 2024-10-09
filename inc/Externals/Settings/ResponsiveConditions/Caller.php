@@ -36,6 +36,7 @@ class Caller {
 
 	public function enqueue_settings_scripts() {
 		wp_enqueue_script( 'brandy-blocks/responsive-conditions-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/ResponsiveConditions/index.js', array( 'wp-edit-post' ), BRANDY_BLOCKS_SCRIPT_VERSION, true );
+		wp_enqueue_style( 'brandy-blocks/responsive-conditions-controls', BRANDY_BLOCKS_PLUGIN_URL . 'inc/Externals/Build/Gutenberg/ResponsiveConditions/style-index.js.css', array(), time() );
 	}
 
 	public function enqueue_frontend_scripts() {

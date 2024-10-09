@@ -114,3 +114,38 @@ wp.hooks.addFilter(
   "brandy-blocks/responsive-conditions-props",
   addResponsiveClass
 );
+
+const addStyle = wp.compose.createHigherOrderComponent((BlockListBlock) => {
+  return (props) => {
+    const { attributes } = props;
+
+    const { hideOnDesktop, hideOnTablet, hideOnMobile } = attributes;
+
+    const hideOns = [];
+
+    if (hideOnDesktop) {
+      hideOns.push("Desktop");
+    }
+    if (hideOnTablet) {
+      hideOns.push("Tablet");
+    }
+    if (hideOnMobile) {
+      hideOns.push("Mobile");
+    }
+
+    const wrapperProps =
+      hideOns.length < 1
+        ? {}
+        : {
+            ["data-hide-ons"]: hideOns.join(", "),
+          };
+
+    return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+  };
+}, "addStyle");
+
+wp.hooks.addFilter(
+  "editor.BlockListBlock",
+  "brandy-blocks/responsive-conditions-style",
+  addStyle
+);
