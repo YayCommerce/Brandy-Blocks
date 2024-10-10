@@ -48,7 +48,8 @@
 
   &.brandy-overall-direction-horizontal {
     flex-direction: row;
-    .brandy-countdown-separator{
+
+    .brandy-countdown-separator {
       align-self: center;
     }
   }
@@ -69,11 +70,13 @@
     @media (max-width: 480px) {
       gap: 0px;
     }
+
   }
 
   &.brandy-item-direction-vertical {
     .brandy-countdown-item {
       flex-direction: column;
+      padding: 20px 0;
       gap: var(--item__spacing);
     }
   }
@@ -166,9 +169,11 @@ span.brandy-countdown-values {
   text-transform: var(--main-text-transform);
   line-height: 1;
   padding: 15px 20px;
+
   @media (max-width: 768px) {
     padding: 15px 15px;
   }
+
   background: var(--main__bg__color, '#F0F5FA');
   border-radius: 10px;
 

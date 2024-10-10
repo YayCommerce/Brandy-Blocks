@@ -14,3 +14,9 @@ export const getShadowValue = (shadow) => {
 export const getPaddingValue = (padding) => {
   return `${padding.top}px ${padding.right}px ${padding.bottom}px ${padding.left}px`;
 };
+
+export const getStarFillPercentage = (index, rate) => {
+  if (index + 1 <= rate) return 100;
+  if (index < rate) return (rate % 1) * 100;
+  return 0;
+};
