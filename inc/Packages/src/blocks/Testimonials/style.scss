@@ -110,5 +110,13 @@
 				--swiper-pagination-color: var(--brandy-testimonials-pagination-bullet-active, #122940);
 			}
 		}
+
+		&.swiper-pagination-fraction {
+			font-size: var(--brandy-testimonials-pagination-fraction-size, 16px);
+
+			.swiper-pagination-current {
+				font-weight: 700;
+			}
+		}
 	}
 }

@@ -25,6 +25,9 @@
         "shadow": "0 10px 25px 0 rgba(55,126,98,0.05)"
       }
     },
+    "itemsSpacing": {
+      "type": "string"
+    },
     "pagination": {
       "type": "object",
       "default": {

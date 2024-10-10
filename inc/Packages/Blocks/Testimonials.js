@@ -1,7 +1,7 @@
 (function ($) {
   $(document).ready(function () {
     const defaultConfig = {
-      direction: 'horizontal',
+      direction: "horizontal",
       slidesPerView: 1,
       spaceBetween: 30,
       speed: 1000,
@@ -17,9 +17,9 @@
     const nextIcon = window.brandyBlocksTestimonials?.nextIcon;
     const backIcon = window.brandyBlocksTestimonials?.backIcon;
     function getConfigFromBlock(blockEl) {
-      const isInEditor = $(blockEl).hasClass('block-editor-block-list__block');
-      const isInfiniteLoop = !isInEditor && blockEl.dataset.loop === 'true';
-      const isAutoPlay = !isInEditor && blockEl.dataset.autoPlay === 'true';
+      const isInEditor = $(blockEl).hasClass("block-editor-block-list__block");
+      const isInfiniteLoop = !isInEditor && blockEl.dataset.loop === "true";
+      const isAutoPlay = !isInEditor && blockEl.dataset.autoPlay === "true";
       const slidesPerView =
         blockEl.dataset.slidesPerView ?? defaultConfig.slidesPerView;
       return {
@@ -39,12 +39,12 @@
         spaceBetween:
           blockEl.dataset.itemsSpacing ?? defaultConfig.spaceBetween,
         navigation: {
-          prevEl: blockEl.querySelector('.swiper-button-prev'),
-          nextEl: blockEl.querySelector('.swiper-button-next'),
+          prevEl: blockEl.querySelector(".swiper-button-prev"),
+          nextEl: blockEl.querySelector(".swiper-button-next"),
         },
         pagination: {
-          el: blockEl.querySelector('.swiper-pagination'),
-          type: 'bullets',
+          el: blockEl.querySelector(".swiper-pagination"),
+          type: blockEl.dataset.paginationType ?? "bullets",
           clickable: true,
         },
         loop: isInfiniteLoop,
@@ -56,25 +56,25 @@
           : false,
       };
     }
-    window.addEventListener('brandyRefreshTestimonials', function (ev) {
+    window.addEventListener("brandyRefreshTestimonials", function (ev) {
       const targetBlockId = ev.detail?.block;
-      $('.wp-block-brandy-testimonials').each((ind, block) => {
+      $(".wp-block-brandy-testimonials").each((ind, block) => {
         if (targetBlockId != null && block.dataset.block !== targetBlockId) {
           return;
         }
         $(block)
-          .find('.swiper')
+          .find(".swiper")
           .each((__, swiperEl) => {
             new Swiper(swiperEl, getConfigFromBlock(block));
             if (nextIcon) {
-              $(block).find('.swiper-button-next').html(nextIcon);
+              $(block).find(".swiper-button-next").html(nextIcon);
             }
             if (backIcon) {
-              $(block).find('.swiper-button-prev').html(backIcon);
+              $(block).find(".swiper-button-prev").html(backIcon);
             }
           });
       });
     });
-    window.dispatchEvent(new CustomEvent('brandyRefreshTestimonials'));
+    window.dispatchEvent(new CustomEvent("brandyRefreshTestimonials"));
   });
 })(window.jQuery);
