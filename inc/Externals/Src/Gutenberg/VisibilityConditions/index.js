@@ -44,6 +44,10 @@ const visibilityIcon = React.createElement(
 
 // Extend block attributes to include visibility settings
 const addVisibilityAttributes = (settings) => {
+  if (settings.attributes == undefined) {
+    return settings;
+  }
+
   settings.attributes = Object.assign(settings.attributes, {
     hideLoggedIn: { type: 'boolean', default: false },
     hideLoggedOut: { type: 'boolean', default: false },
@@ -64,8 +68,10 @@ const withConditionalVisibility = createHigherOrderComponent(
   (BlockComponent) => {
     return (props) => {
       const { attributes, setAttributes, isSelected } = props;
-      const { hideLoggedIn, hideLoggedOut, hideRoles, hideBrowsers, hideDays } =
-        attributes;
+      const { hideLoggedIn, hideLoggedOut } = attributes;
+      const hideRoles = attributes.hideRoles ?? [];
+      const hideBrowsers = attributes.hideBrowsers ?? [];
+      const hideDays = attributes.hideDays ?? [];
 
       const userRoles = brandyBlocksData.roles;
       const browsers = brandyBlocksData.browsers;
