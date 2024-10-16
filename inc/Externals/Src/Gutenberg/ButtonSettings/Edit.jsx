@@ -1,11 +1,15 @@
 import Settings from "./Settings";
 
+function isButtonBlock(name) {
+  return name === "core/button" || name === "woocommerce/product-button";
+}
+
 /** Register attribute */
 function addButtonAttributes(settings, name) {
   if (typeof settings.attributes === "undefined") {
     return settings;
   }
-  if (name !== "core/button") {
+  if (!isButtonBlock(name)) {
     return settings;
   }
   settings.attributes = Object.assign(settings.attributes, {
@@ -40,7 +44,7 @@ const ButtonSettingsControls = wp.compose.createHigherOrderComponent(
       const { Fragment } = wp.element;
       const { InspectorControls } = wp.blockEditor;
       const { isSelected, name } = props;
-      const canAddSettings = name === "core/button";
+      const canAddSettings = isButtonBlock(name);
       return (
         <Fragment>
           <BlockEdit {...props} />
@@ -66,9 +70,12 @@ const addExternalButtonStyle = wp.compose.createHigherOrderComponent(
   (BlockListBlock) => {
     return (props) => {
       const { attributes, name } = props;
-      const extraWrapperProps = {};
-      if (name === "core/button") {
-        extraWrapperProps.style = getStyleFromAttributes(attributes);
+      const extraWrapperProps = props.wrapperProps ?? {};
+      if (isButtonBlock(name)) {
+        extraWrapperProps.style = {
+          ...extraWrapperProps.style,
+          ...getStyleFromAttributes(attributes),
+        };
       }
       return (
         <BlockListBlock {...props} wrapperProps={{ ...extraWrapperProps }} />
@@ -88,7 +95,7 @@ wp.hooks.addFilter(
  * Save function
  */
 function addButtonSettingsProps(props, blockType, attributes) {
-  if (blockType.name !== "core/button") {
+  if (!isButtonBlock(blockType.name)) {
     return props;
   }
 

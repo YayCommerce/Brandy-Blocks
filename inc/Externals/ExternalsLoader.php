@@ -12,6 +12,7 @@ class ExternalsLoader {
 		require_once __DIR__ . '/Settings/DisplaySettings/Caller.php';
 		require_once __DIR__ . '/Settings/ResponsiveConditions/Caller.php';
 		require_once __DIR__ . '/Settings/DisplayAnimation/Caller.php';
+		require_once __DIR__ . '/Settings/VisibilityConditions/Caller.php';
 		require_once __DIR__ . '/Settings/ButtonSettings/Caller.php';
 	}
 }

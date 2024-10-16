@@ -43,7 +43,7 @@ export default function Edit(props) {
             [
               "core/image",
               {
-                url: "http://img.wpbrandy.com/uploads/srcoll-top-icon.png",
+                url: "https://images.wpbrandy.com/uploads/scroll-top-icon.png",
                 width: "24px",
                 height: "24px",
               },

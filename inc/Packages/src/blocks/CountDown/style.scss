@@ -1,0 +1,206 @@
+/** Edit Block **/
+.brandy-tab-panel {
+  padding: 10px 0px;
+
+  .components-tab-panel__tabs-item {
+    justify-content: center !important;
+  }
+}
+
+.brandy-countdown-settings {
+  padding: 15px 0px;
+}
+
+.brandy-separator-settings {
+  margin-top: 30px;
+  border-top: 1px solid #f0f0f1;
+  padding-top: 10px;
+}
+
+.brandy-countdown-typography-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.typography-indicator {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.brandy-countdown-wrapper {
+  display: flex;
+  gap: var(--overall__spacing);
+
+  @media (max-width: 768px) {
+    gap: unset;
+  }
+
+  @media (max-width: 480px) {
+    gap: unset;
+  }
+
+  .brandy-countdown-item {
+    display: flex;
+  }
+
+  &.brandy-overall-direction-horizontal {
+    flex-direction: row;
+    .brandy-countdown-separator{
+      align-self: center;
+    }
+  }
+
+  &.brandy-overall-direction-vertical {
+    flex-direction: column;
+  }
+
+  &.brandy-overall-direction-horizontal.brandy-item-direction-horizontal,
+  &.brandy-overall-direction-vertical.brandy-item-direction-horizontal {
+    gap: var(--overall__spacing);
+
+    /* Keep structure but reduce size for mobile */
+    @media (max-width: 768px) {
+      gap: 0px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 0px;
+    }
+  }
+
+  &.brandy-item-direction-vertical {
+    .brandy-countdown-item {
+      flex-direction: column;
+      gap: var(--item__spacing);
+    }
+  }
+
+  &.brandy-overall-direction-horizontal.brandy-countdown-wrapper.brandy-item-direction-vertical {
+    .brandy-countdown-item {
+      @media (max-width: 768px) {
+        margin: 0 10px;
+        gap: unset;
+      }
+
+      gap: var(--item__spacing);
+    }
+
+  }
+
+  &.brandy-item-direction-horizontal {
+    .brandy-countdown-item {
+      flex-direction: row;
+      gap: var(--item__spacing);
+    }
+  }
+
+  /* Overall Alignment */
+  &.brandy-overall-align-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .brandy-countdown-item:first-child {
+      margin-left: unset !important;
+    }
+  }
+
+  &.brandy-overall-align-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.brandy-overall-align-right {
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .brandy-countdown-item:last-child {
+      margin-right: unset !important;
+    }
+  }
+
+  /* Item Alignment */
+  &.brandy-item-align-left {
+    .brandy-countdown-item {
+      align-items: flex-start;
+    }
+  }
+
+  &.brandy-item-align-center {
+    .brandy-countdown-item {
+      align-items: center;
+    }
+  }
+
+  &.brandy-item-align-right {
+    .brandy-countdown-item {
+      align-items: flex-end;
+    }
+  }
+
+}
+
+span.brandy-countdown-prefix {
+  display: block;
+  font-size: var(--prefix-font-size);
+  color: var(--prefix__color);
+  font-weight: var(--prefix-font-weight, var(--prefix-bold));
+  text-transform: var(--prefix-text-transform);
+
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1em;
+  }
+}
+
+span.brandy-countdown-values {
+  display: block;
+  font-size: var(--main-font-size);
+  color: var(--main__color);
+  font-weight: var(--main-font-weight, var(--main-bold));
+  text-transform: var(--main-text-transform);
+  line-height: 1;
+  padding: 15px 20px;
+  @media (max-width: 768px) {
+    padding: 15px 15px;
+  }
+  background: var(--main__bg__color, '#F0F5FA');
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 2.2em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2em;
+  }
+}
+
+span.brandy-countdown-suffix {
+  display: block;
+  font-size: var(--suffix-font-size);
+  color: var(--suffix__color);
+  font-weight: var(--suffix-font-weight, var(--suffix-bold));
+  text-transform: var(--suffix-text-transform);
+
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1em;
+  }
+}
+
+.brandy-countdown-separator {
+  font-size: var(--separator-font-size);
+  color: var(--separator__color);
+  font-weight: var(--separator-font-weight, var(--separator-bold));
+  text-transform: var(--separator-text-transform);
+  line-height: 1;
+}

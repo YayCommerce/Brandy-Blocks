@@ -17,13 +17,16 @@
       "type": "object",
       "default": {
         "size": "50px",
-        "iconSize": "14px",
+        "iconSize": "7px",
         "iconColor": "#122940",
         "iconHoverColor": "#808890",
         "backgroundColor": "#FFFFFF",
         "backgroundHoverColor": "#EFF2F4",
         "shadow": "0 10px 25px 0 rgba(55,126,98,0.05)"
       }
+    },
+    "itemsSpacing": {
+      "type": "string"
     },
     "pagination": {
       "type": "object",

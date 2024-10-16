@@ -14,7 +14,7 @@ export default function Settings(props) {
   return (
     <>
       <PanelColorSettings
-        title={__("Hover colors", "brandy-blocks")}
+        title={__('Hover colors', 'brandy-blocks')}
         initialOpen={false}
         colorSettings={[
           {
@@ -23,7 +23,7 @@ export default function Settings(props) {
               setAttributes({
                 hoverBackgroundColor: newColor,
               }),
-            label: __("Background hover", "brandy-blocks"),
+            label: __('Background hover', 'brandy-blocks'),
           },
           {
             value: hoverTextColor,
@@ -31,18 +31,19 @@ export default function Settings(props) {
               setAttributes({
                 hoverTextColor: newColor,
               }),
-            label: __("Text hover", "brandy-blocks"),
+            label: __('Text hover', 'brandy-blocks'),
           },
         ]}
       />
-      <__experimentalToolsPanel label={__("External Border & Shadow")}>
+      <__experimentalToolsPanel label={__('External Border & Shadow')}>
         <__experimentalToolsPanelItem
           hasValue={() => true}
-          label={__("Border hover")}
+          label={__('Border hover')}
           onDeselect={() => {}}
         >
           <__experimentalBorderBoxControl
-            label={__("Border hover")}
+            colors={wp.data.select('core/editor').getEditorSettings().colors}
+            label={__('Border hover')}
             value={hoverBorder}
             onChange={(v) => {
               setAttributes({ hoverBorder: v });

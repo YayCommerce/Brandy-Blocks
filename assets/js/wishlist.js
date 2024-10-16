@@ -6,13 +6,20 @@
     $(".brandy-wishlist-shortcode-loading").hide();
   }
 
-  function reloadFragments(fragments) {
-    $(`.brandy-wishlist-shortcode`).replaceWith(
-      fragments.wishlist_shortcode ?? ""
-    );
+  function reloadFragments(fragments, detail) {
+    $(`.brandy-wishlist-shortcode`).replaceWith(fragments.shortcode ?? "");
     $(".brandy-wishlist-element .brandy-count-badge").text(
       fragments.count || ""
     );
+    if (!detail.productId) {
+      return;
+    }
+
+    if (detail.action === "add") {
+      $(`[data-block-name="brandy/add-to-wishlist"][data-product-id="${detail.productId}"]`).addClass("added");
+    } else {
+      $(`[data-block-name="brandy/add-to-wishlist"][data-product-id="${detail.productId}"]`).removeClass("added");
+    }
   }
 
   function sendAddRequest(productId) {
@@ -97,6 +104,7 @@
                 detail: {
                   fragments: data.fragments ?? {},
                   productId: data.product_id,
+                  action: "add",
                 },
               })
             );
@@ -128,6 +136,7 @@
                 detail: {
                   fragments: data.fragments ?? {},
                   productId: data.product_id,
+                  action: "remove",
                 },
               })
             );
@@ -142,7 +151,7 @@
       }
     );
     window.addEventListener("brandy-update-wishlist", (e) => {
-      reloadFragments(e.detail.fragments);
+      reloadFragments(e.detail.fragments, e.detail);
     });
   });
 })(window.jQuery);

@@ -59,8 +59,8 @@ class PackagesLoader {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'brandy_blocks_script', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Assets/js/script.js', array( 'jquery' ), time(), true );
-		wp_enqueue_style( 'brandy_block_editor_styles', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Assets/css/editor-style.css', array(), time() );
+		wp_enqueue_script( 'brandy_blocks_script', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Assets/js/script.js', array( 'jquery' ), BRANDY_BLOCKS_SCRIPT_VERSION, true );
+		wp_enqueue_style( 'brandy_block_editor_styles', BRANDY_BLOCKS_PLUGIN_URL . '/inc/Packages/Assets/css/editor-style.css', array(), BRANDY_BLOCKS_SCRIPT_VERSION );
 		wp_localize_script(
 			'brandy_blocks_script',
 			'brandyBlocks',

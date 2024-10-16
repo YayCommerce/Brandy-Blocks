@@ -2,16 +2,16 @@ import {
   BlockContextProvider,
   useBlockProps,
   useInnerBlocksProps,
-} from '@wordpress/block-editor';
+} from "@wordpress/block-editor";
 
-import AllInspectorSettings from './InspectorControls';
+import AllInspectorSettings from "./InspectorControls";
 
-import { getDefaultCardTemplate } from '../../TestimonialCard/Edit';
+import { getDefaultCardTemplate } from "../../TestimonialCard/Edit";
 
-import cardMetaData from '../../TestimonialCard/block.json';
-import metadata from '../block.json';
+import cardMetaData from "../../TestimonialCard/block.json";
+import metadata from "../block.json";
 
-import '../style.scss';
+import "../style.scss";
 
 export default function Edit(props) {
   return (
@@ -30,30 +30,30 @@ export default function Edit(props) {
 
 const DEFAULT_TEMPLATE = [
   [
-    'brandy/testimonial-card',
+    "brandy/testimonial-card",
     cardMetaData.attributes,
     getDefaultCardTemplate({
-      name: 'Anthony Nguyen',
+      name: "Anthony Nguyen",
       ratingPoint: 4,
     }),
   ],
   [
-    'brandy/testimonial-card',
+    "brandy/testimonial-card",
     cardMetaData.attributes,
     getDefaultCardTemplate({
-      name: 'Thomas James',
+      name: "Thomas James",
       avatarUrl:
-        'https://images.wpbrandy.com/uploads/blocks-test-img-2-min.png',
+        "https://images.wpbrandy.com/uploads/blocks-test-img-2-min.png",
     }),
   ],
   [
-    'brandy/testimonial-card',
+    "brandy/testimonial-card",
     cardMetaData.attributes,
     getDefaultCardTemplate({
-      name: 'Linda Rosabella',
+      name: "Linda Rosabella",
       ratingPoint: 3,
       avatarUrl:
-        'https://images.wpbrandy.com/uploads/blocks-test-img-3-min.png',
+        "https://images.wpbrandy.com/uploads/blocks-test-img-3-min.png",
     }),
   ],
 ];
@@ -66,15 +66,15 @@ export function Content(props) {
   };
 
   const innerProps = {
-    className: 'swiper-wrapper',
+    className: "swiper-wrapper",
     ...(isSave
       ? {}
       : {
           onClick: function (e) {
-            if (!e.target.classList.contains('swiper-wrapper')) {
+            if (!e.target.classList.contains("swiper-wrapper")) {
               return;
             }
-            window.wp.data.dispatch('core/block-editor').selectBlock(clientId);
+            window.wp.data.dispatch("core/block-editor").selectBlock(clientId);
           },
         }),
   };
@@ -111,47 +111,64 @@ export function Content(props) {
 }
 
 function getDataAttributes(attributes) {
+  console.log(attributes);
   return {
-    ['data-slides-per-view']:
+    ["data-slides-per-view"]:
       attributes.slidesPerView ?? metadata.attributes.slidesPerView.default,
-    ['data-auto-play']:
+    ["data-auto-play"]:
       attributes.autoplay ?? metadata.attributes.autoPlay.default,
-    ['data-loop']:
+    ["data-loop"]:
       attributes.infiniteLoop ?? metadata.attributes.infiniteLoop.default,
-    ['data-slides']:
+    ["data-slides"]:
       attributes.testimonialsCount ??
       metadata.attributes.testimonialsCount.default,
+    ...(attributes.pagination?.type
+      ? {
+          ["data-pagination-type"]: attributes.pagination.type,
+        }
+      : {}),
+    ...(attributes.itemsSpacing
+      ? {
+          ["data-items-spacing"]: attributes.itemsSpacing,
+        }
+      : {}),
     style: {
-      '--brandy-testimonials-navigation-size':
+      "--brandy-testimonials-navigation-size":
         attributes.navigation?.size ??
         metadata.attributes.navigation.default.size,
-      '--brandy-testimonials-navigation-icon-size':
+      "--brandy-testimonials-navigation-icon-size":
         attributes.navigation?.iconSize ??
         metadata.attributes.navigation.default.iconSize,
-      '--brandy-testimonials-navigation-background-color':
+      "--brandy-testimonials-navigation-background-color":
         attributes.navigation?.backgroundColor ??
         metadata.attributes.navigation.default.backgroundColor,
-      '--brandy-testimonials-navigation-background-color-hover':
+      "--brandy-testimonials-navigation-background-color-hover":
         attributes.navigation?.backgroundHoverColor ??
         metadata.attributes.navigation.default.backgroundHoverColor,
-      '--brandy-testimonials-navigation-icon-color':
+      "--brandy-testimonials-navigation-icon-color":
         attributes.navigation?.iconColor ??
         metadata.attributes.navigation.default.iconColor,
-      '--brandy-testimonials-navigation-icon-color-hover':
+      "--brandy-testimonials-navigation-icon-color-hover":
         attributes.navigation?.iconHoverColor ??
         metadata.attributes.navigation.default.iconHoverColor,
-      '--brandy-testimonials-pagination-bullet-color':
+      "--brandy-testimonials-pagination-bullet-color":
         attributes.pagination?.defaultColor ??
         metadata.attributes.pagination.default.defaultColor,
-      '--brandy-testimonials-pagination-bullet-color-active':
+      "--brandy-testimonials-pagination-bullet-color-active":
         attributes.pagination?.activeColor ??
         metadata.attributes.pagination.default.activeColor,
-      '--brandy-testimonials-pagination-bullet-size':
+      "--brandy-testimonials-pagination-bullet-size":
         attributes.pagination?.size ??
         metadata.attributes.pagination.default.size,
-      '--brandy-testimonials-pagination-bullet-spacing':
+      "--brandy-testimonials-pagination-bullet-spacing":
         attributes.pagination?.spacing ??
         metadata.attributes.pagination.default.spacing,
+      ...(attributes.pagination?.fractionSize
+        ? {
+            ["--brandy-testimonials-pagination-fraction-size"]:
+              attributes.pagination.fractionSize,
+          }
+        : {}),
     },
   };
 }

@@ -40,7 +40,7 @@ class Wishlist {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'brandy-wishlist-script', BRANDY_BLOCKS_PLUGIN_URL . '/assets/js/wishlist.js', array( 'jquery' ), time(), true );
+		wp_enqueue_script( 'brandy-wishlist-script', BRANDY_BLOCKS_PLUGIN_URL . '/assets/js/wishlist.js', array( 'jquery' ), BRANDY_BLOCKS_SCRIPT_VERSION, true );
 		wp_localize_script(
 			'brandy-wishlist-script',
 			'brandyWishlist',
@@ -56,6 +56,7 @@ class Wishlist {
 				),
 			)
 		);
+		wp_enqueue_style( 'brandy-wishlist-style', BRANDY_BLOCKS_PLUGIN_URL . '/assets/css/wishlist.css', array(), BRANDY_BLOCKS_SCRIPT_VERSION );
 	}
 
 	public static function get_user_wishlist_items() {
@@ -189,13 +190,11 @@ class Wishlist {
 	public static function wishlist_shortcode() {
 		$html = '';
 		ob_start();
-		get_template_part(
-			'template-parts/wishlist/wishlist-shortcode',
-			'',
-			array(
-				'wishlist_list' => self::get_user_wishlist_items(),
-			)
+		$args = array(
+			'wishlist_list' => self::get_user_wishlist_items(),
+
 		);
+		include BRANDY_BLOCKS_PLUGIN_PATH . '/templates/wishlist-shortcode.php';
 		$html = ob_get_contents();
 		ob_end_clean();
 		return $html;
