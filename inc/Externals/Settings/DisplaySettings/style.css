@@ -1,0 +1,24 @@
+[style*="--position"] {
+	position: var(--position, static) !important;
+}
+[style*="--display"] {
+	display: var(--display, block) !important;
+}
+[style*="--top"] {
+	top: var(--top, auto) !important;
+}
+[style*="--bottom"] {
+	bottom: var(--bottom, auto) !important;
+}
+[style*="--left"] {
+	left: var(--left, auto) !important;
+}
+[style*="--right"] {
+	right: var(--right, auto) !important;
+}
+[style*="--gap"] {
+	gap: var(--gap, inherit) !important;
+}
+[style*="--justification"] {
+	justify-content: var(--justification, inherit) !important;
+}
