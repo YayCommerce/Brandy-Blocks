@@ -92,26 +92,30 @@ export function Content(props) {
 
   return (
     <div {...blockProps}>
-      {attributes.testimonialsCount > attributes.slidesPerView && (
-        <div className="wp-block-brandy-testimonials__navigation swiper-button-prev" />
-      )}
+      {!attributes.scrollbar?.enabled &&
+        attributes.testimonialsCount > attributes.slidesPerView && (
+          <div className="wp-block-brandy-testimonials__navigation swiper-button-prev" />
+        )}
       <div className="swiper">
         <div {...innerBlockProps} />
       </div>
-      {attributes.testimonialsCount > attributes.slidesPerView && (
-        <>
-          <div className="wp-block-brandy-testimonials__navigation swiper-button-next" />
-          {attributes.pagination?.enabled && (
-            <div className="wp-block-brandy-testimonials__pagination swiper-pagination" />
-          )}
-        </>
+      {attributes.scrollbar?.enabled && (
+        <div className="wp-block-brandy-testimonials__scrollbar swiper-scrollbar" />
       )}
+      {!attributes.scrollbar?.enabled &&
+        attributes.testimonialsCount > attributes.slidesPerView && (
+          <>
+            <div className="wp-block-brandy-testimonials__navigation swiper-button-next" />
+            {attributes.pagination?.enabled && (
+              <div className="wp-block-brandy-testimonials__pagination swiper-pagination" />
+            )}
+          </>
+        )}
     </div>
   );
 }
 
 function getDataAttributes(attributes) {
-  console.log(attributes);
   return {
     ["data-slides-per-view"]:
       attributes.slidesPerView ?? metadata.attributes.slidesPerView.default,
@@ -119,6 +123,11 @@ function getDataAttributes(attributes) {
       attributes.autoplay ?? metadata.attributes.autoPlay.default,
     ["data-loop"]:
       attributes.infiniteLoop ?? metadata.attributes.infiniteLoop.default,
+    ...(attributes.scrollbar?.enabled
+      ? {
+          ["data-scrollbar-enabled"]: "true",
+        }
+      : {}),
     ["data-slides"]:
       attributes.testimonialsCount ??
       metadata.attributes.testimonialsCount.default,
@@ -167,6 +176,13 @@ function getDataAttributes(attributes) {
         ? {
             ["--brandy-testimonials-pagination-fraction-size"]:
               attributes.pagination.fractionSize,
+          }
+        : {}),
+      ...(attributes.scrollbar?.enabled
+        ? {
+            "--swiper-scrollbar-bg-color": attributes.scrollbar.defaultColor,
+            "--swiper-scrollbar-drag-bg-color":
+              attributes.scrollbar.activeColor,
           }
         : {}),
     },

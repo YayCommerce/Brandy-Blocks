@@ -3,10 +3,10 @@ import {
   __experimentalToolsPanel as ToolsPanel,
   __experimentalToolsPanelItem as ToolsPanelItem,
   TextControl,
-} from '@wordpress/components';
-import { PanelColorSettings } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
-import State from './State';
+} from "@wordpress/components";
+import { PanelColorSettings } from "@wordpress/block-editor";
+import { __ } from "@wordpress/i18n";
+import State from "./State";
 
 export default function AllInspectorSettings({ attributes, setAttributes }) {
   const {
@@ -22,8 +22,9 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
   return (
     <>
       <PanelColorSettings
-        title={__('Colors', 'brandy-blocks')}
+        title={__("Colors", "brandy-blocks")}
         initialOpen={false}
+        enableAlpha={true}
         colorSettings={[
           {
             value: backgroundColor,
@@ -31,7 +32,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 backgroundColor: newColor,
               }),
-            label: __('Background default', 'brandy-blocks'),
+            label: __("Background default", "brandy-blocks"),
           },
           {
             value: backgroundColorHover,
@@ -39,7 +40,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 backgroundColorHover: newColor,
               }),
-            label: __('Background hover', 'brandy-blocks'),
+            label: __("Background hover", "brandy-blocks"),
           },
           {
             value: backgroundColorActive,
@@ -47,7 +48,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 backgroundColorActive: newColor,
               }),
-            label: __('Background active', 'brandy-blocks'),
+            label: __("Background active", "brandy-blocks"),
           },
           {
             value: textColor,
@@ -55,7 +56,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 textColor: newColor,
               }),
-            label: __('Text default', 'brandy-blocks'),
+            label: __("Text default", "brandy-blocks"),
           },
           {
             value: textColorHover,
@@ -63,7 +64,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 textColorHover: newColor,
               }),
-            label: __('Text hover', 'brandy-blocks'),
+            label: __("Text hover", "brandy-blocks"),
           },
           {
             value: textColorActive,
@@ -71,7 +72,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 textColorActive: newColor,
               }),
-            label: __('Text active', 'brandy-blocks'),
+            label: __("Text active", "brandy-blocks"),
           },
           {
             value: loadingSpinnerColor,
@@ -79,7 +80,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 loadingSpinnerColor: newColor,
               }),
-            label: __('Spinner color', 'brandy-blocks'),
+            label: __("Spinner color", "brandy-blocks"),
           },
         ]}
       />
@@ -98,10 +99,10 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
         setAttributes={setAttributes}
         state="active"
       />
-      <ToolsPanel label={__('Settings')}>
+      <ToolsPanel label={__("Settings")}>
         <ToolsPanelItem
           hasValue={() => true}
-          label={__('Icon')}
+          label={__("Icon")}
           onDeselect={() => {}}
         >
           <UnitControl
@@ -115,21 +116,21 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
 
         <ToolsPanelItem
           hasValue={() => true}
-          label={__('Text')}
+          label={__("Text")}
           onDeselect={() => {}}
         >
           <TextControl
             __nextHasNoMarginBottom
             label="Text"
             help="Leave it empty to hide"
-            value={attributes.defaultText ?? ''}
+            value={attributes.defaultText ?? ""}
             onChange={(value) => setAttributes({ defaultText: value })}
           />
           <TextControl
             __nextHasNoMarginBottom
             label="Added Text"
             help="Leave it empty to hide"
-            value={attributes.addedText ?? ''}
+            value={attributes.addedText ?? ""}
             onChange={(value) => setAttributes({ addedText: value })}
           />
         </ToolsPanelItem>

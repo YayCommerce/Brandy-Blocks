@@ -6,6 +6,7 @@ import {
   PanelBody,
   RangeControl,
   __experimentalUnitControl as UnitControl,
+  ToggleControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
@@ -57,9 +58,9 @@ export default function AllInspectorSettings(props) {
   }, [
     attributes.slidesPerView,
     attributes.testimonialsCount,
-    attributes.pagination?.enabled,
-    attributes.pagination?.type,
+    attributes.pagination,
     attributes.itemsSpacing,
+    attributes.scrollbar,
   ]);
   return (
     <InspectorControls>
@@ -91,8 +92,25 @@ export default function AllInspectorSettings(props) {
           onChange={handleChangeCardsSpacing}
           value={attributes.itemsSpacing ?? "30px"}
         />
-        <NavigationControls {...props} />
-        <PaginationControls {...props} />
+        <ToggleControl
+          __nextHasNoMarginBottom
+          label="Has scrollbar?"
+          checked={attributes.scrollbar?.enabled ?? true}
+          onChange={(v) => {
+            setAttributes({
+              scrollbar: {
+                ...(attributes.scrollbar ?? {}),
+                enabled: v,
+              },
+            });
+          }}
+        />
+        {!attributes.scrollbar?.enabled && (
+          <>
+            <NavigationControls {...props} />
+            <PaginationControls {...props} />
+          </>
+        )}
       </PanelBody>
       <ColorsControls {...props} />
       <CarouselSettings {...props} />

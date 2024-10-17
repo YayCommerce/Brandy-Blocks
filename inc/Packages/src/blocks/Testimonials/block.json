@@ -38,6 +38,14 @@
         "spacing": "12px"
       }
     },
+    "scrollbar": {
+      "type": "object",
+      "default": {
+        "enabled": false,
+        "activeColor": "#122940",
+        "defaultColor": "#D3DCE5"
+      }
+    },
     "autoPlay": {
       "type": "boolean",
       "default": true

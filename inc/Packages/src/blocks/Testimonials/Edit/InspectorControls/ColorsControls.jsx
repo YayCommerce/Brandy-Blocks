@@ -1,5 +1,5 @@
-import { PanelColorSettings } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n';
+import { PanelColorSettings } from "@wordpress/block-editor";
+import { __ } from "@wordpress/i18n";
 
 export default function ColorsControls({ attributes, setAttributes }) {
   const handleChangeNavigationValue = (key, value) => {
@@ -18,52 +18,75 @@ export default function ColorsControls({ attributes, setAttributes }) {
       },
     });
   };
+  const handleChangeScrollbarValue = (key, value) => {
+    setAttributes({
+      scrollbar: {
+        ...attributes.scrollbar,
+        [key]: value,
+      },
+    });
+  };
   return (
     <PanelColorSettings
-      title={__('Colors', 'brandy-blocks')}
+      title={__("Colors", "brandy-blocks")}
       initialOpen={false}
+      enableAlpha={true}
       colorSettings={[
         {
           value: attributes.navigation?.iconColor,
           onChange: (v) => {
-            handleChangeNavigationValue('iconColor', v);
+            handleChangeNavigationValue("iconColor", v);
           },
-          label: __('Navigation arrow', 'brandy-blocks'),
+          label: __("Navigation arrow", "brandy-blocks"),
         },
         {
           value: attributes.navigation?.iconHoverColor,
           onChange: (v) => {
-            handleChangeNavigationValue('iconHoverColor', v);
+            handleChangeNavigationValue("iconHoverColor", v);
           },
-          label: __('Navigation arrow hover', 'brandy-blocks'),
+          label: __("Navigation arrow hover", "brandy-blocks"),
         },
         {
           value: attributes.navigation?.backgroundColor,
           onChange: (v) => {
-            handleChangeNavigationValue('backgroundColor', v);
+            handleChangeNavigationValue("backgroundColor", v);
           },
-          label: __('Navigation button', 'brandy-blocks'),
+          label: __("Navigation button", "brandy-blocks"),
         },
         {
           value: attributes.navigation?.backgroundHoverColor,
           onChange: (v) => {
-            handleChangeNavigationValue('backgroundHoverColor', v);
+            handleChangeNavigationValue("backgroundHoverColor", v);
           },
-          label: __('Navigation button hover', 'brandy-blocks'),
+          label: __("Navigation button hover", "brandy-blocks"),
         },
         {
           value: attributes.pagination?.defaultColor,
           onChange: (v) => {
-            handleChangePaginationValue('defaultColor', v);
+            handleChangePaginationValue("defaultColor", v);
           },
-          label: __('Pagination bullet', 'brandy-blocks'),
+          label: __("Pagination bullet", "brandy-blocks"),
         },
         {
           value: attributes.pagination?.activeColor,
           onChange: (v) => {
-            handleChangePaginationValue('activeColor', v);
+            handleChangePaginationValue("activeColor", v);
           },
-          label: __('Pagination bullet active', 'brandy-blocks'),
+          label: __("Pagination bullet active", "brandy-blocks"),
+        },
+        {
+          value: attributes.scrollbar?.defaultColor,
+          onChange: (v) => {
+            handleChangeScrollbarValue("defaultColor", v);
+          },
+          label: __("Scrollbar color", "brandy-blocks"),
+        },
+        {
+          value: attributes.scrollbar?.activeColor,
+          onChange: (v) => {
+            handleChangeScrollbarValue("activeColor", v);
+          },
+          label: __("Scrollbar active color", "brandy-blocks"),
         },
       ]}
     />

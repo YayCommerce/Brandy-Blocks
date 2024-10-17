@@ -38,15 +38,26 @@
         },
         spaceBetween:
           blockEl.dataset.itemsSpacing ?? defaultConfig.spaceBetween,
-        navigation: {
-          prevEl: blockEl.querySelector(".swiper-button-prev"),
-          nextEl: blockEl.querySelector(".swiper-button-next"),
-        },
-        pagination: {
-          el: blockEl.querySelector(".swiper-pagination"),
-          type: blockEl.dataset.paginationType ?? "bullets",
-          clickable: true,
-        },
+        ...(blockEl.dataset.scrollbarEnabled === "true"
+          ? {
+              scrollbar: {
+                el: blockEl.querySelector(".swiper-scrollbar"),
+                draggable: true,
+                placement: "outside",
+                snapOnRelease: true,
+              },
+            }
+          : {
+              navigation: {
+                prevEl: blockEl.querySelector(".swiper-button-prev"),
+                nextEl: blockEl.querySelector(".swiper-button-next"),
+              },
+              pagination: {
+                el: blockEl.querySelector(".swiper-pagination"),
+                type: blockEl.dataset.paginationType ?? "bullets",
+                clickable: true,
+              },
+            }),
         loop: isInfiniteLoop,
         autoplay: isAutoPlay
           ? {

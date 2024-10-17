@@ -1,11 +1,11 @@
-import { PanelColorSettings } from '@wordpress/block-editor';
+import { PanelColorSettings } from "@wordpress/block-editor";
 import {
   PanelBody,
   __experimentalUnitControl as UnitControl,
   RangeControl,
-} from '@wordpress/components';
+} from "@wordpress/components";
 
-import { __ } from '@wordpress/i18n';
+import { __ } from "@wordpress/i18n";
 
 export default function AllInspectorSettings({ attributes, setAttributes }) {
   const { activeColor, defaultColor, size, spacing, ratingPoint } = attributes;
@@ -24,8 +24,9 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
         max={5}
       />
       <PanelColorSettings
-        title={__('Colors', 'brandy-blocks')}
+        title={__("Colors", "brandy-blocks")}
         initialOpen={false}
+        enableAlpha={true}
         colorSettings={[
           {
             value: defaultColor,
@@ -33,7 +34,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 defaultColor: newColor,
               }),
-            label: __('Default color', 'brandy-blocks'),
+            label: __("Default color", "brandy-blocks"),
           },
           {
             value: activeColor,
@@ -41,12 +42,12 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
               setAttributes({
                 activeColor: newColor,
               }),
-            label: __('Active color', 'brandy-blocks'),
+            label: __("Active color", "brandy-blocks"),
           },
         ]}
       />
       <UnitControl
-        label={__('Star size')}
+        label={__("Star size")}
         onChange={(v) => {
           setAttributes({
             size: v,
@@ -55,7 +56,7 @@ export default function AllInspectorSettings({ attributes, setAttributes }) {
         value={size}
       />
       <UnitControl
-        label={__('Spacing')}
+        label={__("Spacing")}
         onChange={(v) => {
           setAttributes({
             spacing: v,

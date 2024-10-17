@@ -17,6 +17,7 @@ export default function PaginationControls({ attributes, setAttributes }) {
       },
     });
   };
+
   return (
     <>
       <ToggleControl

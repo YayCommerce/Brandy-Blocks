@@ -1,11 +1,20 @@
 /** Color */
+
 .wp-block-button:where([style*="--button-hover-color"])
-  .wp-element-button:hover {
+  .wp-element-button:hover,
+.wp-block-woocommerce-product-button:where(
+    [style*="--button-hover-color"]
+  ):hover
+  .wp-element-button {
   color: var(--button-hover-color) !important;
 }
 
 .wp-block-button:where([style*="--button-hover-background-color"])
-  .wp-element-button:hover {
+  .wp-element-button:hover,
+.wp-block-woocommerce-product-button:where(
+    [style*="--button-hover-background-color"]
+  ):hover
+  .wp-element-button {
   background-color: var(--button-hover-background-color) !important;
 }
 
